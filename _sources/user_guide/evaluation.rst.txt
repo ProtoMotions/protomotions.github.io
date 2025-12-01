@@ -1,0 +1,338 @@
+Evaluation Guide
+================
+
+This guide covers evaluating trained agents, visualization, and analysis.
+
+Basic Evaluation
+----------------
+
+Evaluate a trained checkpoint:
+
+.. code-block:: bash
+
+   python protomotions/eval_agent.py \
+       --robot-name h1 \
+       --simulator isaacgym \
+       --checkpoint results/my_experiment/last.ckpt
+
+Evaluation Options
+------------------
+
+Common Configuration
+~~~~~~~~~~~~~~~~~~~~
+
+.. code-block:: bash
+
+   # Number of environments to evaluate
+   --num-envs 16
+
+   # Episode length
+   eval_length=1000
+
+   # Rendering mode
+   headless=False  # Set to True for no visualization
+
+   # Override terrain
+   --terrain flat   # Force flat terrain regardless of training config
+
+   # Motion file override
+   --motion-file data/motions/test_motions.pt
+
+Interactive Controls
+--------------------
+
+Keyboard Controls
+~~~~~~~~~~~~~~~~~
+
+During evaluation, use these controls:
+
+.. list-table::
+   :header-rows: 1
+   :widths: 15 85
+
+   * - Key
+     - Action
+   * - ``J``
+     - Apply random forces to all robots (robustness testing)
+   * - ``R``
+     - Reset all environments
+   * - ``O``
+     - Toggle camera view (cycles through entities)
+   * - ``L``
+     - Start/stop video recording
+   * - ``;``
+     - Cancel video recording
+   * - ``U``
+     - Update inference parameters (task-specific)
+   * - ``Q``
+     - Quit evaluation
+
+Motion Playback
+---------------
+
+Kinematic Playback (No Physics)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Visualize motion data without physics simulation:
+
+.. code-block:: bash
+
+   python protomotions/eval_agent.py \
+       --config-name play_motion \
+       --robot-name smpl \
+       --simulator isaacgym \
+       +--motion-file data/motions/walk.npy
+
+Useful for:
+
+* Verifying motion data quality
+* Checking motion preprocessing
+* Creating reference videos
+* Debugging motion issues
+
+Video Recording
+---------------
+
+Recording During Evaluation
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+1. Press ``L`` to start recording
+2. Agent runs for specified duration
+3. Press ``L`` again to stop and save
+
+Videos save to: ``output/renderings/<timestamp>/``
+
+Programmatic Recording
+~~~~~~~~~~~~~~~~~~~~~~
+
+Configure recording via command line:
+
+.. code-block:: bash
+
+   python protomotions/eval_agent.py \
+       --checkpoint results/my_exp/last.ckpt \
+       record_video=True \
+       video_length=500
+
+Evaluation Metrics
+------------------
+
+For imitation tasks (Mimic, MaskedMimic):
+
+* **Pose Error**: Per-joint position error vs. reference
+* **Velocity Error**: Per-joint velocity error
+* **Root Error**: Root position and orientation tracking
+* **Contact Accuracy**: Foot contact prediction accuracy
+
+For task-based agents (Steering, PathFollowing):
+
+* **Task Success Rate**: Percentage of successful episodes
+* **Average Reward**: Mean episode return
+* **Episode Length**: Steps until termination
+
+Testing Robustness
+-------------------
+
+Force Perturbations
+~~~~~~~~~~~~~~~~~~~
+
+Test agent's ability to recover from disturbances:
+
+1. Start evaluation
+2. Press ``J`` to apply random forces
+3. Observe recovery behavior
+
+External forces test:
+
+* Balance recovery
+* Momentum handling  
+* Stability under perturbation
+
+Terrain Variations
+~~~~~~~~~~~~~~~~~~
+
+Test on different terrains:
+
+.. code-block:: bash
+
+   # Evaluate on flat terrain
+   python protomotions/eval_agent.py \
+       --checkpoint <path> \
+       --terrain flat
+
+   # Evaluate on complex terrain
+   python protomotions/eval_agent.py \
+       --checkpoint <path> \
+       --terrain complex
+
+Motion Variations
+~~~~~~~~~~~~~~~~~
+
+Test generalization to unseen motions:
+
+.. code-block:: bash
+
+   python protomotions/eval_agent.py \
+       --checkpoint <path> \
+       --motion-file data/motions/test_set.pt
+
+Multi-Robot Visualization
+--------------------------
+
+Spawn multiple robots for comparison:
+
+.. code-block:: bash
+
+   python protomotions/eval_agent.py \
+       --checkpoint <path> \
+       --num-envs 16
+
+All robots execute the same policy. Useful for:
+
+* Observing variation in execution
+* Visualizing different motion styles
+* Creating diverse demonstration videos
+* Stress testing the policy
+
+Debugging Failed Evaluations
+-----------------------------
+
+Agent Falls Immediately
+~~~~~~~~~~~~~~~~~~~~~~~
+
+**Possible causes**:
+
+1. Robot configuration mismatch with training
+2. Wrong simulator backend
+3. Incompatible motion file
+4. Corrupted normalization statistics
+
+**Solutions**:
+
+.. code-block:: bash
+
+   # Verify exact training configuration
+   cat results/<experiment_name>/config.yaml
+
+   # Use same simulator as training
+   --simulator isaacgym  # Match training
+
+   # Check for config overrides in logs
+
+Jittery or Unstable Motion
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+**Possible causes**:
+
+1. Action smoothing disabled
+2. Control frequency mismatch
+3. PD gains incorrect
+
+**Solutions**:
+
+1. Check action smoothness settings in config
+2. Verify control decimation matches training
+3. Review PD controller gains in robot config
+
+Wrong Behavior
+~~~~~~~~~~~~~~
+
+**Possible causes**:
+
+1. Wrong checkpoint loaded
+2. Observation normalization issues
+3. Configuration override problems
+
+**Solutions**:
+
+.. code-block:: bash
+
+   # Load best checkpoint instead of last
+   --checkpoint results/<exp>/score_based.ckpt
+
+   # Check normalization stats are loaded
+   # (Automatic with checkpoint)
+
+   # Verify no conflicting overrides
+
+Performance Analysis
+--------------------
+
+Benchmarking
+~~~~~~~~~~~~
+
+Measure simulation performance:
+
+.. code-block:: bash
+
+   python protomotions/eval_agent.py \
+       --checkpoint <path> \
+       --num-envs 4096 \
+       headless=True \
+       eval_length=1000
+
+Metrics:
+
+* **FPS**: Frames per second (simulation speed)
+* **Steps/sec**: Environment steps per second
+* **GPU Usage**: Memory and compute utilization
+* **CPU Usage**: For CPU-bound operations
+
+Comparing Checkpoints
+~~~~~~~~~~~~~~~~~~~~~
+
+Compare different training stages:
+
+.. code-block:: bash
+
+   # Early training
+   --checkpoint results/exp/checkpoint_epoch_1000.ckpt
+
+   # Mid training  
+   --checkpoint results/exp/checkpoint_epoch_5000.ckpt
+
+   # Final
+   --checkpoint results/exp/last.ckpt
+
+Advanced Options
+----------------
+
+Custom Evaluation Length
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block:: bash
+
+   eval_length=2000  # Longer episodes
+
+Multiple Evaluation Runs
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Run evaluation multiple times for statistics:
+
+.. code-block:: bash
+
+   for i in {1..10}; do
+       python protomotions/eval_agent.py \
+           --checkpoint <path> \
+           --num-envs 64
+   done
+
+Export for Analysis
+~~~~~~~~~~~~~~~~~~~
+
+The evaluation script can be extended to:
+
+* Export trajectories to numpy/CSV
+* Save detailed metrics per episode
+* Generate comparison reports
+* Create deployment packages
+
+See ``protomotions/agents/evaluators/`` for customization.
+
+Next Steps
+----------
+
+* Review :doc:`training` for more training options
+* Check :doc:`configuration` for advanced configuration
+* See :doc:`../tutorials/basic_training` for complete examples
+

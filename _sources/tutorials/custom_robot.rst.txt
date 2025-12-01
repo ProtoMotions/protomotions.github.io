@@ -1,0 +1,292 @@
+Custom Robot Tutorial
+=====================
+
+Learn how to add a new robot to ProtoMotions.
+
+Overview
+--------
+
+Adding a custom robot involves:
+
+1. Preparing robot assets (URDF/MJCF)
+2. Creating a robot configuration file
+3. Testing in simulation
+4. Training an agent
+
+**Prerequisites**: URDF/MJCF file of your robot, basic Python knowledge
+
+Step 1: Prepare Robot Assets
+-----------------------------
+
+Asset Requirements
+~~~~~~~~~~~~~~~~~~
+
+You need:
+
+* **MJCF file** (.xml): Robot description with joints, bodies, meshes
+* **Mesh files** (optional): Visual and collision meshes (.obj, .stl)
+* **Textures** (optional): For realistic rendering
+
+Place assets in:
+
+.. code-block:: bash
+
+   protomotions/data/assets/mjcf/my_robot.xml
+   protomotions/data/assets/mesh/my_robot/
+
+Asset Format
+~~~~~~~~~~~~
+
+Your MJCF should include:
+
+* Root body (free floating)
+* All joints with proper axes and limits
+* Collision geometries
+* Actuators/motors for control
+
+Example minimal MJCF structure:
+
+.. code-block:: xml
+
+   <mujoco model="my_robot">
+     <worldbody>
+       <body name="pelvis">
+         <freejoint/>
+         <geom type="capsule" size="0.1 0.2"/>
+         <body name="left_hip">
+           <joint name="left_hip_joint" type="hinge"/>
+           <geom type="capsule" size="0.08 0.3"/>
+           <!-- more bodies -->
+         </body>
+       </body>
+     </worldbody>
+   </mujoco>
+
+Step 2: Create Robot Configuration
+-----------------------------------
+
+Create ``protomotions/robot_configs/my_robot.py``:
+
+.. code-block:: python
+
+   from dataclasses import dataclass, field
+   from protomotions.robot_configs.base import (
+       RobotConfig,
+       RobotAssetConfig,
+       RobotControlConfig
+   )
+
+   @dataclass
+   class MyRobotConfig(RobotConfig):
+       """Configuration for MyRobot humanoid."""
+       
+       # Asset configuration
+       asset: RobotAssetConfig = field(default_factory=lambda: RobotAssetConfig(
+           asset_file_name="mjcf/my_robot.xml",
+           self_collisions=True,
+       ))
+       
+       # Body part names (must match MJCF)
+       left_foot_name: str = "left_foot"
+       right_foot_name: str = "right_foot"
+       left_hand_name: str = "left_hand"
+       right_hand_name: str = "right_hand"
+       head_body_name: str = "head"
+       torso_name: str = "pelvis"
+       
+       # Control configuration
+       control: RobotControlConfig = field(default_factory=lambda: RobotControlConfig(
+           stiffness=100.0,
+           damping=10.0,
+           action_scale=1.0,
+       ))
+       
+       # Physical properties
+       default_root_height: float = 0.9  # Standing height
+
+Required Attributes
+~~~~~~~~~~~~~~~~~~~
+
+Your robot config must specify:
+
+* ``asset``: Asset file location
+* ``left_foot_name``, ``right_foot_name``: For contact detection
+* ``left_hand_name``, ``right_hand_name``: For manipulation tasks
+* ``head_body_name``: For camera and observations
+* ``torso_name``: For root tracking
+* ``control``: PD control parameters
+
+Step 3: Register Your Robot
+----------------------------
+
+Add to robot factory (``protomotions/robot_configs/factory.py``):
+
+.. code-block:: python
+
+   from protomotions.robot_configs.my_robot import MyRobotConfig
+
+   robot_configs = {
+       "smpl": SMPLConfig,
+       "h1": H1Config,
+       "my_robot": MyRobotConfig,  # Add this line
+   }
+
+Step 4: Test in Simulation
+---------------------------
+
+Test Basic Spawning
+~~~~~~~~~~~~~~~~~~~
+
+Test if robot loads correctly:
+
+.. code-block:: python
+
+   # Create test script: test_my_robot.py
+   from protomotions.robot_configs.my_robot import MyRobotConfig
+   from protomotions.simulator.isaacgym.config import IsaacGymSimulatorConfig
+   from protomotions.simulator.isaacgym.simulator import IsaacGymSimulator
+   import torch
+
+   robot_config = MyRobotConfig()
+   sim_config = IsaacGymSimulatorConfig(--num-envs 1, headless=False)
+   simulator = IsaacGymSimulator(sim_config, robot_config, device=torch.device("cuda"))
+
+   print(f"✓ Robot spawned successfully!")
+   print(f"  Num DOFs: {simulator.num_dofs}")
+   print(f"  Num Bodies: {simulator.num_bodies}")
+
+Test Motion
+~~~~~~~~~~~
+
+Apply random actions to verify control:
+
+.. code-block:: python
+
+   for _ in range(1000):
+       actions = torch.randn(1, simulator.num_dofs, device="cuda") * 0.1
+       simulator.step(actions)
+
+The robot should move smoothly without exploding or falling through the floor.
+
+Step 5: Train on Your Robot
+----------------------------
+
+Now train an agent:
+
+.. code-block:: bash
+
+   python protomotions/train_agent.py \
+       --experiment-path examples/experiments/steering_mlp.py \
+       --robot-name my_robot \
+       --simulator isaacgym \
+       --experiment-name my_robot_steering
+
+Tuning for Your Robot
+~~~~~~~~~~~~~~~~~~~~~~
+
+You may need to adjust:
+
+**PD Gains**:
+
+.. code-block:: python
+
+   # In your robot config
+   control: RobotControlConfig = field(default_factory=lambda: RobotControlConfig(
+       stiffness=150.0,    # Higher for stiffer control
+       damping=15.0,       # Higher for more damping
+   ))
+
+**Default Pose**:
+
+Ensure your robot's default standing pose is stable.
+
+**Root Height**:
+
+.. code-block:: python
+
+   default_root_height: float = 0.95  # Adjust to your robot's standing height
+
+Retargeting Motions
+-------------------
+
+If using motion data, retarget to your robot:
+
+.. code-block:: bash
+
+   python data/scripts/convert_amass_to_isaac.py \
+       <amass_path> \
+       --robot-type=my_robot \
+       --force-retarget
+
+This uses inverse kinematics to adapt motions to your robot's morphology.
+
+Common Issues
+-------------
+
+Robot Falls Immediately
+~~~~~~~~~~~~~~~~~~~~~~~
+
+**Causes**:
+
+* PD gains too low
+* Default pose unstable
+* Root height incorrect
+* Joint limits wrong
+
+**Solutions**:
+
+1. Check default standing pose is balanced
+2. Increase PD stiffness and damping
+3. Verify root height matches actual standing height
+4. Check joint limits in MJCF
+
+Unstable Control
+~~~~~~~~~~~~~~~~
+
+**Causes**:
+
+* PD gains too high
+* Action scale too large  
+* Control frequency mismatch
+
+**Solutions**:
+
+.. code-block:: python
+
+   # Reduce PD gains
+   stiffness=50.0
+   damping=5.0
+
+   # Reduce action scale
+   action_scale=0.5
+
+Body Names Not Found
+~~~~~~~~~~~~~~~~~~~~
+
+**Error**: "Body 'left_foot' not found"
+
+**Solution**: Check body names in your MJCF file:
+
+.. code-block:: bash
+
+   grep "body name" protomotions/data/assets/mjcf/my_robot.xml
+
+Update robot config to match exact names from MJCF.
+
+Best Practices
+--------------
+
+1. **Start simple**: Test basic spawning before complex training
+2. **Verify stability**: Ensure standing pose is stable with zero actions
+3. **Tune PD gains**: Critical for control quality
+4. **Test incrementally**: Walk before running complex motions
+5. **Document changes**: Note any special requirements for your robot
+
+Next Steps
+----------
+
+* Train on different tasks with your robot
+* Retarget motions to your morphology
+* Tune rewards for your specific use case
+* Share your robot config with the community!
+

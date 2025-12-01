@@ -1,0 +1,7 @@
+protomotions.agents.mimic.agent\_add module
+===========================================
+
+.. automodule:: protomotions.agents.mimic.agent_add
+   :members:
+   :show-inheritance:
+   :undoc-members:

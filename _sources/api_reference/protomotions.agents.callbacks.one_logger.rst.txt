@@ -1,0 +1,7 @@
+protomotions.agents.callbacks.one\_logger module
+================================================
+
+.. automodule:: protomotions.agents.callbacks.one_logger
+   :members:
+   :show-inheritance:
+   :undoc-members:

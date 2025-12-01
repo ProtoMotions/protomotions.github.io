@@ -1,0 +1,256 @@
+Motion Tracking Tutorial
+========================
+
+Learn to train an agent that precisely tracks reference motions.
+
+Overview
+--------
+
+In this tutorial, you will:
+
+1. Prepare motion data
+2. Train a full-body motion tracker
+3. Evaluate tracking quality
+4. Test on new motions
+
+**Prerequisites**: Completed :doc:`basic_training`, motion data prepared
+
+Motion Data Setup
+-----------------
+
+For this tutorial, we'll use AMASS motion data. If you haven't prepared it yet,
+see :doc:`amass_parsing`.
+
+Verify you have:
+
+.. code-block:: bash
+
+   # Check motion file exists
+   ls data/motions/amass_train.pt
+
+   # Or use a single motion
+   ls data/motions/walk.npy
+
+Train the Tracker
+-----------------
+
+Full Command
+~~~~~~~~~~~~
+
+.. code-block:: bash
+
+   python protomotions/train_agent.py \
+       --experiment-path examples/experiments/full_body_tracker/transformer_flat_terrain.py \
+       --robot-name smpl \
+       --simulator isaacgym \
+       --motion-file data/motions/amass_train.pt \
+       --num-envs 2048 \
+       --batch-size 4096 \
+       --overrides "agent.config.eval_every=50" \
+       --overrides "agent.config.eval_metrics_every=10" \
+       --training-max-steps 100000000 \
+       --experiment-name motion_tracker \
+       --use-wandb
+
+Understanding the Configuration
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+* ``--experiment-path examples/experiments/full_body_tracker/transformer_flat_terrain.py``: Uses transformer to process future poses
+* ``motion_file``: Reference motions to track
+* ``--num-envs 2048``: Parallel environments for fast training
+* ``eval_every=50``: Evaluate every 50 epochs
+* ``eval_metrics_every=10``: Compute detailed metrics every 10 evals
+
+What Happens During Training
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The agent learns to:
+
+1. Observe current state and future reference poses
+2. Select actions that minimize tracking error
+3. Match joint positions, velocities, and contacts
+4. Maintain balance and natural motion
+
+Monitor Training Progress
+-------------------------
+
+Key Metrics to Watch
+~~~~~~~~~~~~~~~~~~~~
+
+In Weights & Biases or console, monitor:
+
+**Rewards**:
+
+* ``episode_reward`` - Should increase steadily
+* Target: > 100 for good tracking
+
+**Tracking Errors**:
+
+* ``eval/pose_error`` - Joint position error (lower is better)
+* ``eval/velocity_error`` - Joint velocity error (lower is better)
+* ``eval/root_error`` - Root position error (lower is better)
+* Target: All < 0.1 for high-quality tracking
+
+**Contact Accuracy**:
+
+* ``eval/contact_accuracy`` - Foot contact prediction (higher is better)
+* Target: > 0.9 for good contact matching
+
+Early Stopping
+~~~~~~~~~~~~~~
+
+You can stop training early if:
+
+* Pose error < 0.1
+* Reward plateaus
+* Visual quality looks good
+
+Evaluate Tracking Quality
+--------------------------
+
+Visualize Tracking
+~~~~~~~~~~~~~~~~~~
+
+.. code-block:: bash
+
+   python protomotions/eval_agent.py \
+       --robot-name smpl \
+       --simulator isaacgym \
+       --checkpoint results/motion_tracker/last.ckpt \
+       --motion-file data/motions/amass_train.pt \
+       --num-envs 4
+
+What to check:
+
+* Agent follows reference motion closely
+* Foot contacts match reference
+* No jittery or unnatural movements
+* Balance maintained throughout
+
+Quantitative Evaluation
+~~~~~~~~~~~~~~~~~~~~~~~
+
+The evaluation automatically computes:
+
+* Per-joint position errors
+* Per-joint velocity errors  
+* Root tracking error
+* Contact accuracy
+* Motion smoothness metrics
+
+Check console output for detailed metrics.
+
+Test on New Motions
+-------------------
+
+Test Generalization
+~~~~~~~~~~~~~~~~~~~
+
+Try motions not in the training set:
+
+.. code-block:: bash
+
+   python protomotions/eval_agent.py \
+       --robot-name smpl \
+       --simulator isaacgym \
+       --checkpoint results/motion_tracker/last.ckpt \
+       --motion-file data/motions/test_motion.npy \
+       --num-envs 1
+
+Good trackers should:
+
+* Generalize to unseen motions
+* Maintain tracking quality  
+* Handle motion transitions
+* Preserve motion style
+
+Test on Different Motions
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Try various motion types:
+
+.. code-block:: bash
+
+   # Walking
+   --motion-file data/motions/walk.npy
+
+   # Running
+   --motion-file data/motions/run.npy
+
+   # Complex motions
+   --motion-file data/motions/dance.npy
+
+Improving Tracking Quality
+---------------------------
+
+If tracking quality is poor:
+
+**Increase Training Time**:
+
+.. code-block:: bash
+
+   --training-max-steps 200000000
+
+**Adjust Reward Weights**:
+
+Modify in experiment config file:
+
+.. code-block:: python
+
+   env_config.reward_weights.pose = 1.5  # Increase pose importance
+   env_config.reward_weights.velocity = 0.5  # Decrease velocity importance
+
+**Use Larger Batch**:
+
+.. code-block:: bash
+
+   --batch-size 8192
+   --num-envs 4096
+
+**Enable Contact Rewards**:
+
+.. code-block:: bash
+
+   --overrides "env.config.enable_contact_forces=True"
+
+Advanced: Multi-Motion Training
+--------------------------------
+
+Train on multiple motions simultaneously:
+
+.. code-block:: bash
+
+   # Use YAML with multiple motions
+   --motion-file data/yaml_files/amass_train.yaml
+
+Benefits:
+
+* Better generalization
+* More diverse behaviors
+* Robust to motion variations
+
+The motion library automatically:
+
+* Samples motions with specified weights
+* Balances easy/hard motions
+* Tracks per-motion performance
+
+Next Steps
+----------
+
+* Use this tracker for :doc:`../examples/experiments` (Phase 1 of MaskedMimic)
+* Try different robots: :doc:`custom_robot`
+* Add terrain: ``--terrain complex``
+* Create custom rewards in experiment config
+
+Congratulations!
+----------------
+
+You've successfully trained a motion tracking agent!
+
+✓ Prepared motion data  
+✓ Trained full-body tracker  
+✓ Evaluated tracking quality  
+✓ Tested on new motions  
+✓ Learned advanced techniques  
+

@@ -1,0 +1,314 @@
+Training Guide
+==============
+
+This guide covers the complete training workflow for ProtoMotions agents.
+
+Basic Training Workflow
+------------------------
+
+1. **Prepare your data** (see :doc:`../tutorials/amass_parsing`)
+2. **Choose your algorithm** (PPO, AMP, ASE, or MaskedMimic)
+3. **Configure your experiment**
+4. **Launch training**
+5. **Monitor progress**
+
+Training Command Structure
+--------------------------
+
+Basic training command:
+
+.. code-block:: bash
+
+   python protomotions/train_agent.py \
+       --robot-name <robot_name> \
+       --simulator <simulator> \
+       --experiment-path <path_to_experiment_file> \
+       --experiment-name <name> \
+       --motion-file <path_to_motion_data> \
+       --num-envs <num> \
+       --batch-size <size>
+
+Required Parameters
+~~~~~~~~~~~~~~~~~~~
+
+* ``--robot-name``: Robot to train (``smpl``, ``h1``, ``g1``, etc.)
+* ``--simulator``: Simulator backend (``isaacgym``, ``isaaclab``, ``genesis``)
+* ``--experiment-path``: Path to experiment config file (e.g., ``examples/experiments/mimic/mlp.py``)
+* ``--experiment-name``: Unique identifier for this training run
+* ``--motion-file``: Path to motion data file (.npy, .pt, or .yaml)
+* ``--num-envs``: Number of parallel environments
+* ``--batch-size``: Batch size for training
+
+Common Optional Parameters
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block:: bash
+
+   # Environment scaling
+   --num-envs 4096                       # Number of parallel environments
+
+   # Training duration  
+   --training-max-steps 100000000        # Total environment steps
+
+   # Batch configuration
+   --batch-size 16384       # Samples per training iteration
+   --overrides "agent.config.num_steps=16"           # Steps per rollout
+
+   # Learning rates
+   --overrides "agent.config.learning_rate=1e-4"     # Actor learning rate
+   --overrides "agent.config.critic_learning_rate=1e-3"  # Critic learning rate
+
+   # Evaluation
+   --overrides "agent.config.eval_every=100"         # Evaluate every N epochs
+   --overrides "agent.config.eval_length=600"        # Steps per evaluation episode
+
+   # Logging
+   --use-wandb                          # Enable Weights & Biases
+
+Training Different Algorithms
+------------------------------
+
+PPO (Basic Policy Optimization)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+For simple tasks without motion data:
+
+.. code-block:: bash
+
+   python protomotions/train_agent.py \
+       --experiment-path examples/experiments/steering_mlp.py \
+       --robot-name h1 \
+       --simulator isaacgym \
+       --experiment-name h1_steering
+
+AMP (Motion Style)
+~~~~~~~~~~~~~~~~~~
+
+For tasks with motion style requirements:
+
+.. code-block:: bash
+
+   python protomotions/train_agent.py \
+       --experiment-path examples/experiments/amp_mlp.py \
+       --robot-name smpl \
+       --simulator isaacgym \
+       --motion-file data/motions/walk.npy \
+       --experiment-name amp_walk
+
+MaskedMimic (Versatile Control)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Two-phase training process:
+
+**Phase 1 - Train Expert Tracker:**
+
+.. code-block:: bash
+
+   python protomotions/train_agent.py \
+       --experiment-path examples/experiments/full_body_tracker/transformer_flat_terrain.py \
+       --robot-name smpl \
+       --simulator isaacgym \
+       --motion-file data/motions/amass_train.pt \
+       --num-envs 2048 \
+       --batch-size 4096 \
+       --experiment-name expert_tracker
+
+**Phase 2 - Train MaskedMimic:**
+
+.. code-block:: bash
+
+   python protomotions/train_agent.py \
+       --experiment-path examples/experiments/masked_mimic/flat_terrain.py \
+       --robot-name smpl \
+       --simulator isaacgym \
+       --motion-file data/motions/amass_train.pt \
+       --overrides "agent.config.expert_model_path=results/expert_tracker/" \
+       --experiment-name masked_mimic
+
+Monitoring Training
+-------------------
+
+Console Output
+~~~~~~~~~~~~~~
+
+During training, you'll see progress like:
+
+.. code-block:: text
+
+   Epoch 100 | ep_reward: 45.23 | value_loss: 0.122 | policy_loss: 0.031 | FPS: 12543
+
+Key metrics to watch:
+
+* **Reward**: Should increase over time
+* **Value Loss**: Should decrease and stabilize
+* **Policy Loss**: Should decrease initially, then stabilize
+* **FPS**: Simulation speed (higher is better)
+
+Weights & Biases
+~~~~~~~~~~~~~~~~
+
+Enable detailed logging:
+
+.. code-block:: bash
+
+   --use-wandb
+
+Tracks:
+
+* Training curves (rewards, losses, learning rates)
+* Evaluation metrics (success rates, tracking errors)
+* System metrics (FPS, GPU/CPU usage)
+* Hyperparameters
+* Videos and visualizations
+
+Saved Files
+~~~~~~~~~~~
+
+Training automatically saves to ``results/<experiment_name>/``:
+
+.. code-block:: text
+
+   results/my_experiment/
+   ├── config.yaml              # CLI arguments
+   ├── resolved_configs.pt      # Full config objects (pickled)
+   ├── resolved_configs.yaml    # Human-readable configs
+   ├── experiment_config.py     # Copy of experiment file
+   ├── last.ckpt               # Most recent checkpoint
+   ├── score_based.ckpt        # Best evaluation score checkpoint
+   └── logs/                   # Training logs
+
+Resuming Training
+-----------------
+
+Training automatically resumes from the last checkpoint:
+
+.. code-block:: bash
+
+   # Just run the same command again
+   python protomotions/train_agent.py \
+       --experiment-path examples/experiments/steering_mlp.py \
+       --robot-name h1 \
+       --simulator isaacgym \
+       --experiment-name h1_steering
+
+The system automatically:
+
+* Detects existing checkpoint
+* Loads model weights and optimizer state
+* Resumes from last epoch
+* Continues logging to same experiment
+
+Distributed Training
+--------------------
+
+Single Node, Multiple GPUs
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block:: bash
+
+   python protomotions/train_agent.py \
+       --experiment-path examples/experiments/steering_mlp.py \
+       --robot-name h1 \
+       --simulator isaacgym \
+       --ngpu 4 \
+       --experiment-name distributed_exp
+
+Multiple Nodes (SLURM)
+~~~~~~~~~~~~~~~~~~~~~~
+
+For SLURM clusters:
+
+.. code-block:: bash
+
+   python protomotions/train_slurm.py \
+       --experiment-path examples/experiments/steering_mlp.py \
+       --robot-name h1 \
+       --simulator isaacgym \
+       --nodes 2 \
+       --ngpu 4 \
+       --experiment-name slurm_exp
+
+Troubleshooting
+---------------
+
+Training Crashes
+~~~~~~~~~~~~~~~~
+
+**Symptoms**: Process crashes or hangs
+
+**Solutions**:
+
+1. Check GPU memory: Reduce ``num_envs`` or ``batch_size``
+2. Check for NaN: Enable gradient clipping
+3. Check logs in ``results/<experiment_name>/logs/``
+
+Low FPS
+~~~~~~~
+
+**Symptoms**: Slow training speed
+
+**Solutions**:
+
+1. Reduce ``num_envs`` if CPU-bound
+2. Use IsaacGym for fastest simulation
+3. Disable unnecessary evaluation metrics
+4. Check GPU utilization with ``nvidia-smi``
+
+Poor Performance
+~~~~~~~~~~~~~~~~
+
+**Symptoms**: Low rewards, agent doesn't learn
+
+**Solutions**:
+
+1. Check reward scaling: Monitor reward magnitudes
+2. Adjust learning rates: Try 1e-5 to 1e-3 range
+3. Increase training time: Some tasks need millions of steps
+4. Check environment setup: Verify robot and task configuration
+5. Review normalization: Check if observations/rewards are normalized
+
+Best Practices
+--------------
+
+Hyperparameter Tuning
+~~~~~~~~~~~~~~~~~~~~~~
+
+1. **Start with provided configs**: Use experiment files in ``examples/experiments/``
+2. **Change one thing at a time**: Isolate effects
+3. **Monitor early**: Check first 100 epochs for trends
+4. **Use W&B**: Track all experiments for comparison
+5. **Document changes**: Use descriptive experiment names
+
+Performance Optimization
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+For maximum speed:
+
+* Maximize ``num_envs`` (limited by GPU memory)
+* Use IsaacGym (fastest simulator)
+* Reduce evaluation frequency during initial training
+* Enable compiled models when available
+
+Memory Management
+~~~~~~~~~~~~~~~~~
+
+If running out of memory:
+
+.. code-block:: bash
+
+   # Reduce environment count
+   --num-envs 1024
+
+   # Reduce batch size
+   --batch-size 2048
+
+   # Reduce network size (in experiment config)
+   # Modify hidden layer dimensions
+
+Next Steps
+----------
+
+* Learn about :doc:`evaluation` for testing your trained agents
+* Check :doc:`configuration` for advanced configuration options
+* See :doc:`../tutorials/basic_training` for a complete walkthrough
+

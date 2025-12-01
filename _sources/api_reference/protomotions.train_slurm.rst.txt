@@ -1,0 +1,7 @@
+protomotions.train\_slurm module
+================================
+
+.. automodule:: protomotions.train_slurm
+   :members:
+   :show-inheritance:
+   :undoc-members:

@@ -1,0 +1,144 @@
+AMASS Dataset Parsing
+=====================
+
+This tutorial explains how to parse and process the AMASS dataset for use with ProtoMotions. AMASS (The Archive of Motion Capture as Surface Shapes) is a large database of human motion unified by the SMPL body model.
+
+Prerequisites
+-------------
+
+1. **Download AMASS**: Obtain the dataset from the `AMASS website <https://amass.is.tue.mpg.de/>`_.
+2. **Body Model**: Ensure you download the data corresponding to the body model you intend to use (SMPL or SMPL-X).
+
+Directory Structure
+-------------------
+
+Organize your downloaded AMASS data (unzipped) into a root directory. The structure should look like this:
+
+.. code-block:: text
+
+    /path/to/amass/
+    ├── CMU/
+    │   ├── 01/
+    │   │   ├── 01_01_poses.npz
+    │   │   └── ...
+    ├── MPI_HDM05/
+    └── ...
+
+Parsing the Dataset
+-------------------
+
+ProtoMotions provides a script to convert the raw AMASS data (`.npz` files) into a format compatible with Isaac Gym (`.npy` files containing processed motion data).
+
+The script is located at `data/scripts/convert_amass_to_isaac.py`.
+
+Basic Usage
+~~~~~~~~~~~
+
+To parse the dataset for the SMPL humanoid:
+
+.. code-block:: bash
+
+    python data/scripts/convert_amass_to_isaac.py /path/to/amass --humanoid-type=smpl
+
+To parse for SMPL-X:
+
+.. code-block:: bash
+
+    python data/scripts/convert_amass_to_isaac.py /path/to/amass --humanoid-type=smplx
+
+Arguments
+~~~~~~~~~
+
+* ``amass_root_dir``: The root directory containing the AMASS subfolders (e.g., `/path/to/amass`).
+* ``--humanoid-type``: The type of humanoid model to use (``smpl`` or ``smplx``). Default is ``smpl``.
+* ``--output-fps``: Desired output frame rate for the motion. Default is 30.
+* ``--force-remake``: If set, forces reprocessing of files even if output files already exist.
+* ``--motion-config``: Optional YAML files to specify start/end times for specific motions (slicing).
+
+Output
+~~~~~~
+
+The script processes files in-place (or rather, mirrors the structure within the same root) and generates ``.npy`` files next to the original ``.npz`` files.
+
+Creating Dataset Splits
+-----------------------
+
+After parsing, you may want to create train/validation/test splits. Use the ``create_motion_split_yaml.py`` script.
+
+.. code-block:: bash
+
+    python data/scripts/create_motion_split_yaml.py --motion_dir /path/to/amass --output_dir data/yaml_files
+
+Arguments:
+
+* ``--motion_dir``: Directory containing the parsed motion files.
+* ``--output_dir``: Directory to save the output YAML files (e.g., ``train.yaml``, ``test.yaml``).
+* ``--humanoid_type``: ``smpl`` (default) or ``smplx``.
+
+This will generate YAML files listing the motion files for each split, which can then be used in your training configuration.
+
+Packaging Motions into .pt Files
+---------------------------------
+
+For efficient loading during training, you can package the YAML motion library into a single ``.pt`` file using MotionLib. This loads all motions once and saves them in a compact format.
+
+Using the Command-Line Script
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The ``motion_lib.py`` module includes a built-in command-line interface:
+
+.. code-block:: bash
+
+    python -m protomotions.components.motion_lib \
+        --motion-path data/yaml_files/train.yaml \
+        --output-file data/motion_libs/train.pt \
+        --device cpu
+
+Arguments:
+
+* ``--motion-path``: Path to the YAML file or directory containing motion files
+* ``--output-file``: Output path for the packaged ``.pt`` file (default: ``motion_lib.pt``)
+* ``--device``: Device to use for processing (``cpu`` or ``cuda``, default: ``cpu``)
+
+Using Python Code
+~~~~~~~~~~~~~~~~~
+
+Alternatively, you can package motions programmatically:
+
+.. code-block:: python
+
+    from protomotions.components.motion_lib import MotionLib, MotionLibConfig
+    import torch
+
+    # Create config pointing to your YAML file
+    config = MotionLibConfig(motion_file="data/yaml_files/train.yaml")
+    
+    # Load all motions into the library
+    motion_lib = MotionLib(config=config, device="cpu")
+    
+    # Save to packaged .pt file
+    motion_lib.save_to_file("data/motion_libs/train.pt")
+
+Using Packaged Motion Libraries
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Once packaged, you can load the ``.pt`` file directly in your training configuration. This is much faster than loading individual ``.npy`` files:
+
+.. code-block:: python
+
+    # In your training code
+    config = MotionLibConfig(motion_file="data/motion_libs/train.pt")
+    motion_lib = MotionLib(config=config, device="cuda")
+    
+    # The motion library is now ready to use
+    num_motions = motion_lib.num_motions()
+    print(f"Loaded {num_motions} motions")
+
+Benefits of Packaged Motion Libraries
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+* **Faster loading**: Single file I/O instead of thousands of individual files
+* **Reduced disk usage**: Compressed tensor format
+* **Portability**: Easy to share and distribute motion datasets
+* **Consistency**: All motions loaded with consistent preprocessing
+

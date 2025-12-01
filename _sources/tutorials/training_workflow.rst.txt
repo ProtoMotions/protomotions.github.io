@@ -1,0 +1,240 @@
+Training Workflow Tutorial
+==========================
+
+Complete end-to-end guide for training your first ProtoMotions agent.
+
+Overview
+--------
+
+This tutorial provides a simple, complete workflow for training an agent from scratch.
+
+**What you'll do**:
+
+1. Set up environment
+2. Start training
+3. Monitor progress
+4. Evaluate results
+
+**Difficulty**: Beginner  
+**Prerequisites**: ProtoMotions installed
+
+Step 1: Verify Installation
+----------------------------
+
+Quick check:
+
+.. code-block:: bash
+
+   python -c "import protomotions; print('✓ ProtoMotions ready')"
+
+Step 2: Choose Your Task
+-------------------------
+
+For your first agent, we recommend **steering** (no motion data needed):
+
+.. code-block:: bash
+
+   python protomotions/train_agent.py \
+       --experiment-path examples/experiments/steering_mlp.py \
+       --robot-name h1 \
+       --simulator isaacgym \
+       --num-envs 2048 \
+       --experiment-name my_first_agent \
+       --use-wandb
+
+**What this trains**:
+
+* Agent that walks in target directions
+* Target direction and speed change periodically
+* Pure reinforcement learning (no motion data)
+
+**Why start here**:
+
+* No motion data preparation needed
+* Fast training
+* Clear visual feedback
+* Easy to understand rewards
+
+Step 3: Watch It Train
+-----------------------
+
+You'll see console output showing training progress:
+
+.. code-block:: text
+
+   Epoch 1 | ep_reward: 5.23 | value_loss: 0.445 | policy_loss: 0.082 | FPS: 8543
+   Epoch 10 | ep_reward: 15.31 | value_loss: 0.281 | policy_loss: 0.067 | FPS: 9187
+   Epoch 50 | ep_reward: 35.72 | value_loss: 0.124 | policy_loss: 0.038 | FPS: 9521
+   Epoch 100 | ep_reward: 48.15 | value_loss: 0.078 | policy_loss: 0.025 | FPS: 9603
+
+**Good signs**:
+
+* Reward increasing steadily
+* Value loss decreasing
+* FPS stable (>5000)
+
+**After ~50-100 epochs**, the agent should walk reasonably well.
+
+Step 4: Evaluate Your Agent
+----------------------------
+
+Open a new terminal and run:
+
+.. code-block:: bash
+
+   python protomotions/eval_agent.py \
+       --robot-name h1 \
+       --simulator isaacgym \
+       --checkpoint results/my_first_agent/last.ckpt \
+       --num-envs 4
+
+**What you'll see**:
+
+* 4 robots walking in the simulation
+* Visual arrows showing target directions
+* Robots following the targets
+
+**Try these controls**:
+
+* ``O`` - Change camera angle
+* ``J`` - Push robots with random forces
+* ``R`` - Reset all robots
+* ``L`` - Record video
+* ``Q`` - Quit
+
+Step 5: Understand What Happened
+---------------------------------
+
+Training Process
+~~~~~~~~~~~~~~~~
+
+The agent learned through:
+
+1. **Exploration**: Random actions initially
+2. **Experience collection**: 2048 parallel environments
+3. **Learning**: PPO optimization on collected data
+4. **Iteration**: Repeat for many epochs
+
+Saved Files
+~~~~~~~~~~~
+
+Check ``results/my_first_agent/``:
+
+.. code-block:: bash
+
+   ls results/my_first_agent/
+   
+   # You'll see:
+   # config.yaml              - Command-line arguments
+   # resolved_configs.pt      - Complete configuration
+   # experiment_config.py     - Experiment file copy
+   # last.ckpt               - Latest model
+   # score_based.ckpt        - Best model (by evaluation)
+
+What the Agent Learned
+~~~~~~~~~~~~~~~~~~~~~~~
+
+The policy learned to:
+
+* Map observations (body state, target direction) → actions (joint targets)
+* Walk forward, backward, sideways
+* Turn left and right
+* Stop and start
+* Maintain balance
+
+Step 6: Next Challenge
+-----------------------
+
+Now try motion tracking:
+
+.. code-block:: bash
+
+   # First, prepare motion data (see data preparation guide)
+   
+   # Then train motion tracker
+   python protomotions/train_agent.py \
+       --experiment-path examples/experiments/mimic/mlp.py \
+       --robot-name smpl \
+       --simulator isaacgym \
+       --motion-file data/motions/walk.npy \
+       --experiment-name motion_tracker
+
+See :doc:`motion_tracking` for complete motion tracking tutorial.
+
+Troubleshooting
+---------------
+
+Training Too Slow
+~~~~~~~~~~~~~~~~~
+
+If FPS < 5000:
+
+.. code-block:: bash
+
+   # Reduce environments
+   --num-envs 1024
+
+Agent Not Learning
+~~~~~~~~~~~~~~~~~~
+
+If reward stays low after 100 epochs:
+
+.. code-block:: bash
+
+   # Try lower learning rate
+   --overrides "agent.config.learning_rate=5e-5"
+
+   # Or increase batch size
+   --batch-size 8192
+
+Memory Errors
+~~~~~~~~~~~~~
+
+If out of memory:
+
+.. code-block:: bash
+
+   # Reduce environments and batch size
+   --num-envs 512 \
+   --batch-size 2048
+
+Tips for Success
+----------------
+
+1. **Be patient**: First 20-30 epochs may show little progress
+2. **Watch FPS**: Should stay above 5000 for efficient training
+3. **Use W&B**: Makes comparing experiments much easier
+4. **Start simple**: Master steering before complex motions
+5. **Read console**: Error messages are usually informative
+
+Next Steps
+----------
+
+**Completed basic training?**
+
+* :doc:`motion_tracking` - Track reference motions
+* :doc:`../user_guide/algorithms` - Learn other algorithms
+* :doc:`../examples/experiments` - Use production configs
+* :doc:`code_tutorials` - Understand the code deeply
+
+**Want to customize?**
+
+* :doc:`custom_robot` - Add your own robot
+* :doc:`../user_guide/configuration` - Advanced configuration
+* Modify experiment files in ``examples/experiments/``
+
+Congratulations!
+----------------
+
+You've completed your first ProtoMotions training! 🎉
+
+You now know:
+
+✓ How to start training  
+✓ How to monitor progress  
+✓ How to evaluate agents  
+✓ Where configurations are saved  
+✓ Basic troubleshooting  
+
+Ready for more advanced topics!
+

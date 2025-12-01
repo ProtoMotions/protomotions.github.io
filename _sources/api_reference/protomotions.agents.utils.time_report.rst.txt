@@ -1,0 +1,7 @@
+protomotions.agents.utils.time\_report module
+=============================================
+
+.. automodule:: protomotions.agents.utils.time_report
+   :members:
+   :show-inheritance:
+   :undoc-members:

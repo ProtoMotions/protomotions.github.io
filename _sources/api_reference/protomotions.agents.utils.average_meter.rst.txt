@@ -1,0 +1,7 @@
+protomotions.agents.utils.average\_meter module
+===============================================
+
+.. automodule:: protomotions.agents.utils.average_meter
+   :members:
+   :show-inheritance:
+   :undoc-members:

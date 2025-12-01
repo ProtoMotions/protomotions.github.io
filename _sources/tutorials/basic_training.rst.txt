@@ -1,0 +1,366 @@
+Code Tutorial 0: Create Simulator
+==================================
+
+**File**: ``examples/tutorial/0_create_simulator.py``
+
+This tutorial teaches you the foundation of ProtoMotions - setting up a physics simulator.
+
+What You'll Learn
+-----------------
+
+* How to initialize IsaacGym, IsaacLab, or Genesis simulators
+* Configure simulation parameters (FPS, decimation, substeps)
+* Understand the simulator factory pattern
+* Handle multi-backend support
+* Manage device placement (GPU/CPU)
+
+Running the Tutorial
+--------------------
+
+.. code-block:: bash
+
+   python examples/tutorial/0_create_simulator.py --simulator isaacgym
+
+1. Add Terrain
+~~~~~~~~~~~~~~
+
+**File**: ``examples/tutorial/1_add_terrain.py``
+
+Learn to:
+
+* Create complex terrains (stairs, slopes, rough ground)
+* Configure terrain generation
+* Visualize terrain in simulation
+
+2. Load Robot
+~~~~~~~~~~~~~
+
+**File**: ``examples/tutorial/2_load_robot.py``
+
+Learn to:
+
+* Load robot from MJCF/URDF files
+* Configure robot properties
+* Spawn robot in simulation
+* Apply basic control
+
+3. Scene Creation
+~~~~~~~~~~~~~~~~~
+
+**File**: ``examples/tutorial/3_scene_creation.py``
+
+Learn to:
+
+* Add objects to the environment
+* Create scenes with furniture and props
+* Configure object physics
+* Manage multi-object scenes
+
+4. Basic Environment
+~~~~~~~~~~~~~~~~~~~~
+
+**File**: ``examples/tutorial/4_basic_environment.py``
+
+Learn to:
+
+* Create a complete RL environment
+* Implement observation computation
+* Define reward functions
+* Handle episode resets
+
+5. Motion Manager
+~~~~~~~~~~~~~~~~~
+
+**File**: ``examples/tutorial/5_motion_manager.py``
+
+Learn to:
+
+* Load motion libraries
+* Sample reference motions
+* Query motion states at specific times
+* Integrate motions with environment
+
+6. Mimic Environment
+~~~~~~~~~~~~~~~~~~~~
+
+**File**: ``examples/tutorial/6_mimic_environment.py``
+
+Learn to:
+
+* Create motion imitation environment
+* Configure tracking rewards
+* Set up reference pose observations
+* Enable contact-aware rewards
+
+7. DeepMimic Agent
+~~~~~~~~~~~~~~~~~~
+
+**File**: ``examples/tutorial/7_deepmimic.py``
+
+Learn to:
+
+* Configure a complete PPO agent
+* Set up actor-critic networks
+* Run a full training loop
+* Save and load checkpoints
+
+Running the Tutorials
+----------------------
+
+Each tutorial is self-contained:
+
+.. code-block:: bash
+
+   # Basic usage
+   python examples/tutorial/<tutorial_name>.py --simulator isaacgym
+
+   # With visualization
+   python examples/tutorial/<tutorial_name>.py --simulator isaacgym
+
+   # CPU only (for testing)
+   python examples/tutorial/<tutorial_name>.py --simulator isaacgym --cpu-only
+
+Tutorial Progression
+--------------------
+
+Follow the tutorials in order:
+
+1. **Simulator basics** (Tutorial 0-2): Core simulation setup
+2. **Environment design** (Tutorial 3-4): RL environment creation
+3. **Motion integration** (Tutorial 5-6): Adding reference motions
+4. **Agent training** (Tutorial 7): Complete training pipeline
+
+After completing all tutorials, you'll understand:
+
+* How ProtoMotions components fit together
+* How to customize each component
+* How to build your own environments and tasks
+* How to train agents for your specific needs
+
+Quick Start Training
+--------------------
+
+For a complete end-to-end example, see Tutorial 7:
+
+.. code-block:: bash
+
+   python examples/tutorial/7_deepmimic.py --simulator isaacgym
+
+This runs a complete training loop for motion tracking.
+
+**Prerequisites**: ProtoMotions installed with a simulator
+
+Step 1: Verify Installation
+----------------------------
+
+First, verify your installation works:
+
+.. code-block:: bash
+
+   # Check if ProtoMotions is importable
+   python -c "import protomotions; print('✓ ProtoMotions installed')"
+
+   # Check simulator (example for IsaacGym)
+   python -c "import isaacgym; print('✓ Simulator ready')"
+
+Step 2: Start Training
+-----------------------
+
+Train a simple steering agent (no motion data required):
+
+.. code-block:: bash
+
+   python protomotions/train_agent.py \
+       --experiment-path examples/experiments/steering_mlp.py \
+       --robot-name h1 \
+       --simulator isaacgym \
+       --num-envs 2048 \
+       --experiment-name tutorial_steering \
+       --use-wandb
+
+**What this does**:
+
+* Trains an agent to walk in specified directions at specified speeds
+* Uses 2048 parallel environments for fast learning
+* Logs to Weights & Biases for monitoring
+* Saves checkpoints to ``results/tutorial_steering/``
+
+Step 3: Monitor Training
+-------------------------
+
+Console Output
+~~~~~~~~~~~~~~
+
+You should see output like:
+
+.. code-block:: text
+
+   Epoch 1 | ep_reward: 5.23 | value_loss: 0.451 | policy_loss: 0.124 | FPS: 8523
+   Epoch 2 | ep_reward: 8.71 | value_loss: 0.382 | policy_loss: 0.102 | FPS: 9187
+   Epoch 10 | ep_reward: 25.31 | value_loss: 0.152 | policy_loss: 0.051 | FPS: 9487
+
+**What to look for**:
+
+* **Reward increasing**: Agent is learning
+* **Value loss decreasing**: Value function improving
+* **Policy loss stabilizing**: Policy converging
+* **FPS steady**: No performance issues
+
+Weights & Biases Dashboard
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Open your W&B dashboard to see:
+
+* Real-time reward curves
+* Loss plots
+* Learning rate schedules
+* System metrics (GPU usage, FPS)
+* Evaluation videos
+
+Step 4: Evaluate the Agent
+---------------------------
+
+Once training reaches reasonable performance (reward > 30):
+
+.. code-block:: bash
+
+   # Interrupt training with Ctrl+C
+   # Or let it run and evaluate the latest checkpoint
+
+   python protomotions/eval_agent.py \
+       --robot-name h1 \
+       --simulator isaacgym \
+       --checkpoint results/tutorial_steering/last.ckpt \
+       --num-envs 4
+
+**What you'll see**:
+
+* 4 H1 robots walking in the simulation
+* Visual markers showing target directions
+* Real-time rendering of agent behavior
+
+Step 5: Interactive Testing
+----------------------------
+
+Test Different Scenarios
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+While evaluation is running, try:
+
+1. **Press O** - Change camera view
+2. **Press J** - Apply random forces (test robustness)
+3. **Press R** - Reset all agents
+4. **Press L** - Record video
+
+The agent should:
+
+* Walk in varying directions as targets change
+* Recover from force perturbations
+* Maintain balance
+* Follow speed commands
+
+Step 6: Record a Video
+----------------------
+
+.. code-block:: bash
+
+   python protomotions/eval_agent.py \
+       --robot-name h1 \
+       --simulator isaacgym \
+       --checkpoint results/tutorial_steering/last.ckpt \
+       --num-envs 1
+
+1. Press ``L`` to start recording
+2. Let the agent run for 10-20 seconds
+3. Press ``L`` again to save
+
+Video saves to: ``output/renderings/<timestamp>/``
+
+Step 7: Resume Training
+-----------------------
+
+To continue training:
+
+.. code-block:: bash
+
+   # Same command as before - automatically resumes
+   python protomotions/train_agent.py \
+       --experiment-path examples/experiments/steering_mlp.py \
+       --robot-name h1 \
+       --simulator isaacgym \
+       --num-envs 2048 \
+       --experiment-name tutorial_steering \
+       --use-wandb
+
+The system automatically:
+
+* Detects existing checkpoint
+* Loads model and optimizer state
+* Continues from previous epoch
+* Resumes W&B logging to same run
+
+Troubleshooting
+---------------
+
+Training is Slow
+~~~~~~~~~~~~~~~~
+
+**If FPS < 5000**:
+
+.. code-block:: bash
+
+   # Reduce environments if CPU-bound
+   --num-envs 1024
+
+   # Check GPU usage
+   nvidia-smi
+
+Agent Not Learning
+~~~~~~~~~~~~~~~~~~
+
+**If reward not increasing after 100 epochs**:
+
+1. Check reward magnitudes (should be -10 to +50 range)
+2. Verify environment is resetting properly
+3. Check for NaN in logs
+4. Try different learning rate:
+
+.. code-block:: bash
+
+   --overrides "agent.config.learning_rate=5e-5"
+
+Memory Errors
+~~~~~~~~~~~~~
+
+**If out of GPU memory**:
+
+.. code-block:: bash
+
+   # Reduce environments
+   --num-envs 512
+
+   # Reduce batch size
+   --batch-size 2048
+
+Next Tutorial
+-------------
+
+Now that you've trained a basic agent, try:
+
+* :doc:`motion_tracking` - Train an agent to imitate motions
+* :doc:`../user_guide/configuration` - Create custom experiment configurations
+* :doc:`../user_guide/algorithms` - Learn about other algorithms
+
+Congratulations!
+----------------
+
+You've successfully:
+
+✓ Trained your first ProtoMotions agent  
+✓ Monitored training progress  
+✓ Evaluated the trained policy  
+✓ Recorded videos  
+✓ Learned the basic workflow  
+
+You're ready to explore more advanced features!
+

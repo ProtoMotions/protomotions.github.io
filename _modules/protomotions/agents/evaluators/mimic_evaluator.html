@@ -1,0 +1,1085 @@
+<!doctype html>
+<html class="no-js" lang="en" data-content_root="../../../../">
+  <head><meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="../../../../genindex.html"><link rel="search" title="Search" href="../../../../search.html">
+
+    <!-- Generated with Sphinx 8.2.3 and Furo 2025.09.25 -->
+        <title>protomotions.agents.evaluators.mimic_evaluator - ProtoMotions documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=d111a655" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/styles/furo.css?v=580074bf" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/styles/furo-extensions.css?v=8dab3a3b" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f2f2f2;
+  --color-code-foreground: #1e1e1e;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle site navigation sidebar">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc" aria-label="Toggle table of contents sidebar">
+<label class="overlay sidebar-overlay" for="__navigation"></label>
+<label class="overlay toc-overlay" for="__toc"></label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <span class="icon"><svg><use href="#svg-menu"></use></svg></span>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../../../../index.html"><div class="brand">ProtoMotions  documentation</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+        <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../../../../index.html">
+  
+  <span class="sidebar-brand-text">ProtoMotions  documentation</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../../../../search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../getting_started/installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../getting_started/quickstart.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../getting_started/amass_preparation.html">AMASS Data Preparation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorials/code_tutorials.html">Code Tutorials (Progressive Series)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorials/workflows/amass_smpl.html">SMPL Training on AMASS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorials/workflows/retargeting_pyroki.html">Retargeting with PyRoki</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorials/workflows/vaulting.html">Scene Workflow (Vaulting)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorials/workflows/domain_randomization.html">Domain Randomization &amp; Sim2Sim</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorials/workflows/custom_robot.html">Adding a Custom Robot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorials/challenges.html">Challenges</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../user_guide/configuration.html">Configuration System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../user_guide/developer_tips.html">Developer Tips</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Key Concepts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../concepts/index.html">Key Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../concepts/architecture.html">Architecture Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../concepts/abstractions.html">Core Abstractions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../concepts/pose_lib.html">PoseLib Toolkit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../concepts/simulator_state.html">Simulator State</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api_reference/index.html">API Reference</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../../api_reference/protomotions.agents.html">protomotions.agents package</a><input aria-label="Toggle navigation of protomotions.agents package" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../../api_reference/protomotions.agents.amp.html">protomotions.agents.amp package</a><input aria-label="Toggle navigation of protomotions.agents.amp package" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api_reference/protomotions.agents.amp.agent.html">protomotions.agents.amp.agent module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api_reference/protomotions.agents.amp.config.html">protomotions.agents.amp.config module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api_reference/protomotions.agents.amp.model.html">protomotions.agents.amp.model module</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../../api_reference/protomotions.agents.ase.html">protomotions.agents.ase package</a><input aria-label="Toggle navigation of protomotions.agents.ase package" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api_reference/protomotions.agents.ase.agent.html">protomotions.agents.ase.agent module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api_reference/protomotions.agents.ase.config.html">protomotions.agents.ase.config module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api_reference/protomotions.agents.ase.model.html">protomotions.agents.ase.model module</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../../api_reference/protomotions.agents.base_agent.html">protomotions.agents.base_agent package</a><input aria-label="Toggle navigation of protomotions.agents.base_agent package" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api_reference/protomotions.agents.base_agent.agent.html">protomotions.agents.base_agent.agent module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api_reference/protomotions.agents.base_agent.config.html">protomotions.agents.base_agent.config module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api_reference/protomotions.agents.base_agent.model.html">protomotions.agents.base_agent.model module</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../../api_reference/protomotions.agents.callbacks.html">protomotions.agents.callbacks package</a><input aria-label="Toggle navigation of protomotions.agents.callbacks package" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api_reference/protomotions.agents.callbacks.one_logger.html">protomotions.agents.callbacks.one_logger module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api_reference/protomotions.agents.callbacks.slurm_autoresume_adlr.html">protomotions.agents.callbacks.slurm_autoresume_adlr module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api_reference/protomotions.agents.callbacks.slurm_autoresume_srun.html">protomotions.agents.callbacks.slurm_autoresume_srun module</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../../api_reference/protomotions.agents.common.html">protomotions.agents.common package</a><input aria-label="Toggle navigation of protomotions.agents.common package" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" role="switch" type="checkbox"/><label for="toctree-checkbox-6"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api_reference/protomotions.agents.common.common.html">protomotions.agents.common.common module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api_reference/protomotions.agents.common.config.html">protomotions.agents.common.config module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api_reference/protomotions.agents.common.mlp.html">protomotions.agents.common.mlp module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api_reference/protomotions.agents.common.transformer.html">protomotions.agents.common.transformer module</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../../api_reference/protomotions.agents.evaluators.html">protomotions.agents.evaluators package</a><input aria-label="Toggle navigation of protomotions.agents.evaluators package" class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" role="switch" type="checkbox"/><label for="toctree-checkbox-7"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api_reference/protomotions.agents.evaluators.base_evaluator.html">protomotions.agents.evaluators.base_evaluator module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api_reference/protomotions.agents.evaluators.config.html">protomotions.agents.evaluators.config module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api_reference/protomotions.agents.evaluators.metrics.html">protomotions.agents.evaluators.metrics module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api_reference/protomotions.agents.evaluators.mimic_evaluator.html">protomotions.agents.evaluators.mimic_evaluator module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api_reference/protomotions.agents.evaluators.smoothness_evaluator.html">protomotions.agents.evaluators.smoothness_evaluator module</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../../api_reference/protomotions.agents.masked_mimic.html">protomotions.agents.masked_mimic package</a><input aria-label="Toggle navigation of protomotions.agents.masked_mimic package" class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" role="switch" type="checkbox"/><label for="toctree-checkbox-8"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api_reference/protomotions.agents.masked_mimic.agent.html">protomotions.agents.masked_mimic.agent module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api_reference/protomotions.agents.masked_mimic.config.html">protomotions.agents.masked_mimic.config module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api_reference/protomotions.agents.masked_mimic.model.html">protomotions.agents.masked_mimic.model module</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../api_reference/protomotions.agents.mimic.html">protomotions.agents.mimic package</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../../api_reference/protomotions.agents.ppo.html">protomotions.agents.ppo package</a><input aria-label="Toggle navigation of protomotions.agents.ppo package" class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" role="switch" type="checkbox"/><label for="toctree-checkbox-9"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api_reference/protomotions.agents.ppo.agent.html">protomotions.agents.ppo.agent module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api_reference/protomotions.agents.ppo.config.html">protomotions.agents.ppo.config module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api_reference/protomotions.agents.ppo.model.html">protomotions.agents.ppo.model module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api_reference/protomotions.agents.ppo.utils.html">protomotions.agents.ppo.utils module</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../../api_reference/protomotions.agents.utils.html">protomotions.agents.utils package</a><input aria-label="Toggle navigation of protomotions.agents.utils package" class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" role="switch" type="checkbox"/><label for="toctree-checkbox-10"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api_reference/protomotions.agents.utils.data.html">protomotions.agents.utils.data module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api_reference/protomotions.agents.utils.metering.html">protomotions.agents.utils.metering module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api_reference/protomotions.agents.utils.normalization.html">protomotions.agents.utils.normalization module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api_reference/protomotions.agents.utils.replay_buffer.html">protomotions.agents.utils.replay_buffer module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api_reference/protomotions.agents.utils.step_tracker.html">protomotions.agents.utils.step_tracker module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api_reference/protomotions.agents.utils.training.html">protomotions.agents.utils.training module</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api_reference/protomotions.envs.html">protomotions.envs package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api_reference/protomotions.simulator.html">protomotions.simulator package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api_reference/protomotions.robot_configs.html">protomotions.robot_configs module</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../../api_reference/protomotions.utils.html">protomotions.utils package</a><input aria-label="Toggle navigation of protomotions.utils package" class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" role="switch" type="checkbox"/><label for="toctree-checkbox-11"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../api_reference/protomotions.utils.component_builder.html">protomotions.utils.component_builder module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../api_reference/protomotions.utils.config_builder.html">protomotions.utils.config_builder module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../api_reference/protomotions.utils.config_utils.html">protomotions.utils.config_utils module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../api_reference/protomotions.utils.export_utils.html">protomotions.utils.export_utils module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../api_reference/protomotions.utils.fabric_config.html">protomotions.utils.fabric_config module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../api_reference/protomotions.utils.hydra_replacement.html">protomotions.utils.hydra_replacement module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../api_reference/protomotions.utils.inference_utils.html">protomotions.utils.inference_utils module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../api_reference/protomotions.utils.mesh_utils.html">protomotions.utils.mesh_utils module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../api_reference/protomotions.utils.motion_interpolation_utils.html">protomotions.utils.motion_interpolation_utils module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../api_reference/protomotions.utils.rotations.html">protomotions.utils.rotations module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../api_reference/protomotions.utils.simulator_imports.html">protomotions.utils.simulator_imports module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../api_reference/protomotions.utils.torch_utils.html">protomotions.utils.torch_utils module</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api_reference/scripts.html">Training and Evaluation Scripts</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Community</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../contributing.html">Contributing</a></li>
+</ul>
+
+</div></div>
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+            <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <h1>Source code for protomotions.agents.evaluators.mimic_evaluator</h1><div class="highlight"><pre>
+<span></span><span class="c1"># SPDX-FileCopyrightText: Copyright (c) 2025 The ProtoMotions Developers</span>
+<span class="c1"># SPDX-License-Identifier: Apache-2.0</span>
+<span class="c1">#</span>
+<span class="c1"># Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span>
+<span class="c1"># you may not use this file except in compliance with the License.</span>
+<span class="c1"># You may obtain a copy of the License at</span>
+<span class="c1">#</span>
+<span class="c1"># http://www.apache.org/licenses/LICENSE-2.0</span>
+<span class="c1">#</span>
+<span class="c1"># Unless required by applicable law or agreed to in writing, software</span>
+<span class="c1"># distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span>
+<span class="c1"># WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span>
+<span class="c1"># See the License for the specific language governing permissions and</span>
+<span class="c1"># limitations under the License.</span>
+<span class="c1">#</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">Any</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">torch</span><span class="w"> </span><span class="kn">import</span> <span class="n">Tensor</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">protomotions.agents.evaluators.base_evaluator</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseEvaluator</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">protomotions.agents.evaluators.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">MotionMetrics</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">protomotions.components.motion_lib</span><span class="w"> </span><span class="kn">import</span> <span class="n">MotionLib</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">protomotions.agents.evaluators.config</span><span class="w"> </span><span class="kn">import</span> <span class="n">MimicEvaluatorConfig</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">protomotions.envs.motion_manager.mimic_motion_manager</span><span class="w"> </span><span class="kn">import</span> <span class="n">MimicMotionManager</span>
+
+
+<div class="viewcode-block" id="MimicEvaluator">
+<a class="viewcode-back" href="../../../../api_reference/protomotions.agents.evaluators.mimic_evaluator.html#protomotions.agents.evaluators.MimicEvaluator">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">MimicEvaluator</span><span class="p">(</span><span class="n">BaseEvaluator</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Evaluator for Mimic agent&#39;s motion tracking performance.&quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="MimicEvaluator.__init__">
+<a class="viewcode-back" href="../../../../api_reference/protomotions.agents.evaluators.mimic_evaluator.html#protomotions.agents.evaluators.MimicEvaluator.__init__">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">agent</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span> <span class="n">fabric</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span> <span class="n">config</span><span class="p">:</span> <span class="n">MimicEvaluatorConfig</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Initialize the Mimic evaluator.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            agent: The Mimic agent to evaluate</span>
+<span class="sd">            fabric: Lightning Fabric instance for distributed training</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">agent</span><span class="p">,</span> <span class="n">fabric</span><span class="p">,</span> <span class="n">config</span><span class="p">)</span>
+
+        <span class="c1"># Base metric keys from config; do not mutate across evaluations</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">base_eval_keys</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">eval_metric_keys</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span></div>
+
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">motion_lib</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">MotionLib</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Motion library (from agent).&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">agent</span><span class="o">.</span><span class="n">motion_lib</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">num_envs</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Number of environments (from agent).&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">agent</span><span class="o">.</span><span class="n">num_envs</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">motion_manager</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">MimicMotionManager</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Motion manager (from env).&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">motion_manager</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_register_plugins</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Register metric computation plugins.&quot;&quot;&quot;</span>
+        <span class="c1"># Register smoothness evaluator as a plugin (now in base class)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_register_smoothness_plugin</span><span class="p">(</span><span class="n">window_sec</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span> <span class="n">high_jerk_threshold</span><span class="o">=</span><span class="mf">6500.0</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_create_metrics_dict</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">num_motions</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+        <span class="n">motion_num_frames</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span>
+        <span class="n">max_eval_steps</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+        <span class="n">include_raw_robot_state</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">MotionMetrics</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Initialize the metrics dictionary for tracking evaluation progress.</span>
+
+<span class="sd">        Creates MotionMetrics objects for base evaluation keys and optionally</span>
+<span class="sd">        for raw robot state (for detailed analysis or saving).</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            num_motions: Total number of unique motions being evaluated.</span>
+<span class="sd">            motion_num_frames: Tensor containing the frame count for each motion.</span>
+<span class="sd">            max_eval_steps: Maximum number of steps to record per motion.</span>
+<span class="sd">            include_raw_robot_state: If True, includes metrics for full robot</span>
+<span class="sd">                state (positions, rotations, velocities).</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            A dictionary mapping metric names to MotionMetrics objects.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Use base class helper to create metrics from config keys</span>
+        <span class="n">metrics</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_create_base_metrics</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">base_eval_keys</span><span class="p">,</span> <span class="n">num_motions</span><span class="p">,</span> <span class="n">motion_num_frames</span><span class="p">,</span> <span class="n">max_eval_steps</span>
+        <span class="p">)</span>
+
+        <span class="c1"># Add raw robot state metrics if requested</span>
+        <span class="k">if</span> <span class="n">include_raw_robot_state</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_add_robot_state_metrics</span><span class="p">(</span>
+                <span class="n">metrics</span><span class="p">,</span> <span class="n">num_motions</span><span class="p">,</span> <span class="n">motion_num_frames</span><span class="p">,</span> <span class="n">max_eval_steps</span>
+            <span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">metrics</span>
+
+<div class="viewcode-block" id="MimicEvaluator.initialize_eval">
+<a class="viewcode-back" href="../../../../api_reference/protomotions.agents.evaluators.mimic_evaluator.html#protomotions.agents.evaluators.MimicEvaluator.initialize_eval">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">initialize_eval</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Initialize metrics dictionary with required keys.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            Dictionary of initialized MotionMetrics</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">num_motions</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">motion_lib</span><span class="o">.</span><span class="n">num_motions</span><span class="p">()</span>
+        <span class="n">motion_num_frames</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">motion_lib</span><span class="o">.</span><span class="n">get_motion_num_frames</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+        <span class="n">motion_num_frames</span> <span class="o">=</span> <span class="n">motion_num_frames</span><span class="o">.</span><span class="n">clamp</span><span class="p">(</span><span class="nb">max</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">max_eval_steps</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_create_metrics_dict</span><span class="p">(</span>
+            <span class="n">num_motions</span><span class="p">,</span>
+            <span class="n">motion_num_frames</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">max_eval_steps</span><span class="p">,</span>
+            <span class="n">include_raw_robot_state</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="p">)</span></div>
+
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_save_failed_motions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">failed_motions</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">epoch</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Save list of failed motions to a text file.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            failed_motions: List of motion IDs that failed tracking</span>
+<span class="sd">            epoch: Current epoch number</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">filename</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;failed_motions_epoch_</span><span class="si">{</span><span class="n">epoch</span><span class="si">}</span><span class="s2">_rank_</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">fabric</span><span class="o">.</span><span class="n">global_rank</span><span class="si">}</span><span class="s2">.txt&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_save_list_to_file</span><span class="p">(</span><span class="n">failed_motions</span><span class="p">,</span> <span class="n">filename</span><span class="p">,</span> <span class="n">subdirectory</span><span class="o">=</span><span class="s2">&quot;failed_motions&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_update_motion_sampling_weights</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">metrics</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">MotionMetrics</span><span class="p">],</span>
+        <span class="n">success_metric_key</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;gt_err&quot;</span><span class="p">,</span>
+        <span class="n">failure_threshold</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">float</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Update motion sampling weights based on success/failure rates.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            metrics: Dictionary of evaluation metrics</span>
+<span class="sd">            success_metric_key: Key to use for determining success/failure</span>
+<span class="sd">            failure_threshold: Threshold above which motion is considered failed</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            Dictionary with tracking_success_rate metric</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">assert</span> <span class="n">success_metric_key</span> <span class="ow">in</span> <span class="n">metrics</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;Metric &#39;</span><span class="si">{</span><span class="n">success_metric_key</span><span class="si">}</span><span class="s2">&#39; not found&quot;</span>
+
+        <span class="c1"># Determine success/failure</span>
+        <span class="n">gt_err_max</span> <span class="o">=</span> <span class="n">metrics</span><span class="p">[</span><span class="n">success_metric_key</span><span class="p">]</span><span class="o">.</span><span class="n">max_reduce_each_motion</span><span class="p">()</span>
+        <span class="n">tracking_failures</span> <span class="o">=</span> <span class="n">gt_err_max</span> <span class="o">&gt;</span> <span class="n">failure_threshold</span>
+        <span class="n">tracking_success_rate</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">-</span> <span class="n">tracking_failures</span><span class="o">.</span><span class="n">float</span><span class="p">()</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
+
+        <span class="n">failed_motions</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nonzero</span><span class="p">(</span><span class="n">tracking_failures</span><span class="p">)</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+        <span class="n">success_motions</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nonzero</span><span class="p">(</span><span class="o">~</span><span class="n">tracking_failures</span><span class="p">)</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+
+        <span class="c1"># Save failed motions to disk</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_save_failed_motions</span><span class="p">(</span><span class="n">failed_motions</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">agent</span><span class="o">.</span><span class="n">current_epoch</span><span class="p">)</span>
+
+        <span class="c1"># Update sampling weights</span>
+        <span class="n">success_discount</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">pow</span><span class="p">(</span><span class="mf">0.999</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">eval_metrics_every</span><span class="p">)</span>
+        <span class="n">new_weights</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">motion_manager</span><span class="o">.</span><span class="n">motion_weights</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span>
+        <span class="n">new_weights</span><span class="p">[</span><span class="n">success_motions</span><span class="p">]</span> <span class="o">*=</span> <span class="n">success_discount</span>
+        <span class="n">new_weights</span><span class="p">[</span><span class="n">failed_motions</span><span class="p">]</span> <span class="o">/=</span> <span class="n">success_discount</span>
+        <span class="n">new_weights</span><span class="o">.</span><span class="n">clamp_</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mf">0.03</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">motion_manager</span><span class="o">.</span><span class="n">update_sampling_weights</span><span class="p">(</span><span class="n">new_weights</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;eval/tracking_success_rate&quot;</span><span class="p">:</span> <span class="n">tracking_success_rate</span><span class="p">}</span>
+
+<div class="viewcode-block" id="MimicEvaluator.run_evaluation">
+<a class="viewcode-back" href="../../../../api_reference/protomotions.agents.evaluators.mimic_evaluator.html#protomotions.agents.evaluators.MimicEvaluator.run_evaluation">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">run_evaluation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">metrics</span><span class="p">:</span> <span class="n">Dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Run evaluation across multiple motions.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            metrics: Dictionary to collect evaluation metrics</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_cached_robot_state</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">simulator</span><span class="o">.</span><span class="n">get_robot_state</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_cached_markers_state</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">get_markers_state</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_cached_env_actions</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">simulator</span><span class="o">.</span><span class="n">get_current_actions</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_cached_progress_buf</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">progress_buf</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_cached_motion_ids</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">motion_manager</span><span class="o">.</span><span class="n">motion_ids</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_cached_motion_times</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">motion_manager</span><span class="o">.</span><span class="n">motion_times</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_cached_respawn_offset</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">respawn_root_offset</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span>
+
+        <span class="c1"># cache history buffers (cache all enabled observation history buffers)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">self_obs_cb</span><span class="o">.</span><span class="n">humanoid_max_coords_obs_hist_buf</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_cached_humanoid_max_coords_obs_hist</span> <span class="o">=</span> <span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">self_obs_cb</span><span class="o">.</span><span class="n">humanoid_max_coords_obs_hist_buf</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span>
+            <span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_cached_humanoid_max_coords_obs_hist</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">self_obs_cb</span><span class="o">.</span><span class="n">humanoid_reduced_coords_obs_hist_buf</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_cached_humanoid_reduced_coords_obs_hist</span> <span class="o">=</span> <span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">self_obs_cb</span><span class="o">.</span><span class="n">humanoid_reduced_coords_obs_hist_buf</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span>
+            <span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_cached_humanoid_reduced_coords_obs_hist</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">self_obs_cb</span><span class="o">.</span><span class="n">previous_actions_hist_buf</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_cached_previous_actions_hist</span> <span class="o">=</span> <span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">self_obs_cb</span><span class="o">.</span><span class="n">previous_actions_hist_buf</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span>
+            <span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_cached_previous_actions_hist</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="n">fixed_motion_ids</span><span class="p">,</span> <span class="n">first_env_indices</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">motion_manager</span><span class="o">.</span><span class="n">get_unique_fixed_motions</span><span class="p">()</span>
+        <span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">fixed_motion_ids</span><span class="o">.</span><span class="n">numel</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="c1"># only evaluate fixed motions</span>
+            <span class="c1"># NOTE: we do not support some envs having no fixed motions (no scene)</span>
+            <span class="c1"># no such cases in current datasets, and also it</span>
+            <span class="c1"># would be awkward to define what evaluator should do in that case</span>
+            <span class="nb">print</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;Only evaluating fixed motions: </span><span class="si">{</span><span class="n">fixed_motion_ids</span><span class="si">}</span><span class="s2">, First environment indices: </span><span class="si">{</span><span class="n">first_env_indices</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">evaluate_episode</span><span class="p">(</span><span class="n">metrics</span><span class="p">,</span> <span class="n">first_env_indices</span><span class="p">,</span> <span class="n">fixed_motion_ids</span><span class="p">)</span>
+            <span class="k">return</span>
+
+        <span class="n">num_motions</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">motion_lib</span><span class="o">.</span><span class="n">num_motions</span><span class="p">()</span>
+
+        <span class="k">for</span> <span class="n">motion_id_start</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">num_motions</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_envs</span><span class="p">):</span>
+            <span class="n">motion_id_end</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">motion_id_start</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_envs</span><span class="p">,</span> <span class="n">num_motions</span><span class="p">)</span>
+            <span class="n">motion_ids</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span>
+                <span class="n">motion_id_start</span><span class="p">,</span> <span class="n">motion_id_end</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">device</span>
+            <span class="p">)</span>
+            <span class="n">env_ids</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">motion_ids</span><span class="o">.</span><span class="n">numel</span><span class="p">(),</span> <span class="n">device</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">device</span><span class="p">)</span>
+
+            <span class="nb">print</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;Evaluating motions </span><span class="si">{</span><span class="n">motion_id_start</span><span class="si">}</span><span class="s2"> to </span><span class="si">{</span><span class="n">motion_id_end</span><span class="si">}</span><span class="s2">, out of total </span><span class="si">{</span><span class="n">num_motions</span><span class="si">}</span><span class="s2"> motions&quot;</span>
+            <span class="p">)</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">evaluate_episode</span><span class="p">(</span><span class="n">metrics</span><span class="p">,</span> <span class="n">env_ids</span><span class="p">,</span> <span class="n">motion_ids</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="MimicEvaluator.evaluate_episode">
+<a class="viewcode-back" href="../../../../api_reference/protomotions.agents.evaluators.mimic_evaluator.html#protomotions.agents.evaluators.MimicEvaluator.evaluate_episode">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">evaluate_episode</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">metrics</span><span class="p">:</span> <span class="n">Dict</span><span class="p">,</span>
+        <span class="n">active_env_ids</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span>
+        <span class="n">active_motion_ids</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Evaluate a single episode for a batch of motions.</span>
+
+<span class="sd">        Resets the environment with the specified motions and steps through</span>
+<span class="sd">        the episode until completion or max steps, accumulating metrics.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            metrics: Dictionary to collect evaluation metrics.</span>
+<span class="sd">            active_env_ids: Tensor of environment IDs to use for this batch.</span>
+<span class="sd">            active_motion_ids: Tensor of motion IDs to evaluate in these environments.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">active_env_ids</span><span class="p">)</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">active_motion_ids</span><span class="p">)</span>
+
+        <span class="c1"># Initialize environment for this episode</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">motion_manager</span><span class="o">.</span><span class="n">motion_ids</span><span class="p">[</span><span class="n">active_env_ids</span><span class="p">]</span> <span class="o">=</span> <span class="n">active_motion_ids</span>
+        <span class="n">max_len</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">motion_lib</span><span class="o">.</span><span class="n">get_motion_num_frames</span><span class="p">(</span><span class="n">active_motion_ids</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
+        <span class="n">max_len</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">max_len</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">max_eval_steps</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">motion_manager</span><span class="o">.</span><span class="n">motion_times</span><span class="p">[</span><span class="n">active_env_ids</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.0</span>
+
+        <span class="c1"># Reset the environment once at the beginning on flat terrain</span>
+        <span class="c1"># disable_motion_resample=True to use the motion_ids we just set above</span>
+        <span class="n">obs</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">reset</span><span class="p">(</span>
+            <span class="n">active_env_ids</span><span class="p">,</span> <span class="n">sample_flat</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">disable_motion_resample</span><span class="o">=</span><span class="kc">True</span>
+        <span class="p">)</span>
+        <span class="n">obs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">agent</span><span class="o">.</span><span class="n">add_agent_info_to_obs</span><span class="p">(</span><span class="n">obs</span><span class="p">)</span>
+        <span class="n">obs_td</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">agent</span><span class="o">.</span><span class="n">obs_dict_to_tensordict</span><span class="p">(</span><span class="n">obs</span><span class="p">)</span>
+
+        <span class="c1"># Run the episode and collect metrics (no resets during episode)</span>
+        <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">max_len</span><span class="p">):</span>
+            <span class="c1"># Obtain actor predictions</span>
+            <span class="n">model_outs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">agent</span><span class="o">.</span><span class="n">model</span><span class="p">(</span><span class="n">obs_td</span><span class="p">)</span>
+            <span class="k">if</span> <span class="s2">&quot;mean_action&quot;</span> <span class="ow">in</span> <span class="n">model_outs</span><span class="p">:</span>
+                <span class="n">actions</span> <span class="o">=</span> <span class="n">model_outs</span><span class="p">[</span><span class="s2">&quot;mean_action&quot;</span><span class="p">]</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">actions</span> <span class="o">=</span> <span class="n">model_outs</span><span class="p">[</span><span class="s2">&quot;action&quot;</span><span class="p">]</span>
+            <span class="c1"># Step the environment</span>
+            <span class="n">obs</span><span class="p">,</span> <span class="n">rewards</span><span class="p">,</span> <span class="n">dones</span><span class="p">,</span> <span class="n">terminated</span><span class="p">,</span> <span class="n">extras</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">actions</span><span class="p">)</span>
+            <span class="n">obs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">agent</span><span class="o">.</span><span class="n">add_agent_info_to_obs</span><span class="p">(</span><span class="n">obs</span><span class="p">)</span>
+
+            <span class="n">obs_td</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">agent</span><span class="o">.</span><span class="n">obs_dict_to_tensordict</span><span class="p">(</span><span class="n">obs</span><span class="p">)</span>
+            <span class="c1"># Update metrics</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">update_metrics_from_env_extras</span><span class="p">(</span>
+                <span class="n">metrics</span><span class="p">,</span> <span class="n">extras</span><span class="p">,</span> <span class="n">active_env_ids</span><span class="p">,</span> <span class="n">active_motion_ids</span>
+            <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="MimicEvaluator.add_extra_obs_to_agent">
+<a class="viewcode-back" href="../../../../api_reference/protomotions.agents.evaluators.mimic_evaluator.html#protomotions.agents.evaluators.MimicEvaluator.add_extra_obs_to_agent">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">add_extra_obs_to_agent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obs</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">obs</span></div>
+
+
+<div class="viewcode-block" id="MimicEvaluator.update_metrics_from_env_extras">
+<a class="viewcode-back" href="../../../../api_reference/protomotions.agents.evaluators.mimic_evaluator.html#protomotions.agents.evaluators.MimicEvaluator.update_metrics_from_env_extras">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">update_metrics_from_env_extras</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">metrics</span><span class="p">:</span> <span class="n">Dict</span><span class="p">,</span>
+        <span class="n">extras</span><span class="p">:</span> <span class="n">Dict</span><span class="p">,</span>
+        <span class="n">active_env_ids</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span>
+        <span class="n">active_motion_ids</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Update metrics from env.extras.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            metrics: Dictionary to update with metrics</span>
+<span class="sd">            extras: Dictionary of extra information from environment step</span>
+<span class="sd">            motion_ids: Tensor of motion IDs being evaluated</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">active_env_ids</span><span class="p">)</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">active_motion_ids</span><span class="p">)</span>
+
+        <span class="c1"># Use metrics dict as source of truth for which keys to update</span>
+        <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">metrics</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+            <span class="k">if</span> <span class="sa">f</span><span class="s2">&quot;mimic_other/</span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s2">&quot;</span> <span class="ow">in</span> <span class="n">extras</span><span class="p">:</span>
+                <span class="n">value</span> <span class="o">=</span> <span class="n">extras</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;mimic_other/</span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">detach</span><span class="p">()</span>
+            <span class="k">elif</span> <span class="sa">f</span><span class="s2">&quot;raw_r/</span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s2">&quot;</span> <span class="ow">in</span> <span class="n">extras</span><span class="p">:</span>
+                <span class="n">value</span> <span class="o">=</span> <span class="n">extras</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;raw_r/</span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">detach</span><span class="p">()</span>
+            <span class="c1"># getting raw robot states in metrics for computation e.g. smoothness, etc.</span>
+            <span class="k">elif</span> <span class="sa">f</span><span class="s2">&quot;raw/</span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s2">&quot;</span> <span class="ow">in</span> <span class="n">extras</span><span class="p">:</span>
+                <span class="n">value</span> <span class="o">=</span> <span class="n">extras</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;raw/</span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">detach</span><span class="p">()</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Key </span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s2"> not found in env.extras&quot;</span><span class="p">)</span>
+
+            <span class="n">metric</span> <span class="o">=</span> <span class="n">value</span><span class="p">[</span><span class="n">active_env_ids</span><span class="p">]</span>  <span class="c1"># in case there are more envs than motions</span>
+
+            <span class="n">metrics</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">active_motion_ids</span><span class="p">,</span> <span class="n">metric</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="MimicEvaluator.process_eval_results">
+<a class="viewcode-back" href="../../../../api_reference/protomotions.agents.evaluators.mimic_evaluator.html#protomotions.agents.evaluators.MimicEvaluator.process_eval_results">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">process_eval_results</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">metrics</span><span class="p">:</span> <span class="n">Dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Dict</span><span class="p">,</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Process results and check for early termination.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            metrics: Dictionary of collected metrics</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            Tuple containing:</span>
+<span class="sd">                - Dict of processed metrics for logging</span>
+<span class="sd">                - Optional score value for determining best model</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">to_log</span> <span class="o">=</span> <span class="p">{}</span>
+
+        <span class="c1"># Each rank uses its own tracking success rate to update the weights</span>
+        <span class="n">tracking_metrics</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_update_motion_sampling_weights</span><span class="p">(</span><span class="n">metrics</span><span class="p">)</span>
+        <span class="n">to_log</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">tracking_metrics</span><span class="p">)</span>
+
+        <span class="c1"># Each rank computes its own scalar metrics from its local MotionMetrics</span>
+        <span class="c1"># These scalars will be averaged across ranks by aggregate_scalar_metrics in post_epoch_logging</span>
+        <span class="c1"># This avoids the memory overhead of merging full MotionMetrics objects across ranks</span>
+
+        <span class="c1"># Log base metrics with mean/max/min aggregations</span>
+        <span class="n">base_metrics_log</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_gen_metrics</span><span class="p">(</span><span class="n">metrics</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">eval_metric_keys</span><span class="p">)</span>
+        <span class="n">to_log</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">base_metrics_log</span><span class="p">)</span>
+
+        <span class="c1"># Compute additional metrics from plugins (e.g., smoothness)</span>
+        <span class="n">additional_metrics</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_compute_additional_metrics</span><span class="p">(</span><span class="n">metrics</span><span class="p">)</span>
+        <span class="n">to_log</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">additional_metrics</span><span class="p">)</span>
+
+        <span class="c1"># Save the raw body pos and rot etc. at specified intervals</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">fabric</span><span class="o">.</span><span class="n">global_rank</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">if</span> <span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">save_predicted_motion_lib_every</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+                <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">eval_count</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">save_predicted_motion_lib_every</span> <span class="o">==</span> <span class="mi">0</span>
+            <span class="p">):</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_save_predicted_motion_lib</span><span class="p">(</span>
+                        <span class="n">metrics</span><span class="p">,</span> <span class="n">epoch</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">agent</span><span class="o">.</span><span class="n">current_epoch</span>
+                    <span class="p">)</span>
+                <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+                    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Warning: failed to save predicted MotionLib file: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="c1"># these return can optionally be used to save the &quot;best metric&quot; model</span>
+        <span class="k">return</span> <span class="n">to_log</span><span class="p">,</span> <span class="n">to_log</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+            <span class="s2">&quot;eval/tracking_success_rate&quot;</span><span class="p">,</span> <span class="n">to_log</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;eval/gt_err&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="MimicEvaluator.cleanup_after_evaluation">
+<a class="viewcode-back" href="../../../../api_reference/protomotions.agents.evaluators.mimic_evaluator.html#protomotions.agents.evaluators.MimicEvaluator.cleanup_after_evaluation">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">cleanup_after_evaluation</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">motion_manager</span><span class="o">.</span><span class="n">motion_ids</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cached_motion_ids</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">motion_manager</span><span class="o">.</span><span class="n">motion_times</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cached_motion_times</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span>
+
+        <span class="n">env_ids</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_envs</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">device</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">simulator</span><span class="o">.</span><span class="n">reset_envs</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_cached_robot_state</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">env_ids</span><span class="p">)</span>
+
+        <span class="c1"># Restore history buffers (all enabled observation history buffers)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">self_obs_cb</span><span class="o">.</span><span class="n">humanoid_max_coords_obs_hist_buf</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">self_obs_cb</span><span class="o">.</span><span class="n">humanoid_max_coords_obs_hist_buf</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">copy_</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_cached_humanoid_max_coords_obs_hist</span>
+            <span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">self_obs_cb</span><span class="o">.</span><span class="n">humanoid_reduced_coords_obs_hist_buf</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">self_obs_cb</span><span class="o">.</span><span class="n">humanoid_reduced_coords_obs_hist_buf</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">copy_</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_cached_humanoid_reduced_coords_obs_hist</span>
+            <span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">self_obs_cb</span><span class="o">.</span><span class="n">previous_actions_hist_buf</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">self_obs_cb</span><span class="o">.</span><span class="n">previous_actions_hist_buf</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">copy_</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_cached_previous_actions_hist</span>
+            <span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">progress_buf</span><span class="p">[</span><span class="n">env_ids</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cached_progress_buf</span><span class="p">[</span><span class="n">env_ids</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">reset_buf</span><span class="p">[</span><span class="n">env_ids</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">terminate_buf</span><span class="p">[</span><span class="n">env_ids</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">respawn_root_offset</span><span class="o">.</span><span class="n">copy_</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_cached_respawn_offset</span><span class="p">)</span>
+
+        <span class="c1"># hack: if isaacgym</span>
+        <span class="k">if</span> <span class="s2">&quot;isaacgym&quot;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">simulator</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">_target_</span><span class="o">.</span><span class="n">lower</span><span class="p">():</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">simulator</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_cached_env_actions</span><span class="p">,</span> <span class="n">markers_callback</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+
+        <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cached_robot_state</span>
+        <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cached_markers_state</span>
+        <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cached_env_actions</span>
+        <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cached_progress_buf</span>
+        <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cached_motion_ids</span>
+        <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cached_motion_times</span>
+        <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cached_humanoid_max_coords_obs_hist</span>
+        <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cached_humanoid_reduced_coords_obs_hist</span>
+        <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cached_previous_actions_hist</span></div>
+
+
+<div class="viewcode-block" id="MimicEvaluator.simple_test_policy">
+<a class="viewcode-back" href="../../../../api_reference/protomotions.agents.evaluators.mimic_evaluator.html#protomotions.agents.evaluators.MimicEvaluator.simple_test_policy">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">simple_test_policy</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">collect_metrics</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Evaluates the policy in evaluation mode.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            collect_metrics: whether to collect metrics from the evaluation</span>
+<span class="sd">            Will print the metrics to the console if collect_metrics is True</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">assert</span> <span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">fabric</span><span class="o">.</span><span class="n">world_size</span> <span class="o">==</span> <span class="mi">1</span>
+        <span class="p">),</span> <span class="s2">&quot;Simple test policy only supported for single process&quot;</span>
+
+        <span class="n">num_motions</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">motion_lib</span><span class="o">.</span><span class="n">num_motions</span><span class="p">()</span>
+        <span class="n">motion_lengths</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">motion_lib</span><span class="o">.</span><span class="n">get_motion_length</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+        <span class="n">motion_num_frames</span> <span class="o">=</span> <span class="p">(</span><span class="n">motion_lengths</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">dt</span><span class="p">)</span><span class="o">.</span><span class="n">floor</span><span class="p">()</span><span class="o">.</span><span class="n">long</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="n">collect_metrics</span><span class="p">:</span>
+            <span class="n">metrics</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_create_metrics_dict</span><span class="p">(</span>
+                <span class="n">num_motions</span><span class="p">,</span>
+                <span class="n">motion_num_frames</span><span class="p">,</span>
+                <span class="n">motion_num_frames</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">.</span><span class="n">item</span><span class="p">(),</span>
+                <span class="n">include_raw_robot_state</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>  <span class="c1"># Simple test doesn&#39;t need robot state</span>
+            <span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">metrics</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">agent</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
+        <span class="n">done_indices</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1"># Force reset on first entry</span>
+        <span class="n">step</span> <span class="o">=</span> <span class="mi">0</span>
+
+        <span class="c1"># Store actions for plotting (only for single motion evaluation)</span>
+        <span class="n">actions_storage</span> <span class="o">=</span> <span class="p">[]</span> <span class="k">if</span> <span class="n">collect_metrics</span> <span class="ow">and</span> <span class="n">num_motions</span> <span class="o">==</span> <span class="mi">1</span> <span class="k">else</span> <span class="kc">None</span>
+
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Evaluating policy...&quot;</span><span class="p">)</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+                <span class="n">obs</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">reset</span><span class="p">(</span><span class="n">done_indices</span><span class="p">)</span>
+                <span class="n">obs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">agent</span><span class="o">.</span><span class="n">add_agent_info_to_obs</span><span class="p">(</span><span class="n">obs</span><span class="p">)</span>
+                <span class="n">obs_td</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">agent</span><span class="o">.</span><span class="n">obs_dict_to_tensordict</span><span class="p">(</span><span class="n">obs</span><span class="p">)</span>
+
+                <span class="n">cur_motion_ids</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">motion_manager</span><span class="o">.</span><span class="n">motion_ids</span>
+                <span class="n">cur_env_ids</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span>
+                    <span class="mi">0</span><span class="p">,</span> <span class="n">cur_motion_ids</span><span class="o">.</span><span class="n">numel</span><span class="p">(),</span> <span class="n">device</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">device</span>
+                <span class="p">)</span>
+
+                <span class="c1"># Obtain actor predictions</span>
+                <span class="n">model_outs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">agent</span><span class="o">.</span><span class="n">model</span><span class="p">(</span><span class="n">obs_td</span><span class="p">)</span>
+
+                <span class="k">if</span> <span class="s2">&quot;mean_action&quot;</span> <span class="ow">in</span> <span class="n">model_outs</span><span class="p">:</span>
+                    <span class="n">actions</span> <span class="o">=</span> <span class="n">model_outs</span><span class="p">[</span><span class="s2">&quot;mean_action&quot;</span><span class="p">]</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">actions</span> <span class="o">=</span> <span class="n">model_outs</span><span class="p">[</span><span class="s2">&quot;action&quot;</span><span class="p">]</span>
+
+                <span class="c1"># Store actions for plotting (only for single motion and first environment)</span>
+                <span class="k">if</span> <span class="p">(</span>
+                    <span class="n">actions_storage</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+                    <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">actions_storage</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">motion_num_frames</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
+                <span class="p">):</span>
+                    <span class="n">actions_storage</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                        <span class="n">actions</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">detach</span><span class="p">()</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+                    <span class="p">)</span>  <span class="c1"># Store first env&#39;s actions</span>
+
+                <span class="c1"># Step the environment</span>
+                <span class="n">obs</span><span class="p">,</span> <span class="n">rewards</span><span class="p">,</span> <span class="n">dones</span><span class="p">,</span> <span class="n">terminated</span><span class="p">,</span> <span class="n">extras</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">actions</span><span class="p">)</span>
+                <span class="n">obs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">agent</span><span class="o">.</span><span class="n">add_agent_info_to_obs</span><span class="p">(</span><span class="n">obs</span><span class="p">)</span>
+                <span class="n">obs_td</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">agent</span><span class="o">.</span><span class="n">obs_dict_to_tensordict</span><span class="p">(</span><span class="n">obs</span><span class="p">)</span>
+
+                <span class="k">if</span> <span class="n">collect_metrics</span><span class="p">:</span>
+                    <span class="c1"># remove duplicate motions sampled</span>
+                    <span class="n">unique_motion_ids</span><span class="p">,</span> <span class="n">first_indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span>
+                        <span class="n">cur_motion_ids</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">(),</span> <span class="n">return_index</span><span class="o">=</span><span class="kc">True</span>
+                    <span class="p">)</span>
+                    <span class="n">cur_env_ids</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="n">first_indices</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">device</span><span class="p">)</span>
+                    <span class="n">cur_motion_ids</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="n">unique_motion_ids</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span>
+                        <span class="n">device</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">device</span>
+                    <span class="p">)</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">update_metrics_from_env_extras</span><span class="p">(</span>
+                        <span class="n">metrics</span><span class="p">,</span> <span class="n">extras</span><span class="p">,</span> <span class="n">cur_env_ids</span><span class="p">,</span> <span class="n">cur_motion_ids</span>
+                    <span class="p">)</span>
+
+                <span class="n">done_indices</span> <span class="o">=</span> <span class="n">dones</span><span class="o">.</span><span class="n">nonzero</span><span class="p">(</span><span class="n">as_tuple</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+                <span class="n">step</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">except</span> <span class="ne">KeyboardInterrupt</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Evaluation interrupted by Ctrl+C, exiting...&quot;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">collect_metrics</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Metrics up to now:&quot;</span><span class="p">)</span>
+                <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">eval_metric_keys</span>
+                <span class="p">):</span>  <span class="c1"># do not reduce added eval keys for the raws</span>
+                    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">metrics</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">.</span><span class="n">mean_mean_reduce</span><span class="p">()</span><span class="o">.</span><span class="n">item</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+                <span class="c1"># Plot per-frame metrics if only one motion</span>
+                <span class="k">if</span> <span class="n">num_motions</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_plot_per_frame_metrics</span><span class="p">(</span><span class="n">metrics</span><span class="p">,</span> <span class="n">actions_storage</span><span class="p">)</span>
+            <span class="k">return</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error in simple_test_policy: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="n">e</span></div>
+
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_plot_per_frame_metrics</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">metrics</span><span class="p">:</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">actions_storage</span><span class="p">:</span> <span class="nb">list</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Plot per-frame metrics vs time when evaluating a single motion.</span>
+<span class="sd">        Uses base class plotting with custom colors for contact forces.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            metrics: Dictionary of MotionMetrics objects</span>
+<span class="sd">            actions_storage: List of action arrays for plotting (optional, currently unused)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Define custom colors for specific metrics</span>
+        <span class="n">custom_colors</span> <span class="o">=</span> <span class="p">{}</span>
+
+        <span class="c1"># Use base class generic plotting with custom colors</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">_plot_per_frame_metrics</span><span class="p">(</span>
+            <span class="n">metrics</span><span class="p">,</span>
+            <span class="n">keys_to_plot</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">eval_metric_keys</span>
+            <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">,</span> <span class="s2">&quot;eval_metric_keys&quot;</span><span class="p">)</span>
+            <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+            <span class="n">custom_colors</span><span class="o">=</span><span class="n">custom_colors</span><span class="p">,</span>
+            <span class="n">output_filename</span><span class="o">=</span><span class="s2">&quot;metrics_per_frame_plot.png&quot;</span><span class="p">,</span>
+        <span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_save_predicted_motion_lib</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">metrics</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">MotionMetrics</span><span class="p">],</span> <span class="n">epoch</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Pack collected predicted metrics and save as a MotionLib-compatible .pt file.</span>
+
+<span class="sd">        This creates a &quot;predicted&quot; version of MotionLib where unknown fields are copied</span>
+<span class="sd">        from the ground-truth self.motion_lib.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            metrics: Dictionary of MotionMetrics objects containing predicted data</span>
+<span class="sd">            epoch: Current epoch number for filename</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">required_keys</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="s2">&quot;dof_pos&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;dof_vel&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;rigid_body_pos&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;rigid_body_rot&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;rigid_body_vel&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;rigid_body_ang_vel&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;rigid_body_contacts&quot;</span><span class="p">,</span>
+        <span class="p">]</span>
+
+        <span class="c1"># Ensure required data exists</span>
+        <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">required_keys</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">k</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">metrics</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                    <span class="sa">f</span><span class="s2">&quot;Missing metric &#39;</span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s2">&#39; required to build predicted MotionLib&quot;</span>
+                <span class="p">)</span>
+
+        <span class="n">device</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">device</span>
+        <span class="n">num_motions</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">motion_lib</span><span class="o">.</span><span class="n">num_motions</span><span class="p">()</span>
+
+        <span class="c1"># Use the per-motion valid frame counts from dof_pos (others should match)</span>
+        <span class="n">motion_num_frames</span> <span class="o">=</span> <span class="n">metrics</span><span class="p">[</span><span class="s2">&quot;dof_pos&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">motion_lens</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">)</span><span class="o">.</span><span class="n">long</span><span class="p">()</span>
+        <span class="k">assert</span> <span class="p">(</span>
+            <span class="n">motion_num_frames</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="n">num_motions</span>
+        <span class="p">),</span> <span class="s2">&quot;motion_num_frames size mismatch&quot;</span>
+
+        <span class="c1"># Compute length_starts like MotionLib</span>
+        <span class="n">lengths_shifted</span> <span class="o">=</span> <span class="n">motion_num_frames</span><span class="o">.</span><span class="n">roll</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">lengths_shifted</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">length_starts</span> <span class="o">=</span> <span class="n">lengths_shifted</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+        <span class="n">motion_dt</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">torch</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">num_motions</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">)</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">dt</span>
+        <span class="p">)</span>
+        <span class="n">motion_lengths</span> <span class="o">=</span> <span class="n">motion_num_frames</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">dt</span>
+
+        <span class="c1"># Helper to pack per-motion tensors into a single time-concatenated tensor</span>
+        <span class="k">def</span><span class="w"> </span><span class="nf">pack_metric</span><span class="p">(</span><span class="n">metric_key</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="n">metrics</span><span class="p">[</span><span class="n">metric_key</span><span class="p">]</span><span class="o">.</span><span class="n">data</span>  <span class="c1"># [num_motions, max_frames, ...]</span>
+            <span class="n">per_motion</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_motions</span><span class="p">):</span>
+                <span class="n">f</span> <span class="o">=</span> <span class="n">motion_num_frames</span><span class="p">[</span><span class="n">m</span><span class="p">]</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
+                <span class="c1"># Clamp to available frames</span>
+                <span class="n">f</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+                <span class="n">per_motion</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">m</span><span class="p">,</span> <span class="p">:</span><span class="n">f</span><span class="p">]</span><span class="o">.</span><span class="n">detach</span><span class="p">()</span><span class="o">.</span><span class="n">clone</span><span class="p">())</span>
+            <span class="k">return</span> <span class="n">torch</span><span class="o">.</span><span class="n">cat</span><span class="p">(</span><span class="n">per_motion</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+        <span class="c1"># Build packed tensors matching MotionLib field names</span>
+        <span class="n">dps</span> <span class="o">=</span> <span class="n">pack_metric</span><span class="p">(</span><span class="s2">&quot;dof_pos&quot;</span><span class="p">)</span>  <span class="c1"># [total_frames, num_dofs]</span>
+        <span class="n">dvs</span> <span class="o">=</span> <span class="n">pack_metric</span><span class="p">(</span><span class="s2">&quot;dof_vel&quot;</span><span class="p">)</span>  <span class="c1"># [total_frames, num_dofs]</span>
+
+        <span class="c1"># Rigid body tensors are stored flattened in metrics; reshape to [*, num_bodies, C]</span>
+        <span class="n">num_bodies</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">robot_config</span><span class="o">.</span><span class="n">kinematic_info</span><span class="o">.</span><span class="n">num_bodies</span>
+        <span class="n">gts_flat</span> <span class="o">=</span> <span class="n">pack_metric</span><span class="p">(</span><span class="s2">&quot;rigid_body_pos&quot;</span><span class="p">)</span>  <span class="c1"># [total_frames, num_bodies*3]</span>
+        <span class="n">grs_flat</span> <span class="o">=</span> <span class="n">pack_metric</span><span class="p">(</span><span class="s2">&quot;rigid_body_rot&quot;</span><span class="p">)</span>  <span class="c1"># [total_frames, num_bodies*4]</span>
+        <span class="n">gvs_flat</span> <span class="o">=</span> <span class="n">pack_metric</span><span class="p">(</span><span class="s2">&quot;rigid_body_vel&quot;</span><span class="p">)</span>  <span class="c1"># [total_frames, num_bodies*3]</span>
+        <span class="n">gavs_flat</span> <span class="o">=</span> <span class="n">pack_metric</span><span class="p">(</span><span class="s2">&quot;rigid_body_ang_vel&quot;</span><span class="p">)</span>  <span class="c1"># [total_frames, num_bodies*3]</span>
+
+        <span class="c1"># Validate and reshape</span>
+        <span class="k">assert</span> <span class="p">(</span>
+            <span class="n">gts_flat</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="n">num_bodies</span> <span class="o">*</span> <span class="mi">3</span>
+        <span class="p">),</span> <span class="sa">f</span><span class="s2">&quot;rigid_body_pos dim mismatch: </span><span class="si">{</span><span class="n">gts_flat</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2"> vs </span><span class="si">{</span><span class="n">num_bodies</span><span class="o">*</span><span class="mi">3</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="k">assert</span> <span class="p">(</span>
+            <span class="n">grs_flat</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="n">num_bodies</span> <span class="o">*</span> <span class="mi">4</span>
+        <span class="p">),</span> <span class="sa">f</span><span class="s2">&quot;rigid_body_rot dim mismatch: </span><span class="si">{</span><span class="n">grs_flat</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2"> vs </span><span class="si">{</span><span class="n">num_bodies</span><span class="o">*</span><span class="mi">4</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="k">assert</span> <span class="p">(</span>
+            <span class="n">gvs_flat</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="n">num_bodies</span> <span class="o">*</span> <span class="mi">3</span>
+        <span class="p">),</span> <span class="sa">f</span><span class="s2">&quot;rigid_body_vel dim mismatch: </span><span class="si">{</span><span class="n">gvs_flat</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2"> vs </span><span class="si">{</span><span class="n">num_bodies</span><span class="o">*</span><span class="mi">3</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="k">assert</span> <span class="p">(</span>
+            <span class="n">gavs_flat</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="n">num_bodies</span> <span class="o">*</span> <span class="mi">3</span>
+        <span class="p">),</span> <span class="sa">f</span><span class="s2">&quot;rigid_body_ang_vel dim mismatch: </span><span class="si">{</span><span class="n">gavs_flat</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2"> vs </span><span class="si">{</span><span class="n">num_bodies</span><span class="o">*</span><span class="mi">3</span><span class="si">}</span><span class="s2">&quot;</span>
+
+        <span class="n">gts</span> <span class="o">=</span> <span class="n">gts_flat</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">num_bodies</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+        <span class="n">grs</span> <span class="o">=</span> <span class="n">grs_flat</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">num_bodies</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+        <span class="n">gvs</span> <span class="o">=</span> <span class="n">gvs_flat</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">num_bodies</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+        <span class="n">gavs</span> <span class="o">=</span> <span class="n">gavs_flat</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">num_bodies</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+
+        <span class="c1"># Pack predicted contacts from metrics</span>
+        <span class="n">contacts_data</span> <span class="o">=</span> <span class="n">metrics</span><span class="p">[</span>
+            <span class="s2">&quot;rigid_body_contacts&quot;</span>
+        <span class="p">]</span><span class="o">.</span><span class="n">data</span>  <span class="c1"># [num_motions, max_frames, num_bodies]</span>
+        <span class="n">contacts_list</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_motions</span><span class="p">):</span>
+            <span class="n">f</span> <span class="o">=</span> <span class="n">motion_num_frames</span><span class="p">[</span><span class="n">m</span><span class="p">]</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
+            <span class="c1"># Clamp to available frames</span>
+            <span class="n">f</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">contacts_data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+            <span class="c1"># Convert float contacts to bool for consistency with MotionLib format</span>
+            <span class="n">contacts_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">contacts_data</span><span class="p">[</span><span class="n">m</span><span class="p">,</span> <span class="p">:</span><span class="n">f</span><span class="p">]</span><span class="o">.</span><span class="n">bool</span><span class="p">()</span><span class="o">.</span><span class="n">detach</span><span class="p">()</span><span class="o">.</span><span class="n">clone</span><span class="p">())</span>
+        <span class="n">contacts</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">cat</span><span class="p">(</span><span class="n">contacts_list</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+        <span class="c1"># Copy ground-truth motion weights and files</span>
+        <span class="n">gt_lib</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">motion_lib</span>
+        <span class="n">motion_weights</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span>
+            <span class="n">gt_lib</span><span class="p">,</span>
+            <span class="s2">&quot;motion_weights&quot;</span><span class="p">,</span>
+            <span class="n">torch</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">num_motions</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">),</span>
+        <span class="p">)</span>
+        <span class="n">motion_files</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span>
+            <span class="n">gt_lib</span><span class="p">,</span>
+            <span class="s2">&quot;motion_files&quot;</span><span class="p">,</span>
+            <span class="nb">tuple</span><span class="p">([</span><span class="sa">f</span><span class="s2">&quot;predicted_motion_</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_motions</span><span class="p">)]),</span>
+        <span class="p">)</span>
+
+        <span class="n">save_data</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;gts&quot;</span><span class="p">:</span> <span class="n">gts</span><span class="p">,</span>
+            <span class="s2">&quot;grs&quot;</span><span class="p">:</span> <span class="n">grs</span><span class="p">,</span>
+            <span class="s2">&quot;gvs&quot;</span><span class="p">:</span> <span class="n">gvs</span><span class="p">,</span>
+            <span class="s2">&quot;gavs&quot;</span><span class="p">:</span> <span class="n">gavs</span><span class="p">,</span>
+            <span class="s2">&quot;dvs&quot;</span><span class="p">:</span> <span class="n">dvs</span><span class="p">,</span>
+            <span class="s2">&quot;dps&quot;</span><span class="p">:</span> <span class="n">dps</span><span class="p">,</span>
+            <span class="s2">&quot;length_starts&quot;</span><span class="p">:</span> <span class="n">length_starts</span><span class="p">,</span>
+            <span class="s2">&quot;motion_lengths&quot;</span><span class="p">:</span> <span class="n">motion_lengths</span><span class="p">,</span>
+            <span class="s2">&quot;motion_dt&quot;</span><span class="p">:</span> <span class="n">motion_dt</span><span class="p">,</span>
+            <span class="s2">&quot;motion_num_frames&quot;</span><span class="p">:</span> <span class="n">motion_num_frames</span><span class="p">,</span>
+            <span class="s2">&quot;motion_weights&quot;</span><span class="p">:</span> <span class="n">motion_weights</span><span class="p">,</span>
+            <span class="s2">&quot;motion_files&quot;</span><span class="p">:</span> <span class="n">motion_files</span><span class="p">,</span>
+            <span class="s2">&quot;contacts&quot;</span><span class="p">:</span> <span class="n">contacts</span><span class="p">,</span>  <span class="c1"># Always save predicted contacts</span>
+        <span class="p">}</span>
+
+        <span class="c1"># create dir if not exists</span>
+        <span class="n">output_dir</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span> <span class="o">/</span> <span class="s2">&quot;results&quot;</span>
+        <span class="n">output_dir</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+        <span class="n">output_path</span> <span class="o">=</span> <span class="n">output_dir</span> <span class="o">/</span> <span class="sa">f</span><span class="s2">&quot;predicted_motion_lib_epoch_</span><span class="si">{</span><span class="n">epoch</span><span class="si">}</span><span class="s2">.pt&quot;</span>
+        <span class="n">torch</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">save_data</span><span class="p">,</span> <span class="n">output_path</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Predicted MotionLib saved to </span><span class="si">{</span><span class="n">output_path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span></div>
+
+</pre></div>
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          
+          
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2025, ProtoMotions Developers
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer no-toc">
+      
+      
+      
+    </aside>
+  </div>
+</div><script src="../../../../_static/documentation_options.js?v=8a448e45"></script>
+    <script src="../../../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../_static/scripts/furo.js?v=46bd48cc"></script>
+    <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../../_static/copybutton.js?v=30646c52"></script>
+    </body>
+</html>

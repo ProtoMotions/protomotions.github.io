@@ -1,0 +1,313 @@
+Algorithms
+==========
+
+ProtoMotions implements state-of-the-art algorithms for physics-based character animation.
+
+Overview
+--------
+
+.. list-table::
+   :header-rows: 1
+   :widths: 15 30 25 30
+
+   * - Algorithm
+     - Best For
+     - Dataset
+     - Key Feature
+   * - MaskedMimic
+     - Versatile control
+     - Diverse motions
+     - Partial observations
+   * - Full Body Tracker
+     - Precise imitation
+     - Any motions
+     - Direct tracking
+   * - AMP
+     - Style-aware tasks
+     - Single/few motions
+     - Discriminator rewards
+   * - ASE
+     - Diverse skills
+     - Large dataset
+     - Skill embeddings
+   * - PPO
+     - Task learning
+     - No motion data
+     - Pure RL
+
+MaskedMimic
+-----------
+
+**Two-phase training for versatile motion control**
+
+MaskedMimic learns to control characters with partial observations by training
+on data from an expert full-body tracker.
+
+Phase 1: Expert Tracker
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+Train a motion tracker that sees future reference poses:
+
+.. code-block:: bash
+
+   python protomotions/train_agent.py \
+       --experiment-path examples/experiments/full_body_tracker/transformer_flat_terrain.py \
+       --robot-name smpl \
+       --simulator isaacgym \
+       --motion-file data/motions/amass_train.pt \
+       --num-envs 2048 \
+       --batch-size 4096 \
+       --experiment-name expert_tracker
+
+**What it learns**: Precise motion tracking with future information
+
+Phase 2: MaskedMimic Policy
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Train the versatile policy with masked observations:
+
+.. code-block:: bash
+
+   python protomotions/train_agent.py \
+       --experiment-path examples/experiments/masked_mimic/flat_terrain.py \
+       --robot-name smpl \
+       --simulator isaacgym \
+       --motion-file data/motions/amass_train.pt \
+       --overrides "agent.config.expert_model_path=results/expert_tracker/" \
+       --experiment-name masked_mimic
+
+**What it learns**: Infer complete actions from partial observations
+
+Inference & User Control
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block:: bash
+
+   python protomotions/eval_agent.py \
+       --robot-name smpl \
+       --simulator isaacgym \
+       --use-masked_mimic/tasks/user_control \
+       --checkpoint results/masked_mimic/last.ckpt
+
+**Key Features**:
+
+* Single policy handles diverse tasks
+* Works with partial/masked observations
+* Interactive user control
+* Robust to missing information
+
+Full Body Motion Tracking
+--------------------------
+
+**Direct motion imitation (Advanced DeepMimic)**
+
+Trains agents to precisely track reference motions. This is Phase 1 of MaskedMimic
+but can also be used standalone for motion tracking tasks.
+
+Training:
+
+.. code-block:: bash
+
+   python protomotions/train_agent.py \
+       --experiment-path examples/experiments/full_body_tracker/transformer_flat_terrain.py \
+       --robot-name smpl \
+       --simulator isaacgym \
+       --motion-file data/motions/specific_motion.npy \
+       --experiment-name motion_tracker
+
+**Best for**: Precise motion replication, motion editing, motion retargeting
+
+**Key Features**:
+
+* High-fidelity motion tracking
+* Joint position and velocity matching
+* Contact-aware rewards
+* Works on single or multiple motions
+
+AMP (Adversarial Motion Priors)
+--------------------------------
+
+**Style-aware task solving with discriminator rewards**
+
+AMP combines task rewards with a learned discriminator that rewards motion style
+similarity to reference data.
+
+Basic Training:
+
+.. code-block:: bash
+
+   python protomotions/train_agent.py \
+       --experiment-path examples/experiments/amp_mlp.py \
+       --robot-name smpl \
+       --simulator isaacgym \
+       --motion-file data/motions/walk.npy \
+       --experiment-name amp_walk
+
+With Path Following Task:
+
+.. code-block:: bash
+
+   python protomotions/train_agent.py \
+       --experiment-path examples/experiments/path_follower_amp_mlp.py \
+       --robot-name smpl \
+       --simulator isaacgym \
+       --motion-file data/motions/walk.npy \
+       --experiment-name amp_path
+
+**Best for**: Adding natural motion style to task-driven behaviors
+
+**Key Features**:
+
+* Task reward + style reward
+* Discriminator distinguishes real/fake motions
+* Works with single motions or small sets
+* Combines well with various tasks
+
+ASE (Adversarial Skill Embeddings)
+-----------------------------------
+
+**Learn diverse skills with latent codes**
+
+ASE extends AMP by encoding motions into a latent skill space. The policy is
+conditioned on latent codes, enabling diverse skill learning.
+
+Training:
+
+.. code-block:: bash
+
+   python protomotions/train_agent.py \
+       --experiment-path examples/experiments/ase_mlp.py \
+       --robot-name smpl \
+       --simulator isaacgym \
+       --motion-file data/datasets/diverse_motions.yaml \
+       --experiment-name ase_skills
+
+**Best for**: Learning and composing diverse skills from large datasets
+
+**Key Features**:
+
+* Learns skill embeddings from motion data
+* Policy conditioned on latent codes
+* Explore skill space by varying latents
+* Suitable for hierarchical control
+
+**Requirements**: Large diverse motion dataset (100+ different motions)
+
+PPO (Proximal Policy Optimization)
+-----------------------------------
+
+**Pure reinforcement learning without motion data**
+
+Standard PPO for learning from task rewards alone.
+
+Training:
+
+.. code-block:: bash
+
+   python protomotions/train_agent.py \
+       --experiment-path examples/experiments/steering_mlp.py \
+       --robot-name h1 \
+       --simulator isaacgym \
+       --experiment-name ppo_steering
+
+**Best for**: Tasks where motion style is not critical, or no motion data available
+
+**Key Features**:
+
+* No motion data required
+* Pure task-driven learning
+* Stable training with clipped objectives
+* Good baseline for comparison
+
+Algorithm Selection Guide
+-------------------------
+
+Choose based on your needs:
+
+**Have Motion Data?**
+
+* Yes, want versatile control → **MaskedMimic**
+* Yes, want precise tracking → **Full Body Tracker**
+* Yes, want style + task → **AMP**
+* Yes, have diverse dataset → **ASE**
+* No motion data → **PPO**
+
+**What's Your Goal?**
+
+* User-controlled character → **MaskedMimic**
+* Replicate specific motion → **Full Body Tracker**
+* Natural-looking task solving → **AMP**
+* Learn many skills → **ASE**
+* Learn task from scratch → **PPO**
+
+Training Tips by Algorithm
+---------------------------
+
+MaskedMimic
+~~~~~~~~~~~
+
+* Phase 1 needs high-quality tracking (train until pose error < 0.1)
+* Phase 2 requires good expert model (don't skip phase 1)
+* Use diverse motion dataset for better generalization
+* Masking probability affects versatility (0.3-0.7 typical)
+
+AMP
+~~~
+
+* Works best with single motion or small motion set
+* Discriminator reward scale important (tune 1.0-5.0)
+* Style reward should balance with task reward
+* Replay buffer size affects discriminator quality
+
+ASE
+~~~
+
+* Requires large diverse dataset (100+ motions minimum)
+* Latent dimension affects skill diversity (8-32 typical)
+* Mutual information loss important for skill separation
+* Longer training needed than AMP
+
+PPO
+~~~
+
+* Reward shaping critical without motion priors
+* Learning rate sensitivity (tune carefully)
+* Advantage normalization helps stability
+* May need auxiliary rewards for complex motions
+
+Terrain & Scene Support
+------------------------
+
+All algorithms support complex terrains:
+
+.. code-block:: bash
+
+   # Train on complex terrain
+   --terrain complex
+
+   # Evaluate on flat terrain
+   --terrain flat
+
+Terrain features:
+
+* Stairs, slopes, rough ground, flat regions
+* Observation normalization relative to local terrain
+* Optional heightmap observations
+
+See :doc:`training` for terrain configuration details.
+
+References
+----------
+
+* **MaskedMimic**: Tessler et al. "MaskedMimic: Unified Physics-Based Character Control Through Masked Motion Inpainting" (2024)
+* **AMP**: Peng et al. "AMP: Adversarial Motion Priors for Stylized Physics-Based Character Control" (2021)
+* **ASE**: Peng et al. "ASE: Large-Scale Reusable Adversarial Skill Embeddings" (2022)  
+* **PPO**: Schulman et al. "Proximal Policy Optimization Algorithms" (2017)
+
+Next Steps
+----------
+
+* Try :doc:`../tutorials/basic_training` for step-by-step examples
+* See :doc:`training` for detailed training instructions
+* Check :doc:`../examples/experiments` for complete MaskedMimic workflow
+

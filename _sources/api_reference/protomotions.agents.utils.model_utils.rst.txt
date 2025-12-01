@@ -1,0 +1,7 @@
+protomotions.agents.utils.model\_utils module
+=============================================
+
+.. automodule:: protomotions.agents.utils.model_utils
+   :members:
+   :show-inheritance:
+   :undoc-members:

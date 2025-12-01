@@ -1,0 +1,7 @@
+protomotions.agents.utils.running\_mean\_std module
+===================================================
+
+.. automodule:: protomotions.agents.utils.running_mean_std
+   :members:
+   :show-inheritance:
+   :undoc-members:

@@ -1,0 +1,199 @@
+Command Format Reference
+========================
+
+ProtoMotions uses **argparse** for command-line arguments (not Hydra).
+
+New Command Format (Current)
+-----------------------------
+
+**Training**:
+
+.. code-block:: bash
+
+   python protomotions/train_agent.py \
+       --robot-name smpl \
+       --simulator isaacgym \
+       --experiment-path examples/experiments/mimic/mlp.py \
+       --experiment-name my_experiment \
+       --motion-file /path/to/motions.pt \
+       --num-envs 4096 \
+       --batch-size 16384 \
+       --use-wandb
+
+**SLURM Training**:
+
+.. code-block:: bash
+
+   python protomotions/train_slurm.py \
+       --user ctessler \
+       --account nvr_account \
+       --experiment-path examples/experiments/masked_mimic/transformer.py \
+       --robot-name smpl \
+       --simulator isaaclab \
+       --motion-file /path/to/motions.pt \
+       --ngpu 8 \
+       --nodes 1 \
+       --partition polar \
+       --experiment-name my_slurm_exp \
+       --num-envs 2048 \
+       --batch-size 8192 \
+       --use-wandb \
+       --overrides "agent.expert_model_path='/path/to/expert/'"
+
+**Evaluation**:
+
+.. code-block:: bash
+
+   python protomotions/eval_agent.py \
+       --checkpoint results/my_experiment/last.ckpt \
+       --simulator isaacgym
+
+Key Differences from Old Format
+--------------------------------
+
+.. list-table::
+   :header-rows: 1
+   :widths: 40 40 20
+
+   * - Old Format (Hydra)
+     - New Format (Argparse)
+     - Status
+   * - ``--robot-name smpl``
+     - ``--robot-name smpl``
+     - ✅ Changed
+   * - ``--simulator isaacgym``
+     - ``--simulator isaacgym``
+     - ✅ Changed
+   * - ``--experiment-path examples/experiments/mimic/mlp.py``
+     - ``--experiment-path examples/experiments/mimic/mlp.py``
+     - ✅ Changed
+   * - ``--num-envs 4096``
+     - ``--num-envs 4096``
+     - ✅ Changed
+   * - ``--batch-size 8192``
+     - ``--batch-size 8192``
+     - ✅ Changed
+   * - ``--motion-file path``
+     - ``--motion-file path``
+     - ✅ Changed
+   * - ``--use-wandb``
+     - ``--use-wandb``
+     - ✅ Changed
+   * - ``agent.config.learning_rate=1e-4``
+     - ``--overrides "agent.config.learning_rate=1e-4"``
+     - ✅ Changed
+
+Required vs Optional Arguments
+-------------------------------
+
+**Required** (must provide):
+
+* ``--robot-name`` - Robot to use (smpl, h1, g1, etc.)
+* ``--simulator`` - Simulator backend (isaacgym, isaaclab, genesis)
+* ``--experiment-path`` - Path to experiment config file
+* ``--experiment-name`` - Unique experiment identifier
+* ``--motion-file`` - Path to motion data (for motion-based tasks)
+* ``--num-envs`` - Number of parallel environments
+* ``--batch-size`` - Training batch size
+
+**Optional** (have defaults):
+
+* ``--checkpoint`` - Resume from checkpoint
+* ``--scenes-file`` - Path to scene config
+* ``--use-wandb`` - Enable W&B logging
+* ``--ngpu`` - Number of GPUs (default: 1)
+* ``--nodes`` - Number of nodes (default: 1)
+* ``--headless`` - Headless mode (default: True)
+* ``--overrides`` - Config overrides (key=value format)
+
+Configuration Overrides
+-----------------------
+
+For nested config changes, use ``--overrides``:
+
+.. code-block:: bash
+
+   --overrides "env.max_episode_length=1000" \
+               "agent.config.learning_rate=1e-4" \
+               "simulator.headless=False"
+
+Multiple overrides in one string (space-separated).
+
+Complete Examples
+-----------------
+
+Minimal Training Example
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block:: bash
+
+   python protomotions/train_agent.py \
+       --robot-name h1 \
+       --simulator isaacgym \
+       --experiment-path examples/experiments/mimic/mlp.py \
+       --experiment-name my_exp \
+       --motion-file data/motions/walk.npy \
+       --num-envs 1024 \
+       --batch-size 4096
+
+Full Training with Options
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block:: bash
+
+   python protomotions/train_agent.py \
+       --robot-name smpl \
+       --simulator isaaclab \
+       --experiment-path examples/experiments/masked_mimic/transformer.py \
+       --experiment-name masked_mimic_exp \
+       --motion-file /data/amass_train.pt \
+       --num-envs 2048 \
+       --batch-size 8192 \
+       --ngpu 4 \
+       --nodes 1 \
+       --use-wandb \
+       --checkpoint results/previous_exp/last.ckpt \
+       --overrides "agent.config.learning_rate=5e-5" \
+                   "env.max_episode_length=500"
+
+SLURM Cluster Training
+~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block:: bash
+
+   python protomotions/train_slurm.py \
+       --user username \
+       --account account_name \
+       --experiment-path examples/experiments/masked_mimic/transformer.py \
+       --robot-name smpl \
+       --simulator isaaclab \
+       --motion-file /lustre/data/motions.pt \
+       --ngpu 8 \
+       --nodes 1 \
+       --partition polar \
+       --srun-repeat 50 \
+       --slurm-time 4:00:00 \
+       --experiment-name slurm_exp \
+       --num-envs 2048 \
+       --batch-size 8192 \
+       --use-wandb \
+       --overrides "agent.expert_model_path='/path/to/expert/'"
+
+Evaluation
+~~~~~~~~~~
+
+.. code-block:: bash
+
+   python protomotions/eval_agent.py \
+       --checkpoint results/my_exp/last.ckpt \
+       --simulator isaacgym \
+       --full-eval \
+       --num-envs 16
+
+See Also
+--------
+
+* train_agent.py source code for all available arguments
+* eval_agent.py source code for evaluation options
+* train_slurm.py source code for SLURM-specific arguments
+

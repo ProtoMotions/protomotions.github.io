@@ -1,0 +1,217 @@
+How It Works
+============
+
+This page provides a high-level overview of ProtoMotions' architecture and how the components work together.
+
+Architecture Overview
+---------------------
+
+ProtoMotions follows a modular design with three main layers:
+
+.. code-block:: text
+
+   ┌─────────────────────────────────────────────────────────────┐
+   │                         Agent                               │
+   │  (PPO, AMP, ASE, MaskedMimic)                               │
+   │  • Policy network (actor)                                   │
+   │  • Value network (critic)                                   │
+   │  • Training loop & optimization                             │
+   └───────────────────┬───────────────────▲─────────────────────┘
+                       │ actions           │ observations, rewards
+                       ▼                   │
+   ┌───────────────────────────────────────┴─────────────────────┐
+   │                       Environment                           │
+   │  (Mimic, Steering, PathFollower)                            │
+   │  • Observation computation                                  │
+   │  • Reward calculation                                       │
+   │  • Episode management                                       │
+   └───────────────────┬───────────────────▲─────────────────────┘
+                       │ control signals   │ robot state, contacts
+                       ▼                   │
+   ┌───────────────────────────────────────┴─────────────────────┐
+   │                       Simulator                             │
+   │  (IsaacGym, IsaacLab, Genesis, Newton)                      │
+   │  • Physics simulation                                       │
+   │  • Robot control (PD controllers)                           │
+   │  • Contact detection                                        │
+   └─────────────────────────────────────────────────────────────┘
+
+**Agent**: The learning algorithm. Takes observations, outputs actions, and updates its neural networks based on rewards.
+
+**Environment**: The task definition. Computes what the agent sees (observations), what it should optimize for (rewards), and when episodes end.
+
+**Simulator**: The physics engine. Steps the simulation, applies forces, and returns the resulting robot states.
+
+Training Loop
+-------------
+
+Each training iteration follows this flow:
+
+.. code-block:: text
+
+   1. Agent receives observation from Environment
+              │
+              ▼
+   2. Agent's policy network outputs action
+              │
+              ▼
+   3. Environment sends action to Simulator
+              │
+              ▼
+   4. Simulator steps physics (multiple substeps)
+              │
+              ▼
+   5. Environment computes:
+      • New observations from robot state
+      • Rewards based on task goals
+      • Done flags for episode termination
+              │
+              ▼
+   6. Agent stores experience in buffer
+              │
+              ▼
+   7. After N steps, Agent updates networks
+              │
+              ▼
+   8. Repeat from step 1
+
+Key Abstractions
+----------------
+
+RobotConfig
+~~~~~~~~~~~
+
+Defines everything about a robot:
+
+* Joint names and limits
+* Body part names (feet, hands, etc.)
+* Default pose and PD gains
+* Observation scaling
+
+Located in ``protomotions/robot_configs/``. Each robot (SMPL, G1, H1) has its own config file.
+
+.. code-block:: python
+
+   # Example: What RobotConfig defines
+   class SMPLConfig(RobotConfig):
+       num_dofs = 69
+       left_foot_name = "L_Ankle"
+       default_kp = 100.0
+       # ... more properties
+
+MotionLib
+~~~~~~~~~
+
+Manages reference motion data for imitation learning:
+
+* Loads motions from ``.npy`` or ``.pt`` files
+* Samples random motions and time points
+* Interpolates poses at arbitrary times
+* Provides joint positions, velocities, and contacts
+
+.. code-block:: python
+
+   # Example: Using MotionLib
+   motion_lib = MotionLib(config, device="cuda")
+   
+   # Sample a motion and time
+   motion_ids = motion_lib.sample_motions(num_envs)
+   times = motion_lib.sample_times(motion_ids)
+   
+   # Get reference pose at that time
+   ref_pose = motion_lib.get_motion_state(motion_ids, times)
+
+Environment Components
+~~~~~~~~~~~~~~~~~~~~~~
+
+Environments are built from composable components:
+
+* **Observations**: What the agent sees (robot state, reference poses, terrain)
+* **Rewards**: What the agent optimizes (tracking error, style matching)
+* **Terminations**: When episodes end (falling, success, timeout)
+
+Each component is configured independently, making it easy to mix and match.
+
+Simulator Abstraction
+~~~~~~~~~~~~~~~~~~~~~
+
+The simulator layer provides a unified interface across physics engines:
+
+.. code-block:: python
+
+   # Same code works with any simulator
+   simulator = create_simulator(config)  # IsaacGym, IsaacLab, Genesis, or Newton
+   
+   # Step physics with actions (handles PD control internally)
+   simulator.step(actions)
+   
+   # Get robot state in unified format
+   robot_state = simulator.get_robot_state()
+   dof_pos = robot_state.dof_pos      # Joint positions
+   dof_vel = robot_state.dof_vel      # Joint velocities
+   body_pos = robot_state.rigid_body_pos  # Body positions (FK computed)
+
+This abstraction lets you develop with one simulator and deploy with another.
+
+Data Flow Example: Motion Tracking
+----------------------------------
+
+Here's how data flows when training a motion tracking agent:
+
+.. code-block:: text
+
+   MotionLib                    Environment                    Agent
+      │                             │                            │
+      │  sample motion & time       │                            │
+      │◄────────────────────────────│                            │
+      │                             │                            │
+      │  reference pose             │                            │
+      │────────────────────────────►│                            │
+      │                             │                            │
+      │                             │  observation (robot +      │
+      │                             │  reference pose diff)      │
+      │                             │───────────────────────────►│
+      │                             │                            │
+      │                             │  action (target joints)    │
+      │                             │◄───────────────────────────│
+      │                             │                            │
+      │                             │  step simulation           │
+      │                             │───────► Simulator          │
+      │                             │                            │
+      │                             │  compute tracking reward   │
+      │                             │  (how close to reference)  │
+      │                             │───────────────────────────►│
+
+
+Configuration System
+--------------------
+
+ProtoMotions uses a layered configuration approach:
+
+1. **Experiment file**: Defines the full setup (``examples/experiments/mimic/mlp.py``)
+2. **Robot config**: Robot-specific settings (``protomotions/robot_configs/smpl.py``)
+3. **CLI overrides**: Fine-tune any parameter (``--num-envs 4096``)
+
+Configs are Python dataclasses, giving you autocomplete and type checking:
+
+.. code-block:: python
+
+   @dataclass
+   class PPOAgentConfig(BaseAgentConfig):
+       # PPO-specific hyperparameters
+       tau: float = 0.95          # GAE lambda
+       e_clip: float = 0.2        # PPO clipping parameter
+       
+       # Inherited from BaseAgentConfig
+       batch_size: int            # Samples per training iteration
+       num_steps: int = 32        # Steps per rollout
+       gamma: float = 0.99        # Discount factor
+
+Next Steps
+----------
+
+* :doc:`quickstart` - Train your first agent
+* :doc:`../user_guide/algorithms` - Learn about available algorithms
+* :doc:`../tutorials/code_tutorials` - Hands-on code tutorials
+
+

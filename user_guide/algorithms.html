@@ -1,0 +1,739 @@
+<!doctype html>
+<html class="no-js" lang="en" data-content_root="../">
+  <head><meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="index" title="Index" href="../genindex.html"><link rel="search" title="Search" href="../search.html"><link rel="next" title="Tutorials" href="../tutorials/index.html"><link rel="prev" title="Configuration System" href="configuration.html">
+
+    <!-- Generated with Sphinx 8.2.3 and Furo 2025.09.25 -->
+        <title>Algorithms - ProtoMotions documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d111a655" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=580074bf" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=8dab3a3b" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f2f2f2;
+  --color-code-foreground: #1e1e1e;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle site navigation sidebar">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc" aria-label="Toggle table of contents sidebar">
+<label class="overlay sidebar-overlay" for="__navigation"></label>
+<label class="overlay toc-overlay" for="__toc"></label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <span class="icon"><svg><use href="#svg-menu"></use></svg></span>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../index.html"><div class="brand">ProtoMotions  documentation</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../index.html">
+  
+  <span class="sidebar-brand-text">ProtoMotions  documentation</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/quickstart.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/how_it_works.html">How It Works</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="training.html">Training Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="evaluation.html">Evaluation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="configuration.html">Configuration System</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Algorithms</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/code_tutorials.html">Code Tutorials (Progressive Series)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/training_workflow.html">Training Workflow Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/motion_tracking.html">Motion Tracking Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/custom_robot.html">Custom Robot Tutorial</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Data Preparation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/amass_parsing.html">AMASS Dataset Parsing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/retargeting_motions.html">Retargeting Motion Data Between Humanoids</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../examples/experiments.html">Experiment Configurations</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../api_reference/index.html">API Reference</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../api_reference/protomotions.agents.html">protomotions.agents package</a><input aria-label="Toggle navigation of protomotions.agents package" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../api_reference/protomotions.agents.amp.html">protomotions.agents.amp package</a><input aria-label="Toggle navigation of protomotions.agents.amp package" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../api_reference/protomotions.agents.amp.agent.html">protomotions.agents.amp.agent module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api_reference/protomotions.agents.amp.config.html">protomotions.agents.amp.config module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api_reference/protomotions.agents.amp.model.html">protomotions.agents.amp.model module</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../api_reference/protomotions.agents.ase.html">protomotions.agents.ase package</a><input aria-label="Toggle navigation of protomotions.agents.ase package" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../api_reference/protomotions.agents.ase.agent.html">protomotions.agents.ase.agent module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api_reference/protomotions.agents.ase.config.html">protomotions.agents.ase.config module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api_reference/protomotions.agents.ase.model.html">protomotions.agents.ase.model module</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../api_reference/protomotions.agents.base_agent.html">protomotions.agents.base_agent package</a><input aria-label="Toggle navigation of protomotions.agents.base_agent package" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../api_reference/protomotions.agents.base_agent.agent.html">protomotions.agents.base_agent.agent module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api_reference/protomotions.agents.base_agent.config.html">protomotions.agents.base_agent.config module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api_reference/protomotions.agents.base_agent.model.html">protomotions.agents.base_agent.model module</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../api_reference/protomotions.agents.callbacks.html">protomotions.agents.callbacks package</a><input aria-label="Toggle navigation of protomotions.agents.callbacks package" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../api_reference/protomotions.agents.callbacks.one_logger.html">protomotions.agents.callbacks.one_logger module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api_reference/protomotions.agents.callbacks.slurm_autoresume_adlr.html">protomotions.agents.callbacks.slurm_autoresume_adlr module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api_reference/protomotions.agents.callbacks.slurm_autoresume_srun.html">protomotions.agents.callbacks.slurm_autoresume_srun module</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../api_reference/protomotions.agents.common.html">protomotions.agents.common package</a><input aria-label="Toggle navigation of protomotions.agents.common package" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" role="switch" type="checkbox"/><label for="toctree-checkbox-6"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../api_reference/protomotions.agents.common.common.html">protomotions.agents.common.common module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api_reference/protomotions.agents.common.config.html">protomotions.agents.common.config module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api_reference/protomotions.agents.common.mlp.html">protomotions.agents.common.mlp module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api_reference/protomotions.agents.common.transformer.html">protomotions.agents.common.transformer module</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../api_reference/protomotions.agents.evaluators.html">protomotions.agents.evaluators package</a><input aria-label="Toggle navigation of protomotions.agents.evaluators package" class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" role="switch" type="checkbox"/><label for="toctree-checkbox-7"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../api_reference/protomotions.agents.evaluators.base_evaluator.html">protomotions.agents.evaluators.base_evaluator module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api_reference/protomotions.agents.evaluators.config.html">protomotions.agents.evaluators.config module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api_reference/protomotions.agents.evaluators.metrics.html">protomotions.agents.evaluators.metrics module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api_reference/protomotions.agents.evaluators.mimic_evaluator.html">protomotions.agents.evaluators.mimic_evaluator module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api_reference/protomotions.agents.evaluators.smoothness_evaluator.html">protomotions.agents.evaluators.smoothness_evaluator module</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../api_reference/protomotions.agents.masked_mimic.html">protomotions.agents.masked_mimic package</a><input aria-label="Toggle navigation of protomotions.agents.masked_mimic package" class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" role="switch" type="checkbox"/><label for="toctree-checkbox-8"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../api_reference/protomotions.agents.masked_mimic.agent.html">protomotions.agents.masked_mimic.agent module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api_reference/protomotions.agents.masked_mimic.config.html">protomotions.agents.masked_mimic.config module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api_reference/protomotions.agents.masked_mimic.model.html">protomotions.agents.masked_mimic.model module</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../api_reference/protomotions.agents.mimic.html">protomotions.agents.mimic package</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../api_reference/protomotions.agents.ppo.html">protomotions.agents.ppo package</a><input aria-label="Toggle navigation of protomotions.agents.ppo package" class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" role="switch" type="checkbox"/><label for="toctree-checkbox-9"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../api_reference/protomotions.agents.ppo.agent.html">protomotions.agents.ppo.agent module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api_reference/protomotions.agents.ppo.config.html">protomotions.agents.ppo.config module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api_reference/protomotions.agents.ppo.model.html">protomotions.agents.ppo.model module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api_reference/protomotions.agents.ppo.utils.html">protomotions.agents.ppo.utils module</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../api_reference/protomotions.agents.utils.html">protomotions.agents.utils package</a><input aria-label="Toggle navigation of protomotions.agents.utils package" class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" role="switch" type="checkbox"/><label for="toctree-checkbox-10"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../api_reference/protomotions.agents.utils.data.html">protomotions.agents.utils.data module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api_reference/protomotions.agents.utils.metering.html">protomotions.agents.utils.metering module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api_reference/protomotions.agents.utils.normalization.html">protomotions.agents.utils.normalization module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api_reference/protomotions.agents.utils.replay_buffer.html">protomotions.agents.utils.replay_buffer module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api_reference/protomotions.agents.utils.step_tracker.html">protomotions.agents.utils.step_tracker module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api_reference/protomotions.agents.utils.training.html">protomotions.agents.utils.training module</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../api_reference/protomotions.envs.html">protomotions.envs package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api_reference/protomotions.simulator.html">protomotions.simulator package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api_reference/protomotions.robot_configs.html">protomotions.robot_configs module</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../api_reference/protomotions.utils.html">protomotions.utils package</a><input aria-label="Toggle navigation of protomotions.utils package" class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" role="switch" type="checkbox"/><label for="toctree-checkbox-11"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../api_reference/protomotions.utils.config_builder.html">protomotions.utils.config_builder module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api_reference/protomotions.utils.config_utils.html">protomotions.utils.config_utils module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api_reference/protomotions.utils.fabric_config.html">protomotions.utils.fabric_config module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api_reference/protomotions.utils.motion_interpolation_utils.html">protomotions.utils.motion_interpolation_utils module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api_reference/protomotions.utils.simulator_imports.html">protomotions.utils.simulator_imports module</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../api_reference/scripts.html">Training and Evaluation Scripts</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Community</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community.html">Community Showcase</a></li>
+</ul>
+
+</div></div>
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="view-this-page">
+  <a class="muted-link" href="../_sources/user_guide/algorithms.rst.txt" title="View this page">
+    <svg><use href="#svg-eye"></use></svg>
+    <span class="visually-hidden">View this page</span>
+  </a>
+</div>
+<div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <section id="algorithms">
+<h1>Algorithms<a class="headerlink" href="#algorithms" title="Link to this heading">¶</a></h1>
+<p>ProtoMotions implements state-of-the-art algorithms for physics-based character animation.</p>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Link to this heading">¶</a></h2>
+<div class="table-wrapper colwidths-given docutils container">
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 15.0%" />
+<col style="width: 30.0%" />
+<col style="width: 25.0%" />
+<col style="width: 30.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Algorithm</p></th>
+<th class="head"><p>Best For</p></th>
+<th class="head"><p>Dataset</p></th>
+<th class="head"><p>Key Feature</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>MaskedMimic</p></td>
+<td><p>Versatile control</p></td>
+<td><p>Diverse motions</p></td>
+<td><p>Partial observations</p></td>
+</tr>
+<tr class="row-odd"><td><p>Full Body Tracker</p></td>
+<td><p>Precise imitation</p></td>
+<td><p>Any motions</p></td>
+<td><p>Direct tracking</p></td>
+</tr>
+<tr class="row-even"><td><p>AMP</p></td>
+<td><p>Style-aware tasks</p></td>
+<td><p>Single/few motions</p></td>
+<td><p>Discriminator rewards</p></td>
+</tr>
+<tr class="row-odd"><td><p>ASE</p></td>
+<td><p>Diverse skills</p></td>
+<td><p>Large dataset</p></td>
+<td><p>Skill embeddings</p></td>
+</tr>
+<tr class="row-even"><td><p>PPO</p></td>
+<td><p>Task learning</p></td>
+<td><p>No motion data</p></td>
+<td><p>Pure RL</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="maskedmimic">
+<h2>MaskedMimic<a class="headerlink" href="#maskedmimic" title="Link to this heading">¶</a></h2>
+<p><strong>Two-phase training for versatile motion control</strong></p>
+<p>MaskedMimic learns to control characters with partial observations by training
+on data from an expert full-body tracker.</p>
+<section id="phase-1-expert-tracker">
+<h3>Phase 1: Expert Tracker<a class="headerlink" href="#phase-1-expert-tracker" title="Link to this heading">¶</a></h3>
+<p>Train a motion tracker that sees future reference poses:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>protomotions/train_agent.py<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--experiment-path<span class="w"> </span>examples/experiments/full_body_tracker/transformer_flat_terrain.py<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--robot-name<span class="w"> </span>smpl<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--simulator<span class="w"> </span>isaacgym<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--motion-file<span class="w"> </span>data/motions/amass_train.pt<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--num-envs<span class="w"> </span><span class="m">2048</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--batch-size<span class="w"> </span><span class="m">4096</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--experiment-name<span class="w"> </span>expert_tracker
+</pre></div>
+</div>
+<p><strong>What it learns</strong>: Precise motion tracking with future information</p>
+</section>
+<section id="phase-2-maskedmimic-policy">
+<h3>Phase 2: MaskedMimic Policy<a class="headerlink" href="#phase-2-maskedmimic-policy" title="Link to this heading">¶</a></h3>
+<p>Train the versatile policy with masked observations:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>protomotions/train_agent.py<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--experiment-path<span class="w"> </span>examples/experiments/masked_mimic/flat_terrain.py<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--robot-name<span class="w"> </span>smpl<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--simulator<span class="w"> </span>isaacgym<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--motion-file<span class="w"> </span>data/motions/amass_train.pt<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--overrides<span class="w"> </span><span class="s2">&quot;agent.config.expert_model_path=results/expert_tracker/&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--experiment-name<span class="w"> </span>masked_mimic
+</pre></div>
+</div>
+<p><strong>What it learns</strong>: Infer complete actions from partial observations</p>
+</section>
+<section id="inference-user-control">
+<h3>Inference &amp; User Control<a class="headerlink" href="#inference-user-control" title="Link to this heading">¶</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>protomotions/eval_agent.py<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--robot-name<span class="w"> </span>smpl<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--simulator<span class="w"> </span>isaacgym<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--use-masked_mimic/tasks/user_control<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--checkpoint<span class="w"> </span>results/masked_mimic/last.ckpt
+</pre></div>
+</div>
+<p><strong>Key Features</strong>:</p>
+<ul class="simple">
+<li><p>Single policy handles diverse tasks</p></li>
+<li><p>Works with partial/masked observations</p></li>
+<li><p>Interactive user control</p></li>
+<li><p>Robust to missing information</p></li>
+</ul>
+</section>
+</section>
+<section id="full-body-motion-tracking">
+<h2>Full Body Motion Tracking<a class="headerlink" href="#full-body-motion-tracking" title="Link to this heading">¶</a></h2>
+<p><strong>Direct motion imitation (Advanced DeepMimic)</strong></p>
+<p>Trains agents to precisely track reference motions. This is Phase 1 of MaskedMimic
+but can also be used standalone for motion tracking tasks.</p>
+<p>Training:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>protomotions/train_agent.py<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--experiment-path<span class="w"> </span>examples/experiments/full_body_tracker/transformer_flat_terrain.py<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--robot-name<span class="w"> </span>smpl<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--simulator<span class="w"> </span>isaacgym<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--motion-file<span class="w"> </span>data/motions/specific_motion.npy<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--experiment-name<span class="w"> </span>motion_tracker
+</pre></div>
+</div>
+<p><strong>Best for</strong>: Precise motion replication, motion editing, motion retargeting</p>
+<p><strong>Key Features</strong>:</p>
+<ul class="simple">
+<li><p>High-fidelity motion tracking</p></li>
+<li><p>Joint position and velocity matching</p></li>
+<li><p>Contact-aware rewards</p></li>
+<li><p>Works on single or multiple motions</p></li>
+</ul>
+</section>
+<section id="amp-adversarial-motion-priors">
+<h2>AMP (Adversarial Motion Priors)<a class="headerlink" href="#amp-adversarial-motion-priors" title="Link to this heading">¶</a></h2>
+<p><strong>Style-aware task solving with discriminator rewards</strong></p>
+<p>AMP combines task rewards with a learned discriminator that rewards motion style
+similarity to reference data.</p>
+<p>Basic Training:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>protomotions/train_agent.py<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--experiment-path<span class="w"> </span>examples/experiments/amp_mlp.py<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--robot-name<span class="w"> </span>smpl<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--simulator<span class="w"> </span>isaacgym<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--motion-file<span class="w"> </span>data/motions/walk.npy<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--experiment-name<span class="w"> </span>amp_walk
+</pre></div>
+</div>
+<p>With Path Following Task:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>protomotions/train_agent.py<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--experiment-path<span class="w"> </span>examples/experiments/path_follower_amp_mlp.py<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--robot-name<span class="w"> </span>smpl<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--simulator<span class="w"> </span>isaacgym<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--motion-file<span class="w"> </span>data/motions/walk.npy<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--experiment-name<span class="w"> </span>amp_path
+</pre></div>
+</div>
+<p><strong>Best for</strong>: Adding natural motion style to task-driven behaviors</p>
+<p><strong>Key Features</strong>:</p>
+<ul class="simple">
+<li><p>Task reward + style reward</p></li>
+<li><p>Discriminator distinguishes real/fake motions</p></li>
+<li><p>Works with single motions or small sets</p></li>
+<li><p>Combines well with various tasks</p></li>
+</ul>
+</section>
+<section id="ase-adversarial-skill-embeddings">
+<h2>ASE (Adversarial Skill Embeddings)<a class="headerlink" href="#ase-adversarial-skill-embeddings" title="Link to this heading">¶</a></h2>
+<p><strong>Learn diverse skills with latent codes</strong></p>
+<p>ASE extends AMP by encoding motions into a latent skill space. The policy is
+conditioned on latent codes, enabling diverse skill learning.</p>
+<p>Training:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>protomotions/train_agent.py<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--experiment-path<span class="w"> </span>examples/experiments/ase_mlp.py<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--robot-name<span class="w"> </span>smpl<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--simulator<span class="w"> </span>isaacgym<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--motion-file<span class="w"> </span>data/datasets/diverse_motions.yaml<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--experiment-name<span class="w"> </span>ase_skills
+</pre></div>
+</div>
+<p><strong>Best for</strong>: Learning and composing diverse skills from large datasets</p>
+<p><strong>Key Features</strong>:</p>
+<ul class="simple">
+<li><p>Learns skill embeddings from motion data</p></li>
+<li><p>Policy conditioned on latent codes</p></li>
+<li><p>Explore skill space by varying latents</p></li>
+<li><p>Suitable for hierarchical control</p></li>
+</ul>
+<p><strong>Requirements</strong>: Large diverse motion dataset (100+ different motions)</p>
+</section>
+<section id="ppo-proximal-policy-optimization">
+<h2>PPO (Proximal Policy Optimization)<a class="headerlink" href="#ppo-proximal-policy-optimization" title="Link to this heading">¶</a></h2>
+<p><strong>Pure reinforcement learning without motion data</strong></p>
+<p>Standard PPO for learning from task rewards alone.</p>
+<p>Training:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>protomotions/train_agent.py<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--experiment-path<span class="w"> </span>examples/experiments/steering_mlp.py<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--robot-name<span class="w"> </span>h1<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--simulator<span class="w"> </span>isaacgym<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--experiment-name<span class="w"> </span>ppo_steering
+</pre></div>
+</div>
+<p><strong>Best for</strong>: Tasks where motion style is not critical, or no motion data available</p>
+<p><strong>Key Features</strong>:</p>
+<ul class="simple">
+<li><p>No motion data required</p></li>
+<li><p>Pure task-driven learning</p></li>
+<li><p>Stable training with clipped objectives</p></li>
+<li><p>Good baseline for comparison</p></li>
+</ul>
+</section>
+<section id="algorithm-selection-guide">
+<h2>Algorithm Selection Guide<a class="headerlink" href="#algorithm-selection-guide" title="Link to this heading">¶</a></h2>
+<p>Choose based on your needs:</p>
+<p><strong>Have Motion Data?</strong></p>
+<ul class="simple">
+<li><p>Yes, want versatile control → <strong>MaskedMimic</strong></p></li>
+<li><p>Yes, want precise tracking → <strong>Full Body Tracker</strong></p></li>
+<li><p>Yes, want style + task → <strong>AMP</strong></p></li>
+<li><p>Yes, have diverse dataset → <strong>ASE</strong></p></li>
+<li><p>No motion data → <strong>PPO</strong></p></li>
+</ul>
+<p><strong>What’s Your Goal?</strong></p>
+<ul class="simple">
+<li><p>User-controlled character → <strong>MaskedMimic</strong></p></li>
+<li><p>Replicate specific motion → <strong>Full Body Tracker</strong></p></li>
+<li><p>Natural-looking task solving → <strong>AMP</strong></p></li>
+<li><p>Learn many skills → <strong>ASE</strong></p></li>
+<li><p>Learn task from scratch → <strong>PPO</strong></p></li>
+</ul>
+</section>
+<section id="training-tips-by-algorithm">
+<h2>Training Tips by Algorithm<a class="headerlink" href="#training-tips-by-algorithm" title="Link to this heading">¶</a></h2>
+<section id="id1">
+<h3>MaskedMimic<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>Phase 1 needs high-quality tracking (train until pose error &lt; 0.1)</p></li>
+<li><p>Phase 2 requires good expert model (don’t skip phase 1)</p></li>
+<li><p>Use diverse motion dataset for better generalization</p></li>
+<li><p>Masking probability affects versatility (0.3-0.7 typical)</p></li>
+</ul>
+</section>
+<section id="amp">
+<h3>AMP<a class="headerlink" href="#amp" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>Works best with single motion or small motion set</p></li>
+<li><p>Discriminator reward scale important (tune 1.0-5.0)</p></li>
+<li><p>Style reward should balance with task reward</p></li>
+<li><p>Replay buffer size affects discriminator quality</p></li>
+</ul>
+</section>
+<section id="ase">
+<h3>ASE<a class="headerlink" href="#ase" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>Requires large diverse dataset (100+ motions minimum)</p></li>
+<li><p>Latent dimension affects skill diversity (8-32 typical)</p></li>
+<li><p>Mutual information loss important for skill separation</p></li>
+<li><p>Longer training needed than AMP</p></li>
+</ul>
+</section>
+<section id="ppo">
+<h3>PPO<a class="headerlink" href="#ppo" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>Reward shaping critical without motion priors</p></li>
+<li><p>Learning rate sensitivity (tune carefully)</p></li>
+<li><p>Advantage normalization helps stability</p></li>
+<li><p>May need auxiliary rewards for complex motions</p></li>
+</ul>
+</section>
+</section>
+<section id="terrain-scene-support">
+<h2>Terrain &amp; Scene Support<a class="headerlink" href="#terrain-scene-support" title="Link to this heading">¶</a></h2>
+<p>All algorithms support complex terrains:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Train on complex terrain</span>
+--terrain<span class="w"> </span>complex
+
+<span class="c1"># Evaluate on flat terrain</span>
+--terrain<span class="w"> </span>flat
+</pre></div>
+</div>
+<p>Terrain features:</p>
+<ul class="simple">
+<li><p>Stairs, slopes, rough ground, flat regions</p></li>
+<li><p>Observation normalization relative to local terrain</p></li>
+<li><p>Optional heightmap observations</p></li>
+</ul>
+<p>See <a class="reference internal" href="training.html"><span class="doc">Training Guide</span></a> for terrain configuration details.</p>
+</section>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><strong>MaskedMimic</strong>: Tessler et al. “MaskedMimic: Unified Physics-Based Character Control Through Masked Motion Inpainting” (2024)</p></li>
+<li><p><strong>AMP</strong>: Peng et al. “AMP: Adversarial Motion Priors for Stylized Physics-Based Character Control” (2021)</p></li>
+<li><p><strong>ASE</strong>: Peng et al. “ASE: Large-Scale Reusable Adversarial Skill Embeddings” (2022)</p></li>
+<li><p><strong>PPO</strong>: Schulman et al. “Proximal Policy Optimization Algorithms” (2017)</p></li>
+</ul>
+</section>
+<section id="next-steps">
+<h2>Next Steps<a class="headerlink" href="#next-steps" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>Try <a class="reference internal" href="../tutorials/basic_training.html"><span class="doc">Code Tutorial 0: Create Simulator</span></a> for step-by-step examples</p></li>
+<li><p>See <a class="reference internal" href="training.html"><span class="doc">Training Guide</span></a> for detailed training instructions</p></li>
+<li><p>Check <a class="reference internal" href="../examples/experiments.html"><span class="doc">Experiment Configurations</span></a> for complete MaskedMimic workflow</p></li>
+</ul>
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="../tutorials/index.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Tutorials</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="configuration.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Configuration System</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2025, Chen Tessler, Yifeng Jiang, Erwin Coumans, Haotian Zhang, Davis Rempe, Xue Bin Peng, Sanja Fidler, and Gal Chechik
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Algorithms</a><ul>
+<li><a class="reference internal" href="#overview">Overview</a></li>
+<li><a class="reference internal" href="#maskedmimic">MaskedMimic</a><ul>
+<li><a class="reference internal" href="#phase-1-expert-tracker">Phase 1: Expert Tracker</a></li>
+<li><a class="reference internal" href="#phase-2-maskedmimic-policy">Phase 2: MaskedMimic Policy</a></li>
+<li><a class="reference internal" href="#inference-user-control">Inference &amp; User Control</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#full-body-motion-tracking">Full Body Motion Tracking</a></li>
+<li><a class="reference internal" href="#amp-adversarial-motion-priors">AMP (Adversarial Motion Priors)</a></li>
+<li><a class="reference internal" href="#ase-adversarial-skill-embeddings">ASE (Adversarial Skill Embeddings)</a></li>
+<li><a class="reference internal" href="#ppo-proximal-policy-optimization">PPO (Proximal Policy Optimization)</a></li>
+<li><a class="reference internal" href="#algorithm-selection-guide">Algorithm Selection Guide</a></li>
+<li><a class="reference internal" href="#training-tips-by-algorithm">Training Tips by Algorithm</a><ul>
+<li><a class="reference internal" href="#id1">MaskedMimic</a></li>
+<li><a class="reference internal" href="#amp">AMP</a></li>
+<li><a class="reference internal" href="#ase">ASE</a></li>
+<li><a class="reference internal" href="#ppo">PPO</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#terrain-scene-support">Terrain &amp; Scene Support</a></li>
+<li><a class="reference internal" href="#references">References</a></li>
+<li><a class="reference internal" href="#next-steps">Next Steps</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script src="../_static/documentation_options.js?v=8a448e45"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/scripts/furo.js?v=46bd48cc"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=30646c52"></script>
+    </body>
+</html>

@@ -1,0 +1,7 @@
+protomotions.joint\_monkey module
+=================================
+
+.. automodule:: protomotions.joint_monkey
+   :members:
+   :show-inheritance:
+   :undoc-members:

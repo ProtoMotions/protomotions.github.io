@@ -1,0 +1,126 @@
+Community Showcase
+==================
+
+ProtoMotions is used by researchers and developers around the world. This page highlights projects, papers, and people making amazing things with the framework.
+
+Featured Projects
+-----------------
+
+*Projects using ProtoMotions will be featured here. Want to be listed? See below!*
+
+.. 
+   Template for adding projects:
+   
+   Project Name
+   ~~~~~~~~~~~~
+   
+   **Author(s)**: Name, Affiliation
+   
+   **Description**: Brief description of the project.
+   
+   **Links**: `Paper <url>`_ | `Code <url>`_ | `Video <url>`_
+
+Research Papers
+---------------
+
+Papers that use or build upon ProtoMotions:
+
+**MaskedMimic: Unified Physics-Based Character Control Through Masked Motion Inpainting**
+
+.. image:: /_static/maskedmimic.gif
+   :alt: MaskedMimic demo
+   :width: 100%
+
+*Chen Tessler, Yunrong Guo, Ofir Nabati, Gal Chechik, Xue Bin Peng*
+
+**ACM SIGGRAPH Asia 2024 (TOG)**
+
+A unified physics-based controller that formulates character control as motion inpainting. 
+Supports diverse control modalities including sparse keyframes, text instructions, and scene 
+information through a single model trained on masked motion descriptions.
+
+`Project Page <https://research.nvidia.com/labs/par/maskedmimic/>`__ | `Paper <https://arxiv.org/abs/2409.14393>`__
+
+----
+
+**MaskedManipulator: Versatile Whole-Body Manipulation**
+
+.. image:: /_static/maskedmanipulator.gif
+   :alt: MaskedManipulator demo
+   :width: 100%
+
+*Chen Tessler, Yifeng Jiang, Erwin Coumans, Zhengyi Luo, Gal Chechik, Xue Bin Peng*
+
+**ACM SIGGRAPH Asia 2025**
+
+A generative control policy for full-body object manipulation, enabling users to specify 
+high-level objectives such as target object poses or body poses. Supports teleoperation, 
+object goals, and generative behavior from a single unified controller.
+
+`Project Page <https://research.nvidia.com/labs/par/maskedmanipulator/>`__ | `Paper <https://arxiv.org/abs/2505.19086>`__
+
+..
+   Add more papers as they come:
+   
+   **Paper Title**
+      
+      *Authors*
+      
+      Brief description.
+      
+      `Paper <url>`_ | `Code <url>`_
+
+Community Contributions
+-----------------------
+
+Notable contributions from the community:
+
+*Community contributions will be highlighted here. Submit a PR to be featured!*
+
+..
+   Template:
+   
+   **Contribution Title**
+      
+      *Contributor Name* - Brief description of the contribution.
+      
+      `PR Link <url>`_
+
+Get Featured
+------------
+
+We'd love to showcase your work! Here's how to get featured:
+
+**Projects & Research**
+   Using ProtoMotions in your research or project? 
+   
+   1. Open an issue or PR on GitHub
+   2. Tell us about your project: what it does, any papers/videos, and relevant links
+   3. We'll add it to the showcase!
+
+**Contributions**
+   Made a significant contribution to ProtoMotions?
+   
+   Your contribution will be highlighted automatically after your PR is merged.
+
+**Tips for Getting Featured**
+   
+   * Include a brief description of what makes your project interesting
+   * Add links to papers, videos, or demos if available
+   * Let us know how you'd like to be credited (name, affiliation, etc.)
+
+Stay Connected
+--------------
+
+* `GitHub Repository <https://github.com/NVLabs/ProtoMotions>`_ - Star us, watch for updates
+* `GitHub Issues <https://github.com/NVLabs/ProtoMotions/issues>`_ - Report bugs, request features
+* `GitHub Discussions <https://github.com/NVLabs/ProtoMotions/discussions>`_ - Ask questions, share ideas
+
+Join the Community
+------------------
+
+The ProtoMotions community is open and welcoming. Whether you're a student learning reinforcement learning, a researcher pushing the boundaries of character animation, or an engineer building real-world applications—you belong here.
+
+See our :doc:`contributing` guide to get started!
+
+

@@ -1,0 +1,337 @@
+Retargeting Motion Data Between Humanoids
+==========================================
+
+.. image:: /_static/retargeting.gif
+   :alt: Motion retargeting from SMPL to G1
+   :width: 100%
+
+This tutorial explains how to convert motion data from one humanoid robot to another using ProtoMotions' retargeting pipeline.
+
+Overview
+--------
+
+**What is Motion Retargeting?**
+
+Motion retargeting is the process of transferring motion data from one skeletal structure to another. For example, converting AMASS motions (captured from humans with SMPL skeleton) to work with robots like Unitree G1 or H1.
+
+**Why Retarget?**
+
+* Use mocap data recorded with humans with physical robots (G1, H1)
+* Adapt existing motion libraries to new robot morphologies
+* Transfer skills learned on one robot to another
+
+**Pipeline Overview:**
+
+1. **Extract Keypoints**: Convert source motions to intermediate keypoint format
+2. **Retarget**: Use inverse kinematics to map keypoints to target robot
+3. **Extract Contacts**: Determine foot contact labels
+4. **Convert to Isaac**: Format for simulator compatibility
+5. **Package**: Create final motion library file
+
+Retargeting AMASS to G1
+------------------------
+
+This example shows how to retarget the full AMASS dataset to the Unitree G1 robot.
+
+Prerequisites
+~~~~~~~~~~~~~
+
+**Required Tools:**
+
+* ProtoMotions with retargeting scripts
+* Pyroki (IK retargeting library)
+* AMASS dataset in ProtoMotions format
+
+**Environment Setup:**
+
+.. code-block:: bash
+
+   # ProtoMotions environment (for extraction, conversion, packaging)
+   conda activate protomotions_env
+   
+   # Pyroki environment (for IK retargeting)
+   conda activate pyroki_env
+
+Automated Pipeline (Recommended)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The ``retarget_all_amass_to_g1.py`` script generates SLURM job scripts for the complete pipeline:
+
+.. code-block:: bash
+
+   cd data/scripts
+   python retarget_all_amass_to_g1.py
+
+**What This Does:**
+
+1. Generates 5 SLURM job scripts:
+
+   * ``1_extract_keypoints.sh`` - Extract keypoints (24 parallel jobs)
+   * ``2_retarget_run1.sh`` - First retargeting pass (GPU, 4 hours)
+   * ``2_retarget_run2.sh`` - Second retargeting pass (GPU, 4 hours)
+   * ``3_contact_extract.sh`` - Extract contact labels (24 parallel jobs)
+   * ``4_isaac_convert.sh`` - Convert to Isaac format (24 parallel jobs)
+   * ``5_merge_package.sh`` - Merge and package final file
+
+2. Creates a master submission script (``submit_all.sh``)
+3. Automatically syncs code to cluster
+4. Chains jobs with dependencies
+
+**Submit All Jobs:**
+
+.. code-block:: bash
+
+   # On the cluster
+   bash tmp/retarget_amass_g1_<timestamp>/submit_all.sh
+
+The script will automatically:
+
+* Submit all jobs with proper dependencies
+* Handle 4-hour GPU time limits by chaining runs
+* Parallelize work across 24 jobs where possible
+* Merge results into single ``.pt`` file
+
+**Skip Already Completed Stages:**
+
+.. code-block:: bash
+
+   # Skip keypoint extraction (if already done)
+   python retarget_all_amass_to_g1.py --skip-extract
+   
+   # Skip extraction and retargeting (if already done)
+   python retarget_all_amass_to_g1.py --skip-extract-retarget
+
+Manual Step-by-Step Process
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+For smaller datasets or custom workflows, you can run each stage manually.
+
+**Step 1: Extract Keypoints**
+
+Convert source motions to intermediate keypoint representation:
+
+.. code-block:: bash
+
+   python data/scripts/extract_retargeting_input_keypoints_from_packaged_motionlib.py \
+       /path/to/amass.pt \
+       --start-idx 0 \
+       --skip-freq 1 \
+       --skeleton-format smpl \
+       --output-path keypoints/ \
+       --force-remake
+
+**Parameters:**
+
+* ``start-idx``: Starting motion index
+* ``skip-freq``: Process every Nth motion (for parallelization)
+* ``skeleton-format``: Source skeleton type (``smpl``, ``smplx``, etc.)
+
+**Step 2: Retarget to Robot**
+
+Use inverse kinematics to map keypoints to target robot:
+
+.. code-block:: bash
+
+   cd pyroki
+   python batch_retarget_to_g1_from_keypoints.py \
+       --keypoints-folder-path keypoints/ \
+       --output-dir retargeted/ \
+       --urdf-path protomotions/data/assets/urdf/for_retargeting/g1.urdf \
+       --mesh-dir protomotions/data/assets/mesh/G1 \
+       --source-type smpl \
+       --subsample-factor 1
+
+**Parameters:**
+
+* ``source-type``: Source skeleton format
+* ``subsample-factor``: Downsample factor (1 = no downsampling)
+* ``skip-existing``: Skip already retargeted motions
+
+**Step 3: Extract Contact Labels**
+
+Determine foot contact states from keypoints:
+
+.. code-block:: bash
+
+   python pyroki/batch_retarget_to_g1_from_keypoints.py \
+       --keypoints-folder-path keypoints/ \
+       --source-type smpl \
+       --save-contacts-only \
+       --contacts-dir contacts/
+
+**Step 4: Convert to Isaac Format**
+
+Convert retargeted motions to simulator-compatible format:
+
+.. code-block:: bash
+
+   python data/scripts/convert_pyroki_retargeted_robot_motions_to_isaac.py \
+       --retargeted-motion-dir retargeted/ \
+       --output-dir isaac_format/ \
+       --robot-type g1 \
+       --contact-labels-dir contacts/ \
+       --apply-motion-filter \
+       --force-remake
+
+**Parameters:**
+
+* ``robot-type``: Target robot (``g1``, ``h1``, etc.)
+* ``apply-motion-filter``: Remove invalid/unstable motions
+* ``contact-labels-dir``: Contact label directory
+
+**Step 5: Package Motion Library**
+
+Create final packaged motion library:
+
+.. code-block:: bash
+
+   python protomotions/utils/motion_lib.py \
+       --motion-path isaac_format/ \
+       --output-file final_motions.pt
+
+Retargeting to Other Robots
+----------------------------
+
+The same pipeline works for other robots. Key differences:
+
+Unitree H1
+~~~~~~~~~~
+
+.. code-block:: bash
+
+   # Use H1-specific scripts and URDFs
+   python batch_retarget_to_h1_from_keypoints.py \
+       --urdf-path protomotions/data/assets/urdf/for_retargeting/h1.urdf \
+       --mesh-dir protomotions/data/assets/mesh/H1 \
+       ...
+   
+   # In conversion step
+   python convert_pyroki_retargeted_robot_motions_to_isaac.py \
+       --robot-type h1 \
+       ...
+
+Custom Robots
+~~~~~~~~~~~~~
+
+For custom robots:
+
+1. Create URDF for retargeting (see :doc:`custom_robot`)
+2. Define keypoint mapping in retargeting script
+3. Implement robot-specific ``RobotConfig``
+4. Use ``--robot-type custom`` in conversion
+
+Understanding the Output
+-------------------------
+
+After retargeting, you'll have:
+
+**Intermediate Files:**
+
+* ``keypoints/``: Extracted 3D positions and rotations
+* ``retargeted/``: Robot-specific joint angles (raw)
+* ``contacts/``: Foot contact labels per frame
+* ``isaac_format/``: Individual ``.npy`` files per motion
+
+**Final Output:**
+
+* ``final_motions.pt``: Packaged motion library ready for training
+
+**Motion Library Contents:**
+
+.. code-block:: python
+
+   import torch
+   
+   motion_lib = torch.load('final_motions.pt')
+   
+   # Available data
+   motion_lib['gts']            # Global translations
+   motion_lib['grs']            # Global rotations (quaternions)
+   motion_lib['gvs']            # Global velocities
+   motion_lib['gavs']           # Global angular velocities
+   motion_lib['dps']            # DOF positions
+   motion_lib['dvs']            # DOF velocities
+   motion_lib['contacts']       # Contact labels
+   motion_lib['motion_lengths'] # Duration of each motion
+   motion_lib['motion_files']   # Source file names
+
+Using Retargeted Motions
+-------------------------
+
+Once retargeted, use the motion library for training:
+
+.. code-block:: bash
+
+   python protomotions/train_agent.py \
+       --robot-name g1 \
+       --simulator isaacgym \
+       --experiment-path examples/experiments/mimic/mlp.py \
+       --experiment-name g1_walking \
+       --motion-file datasets/amass/g1/final_motions.pt \
+       --num-envs 4096
+
+Performance Tips
+----------------
+
+**Parallelization:**
+
+* Use ``--skip-freq`` to split extraction across jobs
+* Process 24 chunks in parallel (optimal for SLURM)
+* GPU retargeting benefits from batching
+
+**Memory Management:**
+
+* Increase ``--mem`` for large datasets (32GB recommended)
+* Use ``--skip-existing`` to resume interrupted jobs
+* Clear intermediate files after packaging
+
+**Quality Control:**
+
+* Always use ``--apply-motion-filter`` to remove bad motions
+* Check contact labels visually before training
+* Verify joint limits in retargeted motions
+
+Troubleshooting
+---------------
+
+**Retargeting Failures**
+
+If some motions fail to retarget:
+
+* Check URDF joint limits
+* Verify keypoint extraction quality
+* Try increasing IK solver iterations
+
+**Contact Label Issues**
+
+If contacts look wrong:
+
+* Verify source skeleton format matches data
+* Check ground height assumptions
+* Adjust contact detection thresholds
+
+**Packaging Errors**
+
+If packaging fails:
+
+* Ensure all ``.npy`` files have same structure
+* Check for corrupted files (zero size)
+* Verify robot DOF count matches data
+
+Next Steps
+----------
+
+* :doc:`motion_tracking` - Train agents with retargeted motions
+* :doc:`custom_robot` - Add support for new robots
+* :doc:`amass_parsing` - Process raw AMASS data
+
+Related Scripts
+---------------
+
+* ``data/scripts/retarget_all_amass_to_g1.py`` - Full AMASS to G1 pipeline
+* ``data/scripts/retarget_all_amass_to_h1.py`` - Full AMASS to H1 pipeline
+* ``data/scripts/extract_retargeting_input_keypoints_from_packaged_motionlib.py`` - Keypoint extraction
+* ``data/scripts/convert_pyroki_retargeted_robot_motions_to_isaac.py`` - Isaac conversion
+* ``pyroki/batch_retarget_to_g1_from_keypoints.py`` - G1 retargeting
+* ``pyroki/batch_retarget_to_h1_from_keypoints.py`` - H1 retargeting
+

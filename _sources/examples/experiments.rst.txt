@@ -1,0 +1,342 @@
+Experiment Configurations
+=========================
+
+ProtoMotions includes ready-to-use experiment configurations for all algorithms.
+These configurations are production-tested and serve as templates for your own experiments.
+
+Understanding Experiment Files
+-------------------------------
+
+Experiment files define complete training setups. Each file specifies:
+
+* Agent configuration (architecture, hyperparameters)
+* Environment configuration (rewards, observations, episode length)
+* Optional customizations (robot modifications, simulator tweaks)
+
+All experiment files are in ``examples/experiments/`` organized by algorithm.
+
+Experiment File Structure
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Every experiment file has three main functions:
+
+.. code-block:: python
+
+   def configure_robot_and_simulator(robot_config, simulator_config):
+       """Optional: Modify robot or simulator configs"""
+       return robot_config, simulator_config
+
+   def configure_agent(robot_config, env_config):
+       """Define agent architecture and training hyperparameters"""
+       return PPOAgentConfig(...)
+
+   def configure_env(robot_config, simulator_config):
+       """Define environment rewards and observations"""
+       return MimicEnvConfig(...)
+
+1. Mimic - Precise Motion Tracking
+------------------------------------
+
+**What it does**: Trains agents to accurately reproduce reference motions frame-by-frame using imitation rewards.
+
+**Paper**: `DeepMimic: Example-Guided Deep Reinforcement Learning of Physics-Based Character Skills <https://arxiv.org/abs/1804.02717>`_
+
+**Architecture Options**:
+
+* **MLP**: Standard feedforward network. Best for learning individual motions or small datasets.
+* **Transformer**: Conditions on multiple future reference frames simultaneously. Use this for large, diverse motion datasets where temporal context improves tracking quality.
+
+**Key Variants**:
+
+* **complex_terrain**: Experiment file configured for motion tracking on stairs, slopes, and uneven ground with terrain-aware observations.
+* **deploy**: Adds domain randomization (friction, center of mass position, action noise) to train robust policies ready for real-world deployment.
+
+**When to use**: You have reference motions and need a policy that follows them precisely.
+
+**Example**:
+
+.. code-block:: bash
+
+   # Basic MLP tracker
+   python protomotions/train_agent.py \
+       --experiment-path examples/experiments/mimic/mlp.py \
+       --robot-name smpl \
+       --simulator isaaclab \
+       --motion-file data/motions/walk.npy
+
+   # Transformer for diverse motions (conditions on future frames)
+   python protomotions/train_agent.py \
+       --experiment-path examples/experiments/mimic/transformer.py \
+       --robot-name smpl \
+       --simulator isaaclab \
+       --motion-file data/motions/amass_train.pt
+
+   # Complex terrain tracking
+   python protomotions/train_agent.py \
+       --experiment-path examples/experiments/mimic/mlp_complex_terrain.py \
+       --robot-name smpl \
+       --simulator isaaclab \
+       --motion-file data/motions/walk.npy
+
+   # Deployment with domain randomization
+   python protomotions/train_agent.py \
+       --experiment-path examples/experiments/mimic/mlp_deploy.py \
+       --robot-name smpl \
+       --simulator isaaclab \
+       --motion-file data/motions/walk.npy
+
+2. MaskedMimic - Versatile Motion Controller
+----------------------------------------------
+
+**What it does**: Creates a controller that can follow motions using only partial body tracking (e.g., just head and hands from VR) by learning from a full-body motion tracking expert.
+
+**Paper**: `MaskedMimic: Unified Physics-Based Character Control Through Masked Motion Inpainting <https://research.nvidia.com/labs/par/maskedmimic/>`_
+
+**How it works**: Two-phase training approach:
+
+1. **Phase 1**: Train a full-body motion tracker (the "expert") using Mimic with complete pose information
+2. **Phase 2**: Train a student policy that learns to match the expert's actions, but only receives partial observations (masked inputs)
+
+**When to use**: You want interactive motion control from limited tracking devices (VR headsets, sparse mocap markers, hand tracking) while maintaining natural full-body motion.
+
+**Example**:
+
+.. code-block:: bash
+
+   # Phase 1: Train expert tracker
+   python protomotions/train_agent.py \
+       --experiment-path examples/experiments/mimic/mlp.py \
+       --robot-name smpl \
+       --simulator isaaclab \
+       --motion-file <path to amass dataset> \
+       --experiment-name expert_tracker
+
+   # Phase 2: Distill to MaskedMimic
+   python protomotions/train_agent.py \
+       --experiment-path examples/experiments/masked_mimic/transformer.py \
+       --robot-name smpl \
+       --simulator isaaclab \
+       --motion-file <path to amass dataset> \
+       --overrides "agent.config.expert_model_path=results/expert_tracker/" \
+       --experiment-name masked_mimic
+
+3. AMP - Style-Based Motion Learning
+--------------------------------------
+
+**What it does**: Learns to move in the style of reference motions without tracking them precisely. The policy captures the "feel" and naturalness of motions rather than exact poses.
+
+**Paper**: `AMP: Adversarial Motion Priors for Stylized Physics-Based Character Control <https://arxiv.org/abs/2104.02180>`_
+
+**How it works**: A discriminator network tries to tell apart reference motion clips from policy-generated motion. The policy gets rewarded for producing motion that looks natural enough to fool the discriminator.
+
+**When to use**: You want natural-looking movement (walking, running, reaching) but don't need frame-by-frame accuracy. Perfect for downstream tasks where motion quality matters more than exact reproduction.
+
+**Example**:
+
+.. code-block:: bash
+
+   python protomotions/train_agent.py \
+       --experiment-path examples/experiments/amp/mlp.py \
+       --robot-name smpl \
+       --simulator isaaclab \
+       --motion-file <path to motion dataset> \
+       --experiment-name amp_walk
+
+4. ASE - Low-Level Skill Controller
+-------------------------------------
+
+**What it does**: Trains a single controller that can perform many different skills, where each skill is selected by providing a different latent code (think of it as a "skill ID").
+
+**Paper**: `ASE: Large-Scale Reusable Adversarial Skill Embeddings for Physically Simulated Characters <https://research.nvidia.com/labs/toronto-ai/ASE/>`_
+
+**How it works**: The policy takes both observations and a latent code as input. It learns to associate different latent codes with different motion styles from a diverse dataset. A discriminator ensures each latent produces distinct, natural-looking motion.
+
+**When to use**: You have a large, diverse motion dataset (100+ motions with different styles) and want one policy that can switch between many behaviors by changing the latent code input.
+
+**Example**:
+
+.. code-block:: bash
+
+   python protomotions/train_agent.py \
+       --experiment-path examples/experiments/ase/mlp.py \
+       --robot-name smpl \
+       --simulator isaaclab \
+       --motion-file <path to diverse motion dataset> \
+       --experiment-name ase_skills
+
+5. ADD - Alternative to Mimic
+------------------------------
+
+**What it does**: An adversarial approach to motion tracking that automatically balances multiple objectives without manual reward weight tuning. Uses a discriminator to learn how to combine tracking errors dynamically.
+
+**Paper**: `ADD: Physics-Based Motion Imitation with Adversarial Differential Discriminators <https://add-moo.github.io/>`_
+
+**When to use**: Try this if Mimic isn't converging well for your motions, or as a baseline comparison. Worth experimenting with both to see which gives better results for your specific use case.
+
+**Example**:
+
+.. code-block:: bash
+
+   python protomotions/train_agent.py \
+       --experiment-path examples/experiments/mimic/agent_add.py \
+       --robot-name smpl \
+       --simulator isaaclab \
+       --motion-file <path to motion dataset> \
+       --experiment-name add_tracker
+
+Customizing Experiment Files
+-----------------------------
+
+Creating Your Own Experiment
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+1. **Copy an existing experiment**:
+
+.. code-block:: bash
+
+   cp examples/experiments/mimic/mlp.py examples/experiments/my_exp/my_config.py
+
+2. **Modify configuration functions**:
+
+.. code-block:: python
+
+   def configure_agent(robot_config, env_config):
+       return PPOAgentConfig(
+           learning_rate=5e-5,  # Your custom value
+           batch_size=8192,     # Your custom value
+           # ... more parameters
+       )
+
+   def configure_env(robot_config, simulator_config):
+       return MimicEnvConfig(
+           max_episode_length=500,  # Your custom value
+           # ... more parameters
+       )
+
+3. **Run your experiment**:
+
+.. code-block:: bash
+
+   python protomotions/train_agent.py \
+       --experiment-path examples/experiments/my_exp/my_config.py \
+       --robot-name smpl \
+       --simulator isaacgym \
+       --experiment-name my_experiment
+
+Common Customizations
+~~~~~~~~~~~~~~~~~~~~~
+
+**Adjust reward weights**:
+
+.. code-block:: python
+
+   env_config.mimic_reward_config.reward_components.gt_rew.weight = 0.7  # Joint positions
+   env_config.mimic_reward_config.reward_components.gr_rew.weight = 0.3  # Joint rotations
+
+**Change network architecture**:
+
+.. code-block:: python
+
+   # Modify the critic's trunk network in configure_agent()
+   critic_config = MultiHeadedMLPConfig(
+       num_out=1,
+       input_models={
+           # ... your input models here ...
+       },
+       trunk=MLPConfig(
+           num_in=robot_config.number_of_actions,
+           num_out=1,
+           layers=[
+               MLPLayerConfig(units=512, activation="relu"),
+               MLPLayerConfig(units=256, activation="relu"),
+           ]
+       )
+   )
+
+**Modify observation space**:
+
+.. code-block:: python
+
+   # In configure_env(), modify the observation configs
+   
+   # Adjust action history
+   env_config = MimicEnvConfig(
+       humanoid_obs=HumanoidObsConfig(
+           action_history=ActionHistoryConfig(
+               enabled=True,
+               num_historical_steps=2,  # More history
+           ),
+       ),
+       mimic_obs=MimicObsConfig(
+           enabled=True,
+           mimic_target_pose=MimicTargetPoseConfig(
+               enabled=True,
+               type=FuturePoseType.MAX_COORDS,
+               with_velocities=True,
+               future_steps=[1, 3, 5, 10],  # Condition on multiple future frames
+           )
+       ),
+   )
+
+Quick Comparison
+-----------------
+
+.. list-table::
+   :header-rows: 1
+   :widths: 20 40 40
+
+   * - Method
+     - Best For
+     - Key Distinction
+   * - **Mimic**
+     - Frame-accurate motion tracking
+     - Precise pose reproduction
+   * - **MaskedMimic**
+     - Interactive control with partial tracking
+     - Works with VR/limited sensors
+   * - **AMP**
+     - Natural-looking task behaviors
+     - Learns style, not exact poses
+   * - **ASE**
+     - Multi-skill policies
+     - One policy, many behaviors via latent codes
+   * - **ADD**
+     - Motion tracking (alternative)
+     - Different reward formulation than Mimic
+
+Best Practices
+--------------
+
+Experiment Organization
+~~~~~~~~~~~~~~~~~~~~~~~
+
+1. **Use descriptive names**: ``my_exp_large_batch_terrain``
+2. **One experiment per idea**: Don't mix multiple changes
+3. **Document changes**: Add comments in your experiment file
+4. **Version control**: Commit experiment files to git
+5. **Track results**: Use W&B to compare experiments
+
+Parameter Tuning Strategy
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+1. **Start with provided config**: Use closest existing experiment
+2. **Change one thing**: Isolate effect of each change
+3. **Run full training**: Don't judge from early epochs
+4. **Compare metrics**: Use W&B to compare experiments
+5. **Document findings**: Note what worked and what didn't
+
+Next Steps
+----------
+
+* Try different experiments from ``examples/experiments/``
+* Modify an experiment for your needs
+* Create custom rewards and observations
+* Share successful configs with the community!
+
+See Also
+--------
+
+* :doc:`../user_guide/training` - Training guide
+* :doc:`../user_guide/algorithms` - Algorithm details
+* :doc:`../tutorials/basic_training` - Step-by-step tutorials
+

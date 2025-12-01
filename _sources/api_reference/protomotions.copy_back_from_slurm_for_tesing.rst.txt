@@ -1,0 +1,7 @@
+protomotions.copy\_back\_from\_slurm\_for\_tesing module
+========================================================
+
+.. automodule:: protomotions.copy_back_from_slurm_for_tesing
+   :members:
+   :show-inheritance:
+   :undoc-members:

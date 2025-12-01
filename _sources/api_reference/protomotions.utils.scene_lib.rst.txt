@@ -1,0 +1,7 @@
+protomotions.utils.scene\_lib module
+====================================
+
+.. automodule:: protomotions.utils.scene_lib
+   :members:
+   :show-inheritance:
+   :undoc-members:

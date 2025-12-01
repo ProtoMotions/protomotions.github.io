@@ -1,0 +1,7 @@
+protomotions.train\_agent module
+================================
+
+.. automodule:: protomotions.train_agent
+   :members:
+   :show-inheritance:
+   :undoc-members:

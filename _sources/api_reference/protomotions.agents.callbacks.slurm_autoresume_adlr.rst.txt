@@ -1,0 +1,7 @@
+protomotions.agents.callbacks.slurm\_autoresume\_adlr module
+============================================================
+
+.. automodule:: protomotions.agents.callbacks.slurm_autoresume_adlr
+   :members:
+   :show-inheritance:
+   :undoc-members:
