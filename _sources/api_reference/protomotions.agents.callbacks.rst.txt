@@ -12,6 +12,4 @@ Submodules
 .. toctree::
    :maxdepth: 4
 
-   protomotions.agents.callbacks.one_logger
-   protomotions.agents.callbacks.slurm_autoresume_adlr
    protomotions.agents.callbacks.slurm_autoresume_srun

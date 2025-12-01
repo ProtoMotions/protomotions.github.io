@@ -211,6 +211,7 @@
 <p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../user_guide/configuration.html">Configuration System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/experiments.html">Experiments</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user_guide/developer_tips.html">Developer Tips</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Key Concepts</span></p>
@@ -244,8 +245,6 @@
 </ul>
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="protomotions.agents.callbacks.html">protomotions.agents.callbacks package</a><input aria-label="Toggle navigation of protomotions.agents.callbacks package" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.callbacks.one_logger.html">protomotions.agents.callbacks.one_logger module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.callbacks.slurm_autoresume_adlr.html">protomotions.agents.callbacks.slurm_autoresume_adlr module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="protomotions.agents.callbacks.slurm_autoresume_srun.html">protomotions.agents.callbacks.slurm_autoresume_srun module</a></li>
 </ul>
 </li>
@@ -329,12 +328,8 @@
           <span>Back to top</span>
         </a>
         <div class="content-icon-container">
-          <div class="view-this-page">
-  <a class="muted-link" href="../_sources/api_reference/protomotions.agents.base_agent.config.rst.txt" title="View this page">
-    <svg><use href="#svg-eye"></use></svg>
-    <span class="visually-hidden">View this page</span>
-  </a>
-</div>
+          
+
 <div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
               <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
@@ -638,47 +633,47 @@ settings, and evaluation parameters.</p>
             <ul>
 <li><a class="reference internal" href="#">protomotions.agents.base_agent.config module</a><ul>
 <li><a class="reference internal" href="#protomotions.agents.base_agent.config.MaxEpisodeLengthManagerConfig"><code class="docutils literal notranslate"><span class="pre">MaxEpisodeLengthManagerConfig</span></code></a><ul>
-<li><a class="reference internal" href="#protomotions.agents.base_agent.config.MaxEpisodeLengthManagerConfig.start_length"><code class="docutils literal notranslate"><span class="pre">MaxEpisodeLengthManagerConfig.start_length</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.base_agent.config.MaxEpisodeLengthManagerConfig.end_length"><code class="docutils literal notranslate"><span class="pre">MaxEpisodeLengthManagerConfig.end_length</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.base_agent.config.MaxEpisodeLengthManagerConfig.transition_epochs"><code class="docutils literal notranslate"><span class="pre">MaxEpisodeLengthManagerConfig.transition_epochs</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.base_agent.config.MaxEpisodeLengthManagerConfig.current_max_episode_length"><code class="docutils literal notranslate"><span class="pre">MaxEpisodeLengthManagerConfig.current_max_episode_length()</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.base_agent.config.MaxEpisodeLengthManagerConfig.__init__"><code class="docutils literal notranslate"><span class="pre">MaxEpisodeLengthManagerConfig.__init__()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.base_agent.config.MaxEpisodeLengthManagerConfig.start_length"><code class="docutils literal notranslate"><span class="pre">start_length</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.base_agent.config.MaxEpisodeLengthManagerConfig.end_length"><code class="docutils literal notranslate"><span class="pre">end_length</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.base_agent.config.MaxEpisodeLengthManagerConfig.transition_epochs"><code class="docutils literal notranslate"><span class="pre">transition_epochs</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.base_agent.config.MaxEpisodeLengthManagerConfig.current_max_episode_length"><code class="docutils literal notranslate"><span class="pre">current_max_episode_length()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.base_agent.config.MaxEpisodeLengthManagerConfig.__init__"><code class="docutils literal notranslate"><span class="pre">__init__()</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#protomotions.agents.base_agent.config.OptimizerConfig"><code class="docutils literal notranslate"><span class="pre">OptimizerConfig</span></code></a><ul>
-<li><a class="reference internal" href="#protomotions.agents.base_agent.config.OptimizerConfig.lr"><code class="docutils literal notranslate"><span class="pre">OptimizerConfig.lr</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.base_agent.config.OptimizerConfig.weight_decay"><code class="docutils literal notranslate"><span class="pre">OptimizerConfig.weight_decay</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.base_agent.config.OptimizerConfig.eps"><code class="docutils literal notranslate"><span class="pre">OptimizerConfig.eps</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.base_agent.config.OptimizerConfig.betas"><code class="docutils literal notranslate"><span class="pre">OptimizerConfig.betas</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.base_agent.config.OptimizerConfig.__init__"><code class="docutils literal notranslate"><span class="pre">OptimizerConfig.__init__()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.base_agent.config.OptimizerConfig.lr"><code class="docutils literal notranslate"><span class="pre">lr</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.base_agent.config.OptimizerConfig.weight_decay"><code class="docutils literal notranslate"><span class="pre">weight_decay</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.base_agent.config.OptimizerConfig.eps"><code class="docutils literal notranslate"><span class="pre">eps</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.base_agent.config.OptimizerConfig.betas"><code class="docutils literal notranslate"><span class="pre">betas</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.base_agent.config.OptimizerConfig.__init__"><code class="docutils literal notranslate"><span class="pre">__init__()</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#protomotions.agents.base_agent.config.BaseModelConfig"><code class="docutils literal notranslate"><span class="pre">BaseModelConfig</span></code></a><ul>
-<li><a class="reference internal" href="#protomotions.agents.base_agent.config.BaseModelConfig.in_keys"><code class="docutils literal notranslate"><span class="pre">BaseModelConfig.in_keys</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.base_agent.config.BaseModelConfig.out_keys"><code class="docutils literal notranslate"><span class="pre">BaseModelConfig.out_keys</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.base_agent.config.BaseModelConfig.__init__"><code class="docutils literal notranslate"><span class="pre">BaseModelConfig.__init__()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.base_agent.config.BaseModelConfig.in_keys"><code class="docutils literal notranslate"><span class="pre">in_keys</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.base_agent.config.BaseModelConfig.out_keys"><code class="docutils literal notranslate"><span class="pre">out_keys</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.base_agent.config.BaseModelConfig.__init__"><code class="docutils literal notranslate"><span class="pre">__init__()</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#protomotions.agents.base_agent.config.BaseAgentConfig"><code class="docutils literal notranslate"><span class="pre">BaseAgentConfig</span></code></a><ul>
-<li><a class="reference internal" href="#protomotions.agents.base_agent.config.BaseAgentConfig.batch_size"><code class="docutils literal notranslate"><span class="pre">BaseAgentConfig.batch_size</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.base_agent.config.BaseAgentConfig.training_max_steps"><code class="docutils literal notranslate"><span class="pre">BaseAgentConfig.training_max_steps</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.base_agent.config.BaseAgentConfig.model"><code class="docutils literal notranslate"><span class="pre">BaseAgentConfig.model</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.base_agent.config.BaseAgentConfig.num_steps"><code class="docutils literal notranslate"><span class="pre">BaseAgentConfig.num_steps</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.base_agent.config.BaseAgentConfig.gradient_clip_val"><code class="docutils literal notranslate"><span class="pre">BaseAgentConfig.gradient_clip_val</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.base_agent.config.BaseAgentConfig.fail_on_bad_grads"><code class="docutils literal notranslate"><span class="pre">BaseAgentConfig.fail_on_bad_grads</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.base_agent.config.BaseAgentConfig.check_grad_mag"><code class="docutils literal notranslate"><span class="pre">BaseAgentConfig.check_grad_mag</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.base_agent.config.BaseAgentConfig.gamma"><code class="docutils literal notranslate"><span class="pre">BaseAgentConfig.gamma</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.base_agent.config.BaseAgentConfig.bounds_loss_coef"><code class="docutils literal notranslate"><span class="pre">BaseAgentConfig.bounds_loss_coef</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.base_agent.config.BaseAgentConfig.task_reward_w"><code class="docutils literal notranslate"><span class="pre">BaseAgentConfig.task_reward_w</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.base_agent.config.BaseAgentConfig.num_mini_epochs"><code class="docutils literal notranslate"><span class="pre">BaseAgentConfig.num_mini_epochs</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.base_agent.config.BaseAgentConfig.training_early_termination"><code class="docutils literal notranslate"><span class="pre">BaseAgentConfig.training_early_termination</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.base_agent.config.BaseAgentConfig.save_epoch_checkpoint_every"><code class="docutils literal notranslate"><span class="pre">BaseAgentConfig.save_epoch_checkpoint_every</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.base_agent.config.BaseAgentConfig.save_last_checkpoint_every"><code class="docutils literal notranslate"><span class="pre">BaseAgentConfig.save_last_checkpoint_every</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.base_agent.config.BaseAgentConfig.max_episode_length_manager"><code class="docutils literal notranslate"><span class="pre">BaseAgentConfig.max_episode_length_manager</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.base_agent.config.BaseAgentConfig.evaluator"><code class="docutils literal notranslate"><span class="pre">BaseAgentConfig.evaluator</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.base_agent.config.BaseAgentConfig.normalize_rewards"><code class="docutils literal notranslate"><span class="pre">BaseAgentConfig.normalize_rewards</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.base_agent.config.BaseAgentConfig.normalized_reward_clamp_value"><code class="docutils literal notranslate"><span class="pre">BaseAgentConfig.normalized_reward_clamp_value</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.base_agent.config.BaseAgentConfig.__init__"><code class="docutils literal notranslate"><span class="pre">BaseAgentConfig.__init__()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.base_agent.config.BaseAgentConfig.batch_size"><code class="docutils literal notranslate"><span class="pre">batch_size</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.base_agent.config.BaseAgentConfig.training_max_steps"><code class="docutils literal notranslate"><span class="pre">training_max_steps</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.base_agent.config.BaseAgentConfig.model"><code class="docutils literal notranslate"><span class="pre">model</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.base_agent.config.BaseAgentConfig.num_steps"><code class="docutils literal notranslate"><span class="pre">num_steps</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.base_agent.config.BaseAgentConfig.gradient_clip_val"><code class="docutils literal notranslate"><span class="pre">gradient_clip_val</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.base_agent.config.BaseAgentConfig.fail_on_bad_grads"><code class="docutils literal notranslate"><span class="pre">fail_on_bad_grads</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.base_agent.config.BaseAgentConfig.check_grad_mag"><code class="docutils literal notranslate"><span class="pre">check_grad_mag</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.base_agent.config.BaseAgentConfig.gamma"><code class="docutils literal notranslate"><span class="pre">gamma</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.base_agent.config.BaseAgentConfig.bounds_loss_coef"><code class="docutils literal notranslate"><span class="pre">bounds_loss_coef</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.base_agent.config.BaseAgentConfig.task_reward_w"><code class="docutils literal notranslate"><span class="pre">task_reward_w</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.base_agent.config.BaseAgentConfig.num_mini_epochs"><code class="docutils literal notranslate"><span class="pre">num_mini_epochs</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.base_agent.config.BaseAgentConfig.training_early_termination"><code class="docutils literal notranslate"><span class="pre">training_early_termination</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.base_agent.config.BaseAgentConfig.save_epoch_checkpoint_every"><code class="docutils literal notranslate"><span class="pre">save_epoch_checkpoint_every</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.base_agent.config.BaseAgentConfig.save_last_checkpoint_every"><code class="docutils literal notranslate"><span class="pre">save_last_checkpoint_every</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.base_agent.config.BaseAgentConfig.max_episode_length_manager"><code class="docutils literal notranslate"><span class="pre">max_episode_length_manager</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.base_agent.config.BaseAgentConfig.evaluator"><code class="docutils literal notranslate"><span class="pre">evaluator</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.base_agent.config.BaseAgentConfig.normalize_rewards"><code class="docutils literal notranslate"><span class="pre">normalize_rewards</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.base_agent.config.BaseAgentConfig.normalized_reward_clamp_value"><code class="docutils literal notranslate"><span class="pre">normalized_reward_clamp_value</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.base_agent.config.BaseAgentConfig.__init__"><code class="docutils literal notranslate"><span class="pre">__init__()</span></code></a></li>
 </ul>
 </li>
 </ul>

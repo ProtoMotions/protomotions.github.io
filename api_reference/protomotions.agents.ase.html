@@ -211,6 +211,7 @@
 <p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../user_guide/configuration.html">Configuration System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/experiments.html">Experiments</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user_guide/developer_tips.html">Developer Tips</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Key Concepts</span></p>
@@ -244,8 +245,6 @@
 </ul>
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="protomotions.agents.callbacks.html">protomotions.agents.callbacks package</a><input aria-label="Toggle navigation of protomotions.agents.callbacks package" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.callbacks.one_logger.html">protomotions.agents.callbacks.one_logger module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.callbacks.slurm_autoresume_adlr.html">protomotions.agents.callbacks.slurm_autoresume_adlr module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="protomotions.agents.callbacks.slurm_autoresume_srun.html">protomotions.agents.callbacks.slurm_autoresume_srun module</a></li>
 </ul>
 </li>
@@ -329,12 +328,8 @@
           <span>Back to top</span>
         </a>
         <div class="content-icon-container">
-          <div class="view-this-page">
-  <a class="muted-link" href="../_sources/api_reference/protomotions.agents.ase.rst.txt" title="View this page">
-    <svg><use href="#svg-eye"></use></svg>
-    <span class="visually-hidden">View this page</span>
-  </a>
-</div>
+          
+
 <div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
               <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
@@ -376,9 +371,82 @@ is conditioned on these latent codes for diverse skill learning.</p>
 <h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading">¶</a></h2>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="protomotions.agents.ase.agent.html">protomotions.agents.ase.agent module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="protomotions.agents.ase.config.html">protomotions.agents.ase.config module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="protomotions.agents.ase.model.html">protomotions.agents.ase.model module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="protomotions.agents.ase.agent.html">protomotions.agents.ase.agent module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="protomotions.agents.ase.agent.html#protomotions.agents.ase.agent.ASE"><code class="docutils literal notranslate"><span class="pre">ASE</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ase.agent.html#protomotions.agents.ase.agent.ASE.latents"><code class="docutils literal notranslate"><span class="pre">latents</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ase.agent.html#protomotions.agents.ase.agent.ASE.latent_reset_steps"><code class="docutils literal notranslate"><span class="pre">latent_reset_steps</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ase.agent.html#protomotions.agents.ase.agent.ASE.model"><code class="docutils literal notranslate"><span class="pre">model</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ase.agent.html#protomotions.agents.ase.agent.ASE.discriminator"><code class="docutils literal notranslate"><span class="pre">discriminator</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ase.agent.html#protomotions.agents.ase.agent.ASE.config"><code class="docutils literal notranslate"><span class="pre">config</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ase.agent.html#protomotions.agents.ase.agent.ASE.__init__"><code class="docutils literal notranslate"><span class="pre">__init__()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ase.agent.html#protomotions.agents.ase.agent.ASE.setup"><code class="docutils literal notranslate"><span class="pre">setup()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ase.agent.html#protomotions.agents.ase.agent.ASE.load_parameters"><code class="docutils literal notranslate"><span class="pre">load_parameters()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ase.agent.html#protomotions.agents.ase.agent.ASE.get_state_dict"><code class="docutils literal notranslate"><span class="pre">get_state_dict()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ase.agent.html#protomotions.agents.ase.agent.ASE.update_latents"><code class="docutils literal notranslate"><span class="pre">update_latents()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ase.agent.html#protomotions.agents.ase.agent.ASE.reset_latents"><code class="docutils literal notranslate"><span class="pre">reset_latents()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ase.agent.html#protomotions.agents.ase.agent.ASE.store_latents"><code class="docutils literal notranslate"><span class="pre">store_latents()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ase.agent.html#protomotions.agents.ase.agent.ASE.sample_latents"><code class="docutils literal notranslate"><span class="pre">sample_latents()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ase.agent.html#protomotions.agents.ase.agent.ASE.mi_enc_forward"><code class="docutils literal notranslate"><span class="pre">mi_enc_forward()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ase.agent.html#protomotions.agents.ase.agent.ASE.register_algorithm_experience_buffer_keys"><code class="docutils literal notranslate"><span class="pre">register_algorithm_experience_buffer_keys()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ase.agent.html#protomotions.agents.ase.agent.ASE.add_agent_info_to_obs"><code class="docutils literal notranslate"><span class="pre">add_agent_info_to_obs()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ase.agent.html#protomotions.agents.ase.agent.ASE.get_combined_experience_buffer_rewards"><code class="docutils literal notranslate"><span class="pre">get_combined_experience_buffer_rewards()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ase.agent.html#protomotions.agents.ase.agent.ASE.get_expert_disc_obs"><code class="docutils literal notranslate"><span class="pre">get_expert_disc_obs()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ase.agent.html#protomotions.agents.ase.agent.ASE.produce_negative_expert_obs"><code class="docutils literal notranslate"><span class="pre">produce_negative_expert_obs()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ase.agent.html#protomotions.agents.ase.agent.ASE.discriminator_step"><code class="docutils literal notranslate"><span class="pre">discriminator_step()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ase.agent.html#protomotions.agents.ase.agent.ASE.compute_uniformity_loss"><code class="docutils literal notranslate"><span class="pre">compute_uniformity_loss()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ase.agent.html#protomotions.agents.ase.agent.ASE.calculate_extra_actor_loss"><code class="docutils literal notranslate"><span class="pre">calculate_extra_actor_loss()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ase.agent.html#protomotions.agents.ase.agent.ASE.diversity_loss"><code class="docutils literal notranslate"><span class="pre">diversity_loss()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ase.agent.html#protomotions.agents.ase.agent.ASE.post_epoch_logging"><code class="docutils literal notranslate"><span class="pre">post_epoch_logging()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="protomotions.agents.ase.config.html">protomotions.agents.ase.config module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="protomotions.agents.ase.config.html#protomotions.agents.ase.config.ASEParametersConfig"><code class="docutils literal notranslate"><span class="pre">ASEParametersConfig</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ase.config.html#protomotions.agents.ase.config.ASEParametersConfig.latent_dim"><code class="docutils literal notranslate"><span class="pre">latent_dim</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ase.config.html#protomotions.agents.ase.config.ASEParametersConfig.latent_steps_min"><code class="docutils literal notranslate"><span class="pre">latent_steps_min</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ase.config.html#protomotions.agents.ase.config.ASEParametersConfig.latent_steps_max"><code class="docutils literal notranslate"><span class="pre">latent_steps_max</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ase.config.html#protomotions.agents.ase.config.ASEParametersConfig.mi_reward_w"><code class="docutils literal notranslate"><span class="pre">mi_reward_w</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ase.config.html#protomotions.agents.ase.config.ASEParametersConfig.mi_hypersphere_reward_shift"><code class="docutils literal notranslate"><span class="pre">mi_hypersphere_reward_shift</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ase.config.html#protomotions.agents.ase.config.ASEParametersConfig.mi_enc_weight_decay"><code class="docutils literal notranslate"><span class="pre">mi_enc_weight_decay</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ase.config.html#protomotions.agents.ase.config.ASEParametersConfig.mi_enc_grad_penalty"><code class="docutils literal notranslate"><span class="pre">mi_enc_grad_penalty</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ase.config.html#protomotions.agents.ase.config.ASEParametersConfig.diversity_bonus"><code class="docutils literal notranslate"><span class="pre">diversity_bonus</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ase.config.html#protomotions.agents.ase.config.ASEParametersConfig.diversity_tar"><code class="docutils literal notranslate"><span class="pre">diversity_tar</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ase.config.html#protomotions.agents.ase.config.ASEParametersConfig.latent_uniformity_weight"><code class="docutils literal notranslate"><span class="pre">latent_uniformity_weight</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ase.config.html#protomotions.agents.ase.config.ASEParametersConfig.uniformity_kernel_scale"><code class="docutils literal notranslate"><span class="pre">uniformity_kernel_scale</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ase.config.html#protomotions.agents.ase.config.ASEParametersConfig.__init__"><code class="docutils literal notranslate"><span class="pre">__init__()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="protomotions.agents.ase.config.html#protomotions.agents.ase.config.ASEDiscriminatorEncoderConfig"><code class="docutils literal notranslate"><span class="pre">ASEDiscriminatorEncoderConfig</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ase.config.html#protomotions.agents.ase.config.ASEDiscriminatorEncoderConfig.encoder_out_size"><code class="docutils literal notranslate"><span class="pre">encoder_out_size</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ase.config.html#protomotions.agents.ase.config.ASEDiscriminatorEncoderConfig.in_keys"><code class="docutils literal notranslate"><span class="pre">in_keys</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ase.config.html#protomotions.agents.ase.config.ASEDiscriminatorEncoderConfig.out_keys"><code class="docutils literal notranslate"><span class="pre">out_keys</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ase.config.html#protomotions.agents.ase.config.ASEDiscriminatorEncoderConfig.__init__"><code class="docutils literal notranslate"><span class="pre">__init__()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="protomotions.agents.ase.config.html#protomotions.agents.ase.config.ASEAgentConfig"><code class="docutils literal notranslate"><span class="pre">ASEAgentConfig</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ase.config.html#protomotions.agents.ase.config.ASEAgentConfig.ase_parameters"><code class="docutils literal notranslate"><span class="pre">ase_parameters</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ase.config.html#protomotions.agents.ase.config.ASEAgentConfig.__init__"><code class="docutils literal notranslate"><span class="pre">__init__()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="protomotions.agents.ase.model.html">protomotions.agents.ase.model module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="protomotions.agents.ase.model.html#protomotions.agents.ase.model.ASEDiscriminatorEncoder"><code class="docutils literal notranslate"><span class="pre">ASEDiscriminatorEncoder</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ase.model.html#protomotions.agents.ase.model.ASEDiscriminatorEncoder.config"><code class="docutils literal notranslate"><span class="pre">config</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ase.model.html#protomotions.agents.ase.model.ASEDiscriminatorEncoder.__init__"><code class="docutils literal notranslate"><span class="pre">__init__()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ase.model.html#protomotions.agents.ase.model.ASEDiscriminatorEncoder.forward"><code class="docutils literal notranslate"><span class="pre">forward()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ase.model.html#protomotions.agents.ase.model.ASEDiscriminatorEncoder.compute_mi_reward"><code class="docutils literal notranslate"><span class="pre">compute_mi_reward()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ase.model.html#protomotions.agents.ase.model.ASEDiscriminatorEncoder.calc_von_mises_fisher_enc_error"><code class="docutils literal notranslate"><span class="pre">calc_von_mises_fisher_enc_error()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ase.model.html#protomotions.agents.ase.model.ASEDiscriminatorEncoder.all_weights"><code class="docutils literal notranslate"><span class="pre">all_weights()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ase.model.html#protomotions.agents.ase.model.ASEDiscriminatorEncoder.all_discriminator_weights"><code class="docutils literal notranslate"><span class="pre">all_discriminator_weights()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ase.model.html#protomotions.agents.ase.model.ASEDiscriminatorEncoder.logit_weights"><code class="docutils literal notranslate"><span class="pre">logit_weights()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ase.model.html#protomotions.agents.ase.model.ASEDiscriminatorEncoder.all_enc_weights"><code class="docutils literal notranslate"><span class="pre">all_enc_weights()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ase.model.html#protomotions.agents.ase.model.ASEDiscriminatorEncoder.enc_weights"><code class="docutils literal notranslate"><span class="pre">enc_weights()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </div>
 </section>

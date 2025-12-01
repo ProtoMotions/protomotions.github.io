@@ -3,7 +3,7 @@
   <head><meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="../genindex.html"><link rel="search" title="Search" href="../search.html"><link rel="next" title="protomotions.agents.callbacks.one_logger module" href="protomotions.agents.callbacks.one_logger.html"><link rel="prev" title="protomotions.agents.base_agent.model module" href="protomotions.agents.base_agent.model.html">
+<link rel="index" title="Index" href="../genindex.html"><link rel="search" title="Search" href="../search.html"><link rel="next" title="protomotions.agents.callbacks.slurm_autoresume_srun module" href="protomotions.agents.callbacks.slurm_autoresume_srun.html"><link rel="prev" title="protomotions.agents.base_agent.model module" href="protomotions.agents.base_agent.model.html">
 
     <!-- Generated with Sphinx 8.2.3 and Furo 2025.09.25 -->
         <title>protomotions.agents.callbacks package - ProtoMotions documentation</title>
@@ -211,6 +211,7 @@
 <p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../user_guide/configuration.html">Configuration System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/experiments.html">Experiments</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user_guide/developer_tips.html">Developer Tips</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Key Concepts</span></p>
@@ -244,8 +245,6 @@
 </ul>
 </li>
 <li class="toctree-l2 current has-children current-page"><a class="current reference internal" href="#">protomotions.agents.callbacks package</a><input aria-label="Toggle navigation of protomotions.agents.callbacks package" checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.callbacks.one_logger.html">protomotions.agents.callbacks.one_logger module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.callbacks.slurm_autoresume_adlr.html">protomotions.agents.callbacks.slurm_autoresume_adlr module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="protomotions.agents.callbacks.slurm_autoresume_srun.html">protomotions.agents.callbacks.slurm_autoresume_srun module</a></li>
 </ul>
 </li>
@@ -329,12 +328,8 @@
           <span>Back to top</span>
         </a>
         <div class="content-icon-container">
-          <div class="view-this-page">
-  <a class="muted-link" href="../_sources/api_reference/protomotions.agents.callbacks.rst.txt" title="View this page">
-    <svg><use href="#svg-eye"></use></svg>
-    <span class="visually-hidden">View this page</span>
-  </a>
-</div>
+          
+
 <div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
               <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
@@ -354,15 +349,13 @@
 <h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading">¶</a></h2>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="protomotions.agents.callbacks.one_logger.html">protomotions.agents.callbacks.one_logger module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="protomotions.agents.callbacks.slurm_autoresume_adlr.html">protomotions.agents.callbacks.slurm_autoresume_adlr module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="protomotions.agents.callbacks.slurm_autoresume_srun.html">protomotions.agents.callbacks.slurm_autoresume_srun module</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="protomotions.agents.callbacks.slurm_autoresume_srun.html#protomotions.agents.callbacks.slurm_autoresume_srun.wandb_run_exists"><code class="docutils literal notranslate"><span class="pre">wandb_run_exists()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="protomotions.agents.callbacks.slurm_autoresume_srun.html#protomotions.agents.callbacks.slurm_autoresume_srun.AutoResumeCallbackSrun"><code class="docutils literal notranslate"><span class="pre">AutoResumeCallbackSrun</span></code></a><ul>
-<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.callbacks.slurm_autoresume_srun.html#protomotions.agents.callbacks.slurm_autoresume_srun.AutoResumeCallbackSrun.__init__"><code class="docutils literal notranslate"><span class="pre">AutoResumeCallbackSrun.__init__()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.callbacks.slurm_autoresume_srun.html#protomotions.agents.callbacks.slurm_autoresume_srun.AutoResumeCallbackSrun.before_play_steps"><code class="docutils literal notranslate"><span class="pre">AutoResumeCallbackSrun.before_play_steps()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.callbacks.slurm_autoresume_srun.html#protomotions.agents.callbacks.slurm_autoresume_srun.AutoResumeCallbackSrun.on_fit_start"><code class="docutils literal notranslate"><span class="pre">AutoResumeCallbackSrun.on_fit_start()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.callbacks.slurm_autoresume_srun.html#protomotions.agents.callbacks.slurm_autoresume_srun.AutoResumeCallbackSrun.on_fit_end"><code class="docutils literal notranslate"><span class="pre">AutoResumeCallbackSrun.on_fit_end()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.callbacks.slurm_autoresume_srun.html#protomotions.agents.callbacks.slurm_autoresume_srun.AutoResumeCallbackSrun.__init__"><code class="docutils literal notranslate"><span class="pre">__init__()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.callbacks.slurm_autoresume_srun.html#protomotions.agents.callbacks.slurm_autoresume_srun.AutoResumeCallbackSrun.before_play_steps"><code class="docutils literal notranslate"><span class="pre">before_play_steps()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.callbacks.slurm_autoresume_srun.html#protomotions.agents.callbacks.slurm_autoresume_srun.AutoResumeCallbackSrun.on_fit_start"><code class="docutils literal notranslate"><span class="pre">on_fit_start()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.callbacks.slurm_autoresume_srun.html#protomotions.agents.callbacks.slurm_autoresume_srun.AutoResumeCallbackSrun.on_fit_end"><code class="docutils literal notranslate"><span class="pre">on_fit_end()</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -377,12 +370,12 @@
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="protomotions.agents.callbacks.one_logger.html">
+          <a class="next-page" href="protomotions.agents.callbacks.slurm_autoresume_srun.html">
               <div class="page-info">
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">protomotions.agents.callbacks.one_logger module</div>
+                <div class="title">protomotions.agents.callbacks.slurm_autoresume_srun module</div>
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>

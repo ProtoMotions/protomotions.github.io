@@ -211,6 +211,7 @@
 <p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../user_guide/configuration.html">Configuration System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/experiments.html">Experiments</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user_guide/developer_tips.html">Developer Tips</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Key Concepts</span></p>
@@ -244,8 +245,6 @@
 </ul>
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="protomotions.agents.callbacks.html">protomotions.agents.callbacks package</a><input aria-label="Toggle navigation of protomotions.agents.callbacks package" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.callbacks.one_logger.html">protomotions.agents.callbacks.one_logger module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.callbacks.slurm_autoresume_adlr.html">protomotions.agents.callbacks.slurm_autoresume_adlr module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="protomotions.agents.callbacks.slurm_autoresume_srun.html">protomotions.agents.callbacks.slurm_autoresume_srun module</a></li>
 </ul>
 </li>
@@ -329,12 +328,8 @@
           <span>Back to top</span>
         </a>
         <div class="content-icon-container">
-          <div class="view-this-page">
-  <a class="muted-link" href="../_sources/api_reference/protomotions.agents.evaluators.metrics.rst.txt" title="View this page">
-    <svg><use href="#svg-eye"></use></svg>
-    <span class="visually-hidden">View this page</span>
-  </a>
-</div>
+          
+
 <div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
               <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
@@ -371,8 +366,8 @@ supports basic reduction operations for computing final metrics.</p>
 <li><p><strong>max_motion_len</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a>) – conservative max number of frames allocated for data storage
 for shape consistency across different GPUs when aggregating</p></li>
 <li><p><strong>num_sub_features</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a>) – Number of sub-features per data point (default: 1)</p></li>
-<li><p><strong>device</strong> (<em>&lt;Mock object at 0x78723e9abf90&gt;</em><em>[</em><em>]</em>) – Device to store the tensors on</p></li>
-<li><p><strong>dtype</strong> (<em>&lt;Mock object at 0x78723e9a8910&gt;</em><em>[</em><em>]</em>) – Data type for the tensors</p></li>
+<li><p><strong>device</strong> (<em>&lt;Mock object at 0x701e6bcee4d0&gt;</em><em>[</em><em>]</em>) – Device to store the tensors on</p></li>
+<li><p><strong>dtype</strong> (<em>&lt;Mock object at 0x701e6bcee6d0&gt;</em><em>[</em><em>]</em>) – Data type for the tensors</p></li>
 </ul>
 </dd>
 </dl>
@@ -697,28 +692,28 @@ Output is zero-padded at the beginning to match input length.</p>
             <ul>
 <li><a class="reference internal" href="#">protomotions.agents.evaluators.metrics module</a><ul>
 <li><a class="reference internal" href="#protomotions.agents.evaluators.metrics.MotionMetrics"><code class="docutils literal notranslate"><span class="pre">MotionMetrics</span></code></a><ul>
-<li><a class="reference internal" href="#protomotions.agents.evaluators.metrics.MotionMetrics.__init__"><code class="docutils literal notranslate"><span class="pre">MotionMetrics.__init__()</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.evaluators.metrics.MotionMetrics.update"><code class="docutils literal notranslate"><span class="pre">MotionMetrics.update()</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.evaluators.metrics.MotionMetrics.get_unfilled_mask"><code class="docutils literal notranslate"><span class="pre">MotionMetrics.get_unfilled_mask()</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.evaluators.metrics.MotionMetrics.max_reduce_each_motion"><code class="docutils literal notranslate"><span class="pre">MotionMetrics.max_reduce_each_motion()</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.evaluators.metrics.MotionMetrics.min_reduce_each_motion"><code class="docutils literal notranslate"><span class="pre">MotionMetrics.min_reduce_each_motion()</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.evaluators.metrics.MotionMetrics.mean_reduce_each_motion"><code class="docutils literal notranslate"><span class="pre">MotionMetrics.mean_reduce_each_motion()</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.evaluators.metrics.MotionMetrics.ops_mean_reduce"><code class="docutils literal notranslate"><span class="pre">MotionMetrics.ops_mean_reduce()</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.evaluators.metrics.MotionMetrics.max_mean_reduce"><code class="docutils literal notranslate"><span class="pre">MotionMetrics.max_mean_reduce()</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.evaluators.metrics.MotionMetrics.min_mean_reduce"><code class="docutils literal notranslate"><span class="pre">MotionMetrics.min_mean_reduce()</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.evaluators.metrics.MotionMetrics.mean_mean_reduce"><code class="docutils literal notranslate"><span class="pre">MotionMetrics.mean_mean_reduce()</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.evaluators.metrics.MotionMetrics.mean_max_reduce"><code class="docutils literal notranslate"><span class="pre">MotionMetrics.mean_max_reduce()</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.evaluators.metrics.MotionMetrics.mean_min_reduce"><code class="docutils literal notranslate"><span class="pre">MotionMetrics.mean_min_reduce()</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.evaluators.metrics.MotionMetrics.compute_finite_difference_jitter_reduce_each_motion"><code class="docutils literal notranslate"><span class="pre">MotionMetrics.compute_finite_difference_jitter_reduce_each_motion()</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.evaluators.metrics.MotionMetrics.compute_jitter_reduce_each_motion"><code class="docutils literal notranslate"><span class="pre">MotionMetrics.compute_jitter_reduce_each_motion()</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.evaluators.metrics.MotionMetrics.compute_rotation_jitter_reduce_each_motion"><code class="docutils literal notranslate"><span class="pre">MotionMetrics.compute_rotation_jitter_reduce_each_motion()</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.evaluators.metrics.MotionMetrics.jitter_mean_reduce_each_motion"><code class="docutils literal notranslate"><span class="pre">MotionMetrics.jitter_mean_reduce_each_motion()</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.evaluators.metrics.MotionMetrics.rotation_jitter_mean_reduce_each_motion"><code class="docutils literal notranslate"><span class="pre">MotionMetrics.rotation_jitter_mean_reduce_each_motion()</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.evaluators.metrics.MotionMetrics.copy_from"><code class="docutils literal notranslate"><span class="pre">MotionMetrics.copy_from()</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.evaluators.metrics.MotionMetrics.copy_from_motion_ids"><code class="docutils literal notranslate"><span class="pre">MotionMetrics.copy_from_motion_ids()</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.evaluators.metrics.MotionMetrics.merge_from"><code class="docutils literal notranslate"><span class="pre">MotionMetrics.merge_from()</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.evaluators.metrics.MotionMetrics.reset"><code class="docutils literal notranslate"><span class="pre">MotionMetrics.reset()</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.evaluators.metrics.MotionMetrics.to"><code class="docutils literal notranslate"><span class="pre">MotionMetrics.to()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.evaluators.metrics.MotionMetrics.__init__"><code class="docutils literal notranslate"><span class="pre">__init__()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.evaluators.metrics.MotionMetrics.update"><code class="docutils literal notranslate"><span class="pre">update()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.evaluators.metrics.MotionMetrics.get_unfilled_mask"><code class="docutils literal notranslate"><span class="pre">get_unfilled_mask()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.evaluators.metrics.MotionMetrics.max_reduce_each_motion"><code class="docutils literal notranslate"><span class="pre">max_reduce_each_motion()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.evaluators.metrics.MotionMetrics.min_reduce_each_motion"><code class="docutils literal notranslate"><span class="pre">min_reduce_each_motion()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.evaluators.metrics.MotionMetrics.mean_reduce_each_motion"><code class="docutils literal notranslate"><span class="pre">mean_reduce_each_motion()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.evaluators.metrics.MotionMetrics.ops_mean_reduce"><code class="docutils literal notranslate"><span class="pre">ops_mean_reduce()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.evaluators.metrics.MotionMetrics.max_mean_reduce"><code class="docutils literal notranslate"><span class="pre">max_mean_reduce()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.evaluators.metrics.MotionMetrics.min_mean_reduce"><code class="docutils literal notranslate"><span class="pre">min_mean_reduce()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.evaluators.metrics.MotionMetrics.mean_mean_reduce"><code class="docutils literal notranslate"><span class="pre">mean_mean_reduce()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.evaluators.metrics.MotionMetrics.mean_max_reduce"><code class="docutils literal notranslate"><span class="pre">mean_max_reduce()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.evaluators.metrics.MotionMetrics.mean_min_reduce"><code class="docutils literal notranslate"><span class="pre">mean_min_reduce()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.evaluators.metrics.MotionMetrics.compute_finite_difference_jitter_reduce_each_motion"><code class="docutils literal notranslate"><span class="pre">compute_finite_difference_jitter_reduce_each_motion()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.evaluators.metrics.MotionMetrics.compute_jitter_reduce_each_motion"><code class="docutils literal notranslate"><span class="pre">compute_jitter_reduce_each_motion()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.evaluators.metrics.MotionMetrics.compute_rotation_jitter_reduce_each_motion"><code class="docutils literal notranslate"><span class="pre">compute_rotation_jitter_reduce_each_motion()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.evaluators.metrics.MotionMetrics.jitter_mean_reduce_each_motion"><code class="docutils literal notranslate"><span class="pre">jitter_mean_reduce_each_motion()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.evaluators.metrics.MotionMetrics.rotation_jitter_mean_reduce_each_motion"><code class="docutils literal notranslate"><span class="pre">rotation_jitter_mean_reduce_each_motion()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.evaluators.metrics.MotionMetrics.copy_from"><code class="docutils literal notranslate"><span class="pre">copy_from()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.evaluators.metrics.MotionMetrics.copy_from_motion_ids"><code class="docutils literal notranslate"><span class="pre">copy_from_motion_ids()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.evaluators.metrics.MotionMetrics.merge_from"><code class="docutils literal notranslate"><span class="pre">merge_from()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.evaluators.metrics.MotionMetrics.reset"><code class="docutils literal notranslate"><span class="pre">reset()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.evaluators.metrics.MotionMetrics.to"><code class="docutils literal notranslate"><span class="pre">to()</span></code></a></li>
 </ul>
 </li>
 </ul>

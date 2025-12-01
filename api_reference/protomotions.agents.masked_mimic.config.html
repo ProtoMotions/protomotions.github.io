@@ -211,6 +211,7 @@
 <p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../user_guide/configuration.html">Configuration System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/experiments.html">Experiments</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user_guide/developer_tips.html">Developer Tips</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Key Concepts</span></p>
@@ -244,8 +245,6 @@
 </ul>
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="protomotions.agents.callbacks.html">protomotions.agents.callbacks package</a><input aria-label="Toggle navigation of protomotions.agents.callbacks package" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.callbacks.one_logger.html">protomotions.agents.callbacks.one_logger module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.callbacks.slurm_autoresume_adlr.html">protomotions.agents.callbacks.slurm_autoresume_adlr module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="protomotions.agents.callbacks.slurm_autoresume_srun.html">protomotions.agents.callbacks.slurm_autoresume_srun module</a></li>
 </ul>
 </li>
@@ -329,12 +328,8 @@
           <span>Back to top</span>
         </a>
         <div class="content-icon-container">
-          <div class="view-this-page">
-  <a class="muted-link" href="../_sources/api_reference/protomotions.agents.masked_mimic.config.rst.txt" title="View this page">
-    <svg><use href="#svg-eye"></use></svg>
-    <span class="visually-hidden">View this page</span>
-  </a>
-</div>
+          
+
 <div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
               <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
@@ -593,45 +588,45 @@
             <ul>
 <li><a class="reference internal" href="#">protomotions.agents.masked_mimic.config module</a><ul>
 <li><a class="reference internal" href="#protomotions.agents.masked_mimic.config.KLDScheduleConfig"><code class="docutils literal notranslate"><span class="pre">KLDScheduleConfig</span></code></a><ul>
-<li><a class="reference internal" href="#protomotions.agents.masked_mimic.config.KLDScheduleConfig.init_kld_coeff"><code class="docutils literal notranslate"><span class="pre">KLDScheduleConfig.init_kld_coeff</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.masked_mimic.config.KLDScheduleConfig.end_kld_coeff"><code class="docutils literal notranslate"><span class="pre">KLDScheduleConfig.end_kld_coeff</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.masked_mimic.config.KLDScheduleConfig.start_epoch"><code class="docutils literal notranslate"><span class="pre">KLDScheduleConfig.start_epoch</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.masked_mimic.config.KLDScheduleConfig.end_epoch"><code class="docutils literal notranslate"><span class="pre">KLDScheduleConfig.end_epoch</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.masked_mimic.config.KLDScheduleConfig.__init__"><code class="docutils literal notranslate"><span class="pre">KLDScheduleConfig.__init__()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.masked_mimic.config.KLDScheduleConfig.init_kld_coeff"><code class="docutils literal notranslate"><span class="pre">init_kld_coeff</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.masked_mimic.config.KLDScheduleConfig.end_kld_coeff"><code class="docutils literal notranslate"><span class="pre">end_kld_coeff</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.masked_mimic.config.KLDScheduleConfig.start_epoch"><code class="docutils literal notranslate"><span class="pre">start_epoch</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.masked_mimic.config.KLDScheduleConfig.end_epoch"><code class="docutils literal notranslate"><span class="pre">end_epoch</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.masked_mimic.config.KLDScheduleConfig.__init__"><code class="docutils literal notranslate"><span class="pre">__init__()</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#protomotions.agents.masked_mimic.config.VaeNoiseType"><code class="docutils literal notranslate"><span class="pre">VaeNoiseType</span></code></a><ul>
-<li><a class="reference internal" href="#protomotions.agents.masked_mimic.config.VaeNoiseType.NORMAL"><code class="docutils literal notranslate"><span class="pre">VaeNoiseType.NORMAL</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.masked_mimic.config.VaeNoiseType.UNIFORM"><code class="docutils literal notranslate"><span class="pre">VaeNoiseType.UNIFORM</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.masked_mimic.config.VaeNoiseType.ZEROS"><code class="docutils literal notranslate"><span class="pre">VaeNoiseType.ZEROS</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.masked_mimic.config.VaeNoiseType.from_str"><code class="docutils literal notranslate"><span class="pre">VaeNoiseType.from_str()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.masked_mimic.config.VaeNoiseType.NORMAL"><code class="docutils literal notranslate"><span class="pre">NORMAL</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.masked_mimic.config.VaeNoiseType.UNIFORM"><code class="docutils literal notranslate"><span class="pre">UNIFORM</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.masked_mimic.config.VaeNoiseType.ZEROS"><code class="docutils literal notranslate"><span class="pre">ZEROS</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.masked_mimic.config.VaeNoiseType.from_str"><code class="docutils literal notranslate"><span class="pre">from_str()</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#protomotions.agents.masked_mimic.config.VaeConfig"><code class="docutils literal notranslate"><span class="pre">VaeConfig</span></code></a><ul>
-<li><a class="reference internal" href="#protomotions.agents.masked_mimic.config.VaeConfig.kld_schedule"><code class="docutils literal notranslate"><span class="pre">VaeConfig.kld_schedule</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.masked_mimic.config.VaeConfig.vae_latent_dim"><code class="docutils literal notranslate"><span class="pre">VaeConfig.vae_latent_dim</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.masked_mimic.config.VaeConfig.vae_noise_type"><code class="docutils literal notranslate"><span class="pre">VaeConfig.vae_noise_type</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.masked_mimic.config.VaeConfig.__init__"><code class="docutils literal notranslate"><span class="pre">VaeConfig.__init__()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.masked_mimic.config.VaeConfig.kld_schedule"><code class="docutils literal notranslate"><span class="pre">kld_schedule</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.masked_mimic.config.VaeConfig.vae_latent_dim"><code class="docutils literal notranslate"><span class="pre">vae_latent_dim</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.masked_mimic.config.VaeConfig.vae_noise_type"><code class="docutils literal notranslate"><span class="pre">vae_noise_type</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.masked_mimic.config.VaeConfig.__init__"><code class="docutils literal notranslate"><span class="pre">__init__()</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#protomotions.agents.masked_mimic.config.FeedForwardModelConfig"><code class="docutils literal notranslate"><span class="pre">FeedForwardModelConfig</span></code></a><ul>
-<li><a class="reference internal" href="#protomotions.agents.masked_mimic.config.FeedForwardModelConfig.trunk"><code class="docutils literal notranslate"><span class="pre">FeedForwardModelConfig.trunk</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.masked_mimic.config.FeedForwardModelConfig.__init__"><code class="docutils literal notranslate"><span class="pre">FeedForwardModelConfig.__init__()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.masked_mimic.config.FeedForwardModelConfig.trunk"><code class="docutils literal notranslate"><span class="pre">trunk</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.masked_mimic.config.FeedForwardModelConfig.__init__"><code class="docutils literal notranslate"><span class="pre">__init__()</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#protomotions.agents.masked_mimic.config.MaskedMimicModelConfig"><code class="docutils literal notranslate"><span class="pre">MaskedMimicModelConfig</span></code></a><ul>
-<li><a class="reference internal" href="#protomotions.agents.masked_mimic.config.MaskedMimicModelConfig.encoder"><code class="docutils literal notranslate"><span class="pre">MaskedMimicModelConfig.encoder</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.masked_mimic.config.MaskedMimicModelConfig.prior"><code class="docutils literal notranslate"><span class="pre">MaskedMimicModelConfig.prior</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.masked_mimic.config.MaskedMimicModelConfig.trunk"><code class="docutils literal notranslate"><span class="pre">MaskedMimicModelConfig.trunk</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.masked_mimic.config.MaskedMimicModelConfig.vae"><code class="docutils literal notranslate"><span class="pre">MaskedMimicModelConfig.vae</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.masked_mimic.config.MaskedMimicModelConfig.optimizer"><code class="docutils literal notranslate"><span class="pre">MaskedMimicModelConfig.optimizer</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.masked_mimic.config.MaskedMimicModelConfig.__init__"><code class="docutils literal notranslate"><span class="pre">MaskedMimicModelConfig.__init__()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.masked_mimic.config.MaskedMimicModelConfig.encoder"><code class="docutils literal notranslate"><span class="pre">encoder</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.masked_mimic.config.MaskedMimicModelConfig.prior"><code class="docutils literal notranslate"><span class="pre">prior</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.masked_mimic.config.MaskedMimicModelConfig.trunk"><code class="docutils literal notranslate"><span class="pre">trunk</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.masked_mimic.config.MaskedMimicModelConfig.vae"><code class="docutils literal notranslate"><span class="pre">vae</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.masked_mimic.config.MaskedMimicModelConfig.optimizer"><code class="docutils literal notranslate"><span class="pre">optimizer</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.masked_mimic.config.MaskedMimicModelConfig.__init__"><code class="docutils literal notranslate"><span class="pre">__init__()</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#protomotions.agents.masked_mimic.config.MaskedMimicAgentConfig"><code class="docutils literal notranslate"><span class="pre">MaskedMimicAgentConfig</span></code></a><ul>
-<li><a class="reference internal" href="#protomotions.agents.masked_mimic.config.MaskedMimicAgentConfig.model"><code class="docutils literal notranslate"><span class="pre">MaskedMimicAgentConfig.model</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.masked_mimic.config.MaskedMimicAgentConfig.expert_model_path"><code class="docutils literal notranslate"><span class="pre">MaskedMimicAgentConfig.expert_model_path</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.masked_mimic.config.MaskedMimicAgentConfig.__init__"><code class="docutils literal notranslate"><span class="pre">MaskedMimicAgentConfig.__init__()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.masked_mimic.config.MaskedMimicAgentConfig.model"><code class="docutils literal notranslate"><span class="pre">model</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.masked_mimic.config.MaskedMimicAgentConfig.expert_model_path"><code class="docutils literal notranslate"><span class="pre">expert_model_path</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.masked_mimic.config.MaskedMimicAgentConfig.__init__"><code class="docutils literal notranslate"><span class="pre">__init__()</span></code></a></li>
 </ul>
 </li>
 </ul>

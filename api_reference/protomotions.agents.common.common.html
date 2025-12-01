@@ -211,6 +211,7 @@
 <p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../user_guide/configuration.html">Configuration System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/experiments.html">Experiments</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user_guide/developer_tips.html">Developer Tips</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Key Concepts</span></p>
@@ -244,8 +245,6 @@
 </ul>
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="protomotions.agents.callbacks.html">protomotions.agents.callbacks package</a><input aria-label="Toggle navigation of protomotions.agents.callbacks package" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.callbacks.one_logger.html">protomotions.agents.callbacks.one_logger module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.callbacks.slurm_autoresume_adlr.html">protomotions.agents.callbacks.slurm_autoresume_adlr module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="protomotions.agents.callbacks.slurm_autoresume_srun.html">protomotions.agents.callbacks.slurm_autoresume_srun module</a></li>
 </ul>
 </li>
@@ -329,12 +328,8 @@
           <span>Back to top</span>
         </a>
         <div class="content-icon-container">
-          <div class="view-this-page">
-  <a class="muted-link" href="../_sources/api_reference/protomotions.agents.common.common.rst.txt" title="View this page">
-    <svg><use href="#svg-eye"></use></svg>
-    <span class="visually-hidden">View this page</span>
-  </a>
-</div>
+          
+
 <div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
               <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
@@ -379,7 +374,7 @@ including observation normalization, weight initialization, and specialized laye
 <dd class="field-even"><p>Flat list of all parameters.</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.14)"><em>List</em></a>[&lt;Mock object at 0x78723ee13250&gt;[]]</p>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.14)"><em>List</em></a>[&lt;Mock object at 0x701e737d8250&gt;[]]</p>
 </dd>
 </dl>
 </dd></dl>
@@ -403,7 +398,7 @@ Linear layers get orthogonal or default initialization with zero bias.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="protomotions.agents.common.common.NormObsBase">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">protomotions.agents.common.common.</span></span><span class="sig-name descname"><span class="pre">NormObsBase</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/protomotions/agents/common/common.html#NormObsBase"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#protomotions.agents.common.common.NormObsBase" title="Link to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">&lt;Mock</span> <span class="pre">object</span> <span class="pre">at</span> <span class="pre">0x78723ee51150&gt;</span></code>[]</p>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">&lt;Mock</span> <span class="pre">object</span> <span class="pre">at</span> <span class="pre">0x701e739b5e10&gt;</span></code>[]</p>
 <p>Base class for modules with observation normalization.</p>
 <p>Provides running mean/std normalization of observations using exponential
 moving averages. Normalization statistics are updated during training and
@@ -679,40 +674,40 @@ Useful for multi-head architectures like ASE (discriminator + encoder heads).</p
 <li><a class="reference internal" href="#protomotions.agents.common.common.get_params"><code class="docutils literal notranslate"><span class="pre">get_params()</span></code></a></li>
 <li><a class="reference internal" href="#protomotions.agents.common.common.weight_init"><code class="docutils literal notranslate"><span class="pre">weight_init()</span></code></a></li>
 <li><a class="reference internal" href="#protomotions.agents.common.common.NormObsBase"><code class="docutils literal notranslate"><span class="pre">NormObsBase</span></code></a><ul>
-<li><a class="reference internal" href="#protomotions.agents.common.common.NormObsBase.running_obs_norm"><code class="docutils literal notranslate"><span class="pre">NormObsBase.running_obs_norm</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.common.common.NormObsBase.num_out"><code class="docutils literal notranslate"><span class="pre">NormObsBase.num_out</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.common.common.NormObsBase.__init__"><code class="docutils literal notranslate"><span class="pre">NormObsBase.__init__()</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.common.common.NormObsBase.build_norm"><code class="docutils literal notranslate"><span class="pre">NormObsBase.build_norm()</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.common.common.NormObsBase.forward"><code class="docutils literal notranslate"><span class="pre">NormObsBase.forward()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.common.common.NormObsBase.running_obs_norm"><code class="docutils literal notranslate"><span class="pre">running_obs_norm</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.common.common.NormObsBase.num_out"><code class="docutils literal notranslate"><span class="pre">num_out</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.common.common.NormObsBase.__init__"><code class="docutils literal notranslate"><span class="pre">__init__()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.common.common.NormObsBase.build_norm"><code class="docutils literal notranslate"><span class="pre">build_norm()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.common.common.NormObsBase.forward"><code class="docutils literal notranslate"><span class="pre">forward()</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#protomotions.agents.common.common.apply_module_operations"><code class="docutils literal notranslate"><span class="pre">apply_module_operations()</span></code></a></li>
 <li><a class="reference internal" href="#protomotions.agents.common.common.Flatten"><code class="docutils literal notranslate"><span class="pre">Flatten</span></code></a><ul>
-<li><a class="reference internal" href="#protomotions.agents.common.common.Flatten.norm"><code class="docutils literal notranslate"><span class="pre">Flatten.norm</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.common.common.Flatten.flatten"><code class="docutils literal notranslate"><span class="pre">Flatten.flatten</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.common.common.Flatten.in_keys"><code class="docutils literal notranslate"><span class="pre">Flatten.in_keys</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.common.common.Flatten.out_keys"><code class="docutils literal notranslate"><span class="pre">Flatten.out_keys</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.common.common.Flatten.__init__"><code class="docutils literal notranslate"><span class="pre">Flatten.__init__()</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.common.common.Flatten.config"><code class="docutils literal notranslate"><span class="pre">Flatten.config</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.common.common.Flatten.forward"><code class="docutils literal notranslate"><span class="pre">Flatten.forward()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.common.common.Flatten.norm"><code class="docutils literal notranslate"><span class="pre">norm</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.common.common.Flatten.flatten"><code class="docutils literal notranslate"><span class="pre">flatten</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.common.common.Flatten.in_keys"><code class="docutils literal notranslate"><span class="pre">in_keys</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.common.common.Flatten.out_keys"><code class="docutils literal notranslate"><span class="pre">out_keys</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.common.common.Flatten.__init__"><code class="docutils literal notranslate"><span class="pre">__init__()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.common.common.Flatten.config"><code class="docutils literal notranslate"><span class="pre">config</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.common.common.Flatten.forward"><code class="docutils literal notranslate"><span class="pre">forward()</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#protomotions.agents.common.common.SequentialModule"><code class="docutils literal notranslate"><span class="pre">SequentialModule</span></code></a><ul>
-<li><a class="reference internal" href="#protomotions.agents.common.common.SequentialModule.__init__"><code class="docutils literal notranslate"><span class="pre">SequentialModule.__init__()</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.common.common.SequentialModule.config"><code class="docutils literal notranslate"><span class="pre">SequentialModule.config</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.common.common.SequentialModule.forward"><code class="docutils literal notranslate"><span class="pre">SequentialModule.forward()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.common.common.SequentialModule.__init__"><code class="docutils literal notranslate"><span class="pre">__init__()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.common.common.SequentialModule.config"><code class="docutils literal notranslate"><span class="pre">config</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.common.common.SequentialModule.forward"><code class="docutils literal notranslate"><span class="pre">forward()</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#protomotions.agents.common.common.MultiInputModule"><code class="docutils literal notranslate"><span class="pre">MultiInputModule</span></code></a><ul>
-<li><a class="reference internal" href="#protomotions.agents.common.common.MultiInputModule.__init__"><code class="docutils literal notranslate"><span class="pre">MultiInputModule.__init__()</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.common.common.MultiInputModule.config"><code class="docutils literal notranslate"><span class="pre">MultiInputModule.config</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.common.common.MultiInputModule.forward"><code class="docutils literal notranslate"><span class="pre">MultiInputModule.forward()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.common.common.MultiInputModule.__init__"><code class="docutils literal notranslate"><span class="pre">__init__()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.common.common.MultiInputModule.config"><code class="docutils literal notranslate"><span class="pre">config</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.common.common.MultiInputModule.forward"><code class="docutils literal notranslate"><span class="pre">forward()</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#protomotions.agents.common.common.MultiOutputModule"><code class="docutils literal notranslate"><span class="pre">MultiOutputModule</span></code></a><ul>
-<li><a class="reference internal" href="#protomotions.agents.common.common.MultiOutputModule.__init__"><code class="docutils literal notranslate"><span class="pre">MultiOutputModule.__init__()</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.common.common.MultiOutputModule.config"><code class="docutils literal notranslate"><span class="pre">MultiOutputModule.config</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.common.common.MultiOutputModule.forward"><code class="docutils literal notranslate"><span class="pre">MultiOutputModule.forward()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.common.common.MultiOutputModule.__init__"><code class="docutils literal notranslate"><span class="pre">__init__()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.common.common.MultiOutputModule.config"><code class="docutils literal notranslate"><span class="pre">config</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.common.common.MultiOutputModule.forward"><code class="docutils literal notranslate"><span class="pre">forward()</span></code></a></li>
 </ul>
 </li>
 </ul>

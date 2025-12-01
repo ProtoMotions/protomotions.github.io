@@ -211,6 +211,7 @@
 <p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../user_guide/configuration.html">Configuration System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/experiments.html">Experiments</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user_guide/developer_tips.html">Developer Tips</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Key Concepts</span></p>
@@ -244,8 +245,6 @@
 </ul>
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="protomotions.agents.callbacks.html">protomotions.agents.callbacks package</a><input aria-label="Toggle navigation of protomotions.agents.callbacks package" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.callbacks.one_logger.html">protomotions.agents.callbacks.one_logger module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.callbacks.slurm_autoresume_adlr.html">protomotions.agents.callbacks.slurm_autoresume_adlr module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="protomotions.agents.callbacks.slurm_autoresume_srun.html">protomotions.agents.callbacks.slurm_autoresume_srun module</a></li>
 </ul>
 </li>
@@ -329,12 +328,8 @@
           <span>Back to top</span>
         </a>
         <div class="content-icon-container">
-          <div class="view-this-page">
-  <a class="muted-link" href="../_sources/api_reference/protomotions.agents.utils.replay_buffer.rst.txt" title="View this page">
-    <svg><use href="#svg-eye"></use></svg>
-    <span class="visually-hidden">View this page</span>
-  </a>
-</div>
+          
+
 <div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
               <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
@@ -362,7 +357,7 @@ agent transitions. The discriminator trains on batches sampled from this buffer.
 <dl class="py class">
 <dt class="sig sig-object py" id="protomotions.agents.utils.replay_buffer.ReplayBuffer">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">protomotions.agents.utils.replay_buffer.</span></span><span class="sig-name descname"><span class="pre">ReplayBuffer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">buffer_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/protomotions/agents/utils/replay_buffer.html#ReplayBuffer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#protomotions.agents.utils.replay_buffer.ReplayBuffer" title="Link to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">&lt;Mock</span> <span class="pre">object</span> <span class="pre">at</span> <span class="pre">0x78723e8ef810&gt;</span></code>[]</p>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">&lt;Mock</span> <span class="pre">object</span> <span class="pre">at</span> <span class="pre">0x701e6b316390&gt;</span></code>[]</p>
 <p>Circular replay buffer for storing and sampling transitions.</p>
 <p>Stores agent transitions in a circular buffer and provides random sampling
 for discriminator training in AMP/ASE. Automatically handles buffer overflow
@@ -371,7 +366,7 @@ by overwriting oldest data.</p>
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>buffer_size</strong> – Maximum number of transitions to store.</p></li>
-<li><p><strong>device</strong> (<em>&lt;Mock object at 0x78723e8ef810&gt;</em><em>[</em><em>]</em>) – PyTorch device for tensors.</p></li>
+<li><p><strong>device</strong> (<em>&lt;Mock object at 0x701e6b316e90&gt;</em><em>[</em><em>]</em>) – PyTorch device for tensors.</p></li>
 </ul>
 </dd>
 </dl>
@@ -422,7 +417,7 @@ by overwriting oldest data.</p>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="protomotions.agents.utils.replay_buffer.ReplayBuffer.device">
-<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">device</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">&lt;Mock</span> <span class="pre">object</span> <span class="pre">at</span> <span class="pre">0x78723e2e36d0&gt;[]</span></em><a class="headerlink" href="#protomotions.agents.utils.replay_buffer.ReplayBuffer.device" title="Link to this definition">¶</a></dt>
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">device</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">&lt;Mock</span> <span class="pre">object</span> <span class="pre">at</span> <span class="pre">0x701e6b31e5d0&gt;[]</span></em><a class="headerlink" href="#protomotions.agents.utils.replay_buffer.ReplayBuffer.device" title="Link to this definition">¶</a></dt>
 <dd><p>Get the current device.</p>
 </dd></dl>
 
@@ -487,14 +482,14 @@ by overwriting oldest data.</p>
             <ul>
 <li><a class="reference internal" href="#">protomotions.agents.utils.replay_buffer module</a><ul>
 <li><a class="reference internal" href="#protomotions.agents.utils.replay_buffer.ReplayBuffer"><code class="docutils literal notranslate"><span class="pre">ReplayBuffer</span></code></a><ul>
-<li><a class="reference internal" href="#protomotions.agents.utils.replay_buffer.ReplayBuffer._head"><code class="docutils literal notranslate"><span class="pre">ReplayBuffer._head</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.utils.replay_buffer.ReplayBuffer._is_full"><code class="docutils literal notranslate"><span class="pre">ReplayBuffer._is_full</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.utils.replay_buffer.ReplayBuffer.__init__"><code class="docutils literal notranslate"><span class="pre">ReplayBuffer.__init__()</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.utils.replay_buffer.ReplayBuffer.reset"><code class="docutils literal notranslate"><span class="pre">ReplayBuffer.reset()</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.utils.replay_buffer.ReplayBuffer.get_buffer_size"><code class="docutils literal notranslate"><span class="pre">ReplayBuffer.get_buffer_size()</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.utils.replay_buffer.ReplayBuffer.store"><code class="docutils literal notranslate"><span class="pre">ReplayBuffer.store()</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.utils.replay_buffer.ReplayBuffer.sample"><code class="docutils literal notranslate"><span class="pre">ReplayBuffer.sample()</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.utils.replay_buffer.ReplayBuffer.device"><code class="docutils literal notranslate"><span class="pre">ReplayBuffer.device</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.utils.replay_buffer.ReplayBuffer._head"><code class="docutils literal notranslate"><span class="pre">_head</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.utils.replay_buffer.ReplayBuffer._is_full"><code class="docutils literal notranslate"><span class="pre">_is_full</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.utils.replay_buffer.ReplayBuffer.__init__"><code class="docutils literal notranslate"><span class="pre">__init__()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.utils.replay_buffer.ReplayBuffer.reset"><code class="docutils literal notranslate"><span class="pre">reset()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.utils.replay_buffer.ReplayBuffer.get_buffer_size"><code class="docutils literal notranslate"><span class="pre">get_buffer_size()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.utils.replay_buffer.ReplayBuffer.store"><code class="docutils literal notranslate"><span class="pre">store()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.utils.replay_buffer.ReplayBuffer.sample"><code class="docutils literal notranslate"><span class="pre">sample()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.utils.replay_buffer.ReplayBuffer.device"><code class="docutils literal notranslate"><span class="pre">device</span></code></a></li>
 </ul>
 </li>
 </ul>

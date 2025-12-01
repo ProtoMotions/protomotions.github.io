@@ -211,6 +211,7 @@
 <p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../user_guide/configuration.html">Configuration System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/experiments.html">Experiments</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user_guide/developer_tips.html">Developer Tips</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Key Concepts</span></p>
@@ -244,8 +245,6 @@
 </ul>
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="protomotions.agents.callbacks.html">protomotions.agents.callbacks package</a><input aria-label="Toggle navigation of protomotions.agents.callbacks package" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.callbacks.one_logger.html">protomotions.agents.callbacks.one_logger module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.callbacks.slurm_autoresume_adlr.html">protomotions.agents.callbacks.slurm_autoresume_adlr module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="protomotions.agents.callbacks.slurm_autoresume_srun.html">protomotions.agents.callbacks.slurm_autoresume_srun module</a></li>
 </ul>
 </li>
@@ -329,12 +328,8 @@
           <span>Back to top</span>
         </a>
         <div class="content-icon-container">
-          <div class="view-this-page">
-  <a class="muted-link" href="../_sources/api_reference/protomotions.agents.utils.step_tracker.rst.txt" title="View this page">
-    <svg><use href="#svg-eye"></use></svg>
-    <span class="visually-hidden">View this page</span>
-  </a>
-</div>
+          
+
 <div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
               <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
@@ -353,7 +348,7 @@
 <dl class="py class">
 <dt class="sig sig-object py" id="protomotions.agents.utils.step_tracker.StepTracker">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">protomotions.agents.utils.step_tracker.</span></span><span class="sig-name descname"><span class="pre">StepTracker</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">num_envs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_steps</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_steps</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/protomotions/agents/utils/step_tracker.html#StepTracker"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#protomotions.agents.utils.step_tracker.StepTracker" title="Link to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">&lt;Mock</span> <span class="pre">object</span> <span class="pre">at</span> <span class="pre">0x78723e116010&gt;</span></code>[]</p>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">&lt;Mock</span> <span class="pre">object</span> <span class="pre">at</span> <span class="pre">0x701e6b3d9b90&gt;</span></code>[]</p>
 <dl class="field-list simple">
 </dl>
 <dl class="py attribute">
@@ -394,7 +389,7 @@
 
 <dl class="py property">
 <dt class="sig sig-object py" id="protomotions.agents.utils.step_tracker.StepTracker.device">
-<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">device</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">&lt;Mock</span> <span class="pre">object</span> <span class="pre">at</span> <span class="pre">0x78723e12aa10&gt;[]</span></em><a class="headerlink" href="#protomotions.agents.utils.step_tracker.StepTracker.device" title="Link to this definition">¶</a></dt>
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">device</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">&lt;Mock</span> <span class="pre">object</span> <span class="pre">at</span> <span class="pre">0x701e6b39e7d0&gt;[]</span></em><a class="headerlink" href="#protomotions.agents.utils.step_tracker.StepTracker.device" title="Link to this definition">¶</a></dt>
 <dd><p>Get device from registered buffers.</p>
 </dd></dl>
 
@@ -459,13 +454,13 @@
             <ul>
 <li><a class="reference internal" href="#">protomotions.agents.utils.step_tracker module</a><ul>
 <li><a class="reference internal" href="#protomotions.agents.utils.step_tracker.StepTracker"><code class="docutils literal notranslate"><span class="pre">StepTracker</span></code></a><ul>
-<li><a class="reference internal" href="#protomotions.agents.utils.step_tracker.StepTracker.steps"><code class="docutils literal notranslate"><span class="pre">StepTracker.steps</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.utils.step_tracker.StepTracker.__init__"><code class="docutils literal notranslate"><span class="pre">StepTracker.__init__()</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.utils.step_tracker.StepTracker.advance"><code class="docutils literal notranslate"><span class="pre">StepTracker.advance()</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.utils.step_tracker.StepTracker.done_indices"><code class="docutils literal notranslate"><span class="pre">StepTracker.done_indices()</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.utils.step_tracker.StepTracker.reset_steps"><code class="docutils literal notranslate"><span class="pre">StepTracker.reset_steps()</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.utils.step_tracker.StepTracker.shift_counter"><code class="docutils literal notranslate"><span class="pre">StepTracker.shift_counter()</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.utils.step_tracker.StepTracker.device"><code class="docutils literal notranslate"><span class="pre">StepTracker.device</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.utils.step_tracker.StepTracker.steps"><code class="docutils literal notranslate"><span class="pre">steps</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.utils.step_tracker.StepTracker.__init__"><code class="docutils literal notranslate"><span class="pre">__init__()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.utils.step_tracker.StepTracker.advance"><code class="docutils literal notranslate"><span class="pre">advance()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.utils.step_tracker.StepTracker.done_indices"><code class="docutils literal notranslate"><span class="pre">done_indices()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.utils.step_tracker.StepTracker.reset_steps"><code class="docutils literal notranslate"><span class="pre">reset_steps()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.utils.step_tracker.StepTracker.shift_counter"><code class="docutils literal notranslate"><span class="pre">shift_counter()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.utils.step_tracker.StepTracker.device"><code class="docutils literal notranslate"><span class="pre">device</span></code></a></li>
 </ul>
 </li>
 </ul>

@@ -211,6 +211,7 @@
 <p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../user_guide/configuration.html">Configuration System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/experiments.html">Experiments</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user_guide/developer_tips.html">Developer Tips</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Key Concepts</span></p>
@@ -244,8 +245,6 @@
 </ul>
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="protomotions.agents.callbacks.html">protomotions.agents.callbacks package</a><input aria-label="Toggle navigation of protomotions.agents.callbacks package" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.callbacks.one_logger.html">protomotions.agents.callbacks.one_logger module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.callbacks.slurm_autoresume_adlr.html">protomotions.agents.callbacks.slurm_autoresume_adlr module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="protomotions.agents.callbacks.slurm_autoresume_srun.html">protomotions.agents.callbacks.slurm_autoresume_srun module</a></li>
 </ul>
 </li>
@@ -329,12 +328,8 @@
           <span>Back to top</span>
         </a>
         <div class="content-icon-container">
-          <div class="view-this-page">
-  <a class="muted-link" href="../_sources/api_reference/protomotions.agents.common.config.rst.txt" title="View this page">
-    <svg><use href="#svg-eye"></use></svg>
-    <span class="visually-hidden">View this page</span>
-  </a>
-</div>
+          
+
 <div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
               <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
@@ -866,106 +861,106 @@ obs_key and out_key are optional in config but validated in MLP module.</p>
             <ul>
 <li><a class="reference internal" href="#">protomotions.agents.common.config module</a><ul>
 <li><a class="reference internal" href="#protomotions.agents.common.config.NormObsBaseConfig"><code class="docutils literal notranslate"><span class="pre">NormObsBaseConfig</span></code></a><ul>
-<li><a class="reference internal" href="#protomotions.agents.common.config.NormObsBaseConfig.normalize_obs"><code class="docutils literal notranslate"><span class="pre">NormObsBaseConfig.normalize_obs</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.common.config.NormObsBaseConfig.norm_clamp_value"><code class="docutils literal notranslate"><span class="pre">NormObsBaseConfig.norm_clamp_value</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.common.config.NormObsBaseConfig.__init__"><code class="docutils literal notranslate"><span class="pre">NormObsBaseConfig.__init__()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.common.config.NormObsBaseConfig.normalize_obs"><code class="docutils literal notranslate"><span class="pre">normalize_obs</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.common.config.NormObsBaseConfig.norm_clamp_value"><code class="docutils literal notranslate"><span class="pre">norm_clamp_value</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.common.config.NormObsBaseConfig.__init__"><code class="docutils literal notranslate"><span class="pre">__init__()</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#protomotions.agents.common.config.ModuleOperationConfig"><code class="docutils literal notranslate"><span class="pre">ModuleOperationConfig</span></code></a><ul>
-<li><a class="reference internal" href="#protomotions.agents.common.config.ModuleOperationConfig.__init__"><code class="docutils literal notranslate"><span class="pre">ModuleOperationConfig.__init__()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.common.config.ModuleOperationConfig.__init__"><code class="docutils literal notranslate"><span class="pre">__init__()</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#protomotions.agents.common.config.ModuleOperationForwardConfig"><code class="docutils literal notranslate"><span class="pre">ModuleOperationForwardConfig</span></code></a><ul>
-<li><a class="reference internal" href="#protomotions.agents.common.config.ModuleOperationForwardConfig.__init__"><code class="docutils literal notranslate"><span class="pre">ModuleOperationForwardConfig.__init__()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.common.config.ModuleOperationForwardConfig.__init__"><code class="docutils literal notranslate"><span class="pre">__init__()</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#protomotions.agents.common.config.ModuleOperationPermuteConfig"><code class="docutils literal notranslate"><span class="pre">ModuleOperationPermuteConfig</span></code></a><ul>
-<li><a class="reference internal" href="#protomotions.agents.common.config.ModuleOperationPermuteConfig.new_order"><code class="docutils literal notranslate"><span class="pre">ModuleOperationPermuteConfig.new_order</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.common.config.ModuleOperationPermuteConfig.__init__"><code class="docutils literal notranslate"><span class="pre">ModuleOperationPermuteConfig.__init__()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.common.config.ModuleOperationPermuteConfig.new_order"><code class="docutils literal notranslate"><span class="pre">new_order</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.common.config.ModuleOperationPermuteConfig.__init__"><code class="docutils literal notranslate"><span class="pre">__init__()</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#protomotions.agents.common.config.ModuleOperationReshapeConfig"><code class="docutils literal notranslate"><span class="pre">ModuleOperationReshapeConfig</span></code></a><ul>
-<li><a class="reference internal" href="#protomotions.agents.common.config.ModuleOperationReshapeConfig.new_shape"><code class="docutils literal notranslate"><span class="pre">ModuleOperationReshapeConfig.new_shape</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.common.config.ModuleOperationReshapeConfig.__init__"><code class="docutils literal notranslate"><span class="pre">ModuleOperationReshapeConfig.__init__()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.common.config.ModuleOperationReshapeConfig.new_shape"><code class="docutils literal notranslate"><span class="pre">new_shape</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.common.config.ModuleOperationReshapeConfig.__init__"><code class="docutils literal notranslate"><span class="pre">__init__()</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#protomotions.agents.common.config.ModuleOperationSqueezeConfig"><code class="docutils literal notranslate"><span class="pre">ModuleOperationSqueezeConfig</span></code></a><ul>
-<li><a class="reference internal" href="#protomotions.agents.common.config.ModuleOperationSqueezeConfig.squeeze_dim"><code class="docutils literal notranslate"><span class="pre">ModuleOperationSqueezeConfig.squeeze_dim</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.common.config.ModuleOperationSqueezeConfig.__init__"><code class="docutils literal notranslate"><span class="pre">ModuleOperationSqueezeConfig.__init__()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.common.config.ModuleOperationSqueezeConfig.squeeze_dim"><code class="docutils literal notranslate"><span class="pre">squeeze_dim</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.common.config.ModuleOperationSqueezeConfig.__init__"><code class="docutils literal notranslate"><span class="pre">__init__()</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#protomotions.agents.common.config.ModuleOperationUnsqueezeConfig"><code class="docutils literal notranslate"><span class="pre">ModuleOperationUnsqueezeConfig</span></code></a><ul>
-<li><a class="reference internal" href="#protomotions.agents.common.config.ModuleOperationUnsqueezeConfig.unsqueeze_dim"><code class="docutils literal notranslate"><span class="pre">ModuleOperationUnsqueezeConfig.unsqueeze_dim</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.common.config.ModuleOperationUnsqueezeConfig.__init__"><code class="docutils literal notranslate"><span class="pre">ModuleOperationUnsqueezeConfig.__init__()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.common.config.ModuleOperationUnsqueezeConfig.unsqueeze_dim"><code class="docutils literal notranslate"><span class="pre">unsqueeze_dim</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.common.config.ModuleOperationUnsqueezeConfig.__init__"><code class="docutils literal notranslate"><span class="pre">__init__()</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#protomotions.agents.common.config.ModuleOperationExpandConfig"><code class="docutils literal notranslate"><span class="pre">ModuleOperationExpandConfig</span></code></a><ul>
-<li><a class="reference internal" href="#protomotions.agents.common.config.ModuleOperationExpandConfig.expand_shape"><code class="docutils literal notranslate"><span class="pre">ModuleOperationExpandConfig.expand_shape</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.common.config.ModuleOperationExpandConfig.__init__"><code class="docutils literal notranslate"><span class="pre">ModuleOperationExpandConfig.__init__()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.common.config.ModuleOperationExpandConfig.expand_shape"><code class="docutils literal notranslate"><span class="pre">expand_shape</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.common.config.ModuleOperationExpandConfig.__init__"><code class="docutils literal notranslate"><span class="pre">__init__()</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#protomotions.agents.common.config.ModuleOperationSphereProjectionConfig"><code class="docutils literal notranslate"><span class="pre">ModuleOperationSphereProjectionConfig</span></code></a><ul>
-<li><a class="reference internal" href="#protomotions.agents.common.config.ModuleOperationSphereProjectionConfig.__init__"><code class="docutils literal notranslate"><span class="pre">ModuleOperationSphereProjectionConfig.__init__()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.common.config.ModuleOperationSphereProjectionConfig.__init__"><code class="docutils literal notranslate"><span class="pre">__init__()</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#protomotions.agents.common.config.FlattenConfig"><code class="docutils literal notranslate"><span class="pre">FlattenConfig</span></code></a><ul>
-<li><a class="reference internal" href="#protomotions.agents.common.config.FlattenConfig.in_keys"><code class="docutils literal notranslate"><span class="pre">FlattenConfig.in_keys</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.common.config.FlattenConfig.out_keys"><code class="docutils literal notranslate"><span class="pre">FlattenConfig.out_keys</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.common.config.FlattenConfig.module_operations"><code class="docutils literal notranslate"><span class="pre">FlattenConfig.module_operations</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.common.config.FlattenConfig.__init__"><code class="docutils literal notranslate"><span class="pre">FlattenConfig.__init__()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.common.config.FlattenConfig.in_keys"><code class="docutils literal notranslate"><span class="pre">in_keys</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.common.config.FlattenConfig.out_keys"><code class="docutils literal notranslate"><span class="pre">out_keys</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.common.config.FlattenConfig.module_operations"><code class="docutils literal notranslate"><span class="pre">module_operations</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.common.config.FlattenConfig.__init__"><code class="docutils literal notranslate"><span class="pre">__init__()</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#protomotions.agents.common.config.MLPLayerConfig"><code class="docutils literal notranslate"><span class="pre">MLPLayerConfig</span></code></a><ul>
-<li><a class="reference internal" href="#protomotions.agents.common.config.MLPLayerConfig.units"><code class="docutils literal notranslate"><span class="pre">MLPLayerConfig.units</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.common.config.MLPLayerConfig.activation"><code class="docutils literal notranslate"><span class="pre">MLPLayerConfig.activation</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.common.config.MLPLayerConfig.use_layer_norm"><code class="docutils literal notranslate"><span class="pre">MLPLayerConfig.use_layer_norm</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.common.config.MLPLayerConfig.__init__"><code class="docutils literal notranslate"><span class="pre">MLPLayerConfig.__init__()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.common.config.MLPLayerConfig.units"><code class="docutils literal notranslate"><span class="pre">units</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.common.config.MLPLayerConfig.activation"><code class="docutils literal notranslate"><span class="pre">activation</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.common.config.MLPLayerConfig.use_layer_norm"><code class="docutils literal notranslate"><span class="pre">use_layer_norm</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.common.config.MLPLayerConfig.__init__"><code class="docutils literal notranslate"><span class="pre">__init__()</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#protomotions.agents.common.config.MLPWithConcatConfig"><code class="docutils literal notranslate"><span class="pre">MLPWithConcatConfig</span></code></a><ul>
-<li><a class="reference internal" href="#protomotions.agents.common.config.MLPWithConcatConfig.num_out"><code class="docutils literal notranslate"><span class="pre">MLPWithConcatConfig.num_out</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.common.config.MLPWithConcatConfig.layers"><code class="docutils literal notranslate"><span class="pre">MLPWithConcatConfig.layers</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.common.config.MLPWithConcatConfig.in_keys"><code class="docutils literal notranslate"><span class="pre">MLPWithConcatConfig.in_keys</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.common.config.MLPWithConcatConfig.out_keys"><code class="docutils literal notranslate"><span class="pre">MLPWithConcatConfig.out_keys</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.common.config.MLPWithConcatConfig.output_activation"><code class="docutils literal notranslate"><span class="pre">MLPWithConcatConfig.output_activation</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.common.config.MLPWithConcatConfig.module_operations"><code class="docutils literal notranslate"><span class="pre">MLPWithConcatConfig.module_operations</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.common.config.MLPWithConcatConfig.__init__"><code class="docutils literal notranslate"><span class="pre">MLPWithConcatConfig.__init__()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.common.config.MLPWithConcatConfig.num_out"><code class="docutils literal notranslate"><span class="pre">num_out</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.common.config.MLPWithConcatConfig.layers"><code class="docutils literal notranslate"><span class="pre">layers</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.common.config.MLPWithConcatConfig.in_keys"><code class="docutils literal notranslate"><span class="pre">in_keys</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.common.config.MLPWithConcatConfig.out_keys"><code class="docutils literal notranslate"><span class="pre">out_keys</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.common.config.MLPWithConcatConfig.output_activation"><code class="docutils literal notranslate"><span class="pre">output_activation</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.common.config.MLPWithConcatConfig.module_operations"><code class="docutils literal notranslate"><span class="pre">module_operations</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.common.config.MLPWithConcatConfig.__init__"><code class="docutils literal notranslate"><span class="pre">__init__()</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#protomotions.agents.common.config.MultiInputModuleConfig"><code class="docutils literal notranslate"><span class="pre">MultiInputModuleConfig</span></code></a><ul>
-<li><a class="reference internal" href="#protomotions.agents.common.config.MultiInputModuleConfig.input_models"><code class="docutils literal notranslate"><span class="pre">MultiInputModuleConfig.input_models</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.common.config.MultiInputModuleConfig.in_keys"><code class="docutils literal notranslate"><span class="pre">MultiInputModuleConfig.in_keys</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.common.config.MultiInputModuleConfig.out_keys"><code class="docutils literal notranslate"><span class="pre">MultiInputModuleConfig.out_keys</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.common.config.MultiInputModuleConfig.__init__"><code class="docutils literal notranslate"><span class="pre">MultiInputModuleConfig.__init__()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.common.config.MultiInputModuleConfig.input_models"><code class="docutils literal notranslate"><span class="pre">input_models</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.common.config.MultiInputModuleConfig.in_keys"><code class="docutils literal notranslate"><span class="pre">in_keys</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.common.config.MultiInputModuleConfig.out_keys"><code class="docutils literal notranslate"><span class="pre">out_keys</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.common.config.MultiInputModuleConfig.__init__"><code class="docutils literal notranslate"><span class="pre">__init__()</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#protomotions.agents.common.config.SequentialModuleConfig"><code class="docutils literal notranslate"><span class="pre">SequentialModuleConfig</span></code></a><ul>
-<li><a class="reference internal" href="#protomotions.agents.common.config.SequentialModuleConfig.input_models"><code class="docutils literal notranslate"><span class="pre">SequentialModuleConfig.input_models</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.common.config.SequentialModuleConfig.in_keys"><code class="docutils literal notranslate"><span class="pre">SequentialModuleConfig.in_keys</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.common.config.SequentialModuleConfig.out_keys"><code class="docutils literal notranslate"><span class="pre">SequentialModuleConfig.out_keys</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.common.config.SequentialModuleConfig.__init__"><code class="docutils literal notranslate"><span class="pre">SequentialModuleConfig.__init__()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.common.config.SequentialModuleConfig.input_models"><code class="docutils literal notranslate"><span class="pre">input_models</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.common.config.SequentialModuleConfig.in_keys"><code class="docutils literal notranslate"><span class="pre">in_keys</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.common.config.SequentialModuleConfig.out_keys"><code class="docutils literal notranslate"><span class="pre">out_keys</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.common.config.SequentialModuleConfig.__init__"><code class="docutils literal notranslate"><span class="pre">__init__()</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#protomotions.agents.common.config.MultiOutputModuleConfig"><code class="docutils literal notranslate"><span class="pre">MultiOutputModuleConfig</span></code></a><ul>
-<li><a class="reference internal" href="#protomotions.agents.common.config.MultiOutputModuleConfig.output_models"><code class="docutils literal notranslate"><span class="pre">MultiOutputModuleConfig.output_models</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.common.config.MultiOutputModuleConfig.in_keys"><code class="docutils literal notranslate"><span class="pre">MultiOutputModuleConfig.in_keys</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.common.config.MultiOutputModuleConfig.out_keys"><code class="docutils literal notranslate"><span class="pre">MultiOutputModuleConfig.out_keys</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.common.config.MultiOutputModuleConfig.__init__"><code class="docutils literal notranslate"><span class="pre">MultiOutputModuleConfig.__init__()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.common.config.MultiOutputModuleConfig.output_models"><code class="docutils literal notranslate"><span class="pre">output_models</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.common.config.MultiOutputModuleConfig.in_keys"><code class="docutils literal notranslate"><span class="pre">in_keys</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.common.config.MultiOutputModuleConfig.out_keys"><code class="docutils literal notranslate"><span class="pre">out_keys</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.common.config.MultiOutputModuleConfig.__init__"><code class="docutils literal notranslate"><span class="pre">__init__()</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#protomotions.agents.common.config.TransformerConfig"><code class="docutils literal notranslate"><span class="pre">TransformerConfig</span></code></a><ul>
-<li><a class="reference internal" href="#protomotions.agents.common.config.TransformerConfig.in_keys"><code class="docutils literal notranslate"><span class="pre">TransformerConfig.in_keys</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.common.config.TransformerConfig.out_keys"><code class="docutils literal notranslate"><span class="pre">TransformerConfig.out_keys</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.common.config.TransformerConfig.input_and_mask_mapping"><code class="docutils literal notranslate"><span class="pre">TransformerConfig.input_and_mask_mapping</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.common.config.TransformerConfig.transformer_token_size"><code class="docutils literal notranslate"><span class="pre">TransformerConfig.transformer_token_size</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.common.config.TransformerConfig.latent_dim"><code class="docutils literal notranslate"><span class="pre">TransformerConfig.latent_dim</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.common.config.TransformerConfig.num_heads"><code class="docutils literal notranslate"><span class="pre">TransformerConfig.num_heads</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.common.config.TransformerConfig.ff_size"><code class="docutils literal notranslate"><span class="pre">TransformerConfig.ff_size</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.common.config.TransformerConfig.num_layers"><code class="docutils literal notranslate"><span class="pre">TransformerConfig.num_layers</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.common.config.TransformerConfig.dropout"><code class="docutils literal notranslate"><span class="pre">TransformerConfig.dropout</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.common.config.TransformerConfig.activation"><code class="docutils literal notranslate"><span class="pre">TransformerConfig.activation</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.common.config.TransformerConfig.output_activation"><code class="docutils literal notranslate"><span class="pre">TransformerConfig.output_activation</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.common.config.TransformerConfig.__init__"><code class="docutils literal notranslate"><span class="pre">TransformerConfig.__init__()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.common.config.TransformerConfig.in_keys"><code class="docutils literal notranslate"><span class="pre">in_keys</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.common.config.TransformerConfig.out_keys"><code class="docutils literal notranslate"><span class="pre">out_keys</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.common.config.TransformerConfig.input_and_mask_mapping"><code class="docutils literal notranslate"><span class="pre">input_and_mask_mapping</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.common.config.TransformerConfig.transformer_token_size"><code class="docutils literal notranslate"><span class="pre">transformer_token_size</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.common.config.TransformerConfig.latent_dim"><code class="docutils literal notranslate"><span class="pre">latent_dim</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.common.config.TransformerConfig.num_heads"><code class="docutils literal notranslate"><span class="pre">num_heads</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.common.config.TransformerConfig.ff_size"><code class="docutils literal notranslate"><span class="pre">ff_size</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.common.config.TransformerConfig.num_layers"><code class="docutils literal notranslate"><span class="pre">num_layers</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.common.config.TransformerConfig.dropout"><code class="docutils literal notranslate"><span class="pre">dropout</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.common.config.TransformerConfig.activation"><code class="docutils literal notranslate"><span class="pre">activation</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.common.config.TransformerConfig.output_activation"><code class="docutils literal notranslate"><span class="pre">output_activation</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.common.config.TransformerConfig.__init__"><code class="docutils literal notranslate"><span class="pre">__init__()</span></code></a></li>
 </ul>
 </li>
 </ul>

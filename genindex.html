@@ -209,6 +209,7 @@
 <p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="user_guide/configuration.html">Configuration System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user_guide/experiments.html">Experiments</a></li>
 <li class="toctree-l1"><a class="reference internal" href="user_guide/developer_tips.html">Developer Tips</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Key Concepts</span></p>
@@ -242,8 +243,6 @@
 </ul>
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="api_reference/protomotions.agents.callbacks.html">protomotions.agents.callbacks package</a><input aria-label="Toggle navigation of protomotions.agents.callbacks package" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="api_reference/protomotions.agents.callbacks.one_logger.html">protomotions.agents.callbacks.one_logger module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="api_reference/protomotions.agents.callbacks.slurm_autoresume_adlr.html">protomotions.agents.callbacks.slurm_autoresume_adlr module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="api_reference/protomotions.agents.callbacks.slurm_autoresume_srun.html">protomotions.agents.callbacks.slurm_autoresume_srun module</a></li>
 </ul>
 </li>
@@ -367,6 +366,16 @@
           <li><a href="api_reference/protomotions.agents.amp.model.html#protomotions.agents.amp.model.AMPModel.__init__">(protomotions.agents.amp.model.AMPModel method)</a>
 </li>
           <li><a href="api_reference/protomotions.agents.amp.model.html#protomotions.agents.amp.model.Discriminator.__init__">(protomotions.agents.amp.model.Discriminator method)</a>
+</li>
+          <li><a href="api_reference/protomotions.agents.ase.agent.html#protomotions.agents.ase.agent.ASE.__init__">(protomotions.agents.ase.agent.ASE method)</a>
+</li>
+          <li><a href="api_reference/protomotions.agents.ase.config.html#protomotions.agents.ase.config.ASEAgentConfig.__init__">(protomotions.agents.ase.config.ASEAgentConfig method)</a>
+</li>
+          <li><a href="api_reference/protomotions.agents.ase.config.html#protomotions.agents.ase.config.ASEDiscriminatorEncoderConfig.__init__">(protomotions.agents.ase.config.ASEDiscriminatorEncoderConfig method)</a>
+</li>
+          <li><a href="api_reference/protomotions.agents.ase.config.html#protomotions.agents.ase.config.ASEParametersConfig.__init__">(protomotions.agents.ase.config.ASEParametersConfig method)</a>
+</li>
+          <li><a href="api_reference/protomotions.agents.ase.model.html#protomotions.agents.ase.model.ASEDiscriminatorEncoder.__init__">(protomotions.agents.ase.model.ASEDiscriminatorEncoder method)</a>
 </li>
           <li><a href="api_reference/protomotions.agents.base_agent.agent.html#protomotions.agents.base_agent.agent.BaseAgent.__init__">(protomotions.agents.base_agent.agent.BaseAgent method)</a>
 </li>
@@ -575,9 +584,11 @@
           <li><a href="api_reference/protomotions.agents.utils.metering.html#protomotions.agents.utils.metering.TensorAverageMeterDict.add">(protomotions.agents.utils.metering.TensorAverageMeterDict method)</a>
 </li>
         </ul></li>
-        <li><a href="api_reference/protomotions.agents.base_agent.agent.html#protomotions.agents.base_agent.agent.BaseAgent.add_agent_info_to_obs">add_agent_info_to_obs() (protomotions.agents.base_agent.agent.BaseAgent method)</a>
+        <li><a href="api_reference/protomotions.agents.ase.agent.html#protomotions.agents.ase.agent.ASE.add_agent_info_to_obs">add_agent_info_to_obs() (protomotions.agents.ase.agent.ASE method)</a>
 
         <ul>
+          <li><a href="api_reference/protomotions.agents.base_agent.agent.html#protomotions.agents.base_agent.agent.BaseAgent.add_agent_info_to_obs">(protomotions.agents.base_agent.agent.BaseAgent method)</a>
+</li>
           <li><a href="api_reference/protomotions.agents.masked_mimic.agent.html#protomotions.agents.masked_mimic.agent.MaskedMimic.add_agent_info_to_obs">(protomotions.agents.masked_mimic.agent.MaskedMimic method)</a>
 </li>
         </ul></li>
@@ -593,13 +604,21 @@
 </li>
         <li><a href="api_reference/protomotions.agents.ppo.config.html#protomotions.agents.ppo.config.PPOAgentConfig.advantage_normalization">advantage_normalization (protomotions.agents.ppo.config.PPOAgentConfig attribute)</a>
 </li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api_reference/protomotions.agents.ppo.config.html#protomotions.agents.ppo.config.AdvantageNormalizationConfig">AdvantageNormalizationConfig (class in protomotions.agents.ppo.config)</a>
 </li>
         <li><a href="api_reference/protomotions.agents.utils.training.html#protomotions.agents.utils.training.aggregate_scalar_metrics">aggregate_scalar_metrics() (in module protomotions.agents.utils.training)</a>
 </li>
         <li><a href="api_reference/protomotions.agents.amp.model.html#protomotions.agents.amp.model.Discriminator.all_discriminator_weights">all_discriminator_weights() (protomotions.agents.amp.model.Discriminator method)</a>
+
+        <ul>
+          <li><a href="api_reference/protomotions.agents.ase.model.html#protomotions.agents.ase.model.ASEDiscriminatorEncoder.all_discriminator_weights">(protomotions.agents.ase.model.ASEDiscriminatorEncoder method)</a>
+</li>
+        </ul></li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="api_reference/protomotions.agents.ase.model.html#protomotions.agents.ase.model.ASEDiscriminatorEncoder.all_enc_weights">all_enc_weights() (protomotions.agents.ase.model.ASEDiscriminatorEncoder method)</a>
+</li>
+        <li><a href="api_reference/protomotions.agents.ase.model.html#protomotions.agents.ase.model.ASEDiscriminatorEncoder.all_weights">all_weights() (protomotions.agents.ase.model.ASEDiscriminatorEncoder method)</a>
 </li>
         <li><a href="api_reference/protomotions.utils.rotations.html#protomotions.utils.rotations.TestQuatAngleAxis.alternative_quat_angle_axis">alternative_quat_angle_axis() (protomotions.utils.rotations.TestQuatAngleAxis method)</a>
 </li>
@@ -628,6 +647,18 @@
         <li><a href="api_reference/protomotions.agents.common.common.html#protomotions.agents.common.common.apply_module_operations">apply_module_operations() (in module protomotions.agents.common.common)</a>
 </li>
         <li><a href="api_reference/protomotions.utils.mesh_utils.html#protomotions.utils.mesh_utils.as_mesh">as_mesh() (in module protomotions.utils.mesh_utils)</a>
+</li>
+        <li><a href="api_reference/protomotions.agents.ase.agent.html#protomotions.agents.ase.agent.ASE">ASE (class in protomotions.agents.ase.agent)</a>
+</li>
+        <li><a href="api_reference/protomotions.agents.ase.config.html#protomotions.agents.ase.config.ASEAgentConfig.ase_parameters">ase_parameters (protomotions.agents.ase.config.ASEAgentConfig attribute)</a>
+</li>
+        <li><a href="api_reference/protomotions.agents.ase.config.html#protomotions.agents.ase.config.ASEAgentConfig">ASEAgentConfig (class in protomotions.agents.ase.config)</a>
+</li>
+        <li><a href="api_reference/protomotions.agents.ase.model.html#protomotions.agents.ase.model.ASEDiscriminatorEncoder">ASEDiscriminatorEncoder (class in protomotions.agents.ase.model)</a>
+</li>
+        <li><a href="api_reference/protomotions.agents.ase.config.html#protomotions.agents.ase.config.ASEDiscriminatorEncoderConfig">ASEDiscriminatorEncoderConfig (class in protomotions.agents.ase.config)</a>
+</li>
+        <li><a href="api_reference/protomotions.agents.ase.config.html#protomotions.agents.ase.config.ASEParametersConfig">ASEParametersConfig (class in protomotions.agents.ase.config)</a>
 </li>
         <li><a href="api_reference/protomotions.robot_configs.html#protomotions.robot_configs.base.RobotConfig.asset">asset (protomotions.robot_configs.base.RobotConfig attribute)</a>
 </li>
@@ -693,8 +724,14 @@
     <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api_reference/protomotions.utils.motion_interpolation_utils.html#protomotions.utils.motion_interpolation_utils.calc_frame_blend">calc_frame_blend() (in module protomotions.utils.motion_interpolation_utils)</a>
 </li>
-        <li><a href="api_reference/protomotions.agents.ppo.agent.html#protomotions.agents.ppo.agent.PPO.calculate_extra_actor_loss">calculate_extra_actor_loss() (protomotions.agents.ppo.agent.PPO method)</a>
+        <li><a href="api_reference/protomotions.agents.ase.model.html#protomotions.agents.ase.model.ASEDiscriminatorEncoder.calc_von_mises_fisher_enc_error">calc_von_mises_fisher_enc_error() (protomotions.agents.ase.model.ASEDiscriminatorEncoder method)</a>
 </li>
+        <li><a href="api_reference/protomotions.agents.ase.agent.html#protomotions.agents.ase.agent.ASE.calculate_extra_actor_loss">calculate_extra_actor_loss() (protomotions.agents.ase.agent.ASE method)</a>
+
+        <ul>
+          <li><a href="api_reference/protomotions.agents.ppo.agent.html#protomotions.agents.ppo.agent.PPO.calculate_extra_actor_loss">(protomotions.agents.ppo.agent.PPO method)</a>
+</li>
+        </ul></li>
         <li><a href="api_reference/protomotions.agents.masked_mimic.agent.html#protomotions.agents.masked_mimic.agent.MaskedMimic.calculate_extra_loss">calculate_extra_loss() (protomotions.agents.masked_mimic.agent.MaskedMimic method)</a>
 </li>
         <li><a href="api_reference/protomotions.utils.fabric_config.html#protomotions.utils.fabric_config.FabricConfig.callbacks">callbacks (protomotions.utils.fabric_config.FabricConfig attribute)</a>
@@ -753,6 +790,8 @@
           <li><a href="api_reference/protomotions.agents.evaluators.html#protomotions.agents.evaluators.MotionMetrics.compute_jitter_reduce_each_motion">(protomotions.agents.evaluators.MotionMetrics method)</a>
 </li>
         </ul></li>
+        <li><a href="api_reference/protomotions.agents.ase.model.html#protomotions.agents.ase.model.ASEDiscriminatorEncoder.compute_mi_reward">compute_mi_reward() (protomotions.agents.ase.model.ASEDiscriminatorEncoder method)</a>
+</li>
         <li><a href="api_reference/protomotions.agents.amp.agent.html#protomotions.agents.amp.agent.AMP.compute_neg_acc">compute_neg_acc() (protomotions.agents.amp.agent.AMP static method)</a>
 </li>
         <li><a href="api_reference/protomotions.agents.evaluators.smoothness_evaluator.html#protomotions.agents.evaluators.smoothness_evaluator.SmoothnessEvaluator.compute_normalized_jerk_from_pos">compute_normalized_jerk_from_pos() (protomotions.agents.evaluators.smoothness_evaluator.SmoothnessEvaluator method)</a>
@@ -775,16 +814,22 @@
           <li><a href="api_reference/protomotions.agents.evaluators.html#protomotions.agents.evaluators.SmoothnessEvaluator.compute_smoothness_metrics">(protomotions.agents.evaluators.SmoothnessEvaluator method)</a>
 </li>
         </ul></li>
-        <li><a href="api_reference/protomotions.agents.amp.config.html#protomotions.agents.amp.config.AMPParametersConfig.conditional_discriminator">conditional_discriminator (protomotions.agents.amp.config.AMPParametersConfig attribute)</a>
+        <li><a href="api_reference/protomotions.agents.ase.agent.html#protomotions.agents.ase.agent.ASE.compute_uniformity_loss">compute_uniformity_loss() (protomotions.agents.ase.agent.ASE method)</a>
 </li>
     </ul></td>
     <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="api_reference/protomotions.agents.amp.config.html#protomotions.agents.amp.config.AMPParametersConfig.conditional_discriminator">conditional_discriminator (protomotions.agents.amp.config.AMPParametersConfig attribute)</a>
+</li>
         <li><a href="api_reference/protomotions.agents.amp.agent.html#protomotions.agents.amp.agent.AMP.config">config (protomotions.agents.amp.agent.AMP attribute)</a>
 
         <ul>
           <li><a href="api_reference/protomotions.agents.amp.model.html#protomotions.agents.amp.model.AMPModel.config">(protomotions.agents.amp.model.AMPModel attribute)</a>
 </li>
           <li><a href="api_reference/protomotions.agents.amp.model.html#protomotions.agents.amp.model.Discriminator.config">(protomotions.agents.amp.model.Discriminator attribute)</a>
+</li>
+          <li><a href="api_reference/protomotions.agents.ase.agent.html#protomotions.agents.ase.agent.ASE.config">(protomotions.agents.ase.agent.ASE attribute)</a>
+</li>
+          <li><a href="api_reference/protomotions.agents.ase.model.html#protomotions.agents.ase.model.ASEDiscriminatorEncoder.config">(protomotions.agents.ase.model.ASEDiscriminatorEncoder attribute)</a>
 </li>
           <li><a href="api_reference/protomotions.agents.base_agent.model.html#protomotions.agents.base_agent.model.BaseModel.config">(protomotions.agents.base_agent.model.BaseModel attribute)</a>
 </li>
@@ -908,11 +953,13 @@
         <ul>
           <li><a href="api_reference/protomotions.agents.amp.config.html#protomotions.agents.amp.config.AMPModelConfig.discriminator">(protomotions.agents.amp.config.AMPModelConfig attribute)</a>
 </li>
+          <li><a href="api_reference/protomotions.agents.ase.agent.html#protomotions.agents.ase.agent.ASE.discriminator">(protomotions.agents.ase.agent.ASE attribute)</a>
+</li>
         </ul></li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api_reference/protomotions.agents.amp.config.html#protomotions.agents.amp.config.AMPParametersConfig.discriminator_batch_size">discriminator_batch_size (protomotions.agents.amp.config.AMPParametersConfig attribute)</a>
 </li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api_reference/protomotions.agents.amp.config.html#protomotions.agents.amp.config.AMPParametersConfig.discriminator_grad_penalty">discriminator_grad_penalty (protomotions.agents.amp.config.AMPParametersConfig attribute)</a>
 </li>
         <li><a href="api_reference/protomotions.agents.amp.config.html#protomotions.agents.amp.config.AMPParametersConfig.discriminator_logit_weight_decay">discriminator_logit_weight_decay (protomotions.agents.amp.config.AMPParametersConfig attribute)</a>
@@ -932,10 +979,20 @@
         <li><a href="api_reference/protomotions.agents.amp.config.html#protomotions.agents.amp.config.AMPParametersConfig.discriminator_reward_w">discriminator_reward_w (protomotions.agents.amp.config.AMPParametersConfig attribute)</a>
 </li>
         <li><a href="api_reference/protomotions.agents.amp.agent.html#protomotions.agents.amp.agent.AMP.discriminator_step">discriminator_step() (protomotions.agents.amp.agent.AMP method)</a>
+
+        <ul>
+          <li><a href="api_reference/protomotions.agents.ase.agent.html#protomotions.agents.ase.agent.ASE.discriminator_step">(protomotions.agents.ase.agent.ASE method)</a>
 </li>
+        </ul></li>
         <li><a href="api_reference/protomotions.agents.amp.config.html#protomotions.agents.amp.config.AMPParametersConfig.discriminator_weight_decay">discriminator_weight_decay (protomotions.agents.amp.config.AMPParametersConfig attribute)</a>
 </li>
         <li><a href="api_reference/protomotions.agents.amp.config.html#protomotions.agents.amp.config.DiscriminatorConfig">DiscriminatorConfig (class in protomotions.agents.amp.config)</a>
+</li>
+        <li><a href="api_reference/protomotions.agents.ase.config.html#protomotions.agents.ase.config.ASEParametersConfig.diversity_bonus">diversity_bonus (protomotions.agents.ase.config.ASEParametersConfig attribute)</a>
+</li>
+        <li><a href="api_reference/protomotions.agents.ase.agent.html#protomotions.agents.ase.agent.ASE.diversity_loss">diversity_loss() (protomotions.agents.ase.agent.ASE method)</a>
+</li>
+        <li><a href="api_reference/protomotions.agents.ase.config.html#protomotions.agents.ase.config.ASEParametersConfig.diversity_tar">diversity_tar (protomotions.agents.ase.config.ASEParametersConfig attribute)</a>
 </li>
         <li><a href="api_reference/protomotions.agents.utils.step_tracker.html#protomotions.agents.utils.step_tracker.StepTracker.done_indices">done_indices() (protomotions.agents.utils.step_tracker.StepTracker method)</a>
 </li>
@@ -959,7 +1016,11 @@
 </li>
         <li><a href="api_reference/protomotions.agents.ppo.config.html#protomotions.agents.ppo.config.AdvantageNormalizationConfig.enabled">enabled (protomotions.agents.ppo.config.AdvantageNormalizationConfig attribute)</a>
 </li>
+        <li><a href="api_reference/protomotions.agents.ase.model.html#protomotions.agents.ase.model.ASEDiscriminatorEncoder.enc_weights">enc_weights() (protomotions.agents.ase.model.ASEDiscriminatorEncoder method)</a>
+</li>
         <li><a href="api_reference/protomotions.agents.masked_mimic.config.html#protomotions.agents.masked_mimic.config.MaskedMimicModelConfig.encoder">encoder (protomotions.agents.masked_mimic.config.MaskedMimicModelConfig attribute)</a>
+</li>
+        <li><a href="api_reference/protomotions.agents.ase.config.html#protomotions.agents.ase.config.ASEDiscriminatorEncoderConfig.encoder_out_size">encoder_out_size (protomotions.agents.ase.config.ASEDiscriminatorEncoderConfig attribute)</a>
 </li>
         <li><a href="api_reference/protomotions.agents.masked_mimic.config.html#protomotions.agents.masked_mimic.config.KLDScheduleConfig.end_epoch">end_epoch (protomotions.agents.masked_mimic.config.KLDScheduleConfig attribute)</a>
 </li>
@@ -979,10 +1040,10 @@
 </li>
         <li><a href="api_reference/protomotions.agents.base_agent.agent.html#protomotions.agents.base_agent.agent.BaseAgent.eval">eval() (protomotions.agents.base_agent.agent.BaseAgent method)</a>
 </li>
-        <li><a href="api_reference/protomotions.agents.evaluators.config.html#protomotions.agents.evaluators.config.MimicEvaluatorConfig.eval_metric_keys">eval_metric_keys (protomotions.agents.evaluators.config.MimicEvaluatorConfig attribute)</a>
-</li>
     </ul></td>
     <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="api_reference/protomotions.agents.evaluators.config.html#protomotions.agents.evaluators.config.MimicEvaluatorConfig.eval_metric_keys">eval_metric_keys (protomotions.agents.evaluators.config.MimicEvaluatorConfig attribute)</a>
+</li>
         <li><a href="api_reference/protomotions.agents.evaluators.config.html#protomotions.agents.evaluators.config.EvaluatorConfig.eval_metrics_every">eval_metrics_every (protomotions.agents.evaluators.config.EvaluatorConfig attribute)</a>
 </li>
         <li><a href="api_reference/protomotions.agents.evaluators.mimic_evaluator.html#protomotions.agents.evaluators.mimic_evaluator.MimicEvaluator.evaluate_episode">evaluate_episode() (protomotions.agents.evaluators.mimic_evaluator.MimicEvaluator method)</a>
@@ -1046,6 +1107,8 @@
         <ul>
           <li><a href="api_reference/protomotions.agents.amp.model.html#protomotions.agents.amp.model.Discriminator.forward">(protomotions.agents.amp.model.Discriminator method)</a>
 </li>
+          <li><a href="api_reference/protomotions.agents.ase.model.html#protomotions.agents.ase.model.ASEDiscriminatorEncoder.forward">(protomotions.agents.ase.model.ASEDiscriminatorEncoder method)</a>
+</li>
           <li><a href="api_reference/protomotions.agents.base_agent.model.html#protomotions.agents.base_agent.model.BaseModel.forward">(protomotions.agents.base_agent.model.BaseModel method)</a>
 </li>
           <li><a href="api_reference/protomotions.agents.common.common.html#protomotions.agents.common.common.Flatten.forward">(protomotions.agents.common.common.Flatten method)</a>
@@ -1104,11 +1167,17 @@
         <li><a href="api_reference/protomotions.agents.amp.agent.html#protomotions.agents.amp.agent.AMP.get_combined_experience_buffer_rewards">get_combined_experience_buffer_rewards() (protomotions.agents.amp.agent.AMP method)</a>
 
         <ul>
+          <li><a href="api_reference/protomotions.agents.ase.agent.html#protomotions.agents.ase.agent.ASE.get_combined_experience_buffer_rewards">(protomotions.agents.ase.agent.ASE method)</a>
+</li>
           <li><a href="api_reference/protomotions.agents.base_agent.agent.html#protomotions.agents.base_agent.agent.BaseAgent.get_combined_experience_buffer_rewards">(protomotions.agents.base_agent.agent.BaseAgent method)</a>
 </li>
         </ul></li>
         <li><a href="api_reference/protomotions.agents.amp.agent.html#protomotions.agents.amp.agent.AMP.get_expert_disc_obs">get_expert_disc_obs() (protomotions.agents.amp.agent.AMP method)</a>
+
+        <ul>
+          <li><a href="api_reference/protomotions.agents.ase.agent.html#protomotions.agents.ase.agent.ASE.get_expert_disc_obs">(protomotions.agents.ase.agent.ASE method)</a>
 </li>
+        </ul></li>
     </ul></td>
     <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api_reference/protomotions.agents.common.common.html#protomotions.agents.common.common.get_params">get_params() (in module protomotions.agents.common.common)</a>
@@ -1116,6 +1185,8 @@
         <li><a href="api_reference/protomotions.agents.amp.agent.html#protomotions.agents.amp.agent.AMP.get_state_dict">get_state_dict() (protomotions.agents.amp.agent.AMP method)</a>
 
         <ul>
+          <li><a href="api_reference/protomotions.agents.ase.agent.html#protomotions.agents.ase.agent.ASE.get_state_dict">(protomotions.agents.ase.agent.ASE method)</a>
+</li>
           <li><a href="api_reference/protomotions.agents.base_agent.agent.html#protomotions.agents.base_agent.agent.BaseAgent.get_state_dict">(protomotions.agents.base_agent.agent.BaseAgent method)</a>
 </li>
           <li><a href="api_reference/protomotions.agents.masked_mimic.agent.html#protomotions.agents.masked_mimic.agent.MaskedMimic.get_state_dict">(protomotions.agents.masked_mimic.agent.MaskedMimic method)</a>
@@ -1164,6 +1235,8 @@
         <li><a href="api_reference/protomotions.agents.amp.model.html#protomotions.agents.amp.model.Discriminator.in_keys">in_keys (protomotions.agents.amp.model.Discriminator attribute)</a>
 
         <ul>
+          <li><a href="api_reference/protomotions.agents.ase.config.html#protomotions.agents.ase.config.ASEDiscriminatorEncoderConfig.in_keys">(protomotions.agents.ase.config.ASEDiscriminatorEncoderConfig attribute)</a>
+</li>
           <li><a href="api_reference/protomotions.agents.base_agent.config.html#protomotions.agents.base_agent.config.BaseModelConfig.in_keys">(protomotions.agents.base_agent.config.BaseModelConfig attribute)</a>
 </li>
           <li><a href="api_reference/protomotions.agents.base_agent.model.html#protomotions.agents.base_agent.model.BaseModel.in_keys">(protomotions.agents.base_agent.model.BaseModel attribute)</a>
@@ -1265,15 +1338,33 @@
   <h2>L</h2>
   <table style="width: 100%" class="indextable genindextable"><tr>
     <td style="width: 33%; vertical-align: top;"><ul>
-        <li><a href="api_reference/protomotions.agents.common.config.html#protomotions.agents.common.config.TransformerConfig.latent_dim">latent_dim (protomotions.agents.common.config.TransformerConfig attribute)</a>
+        <li><a href="api_reference/protomotions.agents.ase.config.html#protomotions.agents.ase.config.ASEParametersConfig.latent_dim">latent_dim (protomotions.agents.ase.config.ASEParametersConfig attribute)</a>
+
+        <ul>
+          <li><a href="api_reference/protomotions.agents.common.config.html#protomotions.agents.common.config.TransformerConfig.latent_dim">(protomotions.agents.common.config.TransformerConfig attribute)</a>
+</li>
+        </ul></li>
+        <li><a href="api_reference/protomotions.agents.ase.agent.html#protomotions.agents.ase.agent.ASE.latent_reset_steps">latent_reset_steps (protomotions.agents.ase.agent.ASE attribute)</a>
+</li>
+        <li><a href="api_reference/protomotions.agents.ase.config.html#protomotions.agents.ase.config.ASEParametersConfig.latent_steps_max">latent_steps_max (protomotions.agents.ase.config.ASEParametersConfig attribute)</a>
+</li>
+        <li><a href="api_reference/protomotions.agents.ase.config.html#protomotions.agents.ase.config.ASEParametersConfig.latent_steps_min">latent_steps_min (protomotions.agents.ase.config.ASEParametersConfig attribute)</a>
+</li>
+        <li><a href="api_reference/protomotions.agents.ase.config.html#protomotions.agents.ase.config.ASEParametersConfig.latent_uniformity_weight">latent_uniformity_weight (protomotions.agents.ase.config.ASEParametersConfig attribute)</a>
+</li>
+        <li><a href="api_reference/protomotions.agents.ase.agent.html#protomotions.agents.ase.agent.ASE.latents">latents (protomotions.agents.ase.agent.ASE attribute)</a>
 </li>
         <li><a href="api_reference/protomotions.agents.common.config.html#protomotions.agents.common.config.MLPWithConcatConfig.layers">layers (protomotions.agents.common.config.MLPWithConcatConfig attribute)</a>
 </li>
         <li><a href="api_reference/protomotions.agents.base_agent.agent.html#protomotions.agents.base_agent.agent.BaseAgent.load">load() (protomotions.agents.base_agent.agent.BaseAgent method)</a>
 </li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api_reference/protomotions.agents.amp.agent.html#protomotions.agents.amp.agent.AMP.load_parameters">load_parameters() (protomotions.agents.amp.agent.AMP method)</a>
 
         <ul>
+          <li><a href="api_reference/protomotions.agents.ase.agent.html#protomotions.agents.ase.agent.ASE.load_parameters">(protomotions.agents.ase.agent.ASE method)</a>
+</li>
           <li><a href="api_reference/protomotions.agents.base_agent.agent.html#protomotions.agents.base_agent.agent.BaseAgent.load_parameters">(protomotions.agents.base_agent.agent.BaseAgent method)</a>
 </li>
           <li><a href="api_reference/protomotions.agents.masked_mimic.agent.html#protomotions.agents.masked_mimic.agent.MaskedMimic.load_parameters">(protomotions.agents.masked_mimic.agent.MaskedMimic method)</a>
@@ -1281,12 +1372,14 @@
           <li><a href="api_reference/protomotions.agents.ppo.agent.html#protomotions.agents.ppo.agent.PPO.load_parameters">(protomotions.agents.ppo.agent.PPO method)</a>
 </li>
         </ul></li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api_reference/protomotions.utils.fabric_config.html#protomotions.utils.fabric_config.FabricConfig.loggers">loggers (protomotions.utils.fabric_config.FabricConfig attribute)</a>
 </li>
         <li><a href="api_reference/protomotions.agents.amp.model.html#protomotions.agents.amp.model.Discriminator.logit_weights">logit_weights() (protomotions.agents.amp.model.Discriminator method)</a>
+
+        <ul>
+          <li><a href="api_reference/protomotions.agents.ase.model.html#protomotions.agents.ase.model.ASEDiscriminatorEncoder.logit_weights">(protomotions.agents.ase.model.ASEDiscriminatorEncoder method)</a>
 </li>
+        </ul></li>
         <li><a href="api_reference/protomotions.agents.ppo.model.html#protomotions.agents.ppo.model.PPOActor.logstd">logstd (protomotions.agents.ppo.model.PPOActor attribute)</a>
 </li>
         <li><a href="api_reference/protomotions.agents.base_agent.config.html#protomotions.agents.base_agent.config.OptimizerConfig.lr">lr (protomotions.agents.base_agent.config.OptimizerConfig attribute)</a>
@@ -1377,6 +1470,16 @@
           <li><a href="api_reference/protomotions.agents.evaluators.html#protomotions.agents.evaluators.MotionMetrics.merge_from">(protomotions.agents.evaluators.MotionMetrics method)</a>
 </li>
         </ul></li>
+        <li><a href="api_reference/protomotions.agents.ase.agent.html#protomotions.agents.ase.agent.ASE.mi_enc_forward">mi_enc_forward() (protomotions.agents.ase.agent.ASE method)</a>
+</li>
+        <li><a href="api_reference/protomotions.agents.ase.config.html#protomotions.agents.ase.config.ASEParametersConfig.mi_enc_grad_penalty">mi_enc_grad_penalty (protomotions.agents.ase.config.ASEParametersConfig attribute)</a>
+</li>
+        <li><a href="api_reference/protomotions.agents.ase.config.html#protomotions.agents.ase.config.ASEParametersConfig.mi_enc_weight_decay">mi_enc_weight_decay (protomotions.agents.ase.config.ASEParametersConfig attribute)</a>
+</li>
+        <li><a href="api_reference/protomotions.agents.ase.config.html#protomotions.agents.ase.config.ASEParametersConfig.mi_hypersphere_reward_shift">mi_hypersphere_reward_shift (protomotions.agents.ase.config.ASEParametersConfig attribute)</a>
+</li>
+        <li><a href="api_reference/protomotions.agents.ase.config.html#protomotions.agents.ase.config.ASEParametersConfig.mi_reward_w">mi_reward_w (protomotions.agents.ase.config.ASEParametersConfig attribute)</a>
+</li>
         <li><a href="api_reference/protomotions.envs.html#Mimic">Mimic (built-in class)</a>
 </li>
         <li><a href="api_reference/protomotions.robot_configs.html#protomotions.robot_configs.base.RobotConfig.mimic_small_marker_bodies">mimic_small_marker_bodies (protomotions.robot_configs.base.RobotConfig attribute)</a>
@@ -1414,6 +1517,8 @@
         <li><a href="api_reference/protomotions.agents.amp.config.html#protomotions.agents.amp.config.AMPAgentConfig.model">model (protomotions.agents.amp.config.AMPAgentConfig attribute)</a>
 
         <ul>
+          <li><a href="api_reference/protomotions.agents.ase.agent.html#protomotions.agents.ase.agent.ASE.model">(protomotions.agents.ase.agent.ASE attribute)</a>
+</li>
           <li><a href="api_reference/protomotions.agents.base_agent.agent.html#protomotions.agents.base_agent.agent.BaseAgent.model">(protomotions.agents.base_agent.agent.BaseAgent attribute)</a>
 </li>
           <li><a href="api_reference/protomotions.agents.base_agent.config.html#protomotions.agents.base_agent.config.BaseAgentConfig.model">(protomotions.agents.base_agent.config.BaseAgentConfig attribute)</a>
@@ -1442,6 +1547,12 @@
           <li><a href="api_reference/protomotions.agents.amp.model.html#module-protomotions.agents.amp.model">protomotions.agents.amp.model</a>
 </li>
           <li><a href="api_reference/protomotions.agents.ase.html#module-protomotions.agents.ase">protomotions.agents.ase</a>
+</li>
+          <li><a href="api_reference/protomotions.agents.ase.agent.html#module-protomotions.agents.ase.agent">protomotions.agents.ase.agent</a>
+</li>
+          <li><a href="api_reference/protomotions.agents.ase.config.html#module-protomotions.agents.ase.config">protomotions.agents.ase.config</a>
+</li>
+          <li><a href="api_reference/protomotions.agents.ase.model.html#module-protomotions.agents.ase.model">protomotions.agents.ase.model</a>
 </li>
           <li><a href="api_reference/protomotions.agents.base_agent.html#module-protomotions.agents.base_agent">protomotions.agents.base_agent</a>
 </li>
@@ -1715,6 +1826,8 @@
         <ul>
           <li><a href="api_reference/protomotions.agents.amp.model.html#protomotions.agents.amp.model.Discriminator.out_keys">(protomotions.agents.amp.model.Discriminator attribute)</a>
 </li>
+          <li><a href="api_reference/protomotions.agents.ase.config.html#protomotions.agents.ase.config.ASEDiscriminatorEncoderConfig.out_keys">(protomotions.agents.ase.config.ASEDiscriminatorEncoderConfig attribute)</a>
+</li>
           <li><a href="api_reference/protomotions.agents.base_agent.config.html#protomotions.agents.base_agent.config.BaseModelConfig.out_keys">(protomotions.agents.base_agent.config.BaseModelConfig attribute)</a>
 </li>
           <li><a href="api_reference/protomotions.agents.base_agent.model.html#protomotions.agents.base_agent.model.BaseModel.out_keys">(protomotions.agents.base_agent.model.BaseModel attribute)</a>
@@ -1789,6 +1902,8 @@
         <li><a href="api_reference/protomotions.agents.amp.agent.html#protomotions.agents.amp.agent.AMP.post_epoch_logging">post_epoch_logging() (protomotions.agents.amp.agent.AMP method)</a>
 
         <ul>
+          <li><a href="api_reference/protomotions.agents.ase.agent.html#protomotions.agents.ase.agent.ASE.post_epoch_logging">(protomotions.agents.ase.agent.ASE method)</a>
+</li>
           <li><a href="api_reference/protomotions.agents.base_agent.agent.html#protomotions.agents.base_agent.agent.BaseAgent.post_epoch_logging">(protomotions.agents.base_agent.agent.BaseAgent method)</a>
 </li>
         </ul></li>
@@ -1816,6 +1931,8 @@
           <li><a href="api_reference/protomotions.agents.evaluators.html#protomotions.agents.evaluators.MimicEvaluator.process_eval_results">(protomotions.agents.evaluators.MimicEvaluator method)</a>
 </li>
         </ul></li>
+        <li><a href="api_reference/protomotions.agents.ase.agent.html#protomotions.agents.ase.agent.ASE.produce_negative_expert_obs">produce_negative_expert_obs() (protomotions.agents.ase.agent.ASE method)</a>
+</li>
         <li>
     protomotions
 
@@ -1863,6 +1980,27 @@
 
         <ul>
           <li><a href="api_reference/protomotions.agents.ase.html#module-protomotions.agents.ase">module</a>
+</li>
+        </ul></li>
+        <li>
+    protomotions.agents.ase.agent
+
+        <ul>
+          <li><a href="api_reference/protomotions.agents.ase.agent.html#module-protomotions.agents.ase.agent">module</a>
+</li>
+        </ul></li>
+        <li>
+    protomotions.agents.ase.config
+
+        <ul>
+          <li><a href="api_reference/protomotions.agents.ase.config.html#module-protomotions.agents.ase.config">module</a>
+</li>
+        </ul></li>
+        <li>
+    protomotions.agents.ase.model
+
+        <ul>
+          <li><a href="api_reference/protomotions.agents.ase.model.html#module-protomotions.agents.ase.model">module</a>
 </li>
         </ul></li>
         <li>
@@ -1956,6 +2094,8 @@
           <li><a href="api_reference/protomotions.agents.evaluators.base_evaluator.html#module-protomotions.agents.evaluators.base_evaluator">module</a>
 </li>
         </ul></li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
         <li>
     protomotions.agents.evaluators.config
 
@@ -1970,8 +2110,6 @@
           <li><a href="api_reference/protomotions.agents.evaluators.metrics.html#module-protomotions.agents.evaluators.metrics">module</a>
 </li>
         </ul></li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
         <li>
     protomotions.agents.evaluators.mimic_evaluator
 
@@ -2222,6 +2360,8 @@
         <li><a href="api_reference/protomotions.agents.amp.agent.html#protomotions.agents.amp.agent.AMP.register_algorithm_experience_buffer_keys">register_algorithm_experience_buffer_keys() (protomotions.agents.amp.agent.AMP method)</a>
 
         <ul>
+          <li><a href="api_reference/protomotions.agents.ase.agent.html#protomotions.agents.ase.agent.ASE.register_algorithm_experience_buffer_keys">(protomotions.agents.ase.agent.ASE method)</a>
+</li>
           <li><a href="api_reference/protomotions.agents.base_agent.agent.html#protomotions.agents.base_agent.agent.BaseAgent.register_algorithm_experience_buffer_keys">(protomotions.agents.base_agent.agent.BaseAgent method)</a>
 </li>
           <li><a href="api_reference/protomotions.agents.masked_mimic.agent.html#protomotions.agents.masked_mimic.agent.MaskedMimic.register_algorithm_experience_buffer_keys">(protomotions.agents.masked_mimic.agent.MaskedMimic method)</a>
@@ -2251,6 +2391,8 @@
         </ul></li>
     </ul></td>
     <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="api_reference/protomotions.agents.ase.agent.html#protomotions.agents.ase.agent.ASE.reset_latents">reset_latents() (protomotions.agents.ase.agent.ASE method)</a>
+</li>
         <li><a href="api_reference/protomotions.agents.utils.step_tracker.html#protomotions.agents.utils.step_tracker.StepTracker.reset_steps">reset_steps() (protomotions.agents.utils.step_tracker.StepTracker method)</a>
 </li>
         <li><a href="api_reference/protomotions.agents.masked_mimic.agent.html#protomotions.agents.masked_mimic.agent.MaskedMimic.reset_vae_noise">reset_vae_noise() (protomotions.agents.masked_mimic.agent.MaskedMimic method)</a>
@@ -2289,6 +2431,8 @@
     <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api_reference/protomotions.agents.utils.replay_buffer.html#protomotions.agents.utils.replay_buffer.ReplayBuffer.sample">sample() (protomotions.agents.utils.replay_buffer.ReplayBuffer method)</a>
 </li>
+        <li><a href="api_reference/protomotions.agents.ase.agent.html#protomotions.agents.ase.agent.ASE.sample_latents">sample_latents() (protomotions.agents.ase.agent.ASE method)</a>
+</li>
         <li><a href="api_reference/protomotions.agents.base_agent.agent.html#protomotions.agents.base_agent.agent.BaseAgent.save">save() (protomotions.agents.base_agent.agent.BaseAgent method)</a>
 </li>
         <li><a href="api_reference/protomotions.agents.base_agent.config.html#protomotions.agents.base_agent.config.BaseAgentConfig.save_epoch_checkpoint_every">save_epoch_checkpoint_every (protomotions.agents.base_agent.config.BaseAgentConfig attribute)</a>
@@ -2309,9 +2453,11 @@
 </li>
         <li><a href="api_reference/protomotions.agents.common.config.html#protomotions.agents.common.config.SequentialModuleConfig">SequentialModuleConfig (class in protomotions.agents.common.config)</a>
 </li>
-        <li><a href="api_reference/protomotions.agents.base_agent.agent.html#protomotions.agents.base_agent.agent.BaseAgent.setup">setup() (protomotions.agents.base_agent.agent.BaseAgent method)</a>
+        <li><a href="api_reference/protomotions.agents.ase.agent.html#protomotions.agents.ase.agent.ASE.setup">setup() (protomotions.agents.ase.agent.ASE method)</a>
 
         <ul>
+          <li><a href="api_reference/protomotions.agents.base_agent.agent.html#protomotions.agents.base_agent.agent.BaseAgent.setup">(protomotions.agents.base_agent.agent.BaseAgent method)</a>
+</li>
           <li><a href="api_reference/protomotions.agents.masked_mimic.agent.html#protomotions.agents.masked_mimic.agent.MaskedMimic.setup">(protomotions.agents.masked_mimic.agent.MaskedMimic method)</a>
 </li>
         </ul></li>
@@ -2331,6 +2477,8 @@
           <li><a href="api_reference/protomotions.agents.evaluators.html#protomotions.agents.evaluators.MimicEvaluator.simple_test_policy">(protomotions.agents.evaluators.MimicEvaluator method)</a>
 </li>
         </ul></li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api_reference/protomotions.robot_configs.html#protomotions.robot_configs.amp.AMPRobotConfig.simulation_params">simulation_params (protomotions.robot_configs.amp.AMPRobotConfig attribute)</a>
 
         <ul>
@@ -2345,8 +2493,6 @@
           <li><a href="api_reference/protomotions.robot_configs.html#protomotions.robot_configs.smplx.SMPLXRobotConfig.simulation_params">(protomotions.robot_configs.smplx.SMPLXRobotConfig attribute)</a>
 </li>
         </ul></li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api_reference/protomotions.simulator.html#Simulator">Simulator (built-in class)</a>
 </li>
         <li><a href="api_reference/protomotions.agents.evaluators.html#protomotions.agents.evaluators.SmoothnessEvaluator">SmoothnessEvaluator (class in protomotions.agents.evaluators)</a>
@@ -2378,6 +2524,8 @@
         <li><a href="api_reference/protomotions.agents.utils.replay_buffer.html#protomotions.agents.utils.replay_buffer.ReplayBuffer.store">store() (protomotions.agents.utils.replay_buffer.ReplayBuffer method)</a>
 </li>
         <li><a href="api_reference/protomotions.agents.utils.data.html#protomotions.agents.utils.data.ExperienceBuffer.store_dict">store_dict (protomotions.agents.utils.data.ExperienceBuffer attribute)</a>
+</li>
+        <li><a href="api_reference/protomotions.agents.ase.agent.html#protomotions.agents.ase.agent.ASE.store_latents">store_latents() (protomotions.agents.ase.agent.ASE method)</a>
 </li>
         <li><a href="api_reference/protomotions.agents.utils.data.html#protomotions.agents.utils.data.swap_and_flatten01">swap_and_flatten01() (in module protomotions.agents.utils.data)</a>
 </li>
@@ -2473,6 +2621,8 @@
     <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api_reference/protomotions.agents.masked_mimic.config.html#protomotions.agents.masked_mimic.config.VaeNoiseType.UNIFORM">UNIFORM (protomotions.agents.masked_mimic.config.VaeNoiseType attribute)</a>
 </li>
+        <li><a href="api_reference/protomotions.agents.ase.config.html#protomotions.agents.ase.config.ASEParametersConfig.uniformity_kernel_scale">uniformity_kernel_scale (protomotions.agents.ase.config.ASEParametersConfig attribute)</a>
+</li>
         <li><a href="api_reference/protomotions.agents.common.config.html#protomotions.agents.common.config.MLPLayerConfig.units">units (protomotions.agents.common.config.MLPLayerConfig attribute)</a>
 </li>
         <li><a href="api_reference/protomotions.agents.common.config.html#protomotions.agents.common.config.ModuleOperationUnsqueezeConfig.unsqueeze_dim">unsqueeze_dim (protomotions.agents.common.config.ModuleOperationUnsqueezeConfig attribute)</a>
@@ -2490,6 +2640,8 @@
         <li><a href="api_reference/protomotions.agents.amp.agent.html#protomotions.agents.amp.agent.AMP.update_disc_replay_buffer">update_disc_replay_buffer() (protomotions.agents.amp.agent.AMP method)</a>
 </li>
         <li><a href="api_reference/protomotions.robot_configs.html#protomotions.robot_configs.base.RobotConfig.update_fields">update_fields() (protomotions.robot_configs.base.RobotConfig method)</a>
+</li>
+        <li><a href="api_reference/protomotions.agents.ase.agent.html#protomotions.agents.ase.agent.ASE.update_latents">update_latents() (protomotions.agents.ase.agent.ASE method)</a>
 </li>
         <li><a href="api_reference/protomotions.agents.evaluators.mimic_evaluator.html#protomotions.agents.evaluators.mimic_evaluator.MimicEvaluator.update_metrics_from_env_extras">update_metrics_from_env_extras() (protomotions.agents.evaluators.mimic_evaluator.MimicEvaluator method)</a>
 

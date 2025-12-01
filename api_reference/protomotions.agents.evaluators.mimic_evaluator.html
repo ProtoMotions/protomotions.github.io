@@ -211,6 +211,7 @@
 <p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../user_guide/configuration.html">Configuration System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/experiments.html">Experiments</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user_guide/developer_tips.html">Developer Tips</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Key Concepts</span></p>
@@ -244,8 +245,6 @@
 </ul>
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="protomotions.agents.callbacks.html">protomotions.agents.callbacks package</a><input aria-label="Toggle navigation of protomotions.agents.callbacks package" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.callbacks.one_logger.html">protomotions.agents.callbacks.one_logger module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.callbacks.slurm_autoresume_adlr.html">protomotions.agents.callbacks.slurm_autoresume_adlr module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="protomotions.agents.callbacks.slurm_autoresume_srun.html">protomotions.agents.callbacks.slurm_autoresume_srun module</a></li>
 </ul>
 </li>
@@ -329,12 +328,8 @@
           <span>Back to top</span>
         </a>
         <div class="content-icon-container">
-          <div class="view-this-page">
-  <a class="muted-link" href="../_sources/api_reference/protomotions.agents.evaluators.mimic_evaluator.rst.txt" title="View this page">
-    <svg><use href="#svg-eye"></use></svg>
-    <span class="visually-hidden">View this page</span>
-  </a>
-</div>
+          
+
 <div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
               <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
@@ -557,18 +552,18 @@ the episode until completion or max steps, accumulating metrics.</p>
             <ul>
 <li><a class="reference internal" href="#">protomotions.agents.evaluators.mimic_evaluator module</a><ul>
 <li><a class="reference internal" href="#protomotions.agents.evaluators.mimic_evaluator.MimicEvaluator"><code class="docutils literal notranslate"><span class="pre">MimicEvaluator</span></code></a><ul>
-<li><a class="reference internal" href="#protomotions.agents.evaluators.mimic_evaluator.MimicEvaluator.__init__"><code class="docutils literal notranslate"><span class="pre">MimicEvaluator.__init__()</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.evaluators.mimic_evaluator.MimicEvaluator.motion_lib"><code class="docutils literal notranslate"><span class="pre">MimicEvaluator.motion_lib</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.evaluators.mimic_evaluator.MimicEvaluator.num_envs"><code class="docutils literal notranslate"><span class="pre">MimicEvaluator.num_envs</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.evaluators.mimic_evaluator.MimicEvaluator.motion_manager"><code class="docutils literal notranslate"><span class="pre">MimicEvaluator.motion_manager</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.evaluators.mimic_evaluator.MimicEvaluator.initialize_eval"><code class="docutils literal notranslate"><span class="pre">MimicEvaluator.initialize_eval()</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.evaluators.mimic_evaluator.MimicEvaluator.run_evaluation"><code class="docutils literal notranslate"><span class="pre">MimicEvaluator.run_evaluation()</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.evaluators.mimic_evaluator.MimicEvaluator.evaluate_episode"><code class="docutils literal notranslate"><span class="pre">MimicEvaluator.evaluate_episode()</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.evaluators.mimic_evaluator.MimicEvaluator.add_extra_obs_to_agent"><code class="docutils literal notranslate"><span class="pre">MimicEvaluator.add_extra_obs_to_agent()</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.evaluators.mimic_evaluator.MimicEvaluator.update_metrics_from_env_extras"><code class="docutils literal notranslate"><span class="pre">MimicEvaluator.update_metrics_from_env_extras()</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.evaluators.mimic_evaluator.MimicEvaluator.process_eval_results"><code class="docutils literal notranslate"><span class="pre">MimicEvaluator.process_eval_results()</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.evaluators.mimic_evaluator.MimicEvaluator.cleanup_after_evaluation"><code class="docutils literal notranslate"><span class="pre">MimicEvaluator.cleanup_after_evaluation()</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.evaluators.mimic_evaluator.MimicEvaluator.simple_test_policy"><code class="docutils literal notranslate"><span class="pre">MimicEvaluator.simple_test_policy()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.evaluators.mimic_evaluator.MimicEvaluator.__init__"><code class="docutils literal notranslate"><span class="pre">__init__()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.evaluators.mimic_evaluator.MimicEvaluator.motion_lib"><code class="docutils literal notranslate"><span class="pre">motion_lib</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.evaluators.mimic_evaluator.MimicEvaluator.num_envs"><code class="docutils literal notranslate"><span class="pre">num_envs</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.evaluators.mimic_evaluator.MimicEvaluator.motion_manager"><code class="docutils literal notranslate"><span class="pre">motion_manager</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.evaluators.mimic_evaluator.MimicEvaluator.initialize_eval"><code class="docutils literal notranslate"><span class="pre">initialize_eval()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.evaluators.mimic_evaluator.MimicEvaluator.run_evaluation"><code class="docutils literal notranslate"><span class="pre">run_evaluation()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.evaluators.mimic_evaluator.MimicEvaluator.evaluate_episode"><code class="docutils literal notranslate"><span class="pre">evaluate_episode()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.evaluators.mimic_evaluator.MimicEvaluator.add_extra_obs_to_agent"><code class="docutils literal notranslate"><span class="pre">add_extra_obs_to_agent()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.evaluators.mimic_evaluator.MimicEvaluator.update_metrics_from_env_extras"><code class="docutils literal notranslate"><span class="pre">update_metrics_from_env_extras()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.evaluators.mimic_evaluator.MimicEvaluator.process_eval_results"><code class="docutils literal notranslate"><span class="pre">process_eval_results()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.evaluators.mimic_evaluator.MimicEvaluator.cleanup_after_evaluation"><code class="docutils literal notranslate"><span class="pre">cleanup_after_evaluation()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.evaluators.mimic_evaluator.MimicEvaluator.simple_test_policy"><code class="docutils literal notranslate"><span class="pre">simple_test_policy()</span></code></a></li>
 </ul>
 </li>
 </ul>

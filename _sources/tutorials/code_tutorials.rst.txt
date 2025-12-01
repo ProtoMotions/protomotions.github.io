@@ -26,6 +26,13 @@ is a complete, runnable Python script that builds on previous concepts.
 Tutorial 0: Create Simulator
 -----------------------------
 
+.. raw:: html
+
+   <video width="100%" controls>
+     <source src="../_static/tutorial_0.mp4" type="video/mp4">
+     Your browser does not support the video tag.
+   </video>
+
 **File**: ``examples/tutorial/0_create_simulator.py``
 
 Learn the foundation of ProtoMotions - creating a physics simulator with a G1 robot.
@@ -65,6 +72,13 @@ Learn the foundation of ProtoMotions - creating a physics simulator with a G1 ro
 Tutorial 1: Add Terrain
 ------------------------
 
+.. raw:: html
+
+   <video width="100%" controls>
+     <source src="../_static/tutorial_1.mp4" type="video/mp4">
+     Your browser does not support the video tag.
+   </video>
+
 **File**: ``examples/tutorial/1_add_terrain.py``
 
 Learn to create complex terrains for robust locomotion training.
@@ -95,6 +109,13 @@ Learn to create complex terrains for robust locomotion training.
 
 Tutorial 2: Load Robot
 -----------------------
+
+.. raw:: html
+
+   <video width="100%" controls>
+     <source src="../_static/tutorial_2.mp4" type="video/mp4">
+     Your browser does not support the video tag.
+   </video>
 
 **File**: ``examples/tutorial/2_load_robot.py``
 
@@ -127,6 +148,13 @@ Learn to load different robots using the robot factory.
 
 Tutorial 3: Scene Creation
 ---------------------------
+
+.. raw:: html
+
+   <video width="100%" controls>
+     <source src="../_static/tutorial_3.mp4" type="video/mp4">
+     Your browser does not support the video tag.
+   </video>
 
 **File**: ``examples/tutorial/3_scene_creation.py``
 
@@ -162,6 +190,13 @@ Learn to add objects and create scenes for robot interaction.
 Tutorial 4: Basic Environment
 ------------------------------
 
+.. raw:: html
+
+   <video width="100%" controls>
+     <source src="../_static/tutorial_4.mp4" type="video/mp4">
+     Your browser does not support the video tag.
+   </video>
+
 **File**: ``examples/tutorial/4_basic_environment.py``
 
 Learn to create a complete RL environment using ``BaseEnv``.
@@ -195,6 +230,13 @@ Learn to create a complete RL environment using ``BaseEnv``.
 
 Tutorial 5: Motion Manager
 ---------------------------
+
+.. raw:: html
+
+   <video width="100%" controls>
+     <source src="../_static/tutorial_5.mp4" type="video/mp4">
+     Your browser does not support the video tag.
+   </video>
 
 **File**: ``examples/tutorial/5_motion_manager.py``
 
@@ -231,6 +273,15 @@ Learn to work with motion libraries for reference motion playback.
 Tutorial 6: Mimic Environment
 ------------------------------
 
+.. raw:: html
+
+   <video width="100%" controls>
+     <source src="../_static/tutorial_6.mp4" type="video/mp4">
+     Your browser does not support the video tag.
+   </video>
+
+*The red spheres indicate the target motion pose, while the robot is simulated with random actions.*
+
 **File**: ``examples/tutorial/6_mimic_environment.py``
 
 Learn to create motion imitation environments using ``Mimic``.
@@ -246,6 +297,10 @@ Learn to create motion imitation environments using ``Mimic``.
 .. code-block:: bash
 
    python examples/tutorial/6_mimic_environment.py --simulator isaacgym
+
+.. note::
+
+   This tutorial uses a hard-coded SMPL humanoid to match the sitting on chair motion data.
 
 **Code highlights**:
 
@@ -281,6 +336,10 @@ Learn to train a complete motion tracking agent with PPO.
 .. code-block:: bash
 
    python examples/tutorial/7_deepmimic.py --simulator isaacgym
+
+.. note::
+
+   This tutorial uses a hard-coded SMPL humanoid to match the sitting on chair motion data.
 
 **Code highlights**:
 

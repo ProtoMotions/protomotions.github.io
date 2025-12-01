@@ -211,6 +211,7 @@
 <p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../user_guide/configuration.html">Configuration System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/experiments.html">Experiments</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user_guide/developer_tips.html">Developer Tips</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Key Concepts</span></p>
@@ -244,8 +245,6 @@
 </ul>
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="protomotions.agents.callbacks.html">protomotions.agents.callbacks package</a><input aria-label="Toggle navigation of protomotions.agents.callbacks package" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.callbacks.one_logger.html">protomotions.agents.callbacks.one_logger module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.callbacks.slurm_autoresume_adlr.html">protomotions.agents.callbacks.slurm_autoresume_adlr module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="protomotions.agents.callbacks.slurm_autoresume_srun.html">protomotions.agents.callbacks.slurm_autoresume_srun module</a></li>
 </ul>
 </li>
@@ -329,12 +328,8 @@
           <span>Back to top</span>
         </a>
         <div class="content-icon-container">
-          <div class="view-this-page">
-  <a class="muted-link" href="../_sources/api_reference/protomotions.agents.evaluators.smoothness_evaluator.rst.txt" title="View this page">
-    <svg><use href="#svg-eye"></use></svg>
-    <span class="visually-hidden">View this page</span>
-  </a>
-</div>
+          
+
 <div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
               <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
@@ -367,7 +362,7 @@ differences and then computing normalized jerk.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>device</strong> (<em>&lt;Mock object at 0x78723e811890&gt;</em><em>[</em><em>]</em>) – Device to perform computations on</p></li>
+<li><p><strong>device</strong> (<em>&lt;Mock object at 0x701e6ba64ad0&gt;</em><em>[</em><em>]</em>) – Device to perform computations on</p></li>
 <li><p><strong>dt</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><em>float</em></a>) – Time step duration in seconds</p></li>
 <li><p><strong>window_sec</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><em>float</em></a>) – Default window size in seconds for rolling window computation</p></li>
 <li><p><strong>high_jerk_threshold</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><em>float</em></a>) – Threshold for classifying windows as having high jerk</p></li>
@@ -489,9 +484,9 @@ windowed_nj_per_motion: List of windowed NJ tensors per motion [num_windows, num
             <ul>
 <li><a class="reference internal" href="#">protomotions.agents.evaluators.smoothness_evaluator module</a><ul>
 <li><a class="reference internal" href="#protomotions.agents.evaluators.smoothness_evaluator.SmoothnessEvaluator"><code class="docutils literal notranslate"><span class="pre">SmoothnessEvaluator</span></code></a><ul>
-<li><a class="reference internal" href="#protomotions.agents.evaluators.smoothness_evaluator.SmoothnessEvaluator.__init__"><code class="docutils literal notranslate"><span class="pre">SmoothnessEvaluator.__init__()</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.evaluators.smoothness_evaluator.SmoothnessEvaluator.compute_normalized_jerk_from_pos"><code class="docutils literal notranslate"><span class="pre">SmoothnessEvaluator.compute_normalized_jerk_from_pos()</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.evaluators.smoothness_evaluator.SmoothnessEvaluator.compute_smoothness_metrics"><code class="docutils literal notranslate"><span class="pre">SmoothnessEvaluator.compute_smoothness_metrics()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.evaluators.smoothness_evaluator.SmoothnessEvaluator.__init__"><code class="docutils literal notranslate"><span class="pre">__init__()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.evaluators.smoothness_evaluator.SmoothnessEvaluator.compute_normalized_jerk_from_pos"><code class="docutils literal notranslate"><span class="pre">compute_normalized_jerk_from_pos()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.evaluators.smoothness_evaluator.SmoothnessEvaluator.compute_smoothness_metrics"><code class="docutils literal notranslate"><span class="pre">compute_smoothness_metrics()</span></code></a></li>
 </ul>
 </li>
 </ul>

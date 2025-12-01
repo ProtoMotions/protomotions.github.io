@@ -173,7 +173,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
         <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
       </label>
     </div>
@@ -211,6 +211,7 @@
 <p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../user_guide/configuration.html">Configuration System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/experiments.html">Experiments</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user_guide/developer_tips.html">Developer Tips</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Key Concepts</span></p>
@@ -244,8 +245,6 @@
 </ul>
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="protomotions.agents.callbacks.html">protomotions.agents.callbacks package</a><input aria-label="Toggle navigation of protomotions.agents.callbacks package" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.callbacks.one_logger.html">protomotions.agents.callbacks.one_logger module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.callbacks.slurm_autoresume_adlr.html">protomotions.agents.callbacks.slurm_autoresume_adlr module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="protomotions.agents.callbacks.slurm_autoresume_srun.html">protomotions.agents.callbacks.slurm_autoresume_srun module</a></li>
 </ul>
 </li>
@@ -329,12 +328,8 @@
           <span>Back to top</span>
         </a>
         <div class="content-icon-container">
-          <div class="view-this-page">
-  <a class="muted-link" href="../_sources/api_reference/protomotions.agents.ase.config.rst.txt" title="View this page">
-    <svg><use href="#svg-eye"></use></svg>
-    <span class="visually-hidden">View this page</span>
-  </a>
-</div>
+          
+
 <div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
               <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
@@ -343,13 +338,136 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
             <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
           </label>
         </div>
         <article role="main" id="furo-main-content">
-          <section id="protomotions-agents-ase-config-module">
-<h1>protomotions.agents.ase.config module<a class="headerlink" href="#protomotions-agents-ase-config-module" title="Link to this heading">¶</a></h1>
+          <section id="module-protomotions.agents.ase.config">
+<span id="protomotions-agents-ase-config-module"></span><h1>protomotions.agents.ase.config module<a class="headerlink" href="#module-protomotions.agents.ase.config" title="Link to this heading">¶</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="protomotions.agents.ase.config.ASEParametersConfig">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">protomotions.agents.ase.config.</span></span><span class="sig-name descname"><span class="pre">ASEParametersConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">latent_dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">64</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">latent_steps_min</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">latent_steps_max</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">150</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mi_reward_w</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mi_hypersphere_reward_shift</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mi_enc_weight_decay</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mi_enc_grad_penalty</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">diversity_bonus</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.01</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">diversity_tar</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">latent_uniformity_weight</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">uniformity_kernel_scale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/protomotions/agents/ase/config.html#ASEParametersConfig"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#protomotions.agents.ase.config.ASEParametersConfig" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="protomotions.utils.config_builder.html#protomotions.utils.config_builder.ConfigBuilder" title="protomotions.utils.config_builder.ConfigBuilder"><code class="xref py py-class docutils literal notranslate"><span class="pre">ConfigBuilder</span></code></a></p>
+<p>Configuration for ASE-specific hyperparameters.</p>
+<dl class="field-list simple">
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="protomotions.agents.ase.config.ASEParametersConfig.latent_dim">
+<span class="sig-name descname"><span class="pre">latent_dim</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">64</span></em><a class="headerlink" href="#protomotions.agents.ase.config.ASEParametersConfig.latent_dim" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="protomotions.agents.ase.config.ASEParametersConfig.latent_steps_min">
+<span class="sig-name descname"><span class="pre">latent_steps_min</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></em><a class="headerlink" href="#protomotions.agents.ase.config.ASEParametersConfig.latent_steps_min" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="protomotions.agents.ase.config.ASEParametersConfig.latent_steps_max">
+<span class="sig-name descname"><span class="pre">latent_steps_max</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">150</span></em><a class="headerlink" href="#protomotions.agents.ase.config.ASEParametersConfig.latent_steps_max" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="protomotions.agents.ase.config.ASEParametersConfig.mi_reward_w">
+<span class="sig-name descname"><span class="pre">mi_reward_w</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0.5</span></em><a class="headerlink" href="#protomotions.agents.ase.config.ASEParametersConfig.mi_reward_w" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="protomotions.agents.ase.config.ASEParametersConfig.mi_hypersphere_reward_shift">
+<span class="sig-name descname"><span class="pre">mi_hypersphere_reward_shift</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></em><a class="headerlink" href="#protomotions.agents.ase.config.ASEParametersConfig.mi_hypersphere_reward_shift" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="protomotions.agents.ase.config.ASEParametersConfig.mi_enc_weight_decay">
+<span class="sig-name descname"><span class="pre">mi_enc_weight_decay</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></em><a class="headerlink" href="#protomotions.agents.ase.config.ASEParametersConfig.mi_enc_weight_decay" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="protomotions.agents.ase.config.ASEParametersConfig.mi_enc_grad_penalty">
+<span class="sig-name descname"><span class="pre">mi_enc_grad_penalty</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></em><a class="headerlink" href="#protomotions.agents.ase.config.ASEParametersConfig.mi_enc_grad_penalty" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="protomotions.agents.ase.config.ASEParametersConfig.diversity_bonus">
+<span class="sig-name descname"><span class="pre">diversity_bonus</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0.01</span></em><a class="headerlink" href="#protomotions.agents.ase.config.ASEParametersConfig.diversity_bonus" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="protomotions.agents.ase.config.ASEParametersConfig.diversity_tar">
+<span class="sig-name descname"><span class="pre">diversity_tar</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1.0</span></em><a class="headerlink" href="#protomotions.agents.ase.config.ASEParametersConfig.diversity_tar" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="protomotions.agents.ase.config.ASEParametersConfig.latent_uniformity_weight">
+<span class="sig-name descname"><span class="pre">latent_uniformity_weight</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0.1</span></em><a class="headerlink" href="#protomotions.agents.ase.config.ASEParametersConfig.latent_uniformity_weight" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="protomotions.agents.ase.config.ASEParametersConfig.uniformity_kernel_scale">
+<span class="sig-name descname"><span class="pre">uniformity_kernel_scale</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1.0</span></em><a class="headerlink" href="#protomotions.agents.ase.config.ASEParametersConfig.uniformity_kernel_scale" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="protomotions.agents.ase.config.ASEParametersConfig.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">latent_dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">64</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">latent_steps_min</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">latent_steps_max</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">150</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mi_reward_w</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mi_hypersphere_reward_shift</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mi_enc_weight_decay</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mi_enc_grad_penalty</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">diversity_bonus</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.01</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">diversity_tar</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">latent_uniformity_weight</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">uniformity_kernel_scale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#protomotions.agents.ase.config.ASEParametersConfig.__init__" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="protomotions.agents.ase.config.ASEDiscriminatorEncoderConfig">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">protomotions.agents.ase.config.</span></span><span class="sig-name descname"><span class="pre">ASEDiscriminatorEncoderConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_models</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_target_='protomotions.agents.ase.model.ASEDiscriminatorEncoder'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">in_keys=&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out_keys=&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">encoder_out_size=None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/protomotions/agents/ase/config.html#ASEDiscriminatorEncoderConfig"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#protomotions.agents.ase.config.ASEDiscriminatorEncoderConfig" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="protomotions.agents.amp.config.html#protomotions.agents.amp.config.DiscriminatorConfig" title="protomotions.agents.amp.config.DiscriminatorConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">DiscriminatorConfig</span></code></a></p>
+<p>Configuration for ASE Discriminator-Encoder network (extends SequentialModuleConfig).</p>
+<dl class="field-list simple">
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="protomotions.agents.ase.config.ASEDiscriminatorEncoderConfig.encoder_out_size">
+<span class="sig-name descname"><span class="pre">encoder_out_size</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#protomotions.agents.ase.config.ASEDiscriminatorEncoderConfig.encoder_out_size" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="protomotions.agents.ase.config.ASEDiscriminatorEncoderConfig.in_keys">
+<span class="sig-name descname"><span class="pre">in_keys</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.14)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#protomotions.agents.ase.config.ASEDiscriminatorEncoderConfig.in_keys" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="protomotions.agents.ase.config.ASEDiscriminatorEncoderConfig.out_keys">
+<span class="sig-name descname"><span class="pre">out_keys</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.14)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#protomotions.agents.ase.config.ASEDiscriminatorEncoderConfig.out_keys" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="protomotions.agents.ase.config.ASEDiscriminatorEncoderConfig.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_models</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_target_='protomotions.agents.ase.model.ASEDiscriminatorEncoder'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">in_keys=&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out_keys=&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">encoder_out_size=None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#protomotions.agents.ase.config.ASEDiscriminatorEncoderConfig.__init__" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="protomotions.agents.ase.config.ASEAgentConfig">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">protomotions.agents.ase.config.</span></span><span class="sig-name descname"><span class="pre">ASEAgentConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">batch_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">training_max_steps</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_target_='protomotions.agents.ase.agent.ASE'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model=&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_steps=32</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gradient_clip_val=0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fail_on_bad_grads=False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">check_grad_mag=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gamma=0.99</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bounds_loss_coef=0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">task_reward_w=1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_mini_epochs=1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">training_early_termination=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_epoch_checkpoint_every=1000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_last_checkpoint_every=10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_episode_length_manager=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">evaluator=&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalize_rewards=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalized_reward_clamp_value=5.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tau=0.95</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">e_clip=0.2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">clip_critic_loss=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">actor_clip_frac_threshold=0.6</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">advantage_normalization=&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">amp_parameters=&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ase_parameters=&lt;factory&gt;</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/protomotions/agents/ase/config.html#ASEAgentConfig"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#protomotions.agents.ase.config.ASEAgentConfig" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="protomotions.agents.amp.config.html#protomotions.agents.amp.config.AMPAgentConfig" title="protomotions.agents.amp.config.AMPAgentConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">AMPAgentConfig</span></code></a></p>
+<p>Main configuration class for ASE Agent.</p>
+<dl class="field-list simple">
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="protomotions.agents.ase.config.ASEAgentConfig.ase_parameters">
+<span class="sig-name descname"><span class="pre">ase_parameters</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#protomotions.agents.ase.config.ASEParametersConfig" title="protomotions.agents.ase.config.ASEParametersConfig"><span class="pre">ASEParametersConfig</span></a></em><a class="headerlink" href="#protomotions.agents.ase.config.ASEAgentConfig.ase_parameters" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="protomotions.agents.ase.config.ASEAgentConfig.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">batch_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">training_max_steps</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_target_='protomotions.agents.ase.agent.ASE'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model=&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_steps=32</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gradient_clip_val=0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fail_on_bad_grads=False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">check_grad_mag=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gamma=0.99</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bounds_loss_coef=0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">task_reward_w=1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_mini_epochs=1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">training_early_termination=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_epoch_checkpoint_every=1000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_last_checkpoint_every=10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_episode_length_manager=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">evaluator=&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalize_rewards=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalized_reward_clamp_value=5.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tau=0.95</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">e_clip=0.2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">clip_critic_loss=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">actor_clip_frac_threshold=0.6</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">advantage_normalization=&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">amp_parameters=&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ase_parameters=&lt;factory&gt;</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#protomotions.agents.ase.config.ASEAgentConfig.__init__" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+</dl>
+</dd></dl>
+
+</dd></dl>
+
 </section>
 
         </article>
@@ -395,8 +513,53 @@
         
       </footer>
     </div>
-    <aside class="toc-drawer no-toc">
+    <aside class="toc-drawer">
       
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">protomotions.agents.ase.config module</a><ul>
+<li><a class="reference internal" href="#protomotions.agents.ase.config.ASEParametersConfig"><code class="docutils literal notranslate"><span class="pre">ASEParametersConfig</span></code></a><ul>
+<li><a class="reference internal" href="#protomotions.agents.ase.config.ASEParametersConfig.latent_dim"><code class="docutils literal notranslate"><span class="pre">latent_dim</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.ase.config.ASEParametersConfig.latent_steps_min"><code class="docutils literal notranslate"><span class="pre">latent_steps_min</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.ase.config.ASEParametersConfig.latent_steps_max"><code class="docutils literal notranslate"><span class="pre">latent_steps_max</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.ase.config.ASEParametersConfig.mi_reward_w"><code class="docutils literal notranslate"><span class="pre">mi_reward_w</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.ase.config.ASEParametersConfig.mi_hypersphere_reward_shift"><code class="docutils literal notranslate"><span class="pre">mi_hypersphere_reward_shift</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.ase.config.ASEParametersConfig.mi_enc_weight_decay"><code class="docutils literal notranslate"><span class="pre">mi_enc_weight_decay</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.ase.config.ASEParametersConfig.mi_enc_grad_penalty"><code class="docutils literal notranslate"><span class="pre">mi_enc_grad_penalty</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.ase.config.ASEParametersConfig.diversity_bonus"><code class="docutils literal notranslate"><span class="pre">diversity_bonus</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.ase.config.ASEParametersConfig.diversity_tar"><code class="docutils literal notranslate"><span class="pre">diversity_tar</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.ase.config.ASEParametersConfig.latent_uniformity_weight"><code class="docutils literal notranslate"><span class="pre">latent_uniformity_weight</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.ase.config.ASEParametersConfig.uniformity_kernel_scale"><code class="docutils literal notranslate"><span class="pre">uniformity_kernel_scale</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.ase.config.ASEParametersConfig.__init__"><code class="docutils literal notranslate"><span class="pre">__init__()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#protomotions.agents.ase.config.ASEDiscriminatorEncoderConfig"><code class="docutils literal notranslate"><span class="pre">ASEDiscriminatorEncoderConfig</span></code></a><ul>
+<li><a class="reference internal" href="#protomotions.agents.ase.config.ASEDiscriminatorEncoderConfig.encoder_out_size"><code class="docutils literal notranslate"><span class="pre">encoder_out_size</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.ase.config.ASEDiscriminatorEncoderConfig.in_keys"><code class="docutils literal notranslate"><span class="pre">in_keys</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.ase.config.ASEDiscriminatorEncoderConfig.out_keys"><code class="docutils literal notranslate"><span class="pre">out_keys</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.ase.config.ASEDiscriminatorEncoderConfig.__init__"><code class="docutils literal notranslate"><span class="pre">__init__()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#protomotions.agents.ase.config.ASEAgentConfig"><code class="docutils literal notranslate"><span class="pre">ASEAgentConfig</span></code></a><ul>
+<li><a class="reference internal" href="#protomotions.agents.ase.config.ASEAgentConfig.ase_parameters"><code class="docutils literal notranslate"><span class="pre">ase_parameters</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.ase.config.ASEAgentConfig.__init__"><code class="docutils literal notranslate"><span class="pre">__init__()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
       
       
     </aside>

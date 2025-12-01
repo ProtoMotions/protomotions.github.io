@@ -70,6 +70,7 @@ Quick Links
    :hidden:
 
    user_guide/configuration
+   user_guide/experiments
    user_guide/developer_tips
 
 .. toctree::

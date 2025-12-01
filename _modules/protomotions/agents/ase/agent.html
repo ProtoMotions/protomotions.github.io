@@ -194,31 +194,31 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../../getting_started/installation.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../getting_started/quickstart.html">Quick Start</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../getting_started/how_it_works.html">How It Works</a></li>
-</ul>
-<p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../../user_guide/training.html">Training Guide</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../user_guide/evaluation.html">Evaluation Guide</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../user_guide/configuration.html">Configuration System</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../user_guide/algorithms.html">Algorithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../getting_started/amass_preparation.html">AMASS Data Preparation</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../../tutorials/index.html">Tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../tutorials/code_tutorials.html">Code Tutorials (Progressive Series)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../tutorials/training_workflow.html">Training Workflow Tutorial</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../tutorials/motion_tracking.html">Motion Tracking Tutorial</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../tutorials/custom_robot.html">Custom Robot Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorials/workflows/amass_smpl.html">SMPL Training on AMASS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorials/workflows/retargeting_pyroki.html">Retargeting with PyRoki</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorials/workflows/vaulting.html">Scene Workflow (Vaulting)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorials/workflows/domain_randomization.html">Domain Randomization &amp; Sim2Sim</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorials/workflows/custom_robot.html">Adding a Custom Robot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorials/challenges.html">Challenges</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Data Preparation</span></p>
+<p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../../tutorials/amass_parsing.html">AMASS Dataset Parsing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../tutorials/retargeting_motions.html">Retargeting Motion Data Between Humanoids</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../user_guide/configuration.html">Configuration System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../user_guide/developer_tips.html">Developer Tips</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Examples</span></p>
+<p class="caption" role="heading"><span class="caption-text">Key Concepts</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../../examples/experiments.html">Experiment Configurations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../concepts/index.html">Key Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../concepts/architecture.html">Architecture Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../concepts/abstractions.html">Core Abstractions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../concepts/pose_lib.html">PoseLib Toolkit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../concepts/simulator_state.html">Simulator State</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">API Reference</span></p>
 <ul>
@@ -243,8 +243,6 @@
 </ul>
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../../../../api_reference/protomotions.agents.callbacks.html">protomotions.agents.callbacks package</a><input aria-label="Toggle navigation of protomotions.agents.callbacks package" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../../../api_reference/protomotions.agents.callbacks.one_logger.html">protomotions.agents.callbacks.one_logger module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../../api_reference/protomotions.agents.callbacks.slurm_autoresume_adlr.html">protomotions.agents.callbacks.slurm_autoresume_adlr module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../api_reference/protomotions.agents.callbacks.slurm_autoresume_srun.html">protomotions.agents.callbacks.slurm_autoresume_srun module</a></li>
 </ul>
 </li>
@@ -292,11 +290,18 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../../api_reference/protomotions.simulator.html">protomotions.simulator package</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../api_reference/protomotions.robot_configs.html">protomotions.robot_configs module</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../../../api_reference/protomotions.utils.html">protomotions.utils package</a><input aria-label="Toggle navigation of protomotions.utils package" class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" role="switch" type="checkbox"/><label for="toctree-checkbox-11"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../api_reference/protomotions.utils.component_builder.html">protomotions.utils.component_builder module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../api_reference/protomotions.utils.config_builder.html">protomotions.utils.config_builder module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../api_reference/protomotions.utils.config_utils.html">protomotions.utils.config_utils module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../api_reference/protomotions.utils.export_utils.html">protomotions.utils.export_utils module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../api_reference/protomotions.utils.fabric_config.html">protomotions.utils.fabric_config module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../api_reference/protomotions.utils.hydra_replacement.html">protomotions.utils.hydra_replacement module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../api_reference/protomotions.utils.inference_utils.html">protomotions.utils.inference_utils module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../api_reference/protomotions.utils.mesh_utils.html">protomotions.utils.mesh_utils module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../api_reference/protomotions.utils.motion_interpolation_utils.html">protomotions.utils.motion_interpolation_utils module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../api_reference/protomotions.utils.rotations.html">protomotions.utils.rotations module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../api_reference/protomotions.utils.simulator_imports.html">protomotions.utils.simulator_imports module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../api_reference/protomotions.utils.torch_utils.html">protomotions.utils.torch_utils module</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../api_reference/scripts.html">Training and Evaluation Scripts</a></li>
@@ -304,7 +309,6 @@
 <p class="caption" role="heading"><span class="caption-text">Community</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../../contributing.html">Contributing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../community.html">Community Showcase</a></li>
 </ul>
 
 </div></div>
@@ -336,7 +340,22 @@
         </div>
         <article role="main" id="furo-main-content">
           <h1>Source code for protomotions.agents.ase.agent</h1><div class="highlight"><pre>
-<span></span><span class="sd">&quot;&quot;&quot;Adversarial Skill Embeddings (ASE) agent implementation.</span>
+<span></span><span class="c1"># SPDX-FileCopyrightText: Copyright (c) 2025 The ProtoMotions Developers</span>
+<span class="c1"># SPDX-License-Identifier: Apache-2.0</span>
+<span class="c1">#</span>
+<span class="c1"># Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span>
+<span class="c1"># you may not use this file except in compliance with the License.</span>
+<span class="c1"># You may obtain a copy of the License at</span>
+<span class="c1">#</span>
+<span class="c1"># http://www.apache.org/licenses/LICENSE-2.0</span>
+<span class="c1">#</span>
+<span class="c1"># Unless required by applicable law or agreed to in writing, software</span>
+<span class="c1"># distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span>
+<span class="c1"># WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span>
+<span class="c1"># See the License for the specific language governing permissions and</span>
+<span class="c1"># limitations under the License.</span>
+<span class="c1">#</span>
+<span class="sd">&quot;&quot;&quot;Adversarial Skill Embeddings (ASE) agent implementation.</span>
 
 <span class="sd">This module implements the ASE algorithm which extends AMP with learned skill embeddings.</span>
 <span class="sd">The discriminator encodes motions into a latent skill space, and the policy is conditioned</span>
@@ -349,6 +368,7 @@
 <span class="sd">References:</span>
 <span class="sd">    Peng et al. &quot;ASE: Large-Scale Reusable Adversarial Skill Embeddings for Physically Simulated Characters&quot; (2022)</span>
 <span class="sd">&quot;&quot;&quot;</span>
+
 <span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">logging</span>
 
@@ -374,47 +394,51 @@
 <a class="viewcode-back" href="../../../../api_reference/protomotions.agents.ase.agent.html#protomotions.agents.ase.agent.ASE">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">ASE</span><span class="p">(</span><span class="n">AMP</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Adversarial Skill Embeddings (ASE) agent.</span>
-<span class="sd">    </span>
+
 <span class="sd">    Extends AMP with a low-level policy conditioned on learned skill embeddings.</span>
 <span class="sd">    The discriminator learns to encode skills from motion data into a latent space,</span>
 <span class="sd">    while the policy learns to execute behaviors conditioned on these latent codes.</span>
 <span class="sd">    This enables learning diverse skills from motion data and composing them for tasks.</span>
-<span class="sd">    </span>
+
 <span class="sd">    Key components:</span>
 <span class="sd">    - **Low-level policy**: Conditioned on latent skill codes</span>
 <span class="sd">    - **Discriminator**: Encodes motions into skill embeddings</span>
 <span class="sd">    - **Mutual information**: Encourages skill diversity</span>
 <span class="sd">    - **Latent sampling**: Periodically samples new skills during rollouts</span>
-<span class="sd">    </span>
+
 <span class="sd">    Args:</span>
 <span class="sd">        fabric: Lightning Fabric instance for distributed training.</span>
 <span class="sd">        env: Environment instance with diverse motion library.</span>
 <span class="sd">        config: ASE-specific configuration including latent dimensions.</span>
 <span class="sd">        root_dir: Optional root directory for saving outputs.</span>
-<span class="sd">        </span>
+
 <span class="sd">    Attributes:</span>
 <span class="sd">        latents: Current latent skill codes for each environment.</span>
 <span class="sd">        latent_reset_steps: Steps until next latent resample.</span>
-<span class="sd">        </span>
+
 <span class="sd">    Example:</span>
 <span class="sd">        &gt;&gt;&gt; fabric = Fabric(devices=4)</span>
 <span class="sd">        &gt;&gt;&gt; env = Mimic(config, robot_config, simulator_config, device)</span>
 <span class="sd">        &gt;&gt;&gt; agent = ASE(fabric, env, config)</span>
 <span class="sd">        &gt;&gt;&gt; agent.setup()</span>
 <span class="sd">        &gt;&gt;&gt; agent.train()</span>
-<span class="sd">        </span>
+
 <span class="sd">    Note:</span>
 <span class="sd">        Requires large diverse motion dataset for effective skill learning.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
+
     <span class="n">model</span><span class="p">:</span> <span class="n">ASEModel</span>
     <span class="n">discriminator</span><span class="p">:</span> <span class="n">ASEDiscriminatorEncoder</span>
     <span class="n">config</span><span class="p">:</span> <span class="n">ASEAgentConfig</span>
+
     <span class="c1"># -----------------------------</span>
     <span class="c1"># Initialization and Setup</span>
     <span class="c1"># -----------------------------</span>
 <div class="viewcode-block" id="ASE.__init__">
 <a class="viewcode-back" href="../../../../api_reference/protomotions.agents.ase.agent.html#protomotions.agents.ase.agent.ASE.__init__">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fabric</span><span class="p">:</span> <span class="n">Fabric</span><span class="p">,</span> <span class="n">env</span><span class="p">:</span> <span class="n">BaseEnv</span><span class="p">,</span> <span class="n">config</span><span class="p">,</span> <span class="n">root_dir</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Path</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">fabric</span><span class="p">:</span> <span class="n">Fabric</span><span class="p">,</span> <span class="n">env</span><span class="p">:</span> <span class="n">BaseEnv</span><span class="p">,</span> <span class="n">config</span><span class="p">,</span> <span class="n">root_dir</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Path</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">fabric</span><span class="p">,</span> <span class="n">env</span><span class="p">,</span> <span class="n">config</span><span class="p">,</span> <span class="n">root_dir</span><span class="o">=</span><span class="n">root_dir</span><span class="p">)</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">normalize_rewards</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">running_mi_enc_norm</span> <span class="o">=</span> <span class="n">RewardRunningMeanStd</span><span class="p">(</span>
@@ -445,7 +469,7 @@
         <span class="p">)</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">setup</span><span class="p">()</span></div>
 
-        
+
 <div class="viewcode-block" id="ASE.load_parameters">
 <a class="viewcode-back" href="../../../../api_reference/protomotions.agents.ase.agent.html#protomotions.agents.ase.agent.ASE.load_parameters">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">load_parameters</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state_dict</span><span class="p">):</span>
@@ -459,7 +483,9 @@
     <span class="k">def</span><span class="w"> </span><span class="nf">get_state_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state_dict</span><span class="p">):</span>
         <span class="n">extra_state_dict</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">get_state_dict</span><span class="p">(</span><span class="n">state_dict</span><span class="p">)</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">normalize_rewards</span><span class="p">:</span>
-            <span class="n">extra_state_dict</span><span class="p">[</span><span class="s2">&quot;running_mi_enc_norm&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">running_mi_enc_norm</span><span class="o">.</span><span class="n">state_dict</span><span class="p">()</span>
+            <span class="n">extra_state_dict</span><span class="p">[</span><span class="s2">&quot;running_mi_enc_norm&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">running_mi_enc_norm</span><span class="o">.</span><span class="n">state_dict</span><span class="p">()</span>
+            <span class="p">)</span>
         <span class="n">state_dict</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">extra_state_dict</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">state_dict</span></div>
 
@@ -521,9 +547,7 @@
         <span class="p">)</span>
 
         <span class="n">gaussian_sample</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">zeros</span><span class="p">)</span>
-        <span class="n">latents</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">functional</span><span class="o">.</span><span class="n">normalize</span><span class="p">(</span>
-            <span class="n">gaussian_sample</span><span class="p">,</span> <span class="n">dim</span><span class="o">=-</span><span class="mi">1</span>
-        <span class="p">)</span>
+        <span class="n">latents</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">functional</span><span class="o">.</span><span class="n">normalize</span><span class="p">(</span><span class="n">gaussian_sample</span><span class="p">,</span> <span class="n">dim</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">latents</span></div>
 
 
@@ -574,26 +598,43 @@
     <span class="c1"># Reward Calculation</span>
     <span class="c1"># -----------------------------</span>
     <span class="nd">@torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">()</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">record_rollout_step</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">next_obs_td</span><span class="p">,</span> <span class="n">actions</span><span class="p">,</span> <span class="n">rewards</span><span class="p">,</span> <span class="n">dones</span><span class="p">,</span> <span class="n">terminated</span><span class="p">,</span> <span class="n">done_indices</span><span class="p">,</span> <span class="n">extras</span><span class="p">,</span> <span class="n">step</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">record_rollout_step</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">next_obs_td</span><span class="p">,</span>
+        <span class="n">actions</span><span class="p">,</span>
+        <span class="n">rewards</span><span class="p">,</span>
+        <span class="n">dones</span><span class="p">,</span>
+        <span class="n">terminated</span><span class="p">,</span>
+        <span class="n">done_indices</span><span class="p">,</span>
+        <span class="n">extras</span><span class="p">,</span>
+        <span class="n">step</span><span class="p">,</span>
+    <span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Record ASE-specific data: mutual information rewards for skill diversity.&quot;&quot;&quot;</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">record_rollout_step</span><span class="p">(</span><span class="n">next_obs_td</span><span class="p">,</span> <span class="n">actions</span><span class="p">,</span> <span class="n">rewards</span><span class="p">,</span> <span class="n">dones</span><span class="p">,</span> <span class="n">terminated</span><span class="p">,</span> <span class="n">done_indices</span><span class="p">,</span> <span class="n">extras</span><span class="p">,</span> <span class="n">step</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">record_rollout_step</span><span class="p">(</span>
+            <span class="n">next_obs_td</span><span class="p">,</span> <span class="n">actions</span><span class="p">,</span> <span class="n">rewards</span><span class="p">,</span> <span class="n">dones</span><span class="p">,</span> <span class="n">terminated</span><span class="p">,</span> <span class="n">done_indices</span><span class="p">,</span> <span class="n">extras</span><span class="p">,</span> <span class="n">step</span>
+        <span class="p">)</span>
 
         <span class="c1"># Get encoder outputs</span>
         <span class="n">next_obs_td</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">discriminator</span><span class="p">(</span><span class="n">next_obs_td</span><span class="p">)</span>
-        
+
         <span class="c1"># Compute MI reward from outputs</span>
-        <span class="n">mi_r</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">discriminator</span><span class="o">.</span><span class="n">compute_mi_reward</span><span class="p">(</span><span class="n">next_obs_td</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">ase_parameters</span><span class="o">.</span><span class="n">mi_hypersphere_reward_shift</span><span class="p">)</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">mi_r</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">discriminator</span><span class="o">.</span><span class="n">compute_mi_reward</span><span class="p">(</span>
+            <span class="n">next_obs_td</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">ase_parameters</span><span class="o">.</span><span class="n">mi_hypersphere_reward_shift</span>
+        <span class="p">)</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">normalize_rewards</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">experience_buffer</span><span class="o">.</span><span class="n">update_data</span><span class="p">(</span><span class="s2">&quot;unnormalized_mi_rewards&quot;</span><span class="p">,</span> <span class="n">step</span><span class="p">,</span> <span class="n">mi_r</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">running_mi_enc_norm</span><span class="o">.</span><span class="n">record_reward</span><span class="p">(</span><span class="n">mi_r</span><span class="p">,</span> <span class="n">terminated</span><span class="p">)</span>
             <span class="n">mi_r</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">running_mi_enc_norm</span><span class="o">.</span><span class="n">normalize</span><span class="p">(</span><span class="n">mi_r</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">experience_buffer</span><span class="o">.</span><span class="n">update_data</span><span class="p">(</span><span class="s2">&quot;mi_rewards&quot;</span><span class="p">,</span> <span class="n">step</span><span class="p">,</span> <span class="n">mi_r</span><span class="p">)</span>
-        
+
 <div class="viewcode-block" id="ASE.get_combined_experience_buffer_rewards">
 <a class="viewcode-back" href="../../../../api_reference/protomotions.agents.ase.agent.html#protomotions.agents.ase.agent.ASE.get_combined_experience_buffer_rewards">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">get_combined_experience_buffer_rewards</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">rewards</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">get_combined_experience_buffer_rewards</span><span class="p">()</span>
-        <span class="k">return</span> <span class="n">rewards</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">experience_buffer</span><span class="o">.</span><span class="n">mi_rewards</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">ase_parameters</span><span class="o">.</span><span class="n">mi_reward_w</span></div>
+        <span class="k">return</span> <span class="p">(</span>
+            <span class="n">rewards</span>
+            <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">experience_buffer</span><span class="o">.</span><span class="n">mi_rewards</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">ase_parameters</span><span class="o">.</span><span class="n">mi_reward_w</span>
+        <span class="p">)</span></div>
 
 
     <span class="c1"># -----------------------------</span>
@@ -608,7 +649,7 @@
         <span class="n">expert_disc_obs</span><span class="p">[</span><span class="s2">&quot;latents&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">mi_enc_pred</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span>
         <span class="k">return</span> <span class="n">expert_disc_obs</span></div>
 
-    
+
 <div class="viewcode-block" id="ASE.produce_negative_expert_obs">
 <a class="viewcode-back" href="../../../../api_reference/protomotions.agents.ase.agent.html#protomotions.agents.ase.agent.ASE.produce_negative_expert_obs">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">produce_negative_expert_obs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">batch_dict</span><span class="p">):</span>
@@ -617,8 +658,12 @@
             <span class="n">negative_expert_obs</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">batch_dict</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;expert_</span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">][</span>
                 <span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">amp_parameters</span><span class="o">.</span><span class="n">discriminator_batch_size</span>
             <span class="p">]</span>
-        <span class="n">random_conditioned_latent</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">rand_like</span><span class="p">(</span><span class="n">batch_dict</span><span class="p">[</span><span class="s2">&quot;latents&quot;</span><span class="p">][:</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">amp_parameters</span><span class="o">.</span><span class="n">discriminator_batch_size</span><span class="p">])</span>
-        <span class="n">projected_latent</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">functional</span><span class="o">.</span><span class="n">normalize</span><span class="p">(</span><span class="n">random_conditioned_latent</span><span class="p">,</span> <span class="n">dim</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">random_conditioned_latent</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">rand_like</span><span class="p">(</span>
+            <span class="n">batch_dict</span><span class="p">[</span><span class="s2">&quot;latents&quot;</span><span class="p">][:</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">amp_parameters</span><span class="o">.</span><span class="n">discriminator_batch_size</span><span class="p">]</span>
+        <span class="p">)</span>
+        <span class="n">projected_latent</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">functional</span><span class="o">.</span><span class="n">normalize</span><span class="p">(</span>
+            <span class="n">random_conditioned_latent</span><span class="p">,</span> <span class="n">dim</span><span class="o">=-</span><span class="mi">1</span>
+        <span class="p">)</span>
         <span class="n">negative_expert_obs</span><span class="p">[</span><span class="s2">&quot;latents&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">projected_latent</span>
         <span class="k">return</span> <span class="n">negative_expert_obs</span></div>
 
@@ -644,7 +689,7 @@
         <span class="n">latents</span> <span class="o">=</span> <span class="n">batch_dict</span><span class="p">[</span><span class="s2">&quot;latents&quot;</span><span class="p">][</span>
             <span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">amp_parameters</span><span class="o">.</span><span class="n">discriminator_batch_size</span>
         <span class="p">]</span>
-        
+
         <span class="n">expert_obs</span> <span class="o">=</span> <span class="n">batch_dict</span><span class="p">[</span><span class="s2">&quot;expert_historical_self_obs&quot;</span><span class="p">][</span>
             <span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">amp_parameters</span><span class="o">.</span><span class="n">discriminator_batch_size</span>
         <span class="p">]</span>
@@ -655,19 +700,24 @@
         <span class="c1"># Compute MI encoder predictions for both agent and expert observations</span>
         <span class="n">agent_disc_obs</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;historical_self_obs&quot;</span><span class="p">:</span> <span class="n">agent_obs</span><span class="p">,</span> <span class="s2">&quot;latents&quot;</span><span class="p">:</span> <span class="n">latents</span><span class="p">}</span>
         <span class="n">mi_enc_pred_agent</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mi_enc_forward</span><span class="p">(</span><span class="n">agent_disc_obs</span><span class="p">)</span>
-        
+
         <span class="n">expert_disc_obs</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;historical_self_obs&quot;</span><span class="p">:</span> <span class="n">expert_obs</span><span class="p">,</span> <span class="s2">&quot;latents&quot;</span><span class="p">:</span> <span class="n">latents</span><span class="p">}</span>
         <span class="n">mi_enc_pred_expert</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mi_enc_forward</span><span class="p">(</span><span class="n">expert_disc_obs</span><span class="p">)</span>
 
         <span class="c1"># Original MI encoder loss for agent observations</span>
-        <span class="n">mi_enc_err</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">discriminator</span><span class="o">.</span><span class="n">calc_von_mises_fisher_enc_error</span><span class="p">(</span><span class="n">mi_enc_pred_agent</span><span class="p">,</span> <span class="n">latents</span><span class="p">)</span>
+        <span class="n">mi_enc_err</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">discriminator</span><span class="o">.</span><span class="n">calc_von_mises_fisher_enc_error</span><span class="p">(</span>
+            <span class="n">mi_enc_pred_agent</span><span class="p">,</span> <span class="n">latents</span>
+        <span class="p">)</span>
         <span class="n">mi_enc_loss</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">mi_enc_err</span><span class="p">)</span>
-        
+
         <span class="c1"># Uniformity loss for uniform coverage on unit sphere</span>
         <span class="c1"># Concatenate agent and expert encodings for uniform distribution</span>
         <span class="n">all_encodings</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">cat</span><span class="p">([</span><span class="n">mi_enc_pred_agent</span><span class="p">,</span> <span class="n">mi_enc_pred_expert</span><span class="p">],</span> <span class="n">dim</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
         <span class="n">uniformity_loss</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">compute_uniformity_loss</span><span class="p">(</span><span class="n">all_encodings</span><span class="p">)</span>
-        <span class="n">total_mi_loss</span> <span class="o">=</span> <span class="n">mi_enc_loss</span> <span class="o">+</span> <span class="n">uniformity_loss</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">ase_parameters</span><span class="o">.</span><span class="n">latent_uniformity_weight</span>
+        <span class="n">total_mi_loss</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">mi_enc_loss</span>
+            <span class="o">+</span> <span class="n">uniformity_loss</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">ase_parameters</span><span class="o">.</span><span class="n">latent_uniformity_weight</span>
+        <span class="p">)</span>
 
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">ase_parameters</span><span class="o">.</span><span class="n">mi_enc_weight_decay</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
             <span class="n">enc_weight_params</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">discriminator</span><span class="o">.</span><span class="n">enc_weights</span><span class="p">()</span>
@@ -690,7 +740,9 @@
             <span class="n">mi_enc_obs_grad</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">square</span><span class="p">(</span><span class="n">mi_enc_obs_grad</span><span class="p">),</span> <span class="n">dim</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
             <span class="n">mi_enc_grad_penalty</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">mi_enc_obs_grad</span><span class="p">)</span>
 
-            <span class="n">grad_loss</span><span class="p">:</span> <span class="n">Tensor</span> <span class="o">=</span> <span class="n">mi_enc_grad_penalty</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">ase_parameters</span><span class="o">.</span><span class="n">mi_enc_grad_penalty</span>
+            <span class="n">grad_loss</span><span class="p">:</span> <span class="n">Tensor</span> <span class="o">=</span> <span class="p">(</span>
+                <span class="n">mi_enc_grad_penalty</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">ase_parameters</span><span class="o">.</span><span class="n">mi_enc_grad_penalty</span>
+            <span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">grad_loss</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">device</span><span class="p">)</span>
 
@@ -713,24 +765,24 @@
 <a class="viewcode-back" href="../../../../api_reference/protomotions.agents.ase.agent.html#protomotions.agents.ase.agent.ASE.compute_uniformity_loss">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">compute_uniformity_loss</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">encodings</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Computes uniformity loss to encourage uniform distribution on unit sphere.</span>
-<span class="sd">        </span>
+
 <span class="sd">        Args:</span>
 <span class="sd">            encodings (Tensor): Normalized encodings on unit sphere. Shape (batch_size, latent_dim).</span>
-<span class="sd">        </span>
+
 <span class="sd">        Returns:</span>
 <span class="sd">            Tensor: Uniformity loss value.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="c1"># Compute pairwise distances between all encodings</span>
         <span class="n">pairwise_distances</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">cdist</span><span class="p">(</span><span class="n">encodings</span><span class="p">,</span> <span class="n">encodings</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>  <span class="c1"># L2 distance</span>
-        
+
         <span class="c1"># Convert distances to Gaussian kernel values</span>
         <span class="n">t</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">ase_parameters</span><span class="o">.</span><span class="n">uniformity_kernel_scale</span>
-        <span class="n">kernel_values</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">t</span> <span class="o">*</span> <span class="n">pairwise_distances</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
-        
+        <span class="n">kernel_values</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">t</span> <span class="o">*</span> <span class="n">pairwise_distances</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+
         <span class="c1"># Uniformity loss: log of average kernel value</span>
         <span class="c1"># Lower values indicate more uniform distribution</span>
         <span class="n">uniformity_loss</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">kernel_values</span><span class="p">))</span>
-        
+
         <span class="k">return</span> <span class="n">uniformity_loss</span></div>
 
 
@@ -755,8 +807,7 @@
         <span class="n">extra_actor_log_dict</span><span class="p">[</span><span class="s2">&quot;actor/diversity_loss&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">diversity_loss</span><span class="o">.</span><span class="n">detach</span><span class="p">()</span>
 
         <span class="k">return</span> <span class="p">(</span>
-            <span class="n">extra_loss</span>
-            <span class="o">+</span> <span class="n">diversity_loss</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">ase_parameters</span><span class="o">.</span><span class="n">diversity_bonus</span><span class="p">,</span>
+            <span class="n">extra_loss</span> <span class="o">+</span> <span class="n">diversity_loss</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">ase_parameters</span><span class="o">.</span><span class="n">diversity_bonus</span><span class="p">,</span>
             <span class="n">extra_actor_log_dict</span><span class="p">,</span>
         <span class="p">)</span></div>
 
@@ -811,8 +862,10 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">experience_buffer</span><span class="o">.</span><span class="n">mi_rewards</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
         <span class="p">)</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">normalize_rewards</span><span class="p">:</span>
-            <span class="n">training_log_dict</span><span class="p">[</span><span class="s2">&quot;rewards/unnormalized_mi_enc_rewards&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">experience_buffer</span><span class="o">.</span><span class="n">unnormalized_mi_rewards</span>
-            
+            <span class="n">training_log_dict</span><span class="p">[</span><span class="s2">&quot;rewards/unnormalized_mi_enc_rewards&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">experience_buffer</span><span class="o">.</span><span class="n">unnormalized_mi_rewards</span>
+            <span class="p">)</span>
+
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">post_epoch_logging</span><span class="p">(</span><span class="n">training_log_dict</span><span class="p">)</span></div>
 </div>
 
@@ -828,7 +881,7 @@
         <div class="bottom-of-page">
           <div class="left-details">
             <div class="copyright">
-                Copyright &#169; 2025, Chen Tessler, Yifeng Jiang, Erwin Coumans, Haotian Zhang, Davis Rempe, Xue Bin Peng, Sanja Fidler, and Gal Chechik
+                Copyright &#169; 2025, ProtoMotions Developers
             </div>
             Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
             

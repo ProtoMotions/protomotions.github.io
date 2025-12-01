@@ -211,6 +211,7 @@
 <p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../user_guide/configuration.html">Configuration System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/experiments.html">Experiments</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user_guide/developer_tips.html">Developer Tips</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Key Concepts</span></p>
@@ -244,8 +245,6 @@
 </ul>
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="protomotions.agents.callbacks.html">protomotions.agents.callbacks package</a><input aria-label="Toggle navigation of protomotions.agents.callbacks package" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.callbacks.one_logger.html">protomotions.agents.callbacks.one_logger module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.callbacks.slurm_autoresume_adlr.html">protomotions.agents.callbacks.slurm_autoresume_adlr module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="protomotions.agents.callbacks.slurm_autoresume_srun.html">protomotions.agents.callbacks.slurm_autoresume_srun module</a></li>
 </ul>
 </li>
@@ -329,12 +328,8 @@
           <span>Back to top</span>
         </a>
         <div class="content-icon-container">
-          <div class="view-this-page">
-  <a class="muted-link" href="../_sources/api_reference/protomotions.agents.ppo.rst.txt" title="View this page">
-    <svg><use href="#svg-eye"></use></svg>
-    <span class="visually-hidden">View this page</span>
-  </a>
-</div>
+          
+
 <div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
               <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
@@ -374,85 +369,85 @@ the actor-critic model architecture and training logic.</p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="protomotions.agents.ppo.agent.html">protomotions.agents.ppo.agent module</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="protomotions.agents.ppo.agent.html#protomotions.agents.ppo.agent.PPO"><code class="docutils literal notranslate"><span class="pre">PPO</span></code></a><ul>
-<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ppo.agent.html#protomotions.agents.ppo.agent.PPO.tau"><code class="docutils literal notranslate"><span class="pre">PPO.tau</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ppo.agent.html#protomotions.agents.ppo.agent.PPO.e_clip"><code class="docutils literal notranslate"><span class="pre">PPO.e_clip</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ppo.agent.html#protomotions.agents.ppo.agent.PPO.actor"><code class="docutils literal notranslate"><span class="pre">PPO.actor</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ppo.agent.html#protomotions.agents.ppo.agent.PPO.critic"><code class="docutils literal notranslate"><span class="pre">PPO.critic</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ppo.agent.html#protomotions.agents.ppo.agent.PPO.config"><code class="docutils literal notranslate"><span class="pre">PPO.config</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ppo.agent.html#protomotions.agents.ppo.agent.PPO.__init__"><code class="docutils literal notranslate"><span class="pre">PPO.__init__()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ppo.agent.html#protomotions.agents.ppo.agent.PPO.create_model"><code class="docutils literal notranslate"><span class="pre">PPO.create_model()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ppo.agent.html#protomotions.agents.ppo.agent.PPO.create_optimizers"><code class="docutils literal notranslate"><span class="pre">PPO.create_optimizers()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ppo.agent.html#protomotions.agents.ppo.agent.PPO.load_parameters"><code class="docutils literal notranslate"><span class="pre">PPO.load_parameters()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ppo.agent.html#protomotions.agents.ppo.agent.PPO.get_state_dict"><code class="docutils literal notranslate"><span class="pre">PPO.get_state_dict()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ppo.agent.html#protomotions.agents.ppo.agent.PPO.register_algorithm_experience_buffer_keys"><code class="docutils literal notranslate"><span class="pre">PPO.register_algorithm_experience_buffer_keys()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ppo.agent.html#protomotions.agents.ppo.agent.PPO.record_rollout_step"><code class="docutils literal notranslate"><span class="pre">PPO.record_rollout_step()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ppo.agent.html#protomotions.agents.ppo.agent.PPO.perform_optimization_step"><code class="docutils literal notranslate"><span class="pre">PPO.perform_optimization_step()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ppo.agent.html#protomotions.agents.ppo.agent.PPO.actor_step"><code class="docutils literal notranslate"><span class="pre">PPO.actor_step()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ppo.agent.html#protomotions.agents.ppo.agent.PPO.calculate_extra_actor_loss"><code class="docutils literal notranslate"><span class="pre">PPO.calculate_extra_actor_loss()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ppo.agent.html#protomotions.agents.ppo.agent.PPO.critic_step"><code class="docutils literal notranslate"><span class="pre">PPO.critic_step()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ppo.agent.html#protomotions.agents.ppo.agent.PPO.optimize_model"><code class="docutils literal notranslate"><span class="pre">PPO.optimize_model()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ppo.agent.html#protomotions.agents.ppo.agent.PPO.tau"><code class="docutils literal notranslate"><span class="pre">tau</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ppo.agent.html#protomotions.agents.ppo.agent.PPO.e_clip"><code class="docutils literal notranslate"><span class="pre">e_clip</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ppo.agent.html#protomotions.agents.ppo.agent.PPO.actor"><code class="docutils literal notranslate"><span class="pre">actor</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ppo.agent.html#protomotions.agents.ppo.agent.PPO.critic"><code class="docutils literal notranslate"><span class="pre">critic</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ppo.agent.html#protomotions.agents.ppo.agent.PPO.config"><code class="docutils literal notranslate"><span class="pre">config</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ppo.agent.html#protomotions.agents.ppo.agent.PPO.__init__"><code class="docutils literal notranslate"><span class="pre">__init__()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ppo.agent.html#protomotions.agents.ppo.agent.PPO.create_model"><code class="docutils literal notranslate"><span class="pre">create_model()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ppo.agent.html#protomotions.agents.ppo.agent.PPO.create_optimizers"><code class="docutils literal notranslate"><span class="pre">create_optimizers()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ppo.agent.html#protomotions.agents.ppo.agent.PPO.load_parameters"><code class="docutils literal notranslate"><span class="pre">load_parameters()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ppo.agent.html#protomotions.agents.ppo.agent.PPO.get_state_dict"><code class="docutils literal notranslate"><span class="pre">get_state_dict()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ppo.agent.html#protomotions.agents.ppo.agent.PPO.register_algorithm_experience_buffer_keys"><code class="docutils literal notranslate"><span class="pre">register_algorithm_experience_buffer_keys()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ppo.agent.html#protomotions.agents.ppo.agent.PPO.record_rollout_step"><code class="docutils literal notranslate"><span class="pre">record_rollout_step()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ppo.agent.html#protomotions.agents.ppo.agent.PPO.perform_optimization_step"><code class="docutils literal notranslate"><span class="pre">perform_optimization_step()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ppo.agent.html#protomotions.agents.ppo.agent.PPO.actor_step"><code class="docutils literal notranslate"><span class="pre">actor_step()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ppo.agent.html#protomotions.agents.ppo.agent.PPO.calculate_extra_actor_loss"><code class="docutils literal notranslate"><span class="pre">calculate_extra_actor_loss()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ppo.agent.html#protomotions.agents.ppo.agent.PPO.critic_step"><code class="docutils literal notranslate"><span class="pre">critic_step()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ppo.agent.html#protomotions.agents.ppo.agent.PPO.optimize_model"><code class="docutils literal notranslate"><span class="pre">optimize_model()</span></code></a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="protomotions.agents.ppo.config.html">protomotions.agents.ppo.config module</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="protomotions.agents.ppo.config.html#protomotions.agents.ppo.config.PPOActorConfig"><code class="docutils literal notranslate"><span class="pre">PPOActorConfig</span></code></a><ul>
-<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ppo.config.html#protomotions.agents.ppo.config.PPOActorConfig.mu_key"><code class="docutils literal notranslate"><span class="pre">PPOActorConfig.mu_key</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ppo.config.html#protomotions.agents.ppo.config.PPOActorConfig.in_keys"><code class="docutils literal notranslate"><span class="pre">PPOActorConfig.in_keys</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ppo.config.html#protomotions.agents.ppo.config.PPOActorConfig.out_keys"><code class="docutils literal notranslate"><span class="pre">PPOActorConfig.out_keys</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ppo.config.html#protomotions.agents.ppo.config.PPOActorConfig.mu_model"><code class="docutils literal notranslate"><span class="pre">PPOActorConfig.mu_model</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ppo.config.html#protomotions.agents.ppo.config.PPOActorConfig.num_out"><code class="docutils literal notranslate"><span class="pre">PPOActorConfig.num_out</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ppo.config.html#protomotions.agents.ppo.config.PPOActorConfig.actor_logstd"><code class="docutils literal notranslate"><span class="pre">PPOActorConfig.actor_logstd</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ppo.config.html#protomotions.agents.ppo.config.PPOActorConfig.__init__"><code class="docutils literal notranslate"><span class="pre">PPOActorConfig.__init__()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ppo.config.html#protomotions.agents.ppo.config.PPOActorConfig.mu_key"><code class="docutils literal notranslate"><span class="pre">mu_key</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ppo.config.html#protomotions.agents.ppo.config.PPOActorConfig.in_keys"><code class="docutils literal notranslate"><span class="pre">in_keys</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ppo.config.html#protomotions.agents.ppo.config.PPOActorConfig.out_keys"><code class="docutils literal notranslate"><span class="pre">out_keys</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ppo.config.html#protomotions.agents.ppo.config.PPOActorConfig.mu_model"><code class="docutils literal notranslate"><span class="pre">mu_model</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ppo.config.html#protomotions.agents.ppo.config.PPOActorConfig.num_out"><code class="docutils literal notranslate"><span class="pre">num_out</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ppo.config.html#protomotions.agents.ppo.config.PPOActorConfig.actor_logstd"><code class="docutils literal notranslate"><span class="pre">actor_logstd</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ppo.config.html#protomotions.agents.ppo.config.PPOActorConfig.__init__"><code class="docutils literal notranslate"><span class="pre">__init__()</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="protomotions.agents.ppo.config.html#protomotions.agents.ppo.config.PPOModelConfig"><code class="docutils literal notranslate"><span class="pre">PPOModelConfig</span></code></a><ul>
-<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ppo.config.html#protomotions.agents.ppo.config.PPOModelConfig.out_keys"><code class="docutils literal notranslate"><span class="pre">PPOModelConfig.out_keys</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ppo.config.html#protomotions.agents.ppo.config.PPOModelConfig.actor"><code class="docutils literal notranslate"><span class="pre">PPOModelConfig.actor</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ppo.config.html#protomotions.agents.ppo.config.PPOModelConfig.critic"><code class="docutils literal notranslate"><span class="pre">PPOModelConfig.critic</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ppo.config.html#protomotions.agents.ppo.config.PPOModelConfig.actor_optimizer"><code class="docutils literal notranslate"><span class="pre">PPOModelConfig.actor_optimizer</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ppo.config.html#protomotions.agents.ppo.config.PPOModelConfig.critic_optimizer"><code class="docutils literal notranslate"><span class="pre">PPOModelConfig.critic_optimizer</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ppo.config.html#protomotions.agents.ppo.config.PPOModelConfig.__init__"><code class="docutils literal notranslate"><span class="pre">PPOModelConfig.__init__()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ppo.config.html#protomotions.agents.ppo.config.PPOModelConfig.out_keys"><code class="docutils literal notranslate"><span class="pre">out_keys</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ppo.config.html#protomotions.agents.ppo.config.PPOModelConfig.actor"><code class="docutils literal notranslate"><span class="pre">actor</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ppo.config.html#protomotions.agents.ppo.config.PPOModelConfig.critic"><code class="docutils literal notranslate"><span class="pre">critic</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ppo.config.html#protomotions.agents.ppo.config.PPOModelConfig.actor_optimizer"><code class="docutils literal notranslate"><span class="pre">actor_optimizer</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ppo.config.html#protomotions.agents.ppo.config.PPOModelConfig.critic_optimizer"><code class="docutils literal notranslate"><span class="pre">critic_optimizer</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ppo.config.html#protomotions.agents.ppo.config.PPOModelConfig.__init__"><code class="docutils literal notranslate"><span class="pre">__init__()</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="protomotions.agents.ppo.config.html#protomotions.agents.ppo.config.AdvantageNormalizationConfig"><code class="docutils literal notranslate"><span class="pre">AdvantageNormalizationConfig</span></code></a><ul>
-<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ppo.config.html#protomotions.agents.ppo.config.AdvantageNormalizationConfig.enabled"><code class="docutils literal notranslate"><span class="pre">AdvantageNormalizationConfig.enabled</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ppo.config.html#protomotions.agents.ppo.config.AdvantageNormalizationConfig.shift_mean"><code class="docutils literal notranslate"><span class="pre">AdvantageNormalizationConfig.shift_mean</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ppo.config.html#protomotions.agents.ppo.config.AdvantageNormalizationConfig.use_ema"><code class="docutils literal notranslate"><span class="pre">AdvantageNormalizationConfig.use_ema</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ppo.config.html#protomotions.agents.ppo.config.AdvantageNormalizationConfig.ema_alpha"><code class="docutils literal notranslate"><span class="pre">AdvantageNormalizationConfig.ema_alpha</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ppo.config.html#protomotions.agents.ppo.config.AdvantageNormalizationConfig.min_std"><code class="docutils literal notranslate"><span class="pre">AdvantageNormalizationConfig.min_std</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ppo.config.html#protomotions.agents.ppo.config.AdvantageNormalizationConfig.clamp_range"><code class="docutils literal notranslate"><span class="pre">AdvantageNormalizationConfig.clamp_range</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ppo.config.html#protomotions.agents.ppo.config.AdvantageNormalizationConfig.__init__"><code class="docutils literal notranslate"><span class="pre">AdvantageNormalizationConfig.__init__()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ppo.config.html#protomotions.agents.ppo.config.AdvantageNormalizationConfig.enabled"><code class="docutils literal notranslate"><span class="pre">enabled</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ppo.config.html#protomotions.agents.ppo.config.AdvantageNormalizationConfig.shift_mean"><code class="docutils literal notranslate"><span class="pre">shift_mean</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ppo.config.html#protomotions.agents.ppo.config.AdvantageNormalizationConfig.use_ema"><code class="docutils literal notranslate"><span class="pre">use_ema</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ppo.config.html#protomotions.agents.ppo.config.AdvantageNormalizationConfig.ema_alpha"><code class="docutils literal notranslate"><span class="pre">ema_alpha</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ppo.config.html#protomotions.agents.ppo.config.AdvantageNormalizationConfig.min_std"><code class="docutils literal notranslate"><span class="pre">min_std</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ppo.config.html#protomotions.agents.ppo.config.AdvantageNormalizationConfig.clamp_range"><code class="docutils literal notranslate"><span class="pre">clamp_range</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ppo.config.html#protomotions.agents.ppo.config.AdvantageNormalizationConfig.__init__"><code class="docutils literal notranslate"><span class="pre">__init__()</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="protomotions.agents.ppo.config.html#protomotions.agents.ppo.config.PPOAgentConfig"><code class="docutils literal notranslate"><span class="pre">PPOAgentConfig</span></code></a><ul>
-<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ppo.config.html#protomotions.agents.ppo.config.PPOAgentConfig.model"><code class="docutils literal notranslate"><span class="pre">PPOAgentConfig.model</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ppo.config.html#protomotions.agents.ppo.config.PPOAgentConfig.tau"><code class="docutils literal notranslate"><span class="pre">PPOAgentConfig.tau</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ppo.config.html#protomotions.agents.ppo.config.PPOAgentConfig.e_clip"><code class="docutils literal notranslate"><span class="pre">PPOAgentConfig.e_clip</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ppo.config.html#protomotions.agents.ppo.config.PPOAgentConfig.clip_critic_loss"><code class="docutils literal notranslate"><span class="pre">PPOAgentConfig.clip_critic_loss</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ppo.config.html#protomotions.agents.ppo.config.PPOAgentConfig.actor_clip_frac_threshold"><code class="docutils literal notranslate"><span class="pre">PPOAgentConfig.actor_clip_frac_threshold</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ppo.config.html#protomotions.agents.ppo.config.PPOAgentConfig.advantage_normalization"><code class="docutils literal notranslate"><span class="pre">PPOAgentConfig.advantage_normalization</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ppo.config.html#protomotions.agents.ppo.config.PPOAgentConfig.__init__"><code class="docutils literal notranslate"><span class="pre">PPOAgentConfig.__init__()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ppo.config.html#protomotions.agents.ppo.config.PPOAgentConfig.model"><code class="docutils literal notranslate"><span class="pre">model</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ppo.config.html#protomotions.agents.ppo.config.PPOAgentConfig.tau"><code class="docutils literal notranslate"><span class="pre">tau</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ppo.config.html#protomotions.agents.ppo.config.PPOAgentConfig.e_clip"><code class="docutils literal notranslate"><span class="pre">e_clip</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ppo.config.html#protomotions.agents.ppo.config.PPOAgentConfig.clip_critic_loss"><code class="docutils literal notranslate"><span class="pre">clip_critic_loss</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ppo.config.html#protomotions.agents.ppo.config.PPOAgentConfig.actor_clip_frac_threshold"><code class="docutils literal notranslate"><span class="pre">actor_clip_frac_threshold</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ppo.config.html#protomotions.agents.ppo.config.PPOAgentConfig.advantage_normalization"><code class="docutils literal notranslate"><span class="pre">advantage_normalization</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ppo.config.html#protomotions.agents.ppo.config.PPOAgentConfig.__init__"><code class="docutils literal notranslate"><span class="pre">__init__()</span></code></a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="protomotions.agents.ppo.model.html">protomotions.agents.ppo.model module</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="protomotions.agents.ppo.model.html#protomotions.agents.ppo.model.PPOActor"><code class="docutils literal notranslate"><span class="pre">PPOActor</span></code></a><ul>
-<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ppo.model.html#protomotions.agents.ppo.model.PPOActor.logstd"><code class="docutils literal notranslate"><span class="pre">PPOActor.logstd</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ppo.model.html#protomotions.agents.ppo.model.PPOActor.mu"><code class="docutils literal notranslate"><span class="pre">PPOActor.mu</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ppo.model.html#protomotions.agents.ppo.model.PPOActor.in_keys"><code class="docutils literal notranslate"><span class="pre">PPOActor.in_keys</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ppo.model.html#protomotions.agents.ppo.model.PPOActor.out_keys"><code class="docutils literal notranslate"><span class="pre">PPOActor.out_keys</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ppo.model.html#protomotions.agents.ppo.model.PPOActor.__init__"><code class="docutils literal notranslate"><span class="pre">PPOActor.__init__()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ppo.model.html#protomotions.agents.ppo.model.PPOActor.forward"><code class="docutils literal notranslate"><span class="pre">PPOActor.forward()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ppo.model.html#protomotions.agents.ppo.model.PPOActor.logstd"><code class="docutils literal notranslate"><span class="pre">logstd</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ppo.model.html#protomotions.agents.ppo.model.PPOActor.mu"><code class="docutils literal notranslate"><span class="pre">mu</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ppo.model.html#protomotions.agents.ppo.model.PPOActor.in_keys"><code class="docutils literal notranslate"><span class="pre">in_keys</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ppo.model.html#protomotions.agents.ppo.model.PPOActor.out_keys"><code class="docutils literal notranslate"><span class="pre">out_keys</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ppo.model.html#protomotions.agents.ppo.model.PPOActor.__init__"><code class="docutils literal notranslate"><span class="pre">__init__()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ppo.model.html#protomotions.agents.ppo.model.PPOActor.forward"><code class="docutils literal notranslate"><span class="pre">forward()</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="protomotions.agents.ppo.model.html#protomotions.agents.ppo.model.PPOModel"><code class="docutils literal notranslate"><span class="pre">PPOModel</span></code></a><ul>
-<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ppo.model.html#protomotions.agents.ppo.model.PPOModel._actor"><code class="docutils literal notranslate"><span class="pre">PPOModel._actor</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ppo.model.html#protomotions.agents.ppo.model.PPOModel._critic"><code class="docutils literal notranslate"><span class="pre">PPOModel._critic</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ppo.model.html#protomotions.agents.ppo.model.PPOModel.config"><code class="docutils literal notranslate"><span class="pre">PPOModel.config</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ppo.model.html#protomotions.agents.ppo.model.PPOModel.__init__"><code class="docutils literal notranslate"><span class="pre">PPOModel.__init__()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ppo.model.html#protomotions.agents.ppo.model.PPOModel.forward"><code class="docutils literal notranslate"><span class="pre">PPOModel.forward()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ppo.model.html#protomotions.agents.ppo.model.PPOModel._actor"><code class="docutils literal notranslate"><span class="pre">_actor</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ppo.model.html#protomotions.agents.ppo.model.PPOModel._critic"><code class="docutils literal notranslate"><span class="pre">_critic</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ppo.model.html#protomotions.agents.ppo.model.PPOModel.config"><code class="docutils literal notranslate"><span class="pre">config</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ppo.model.html#protomotions.agents.ppo.model.PPOModel.__init__"><code class="docutils literal notranslate"><span class="pre">__init__()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ppo.model.html#protomotions.agents.ppo.model.PPOModel.forward"><code class="docutils literal notranslate"><span class="pre">forward()</span></code></a></li>
 </ul>
 </li>
 </ul>

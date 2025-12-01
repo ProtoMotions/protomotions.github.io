@@ -211,6 +211,7 @@
 <p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../user_guide/configuration.html">Configuration System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/experiments.html">Experiments</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user_guide/developer_tips.html">Developer Tips</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Key Concepts</span></p>
@@ -244,8 +245,6 @@
 </ul>
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="protomotions.agents.callbacks.html">protomotions.agents.callbacks package</a><input aria-label="Toggle navigation of protomotions.agents.callbacks package" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.callbacks.one_logger.html">protomotions.agents.callbacks.one_logger module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.callbacks.slurm_autoresume_adlr.html">protomotions.agents.callbacks.slurm_autoresume_adlr module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="protomotions.agents.callbacks.slurm_autoresume_srun.html">protomotions.agents.callbacks.slurm_autoresume_srun module</a></li>
 </ul>
 </li>
@@ -329,12 +328,8 @@
           <span>Back to top</span>
         </a>
         <div class="content-icon-container">
-          <div class="view-this-page">
-  <a class="muted-link" href="../_sources/api_reference/protomotions.agents.utils.data.rst.txt" title="View this page">
-    <svg><use href="#svg-eye"></use></svg>
-    <span class="visually-hidden">View this page</span>
-  </a>
-</div>
+          
+
 <div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
               <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
@@ -385,7 +380,7 @@ Commonly used to batch experience from parallel environments.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="protomotions.agents.utils.data.ExperienceBuffer">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">protomotions.agents.utils.data.</span></span><span class="sig-name descname"><span class="pre">ExperienceBuffer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">num_envs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_steps</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/protomotions/agents/utils/data.html#ExperienceBuffer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#protomotions.agents.utils.data.ExperienceBuffer" title="Link to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">&lt;Mock</span> <span class="pre">object</span> <span class="pre">at</span> <span class="pre">0x78723e692c50&gt;</span></code>[]</p>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">&lt;Mock</span> <span class="pre">object</span> <span class="pre">at</span> <span class="pre">0x701e6b582350&gt;</span></code>[]</p>
 <p>Buffer for storing rollout experience from parallel environments.</p>
 <p>Collects observations, actions, rewards, and other data during environment
 rollouts. Provides efficient storage and batching for on-policy algorithms.
@@ -454,7 +449,7 @@ Uses PyTorch buffers for automatic device management.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="protomotions.agents.utils.data.DictDataset">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">protomotions.agents.utils.data.</span></span><span class="sig-name descname"><span class="pre">DictDataset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">batch_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tensor_dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shuffle</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/protomotions/agents/utils/data.html#DictDataset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#protomotions.agents.utils.data.DictDataset" title="Link to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">&lt;Mock</span> <span class="pre">object</span> <span class="pre">at</span> <span class="pre">0x78723e692d50&gt;</span></code>[]</p>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">&lt;Mock</span> <span class="pre">object</span> <span class="pre">at</span> <span class="pre">0x701e6b5904d0&gt;</span></code>[]</p>
 <p>PyTorch Dataset for dictionary of tensors with minibatching.</p>
 <p>Creates minibatches from a dictionary of tensors. Supports shuffling and
 automatic batching for training. Used to create minibatch iterators from
@@ -554,19 +549,19 @@ collected experience buffers.</p>
 <li><a class="reference internal" href="#">protomotions.agents.utils.data module</a><ul>
 <li><a class="reference internal" href="#protomotions.agents.utils.data.swap_and_flatten01"><code class="docutils literal notranslate"><span class="pre">swap_and_flatten01()</span></code></a></li>
 <li><a class="reference internal" href="#protomotions.agents.utils.data.ExperienceBuffer"><code class="docutils literal notranslate"><span class="pre">ExperienceBuffer</span></code></a><ul>
-<li><a class="reference internal" href="#protomotions.agents.utils.data.ExperienceBuffer.store_dict"><code class="docutils literal notranslate"><span class="pre">ExperienceBuffer.store_dict</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.utils.data.ExperienceBuffer.__init__"><code class="docutils literal notranslate"><span class="pre">ExperienceBuffer.__init__()</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.utils.data.ExperienceBuffer.register_key"><code class="docutils literal notranslate"><span class="pre">ExperienceBuffer.register_key()</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.utils.data.ExperienceBuffer.update_data"><code class="docutils literal notranslate"><span class="pre">ExperienceBuffer.update_data()</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.utils.data.ExperienceBuffer.total_sum"><code class="docutils literal notranslate"><span class="pre">ExperienceBuffer.total_sum()</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.utils.data.ExperienceBuffer.batch_update_data"><code class="docutils literal notranslate"><span class="pre">ExperienceBuffer.batch_update_data()</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.utils.data.ExperienceBuffer.make_dict"><code class="docutils literal notranslate"><span class="pre">ExperienceBuffer.make_dict()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.utils.data.ExperienceBuffer.store_dict"><code class="docutils literal notranslate"><span class="pre">store_dict</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.utils.data.ExperienceBuffer.__init__"><code class="docutils literal notranslate"><span class="pre">__init__()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.utils.data.ExperienceBuffer.register_key"><code class="docutils literal notranslate"><span class="pre">register_key()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.utils.data.ExperienceBuffer.update_data"><code class="docutils literal notranslate"><span class="pre">update_data()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.utils.data.ExperienceBuffer.total_sum"><code class="docutils literal notranslate"><span class="pre">total_sum()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.utils.data.ExperienceBuffer.batch_update_data"><code class="docutils literal notranslate"><span class="pre">batch_update_data()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.utils.data.ExperienceBuffer.make_dict"><code class="docutils literal notranslate"><span class="pre">make_dict()</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#protomotions.agents.utils.data.DictDataset"><code class="docutils literal notranslate"><span class="pre">DictDataset</span></code></a><ul>
-<li><a class="reference internal" href="#protomotions.agents.utils.data.DictDataset.__init__"><code class="docutils literal notranslate"><span class="pre">DictDataset.__init__()</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.utils.data.DictDataset.shuffle"><code class="docutils literal notranslate"><span class="pre">DictDataset.shuffle()</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.utils.data.DictDataset.num_batches"><code class="docutils literal notranslate"><span class="pre">DictDataset.num_batches()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.utils.data.DictDataset.__init__"><code class="docutils literal notranslate"><span class="pre">__init__()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.utils.data.DictDataset.shuffle"><code class="docutils literal notranslate"><span class="pre">shuffle()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.utils.data.DictDataset.num_batches"><code class="docutils literal notranslate"><span class="pre">num_batches()</span></code></a></li>
 </ul>
 </li>
 </ul>

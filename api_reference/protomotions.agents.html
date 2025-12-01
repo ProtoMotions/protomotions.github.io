@@ -211,6 +211,7 @@
 <p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../user_guide/configuration.html">Configuration System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/experiments.html">Experiments</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user_guide/developer_tips.html">Developer Tips</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Key Concepts</span></p>
@@ -244,8 +245,6 @@
 </ul>
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="protomotions.agents.callbacks.html">protomotions.agents.callbacks package</a><input aria-label="Toggle navigation of protomotions.agents.callbacks package" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.callbacks.one_logger.html">protomotions.agents.callbacks.one_logger module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.callbacks.slurm_autoresume_adlr.html">protomotions.agents.callbacks.slurm_autoresume_adlr module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="protomotions.agents.callbacks.slurm_autoresume_srun.html">protomotions.agents.callbacks.slurm_autoresume_srun module</a></li>
 </ul>
 </li>
@@ -329,12 +328,8 @@
           <span>Back to top</span>
         </a>
         <div class="content-icon-container">
-          <div class="view-this-page">
-  <a class="muted-link" href="../_sources/api_reference/protomotions.agents.rst.txt" title="View this page">
-    <svg><use href="#svg-eye"></use></svg>
-    <span class="visually-hidden">View this page</span>
-  </a>
-</div>
+          
+
 <div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
               <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
@@ -378,9 +373,20 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="protomotions.agents.ase.html">protomotions.agents.ase package</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="protomotions.agents.ase.html#submodules">Submodules</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ase.agent.html">protomotions.agents.ase.agent module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ase.config.html">protomotions.agents.ase.config module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ase.model.html">protomotions.agents.ase.model module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ase.agent.html">protomotions.agents.ase.agent module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="protomotions.agents.ase.agent.html#protomotions.agents.ase.agent.ASE"><code class="docutils literal notranslate"><span class="pre">ASE</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ase.config.html">protomotions.agents.ase.config module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="protomotions.agents.ase.config.html#protomotions.agents.ase.config.ASEParametersConfig"><code class="docutils literal notranslate"><span class="pre">ASEParametersConfig</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="protomotions.agents.ase.config.html#protomotions.agents.ase.config.ASEDiscriminatorEncoderConfig"><code class="docutils literal notranslate"><span class="pre">ASEDiscriminatorEncoderConfig</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="protomotions.agents.ase.config.html#protomotions.agents.ase.config.ASEAgentConfig"><code class="docutils literal notranslate"><span class="pre">ASEAgentConfig</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.ase.model.html">protomotions.agents.ase.model module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="protomotions.agents.ase.model.html#protomotions.agents.ase.model.ASEDiscriminatorEncoder"><code class="docutils literal notranslate"><span class="pre">ASEDiscriminatorEncoder</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -408,8 +414,6 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="protomotions.agents.callbacks.html">protomotions.agents.callbacks package</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="protomotions.agents.callbacks.html#submodules">Submodules</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.callbacks.one_logger.html">protomotions.agents.callbacks.one_logger module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.callbacks.slurm_autoresume_adlr.html">protomotions.agents.callbacks.slurm_autoresume_adlr module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="protomotions.agents.callbacks.slurm_autoresume_srun.html">protomotions.agents.callbacks.slurm_autoresume_srun module</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="protomotions.agents.callbacks.slurm_autoresume_srun.html#protomotions.agents.callbacks.slurm_autoresume_srun.wandb_run_exists"><code class="docutils literal notranslate"><span class="pre">wandb_run_exists()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="protomotions.agents.callbacks.slurm_autoresume_srun.html#protomotions.agents.callbacks.slurm_autoresume_srun.AutoResumeCallbackSrun"><code class="docutils literal notranslate"><span class="pre">AutoResumeCallbackSrun</span></code></a></li>
@@ -466,49 +470,49 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="protomotions.agents.evaluators.html">protomotions.agents.evaluators package</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="protomotions.agents.evaluators.html#protomotions.agents.evaluators.MimicEvaluator"><code class="docutils literal notranslate"><span class="pre">MimicEvaluator</span></code></a><ul>
-<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.evaluators.html#protomotions.agents.evaluators.MimicEvaluator.__init__"><code class="docutils literal notranslate"><span class="pre">MimicEvaluator.__init__()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.evaluators.html#protomotions.agents.evaluators.MimicEvaluator.add_extra_obs_to_agent"><code class="docutils literal notranslate"><span class="pre">MimicEvaluator.add_extra_obs_to_agent()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.evaluators.html#protomotions.agents.evaluators.MimicEvaluator.cleanup_after_evaluation"><code class="docutils literal notranslate"><span class="pre">MimicEvaluator.cleanup_after_evaluation()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.evaluators.html#protomotions.agents.evaluators.MimicEvaluator.evaluate_episode"><code class="docutils literal notranslate"><span class="pre">MimicEvaluator.evaluate_episode()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.evaluators.html#protomotions.agents.evaluators.MimicEvaluator.initialize_eval"><code class="docutils literal notranslate"><span class="pre">MimicEvaluator.initialize_eval()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.evaluators.html#protomotions.agents.evaluators.MimicEvaluator.motion_lib"><code class="docutils literal notranslate"><span class="pre">MimicEvaluator.motion_lib</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.evaluators.html#protomotions.agents.evaluators.MimicEvaluator.motion_manager"><code class="docutils literal notranslate"><span class="pre">MimicEvaluator.motion_manager</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.evaluators.html#protomotions.agents.evaluators.MimicEvaluator.num_envs"><code class="docutils literal notranslate"><span class="pre">MimicEvaluator.num_envs</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.evaluators.html#protomotions.agents.evaluators.MimicEvaluator.process_eval_results"><code class="docutils literal notranslate"><span class="pre">MimicEvaluator.process_eval_results()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.evaluators.html#protomotions.agents.evaluators.MimicEvaluator.run_evaluation"><code class="docutils literal notranslate"><span class="pre">MimicEvaluator.run_evaluation()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.evaluators.html#protomotions.agents.evaluators.MimicEvaluator.simple_test_policy"><code class="docutils literal notranslate"><span class="pre">MimicEvaluator.simple_test_policy()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.evaluators.html#protomotions.agents.evaluators.MimicEvaluator.update_metrics_from_env_extras"><code class="docutils literal notranslate"><span class="pre">MimicEvaluator.update_metrics_from_env_extras()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.evaluators.html#protomotions.agents.evaluators.MimicEvaluator.__init__"><code class="docutils literal notranslate"><span class="pre">__init__()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.evaluators.html#protomotions.agents.evaluators.MimicEvaluator.add_extra_obs_to_agent"><code class="docutils literal notranslate"><span class="pre">add_extra_obs_to_agent()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.evaluators.html#protomotions.agents.evaluators.MimicEvaluator.cleanup_after_evaluation"><code class="docutils literal notranslate"><span class="pre">cleanup_after_evaluation()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.evaluators.html#protomotions.agents.evaluators.MimicEvaluator.evaluate_episode"><code class="docutils literal notranslate"><span class="pre">evaluate_episode()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.evaluators.html#protomotions.agents.evaluators.MimicEvaluator.initialize_eval"><code class="docutils literal notranslate"><span class="pre">initialize_eval()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.evaluators.html#protomotions.agents.evaluators.MimicEvaluator.motion_lib"><code class="docutils literal notranslate"><span class="pre">motion_lib</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.evaluators.html#protomotions.agents.evaluators.MimicEvaluator.motion_manager"><code class="docutils literal notranslate"><span class="pre">motion_manager</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.evaluators.html#protomotions.agents.evaluators.MimicEvaluator.num_envs"><code class="docutils literal notranslate"><span class="pre">num_envs</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.evaluators.html#protomotions.agents.evaluators.MimicEvaluator.process_eval_results"><code class="docutils literal notranslate"><span class="pre">process_eval_results()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.evaluators.html#protomotions.agents.evaluators.MimicEvaluator.run_evaluation"><code class="docutils literal notranslate"><span class="pre">run_evaluation()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.evaluators.html#protomotions.agents.evaluators.MimicEvaluator.simple_test_policy"><code class="docutils literal notranslate"><span class="pre">simple_test_policy()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.evaluators.html#protomotions.agents.evaluators.MimicEvaluator.update_metrics_from_env_extras"><code class="docutils literal notranslate"><span class="pre">update_metrics_from_env_extras()</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="protomotions.agents.evaluators.html#protomotions.agents.evaluators.SmoothnessEvaluator"><code class="docutils literal notranslate"><span class="pre">SmoothnessEvaluator</span></code></a><ul>
-<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.evaluators.html#protomotions.agents.evaluators.SmoothnessEvaluator.__init__"><code class="docutils literal notranslate"><span class="pre">SmoothnessEvaluator.__init__()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.evaluators.html#protomotions.agents.evaluators.SmoothnessEvaluator.compute_normalized_jerk_from_pos"><code class="docutils literal notranslate"><span class="pre">SmoothnessEvaluator.compute_normalized_jerk_from_pos()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.evaluators.html#protomotions.agents.evaluators.SmoothnessEvaluator.compute_smoothness_metrics"><code class="docutils literal notranslate"><span class="pre">SmoothnessEvaluator.compute_smoothness_metrics()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.evaluators.html#protomotions.agents.evaluators.SmoothnessEvaluator.__init__"><code class="docutils literal notranslate"><span class="pre">__init__()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.evaluators.html#protomotions.agents.evaluators.SmoothnessEvaluator.compute_normalized_jerk_from_pos"><code class="docutils literal notranslate"><span class="pre">compute_normalized_jerk_from_pos()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.evaluators.html#protomotions.agents.evaluators.SmoothnessEvaluator.compute_smoothness_metrics"><code class="docutils literal notranslate"><span class="pre">compute_smoothness_metrics()</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="protomotions.agents.evaluators.html#protomotions.agents.evaluators.MotionMetrics"><code class="docutils literal notranslate"><span class="pre">MotionMetrics</span></code></a><ul>
-<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.evaluators.html#protomotions.agents.evaluators.MotionMetrics.__init__"><code class="docutils literal notranslate"><span class="pre">MotionMetrics.__init__()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.evaluators.html#protomotions.agents.evaluators.MotionMetrics.compute_finite_difference_jitter_reduce_each_motion"><code class="docutils literal notranslate"><span class="pre">MotionMetrics.compute_finite_difference_jitter_reduce_each_motion()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.evaluators.html#protomotions.agents.evaluators.MotionMetrics.compute_jitter_reduce_each_motion"><code class="docutils literal notranslate"><span class="pre">MotionMetrics.compute_jitter_reduce_each_motion()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.evaluators.html#protomotions.agents.evaluators.MotionMetrics.compute_rotation_jitter_reduce_each_motion"><code class="docutils literal notranslate"><span class="pre">MotionMetrics.compute_rotation_jitter_reduce_each_motion()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.evaluators.html#protomotions.agents.evaluators.MotionMetrics.copy_from"><code class="docutils literal notranslate"><span class="pre">MotionMetrics.copy_from()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.evaluators.html#protomotions.agents.evaluators.MotionMetrics.copy_from_motion_ids"><code class="docutils literal notranslate"><span class="pre">MotionMetrics.copy_from_motion_ids()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.evaluators.html#protomotions.agents.evaluators.MotionMetrics.get_unfilled_mask"><code class="docutils literal notranslate"><span class="pre">MotionMetrics.get_unfilled_mask()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.evaluators.html#protomotions.agents.evaluators.MotionMetrics.jitter_mean_reduce_each_motion"><code class="docutils literal notranslate"><span class="pre">MotionMetrics.jitter_mean_reduce_each_motion()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.evaluators.html#protomotions.agents.evaluators.MotionMetrics.max_mean_reduce"><code class="docutils literal notranslate"><span class="pre">MotionMetrics.max_mean_reduce()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.evaluators.html#protomotions.agents.evaluators.MotionMetrics.max_reduce_each_motion"><code class="docutils literal notranslate"><span class="pre">MotionMetrics.max_reduce_each_motion()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.evaluators.html#protomotions.agents.evaluators.MotionMetrics.mean_max_reduce"><code class="docutils literal notranslate"><span class="pre">MotionMetrics.mean_max_reduce()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.evaluators.html#protomotions.agents.evaluators.MotionMetrics.mean_mean_reduce"><code class="docutils literal notranslate"><span class="pre">MotionMetrics.mean_mean_reduce()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.evaluators.html#protomotions.agents.evaluators.MotionMetrics.mean_min_reduce"><code class="docutils literal notranslate"><span class="pre">MotionMetrics.mean_min_reduce()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.evaluators.html#protomotions.agents.evaluators.MotionMetrics.mean_reduce_each_motion"><code class="docutils literal notranslate"><span class="pre">MotionMetrics.mean_reduce_each_motion()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.evaluators.html#protomotions.agents.evaluators.MotionMetrics.merge_from"><code class="docutils literal notranslate"><span class="pre">MotionMetrics.merge_from()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.evaluators.html#protomotions.agents.evaluators.MotionMetrics.min_mean_reduce"><code class="docutils literal notranslate"><span class="pre">MotionMetrics.min_mean_reduce()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.evaluators.html#protomotions.agents.evaluators.MotionMetrics.min_reduce_each_motion"><code class="docutils literal notranslate"><span class="pre">MotionMetrics.min_reduce_each_motion()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.evaluators.html#protomotions.agents.evaluators.MotionMetrics.ops_mean_reduce"><code class="docutils literal notranslate"><span class="pre">MotionMetrics.ops_mean_reduce()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.evaluators.html#protomotions.agents.evaluators.MotionMetrics.reset"><code class="docutils literal notranslate"><span class="pre">MotionMetrics.reset()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.evaluators.html#protomotions.agents.evaluators.MotionMetrics.rotation_jitter_mean_reduce_each_motion"><code class="docutils literal notranslate"><span class="pre">MotionMetrics.rotation_jitter_mean_reduce_each_motion()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.evaluators.html#protomotions.agents.evaluators.MotionMetrics.to"><code class="docutils literal notranslate"><span class="pre">MotionMetrics.to()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.evaluators.html#protomotions.agents.evaluators.MotionMetrics.update"><code class="docutils literal notranslate"><span class="pre">MotionMetrics.update()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.evaluators.html#protomotions.agents.evaluators.MotionMetrics.__init__"><code class="docutils literal notranslate"><span class="pre">__init__()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.evaluators.html#protomotions.agents.evaluators.MotionMetrics.compute_finite_difference_jitter_reduce_each_motion"><code class="docutils literal notranslate"><span class="pre">compute_finite_difference_jitter_reduce_each_motion()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.evaluators.html#protomotions.agents.evaluators.MotionMetrics.compute_jitter_reduce_each_motion"><code class="docutils literal notranslate"><span class="pre">compute_jitter_reduce_each_motion()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.evaluators.html#protomotions.agents.evaluators.MotionMetrics.compute_rotation_jitter_reduce_each_motion"><code class="docutils literal notranslate"><span class="pre">compute_rotation_jitter_reduce_each_motion()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.evaluators.html#protomotions.agents.evaluators.MotionMetrics.copy_from"><code class="docutils literal notranslate"><span class="pre">copy_from()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.evaluators.html#protomotions.agents.evaluators.MotionMetrics.copy_from_motion_ids"><code class="docutils literal notranslate"><span class="pre">copy_from_motion_ids()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.evaluators.html#protomotions.agents.evaluators.MotionMetrics.get_unfilled_mask"><code class="docutils literal notranslate"><span class="pre">get_unfilled_mask()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.evaluators.html#protomotions.agents.evaluators.MotionMetrics.jitter_mean_reduce_each_motion"><code class="docutils literal notranslate"><span class="pre">jitter_mean_reduce_each_motion()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.evaluators.html#protomotions.agents.evaluators.MotionMetrics.max_mean_reduce"><code class="docutils literal notranslate"><span class="pre">max_mean_reduce()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.evaluators.html#protomotions.agents.evaluators.MotionMetrics.max_reduce_each_motion"><code class="docutils literal notranslate"><span class="pre">max_reduce_each_motion()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.evaluators.html#protomotions.agents.evaluators.MotionMetrics.mean_max_reduce"><code class="docutils literal notranslate"><span class="pre">mean_max_reduce()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.evaluators.html#protomotions.agents.evaluators.MotionMetrics.mean_mean_reduce"><code class="docutils literal notranslate"><span class="pre">mean_mean_reduce()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.evaluators.html#protomotions.agents.evaluators.MotionMetrics.mean_min_reduce"><code class="docutils literal notranslate"><span class="pre">mean_min_reduce()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.evaluators.html#protomotions.agents.evaluators.MotionMetrics.mean_reduce_each_motion"><code class="docutils literal notranslate"><span class="pre">mean_reduce_each_motion()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.evaluators.html#protomotions.agents.evaluators.MotionMetrics.merge_from"><code class="docutils literal notranslate"><span class="pre">merge_from()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.evaluators.html#protomotions.agents.evaluators.MotionMetrics.min_mean_reduce"><code class="docutils literal notranslate"><span class="pre">min_mean_reduce()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.evaluators.html#protomotions.agents.evaluators.MotionMetrics.min_reduce_each_motion"><code class="docutils literal notranslate"><span class="pre">min_reduce_each_motion()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.evaluators.html#protomotions.agents.evaluators.MotionMetrics.ops_mean_reduce"><code class="docutils literal notranslate"><span class="pre">ops_mean_reduce()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.evaluators.html#protomotions.agents.evaluators.MotionMetrics.reset"><code class="docutils literal notranslate"><span class="pre">reset()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.evaluators.html#protomotions.agents.evaluators.MotionMetrics.rotation_jitter_mean_reduce_each_motion"><code class="docutils literal notranslate"><span class="pre">rotation_jitter_mean_reduce_each_motion()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.evaluators.html#protomotions.agents.evaluators.MotionMetrics.to"><code class="docutils literal notranslate"><span class="pre">to()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.evaluators.html#protomotions.agents.evaluators.MotionMetrics.update"><code class="docutils literal notranslate"><span class="pre">update()</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="protomotions.agents.evaluators.html#submodules">Submodules</a><ul>

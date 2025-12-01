@@ -173,7 +173,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
         <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
       </label>
     </div>
@@ -211,6 +211,7 @@
 <p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../user_guide/configuration.html">Configuration System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/experiments.html">Experiments</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user_guide/developer_tips.html">Developer Tips</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Key Concepts</span></p>
@@ -244,8 +245,6 @@
 </ul>
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="protomotions.agents.callbacks.html">protomotions.agents.callbacks package</a><input aria-label="Toggle navigation of protomotions.agents.callbacks package" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.callbacks.one_logger.html">protomotions.agents.callbacks.one_logger module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.callbacks.slurm_autoresume_adlr.html">protomotions.agents.callbacks.slurm_autoresume_adlr module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="protomotions.agents.callbacks.slurm_autoresume_srun.html">protomotions.agents.callbacks.slurm_autoresume_srun module</a></li>
 </ul>
 </li>
@@ -329,12 +328,8 @@
           <span>Back to top</span>
         </a>
         <div class="content-icon-container">
-          <div class="view-this-page">
-  <a class="muted-link" href="../_sources/api_reference/protomotions.agents.ase.agent.rst.txt" title="View this page">
-    <svg><use href="#svg-eye"></use></svg>
-    <span class="visually-hidden">View this page</span>
-  </a>
-</div>
+          
+
 <div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
               <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
@@ -343,13 +338,318 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
             <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
           </label>
         </div>
         <article role="main" id="furo-main-content">
-          <section id="protomotions-agents-ase-agent-module">
-<h1>protomotions.agents.ase.agent module<a class="headerlink" href="#protomotions-agents-ase-agent-module" title="Link to this heading">¶</a></h1>
+          <section id="module-protomotions.agents.ase.agent">
+<span id="protomotions-agents-ase-agent-module"></span><h1>protomotions.agents.ase.agent module<a class="headerlink" href="#module-protomotions.agents.ase.agent" title="Link to this heading">¶</a></h1>
+<p>Adversarial Skill Embeddings (ASE) agent implementation.</p>
+<p>This module implements the ASE algorithm which extends AMP with learned skill embeddings.
+The discriminator encodes motions into a latent skill space, and the policy is conditioned
+on these latent codes. This enables learning diverse skills from motion data and composing
+them for complex tasks.</p>
+<dl class="simple">
+<dt>Key Classes:</dt><dd><ul class="simple">
+<li><p>ASE: Main ASE agent class extending AMP</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">References</p>
+<p>Peng et al. “ASE: Large-Scale Reusable Adversarial Skill Embeddings for Physically Simulated Characters” (2022)</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="protomotions.agents.ase.agent.ASE">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">protomotions.agents.ase.agent.</span></span><span class="sig-name descname"><span class="pre">ASE</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fabric</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">env</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">root_dir</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/protomotions/agents/ase/agent.html#ASE"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#protomotions.agents.ase.agent.ASE" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="protomotions.agents.amp.agent.html#protomotions.agents.amp.agent.AMP" title="protomotions.agents.amp.agent.AMP"><code class="xref py py-class docutils literal notranslate"><span class="pre">AMP</span></code></a></p>
+<p>Adversarial Skill Embeddings (ASE) agent.</p>
+<p>Extends AMP with a low-level policy conditioned on learned skill embeddings.
+The discriminator learns to encode skills from motion data into a latent space,
+while the policy learns to execute behaviors conditioned on these latent codes.
+This enables learning diverse skills from motion data and composing them for tasks.</p>
+<p>Key components:
+- <strong>Low-level policy</strong>: Conditioned on latent skill codes
+- <strong>Discriminator</strong>: Encodes motions into skill embeddings
+- <strong>Mutual information</strong>: Encourages skill diversity
+- <strong>Latent sampling</strong>: Periodically samples new skills during rollouts</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>fabric</strong> (<em>MockFabric</em>) – Lightning Fabric instance for distributed training.</p></li>
+<li><p><strong>env</strong> (<em>BaseEnv</em>) – Environment instance with diverse motion library.</p></li>
+<li><p><strong>config</strong> – ASE-specific configuration including latent dimensions.</p></li>
+<li><p><strong>root_dir</strong> (<a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.14)"><em>Path</em></a><em> | </em><em>None</em>) – Optional root directory for saving outputs.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="protomotions.agents.ase.agent.ASE.latents">
+<span class="sig-name descname"><span class="pre">latents</span></span><a class="headerlink" href="#protomotions.agents.ase.agent.ASE.latents" title="Link to this definition">¶</a></dt>
+<dd><p>Current latent skill codes for each environment.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="protomotions.agents.ase.agent.ASE.latent_reset_steps">
+<span class="sig-name descname"><span class="pre">latent_reset_steps</span></span><a class="headerlink" href="#protomotions.agents.ase.agent.ASE.latent_reset_steps" title="Link to this definition">¶</a></dt>
+<dd><p>Steps until next latent resample.</p>
+</dd></dl>
+
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">fabric</span> <span class="o">=</span> <span class="n">Fabric</span><span class="p">(</span><span class="n">devices</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">env</span> <span class="o">=</span> <span class="n">Mimic</span><span class="p">(</span><span class="n">config</span><span class="p">,</span> <span class="n">robot_config</span><span class="p">,</span> <span class="n">simulator_config</span><span class="p">,</span> <span class="n">device</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">agent</span> <span class="o">=</span> <span class="n">ASE</span><span class="p">(</span><span class="n">fabric</span><span class="p">,</span> <span class="n">env</span><span class="p">,</span> <span class="n">config</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">agent</span><span class="o">.</span><span class="n">setup</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">agent</span><span class="o">.</span><span class="n">train</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Requires large diverse motion dataset for effective skill learning.</p>
+</div>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="protomotions.agents.ase.agent.ASE.model">
+<span class="sig-name descname"><span class="pre">model</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="protomotions.agents.amp.model.html#protomotions.agents.amp.model.AMPModel" title="protomotions.agents.amp.model.AMPModel"><span class="pre">AMPModel</span></a></em><a class="headerlink" href="#protomotions.agents.ase.agent.ASE.model" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="protomotions.agents.ase.agent.ASE.discriminator">
+<span class="sig-name descname"><span class="pre">discriminator</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="protomotions.agents.ase.model.html#protomotions.agents.ase.model.ASEDiscriminatorEncoder" title="protomotions.agents.ase.model.ASEDiscriminatorEncoder"><span class="pre">ASEDiscriminatorEncoder</span></a></em><a class="headerlink" href="#protomotions.agents.ase.agent.ASE.discriminator" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="protomotions.agents.ase.agent.ASE.config">
+<span class="sig-name descname"><span class="pre">config</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="protomotions.agents.ase.config.html#protomotions.agents.ase.config.ASEAgentConfig" title="protomotions.agents.ase.config.ASEAgentConfig"><span class="pre">ASEAgentConfig</span></a></em><a class="headerlink" href="#protomotions.agents.ase.agent.ASE.config" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="protomotions.agents.ase.agent.ASE.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fabric</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">env</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">root_dir</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/protomotions/agents/ase/agent.html#ASE.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#protomotions.agents.ase.agent.ASE.__init__" title="Link to this definition">¶</a></dt>
+<dd><p>Initialize the base agent.</p>
+<p>Sets up distributed training infrastructure, initializes tracking metrics,
+and creates the evaluator. Subclasses should call super().__init__() first.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>fabric</strong> (<em>MockFabric</em>) – Lightning Fabric for distributed training and device management.</p></li>
+<li><p><strong>env</strong> (<em>BaseEnv</em>) – Environment instance for agent-environment interaction.</p></li>
+<li><p><strong>config</strong> – Configuration containing hyperparameters and training settings.</p></li>
+<li><p><strong>root_dir</strong> (<a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.14)"><em>Path</em></a><em> | </em><em>None</em>) – Optional directory for saving outputs (uses logger dir if None).</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="protomotions.agents.ase.agent.ASE.setup">
+<span class="sig-name descname"><span class="pre">setup</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/protomotions/agents/ase/agent.html#ASE.setup"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#protomotions.agents.ase.agent.ASE.setup" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="protomotions.agents.ase.agent.ASE.load_parameters">
+<span class="sig-name descname"><span class="pre">load_parameters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">state_dict</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/protomotions/agents/ase/agent.html#ASE.load_parameters"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#protomotions.agents.ase.agent.ASE.load_parameters" title="Link to this definition">¶</a></dt>
+<dd><p>Load PPO-specific parameters from checkpoint.</p>
+<p>Loads actor, critic, and optimizer states. Preserves config overrides
+for actor_logstd if specified at command line.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>state_dict</strong> – Checkpoint state dictionary containing model and optimizer states.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="protomotions.agents.ase.agent.ASE.get_state_dict">
+<span class="sig-name descname"><span class="pre">get_state_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">state_dict</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/protomotions/agents/ase/agent.html#ASE.get_state_dict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#protomotions.agents.ase.agent.ASE.get_state_dict" title="Link to this definition">¶</a></dt>
+<dd><p>Get complete state dictionary for checkpointing.</p>
+<p>Collects all agent state including model weights, training progress,
+and normalization statistics into a single dictionary for saving.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>state_dict</strong> – Existing state dict to update (typically empty dict).</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Updated state dictionary containing all agent state.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="protomotions.agents.ase.agent.ASE.update_latents">
+<span class="sig-name descname"><span class="pre">update_latents</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/protomotions/agents/ase/agent.html#ASE.update_latents"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#protomotions.agents.ase.agent.ASE.update_latents" title="Link to this definition">¶</a></dt>
+<dd><p>Updates latent variables based on latent reset steps.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="protomotions.agents.ase.agent.ASE.reset_latents">
+<span class="sig-name descname"><span class="pre">reset_latents</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">env_ids</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/protomotions/agents/ase/agent.html#ASE.reset_latents"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#protomotions.agents.ase.agent.ASE.reset_latents" title="Link to this definition">¶</a></dt>
+<dd><p>Resets latent variables for specified environments or all environments if None.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>env_ids</strong> (<a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.9)"><em>torch.Tensor</em></a><em>, </em><em>optional</em>) – Environment indices to reset latents for. Defaults to None (all envs).</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="protomotions.agents.ase.agent.ASE.store_latents">
+<span class="sig-name descname"><span class="pre">store_latents</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">latents</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">env_ids</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/protomotions/agents/ase/agent.html#ASE.store_latents"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#protomotions.agents.ase.agent.ASE.store_latents" title="Link to this definition">¶</a></dt>
+<dd><p>Stores latent variables for specified environments.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>latents</strong> (<a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.9)"><em>torch.Tensor</em></a>) – Latent variables to store. Shape (num_envs, latent_dim).</p></li>
+<li><p><strong>env_ids</strong> (<a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.9)"><em>torch.Tensor</em></a>) – Environment indices to store latents for. Shape (num_envs,).</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="protomotions.agents.ase.agent.ASE.sample_latents">
+<span class="sig-name descname"><span class="pre">sample_latents</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/protomotions/agents/ase/agent.html#ASE.sample_latents"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#protomotions.agents.ase.agent.ASE.sample_latents" title="Link to this definition">¶</a></dt>
+<dd><p>Samples new latent variables uniformly on the unit-sphere.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>n</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a>) – Number of latent variables to sample.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Sampled latent variables. Shape (n, latent_dim).</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.9)">torch.Tensor</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="protomotions.agents.ase.agent.ASE.mi_enc_forward">
+<span class="sig-name descname"><span class="pre">mi_enc_forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obs_dict</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/protomotions/agents/ase/agent.html#ASE.mi_enc_forward"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#protomotions.agents.ase.agent.ASE.mi_enc_forward" title="Link to this definition">¶</a></dt>
+<dd><p>Forward pass through the Mutual Information encoder.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>obs_dict</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)"><em>dict</em></a>) – Dictionary containing observations.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Encoded observation tensor. Shape (batch_size, encoder_output_dim).</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Tensor</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="protomotions.agents.ase.agent.ASE.register_algorithm_experience_buffer_keys">
+<span class="sig-name descname"><span class="pre">register_algorithm_experience_buffer_keys</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/protomotions/agents/ase/agent.html#ASE.register_algorithm_experience_buffer_keys"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#protomotions.agents.ase.agent.ASE.register_algorithm_experience_buffer_keys" title="Link to this definition">¶</a></dt>
+<dd><p>Register algorithm-specific keys in the experience buffer.</p>
+<p>Subclasses override this to add custom keys to the experience buffer
+(e.g., AMP adds discriminator observations, ASE adds latent codes).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="protomotions.agents.ase.agent.ASE.add_agent_info_to_obs">
+<span class="sig-name descname"><span class="pre">add_agent_info_to_obs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/protomotions/agents/ase/agent.html#ASE.add_agent_info_to_obs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#protomotions.agents.ase.agent.ASE.add_agent_info_to_obs" title="Link to this definition">¶</a></dt>
+<dd><p>Perform an environment step and inject current latents into observations.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="protomotions.agents.ase.agent.ASE.get_combined_experience_buffer_rewards">
+<span class="sig-name descname"><span class="pre">get_combined_experience_buffer_rewards</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/protomotions/agents/ase/agent.html#ASE.get_combined_experience_buffer_rewards"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#protomotions.agents.ase.agent.ASE.get_combined_experience_buffer_rewards" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="protomotions.agents.ase.agent.ASE.get_expert_disc_obs">
+<span class="sig-name descname"><span class="pre">get_expert_disc_obs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">num_samples</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/protomotions/agents/ase/agent.html#ASE.get_expert_disc_obs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#protomotions.agents.ase.agent.ASE.get_expert_disc_obs" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="protomotions.agents.ase.agent.ASE.produce_negative_expert_obs">
+<span class="sig-name descname"><span class="pre">produce_negative_expert_obs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">batch_dict</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/protomotions/agents/ase/agent.html#ASE.produce_negative_expert_obs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#protomotions.agents.ase.agent.ASE.produce_negative_expert_obs" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="protomotions.agents.ase.agent.ASE.discriminator_step">
+<span class="sig-name descname"><span class="pre">discriminator_step</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">batch_dict</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/protomotions/agents/ase/agent.html#ASE.discriminator_step"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#protomotions.agents.ase.agent.ASE.discriminator_step" title="Link to this definition">¶</a></dt>
+<dd><p>Performs a discriminator update step.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>batch_dict</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)"><em>dict</em></a>) – Batch of data from the experience buffer.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Discriminator loss and logging dictionary.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Tuple[Tensor, Dict]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="protomotions.agents.ase.agent.ASE.compute_uniformity_loss">
+<span class="sig-name descname"><span class="pre">compute_uniformity_loss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">encodings</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/protomotions/agents/ase/agent.html#ASE.compute_uniformity_loss"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#protomotions.agents.ase.agent.ASE.compute_uniformity_loss" title="Link to this definition">¶</a></dt>
+<dd><p>Computes uniformity loss to encourage uniform distribution on unit sphere.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>encodings</strong> (<em>Tensor</em>) – Normalized encodings on unit sphere. Shape (batch_size, latent_dim).</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Uniformity loss value.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Tensor</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="protomotions.agents.ase.agent.ASE.calculate_extra_actor_loss">
+<span class="sig-name descname"><span class="pre">calculate_extra_actor_loss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">batch_td</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/protomotions/agents/ase/agent.html#ASE.calculate_extra_actor_loss"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#protomotions.agents.ase.agent.ASE.calculate_extra_actor_loss" title="Link to this definition">¶</a></dt>
+<dd><p>Adds the diversity loss, if enabled.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>batch_td</strong> (<em>TensorDict</em>) – Batch of data from the experience buffer and the actor.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Extra actor loss and logging dictionary.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Tuple[Tensor, Dict]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="protomotions.agents.ase.agent.ASE.diversity_loss">
+<span class="sig-name descname"><span class="pre">diversity_loss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">batch_td</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/protomotions/agents/ase/agent.html#ASE.diversity_loss"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#protomotions.agents.ase.agent.ASE.diversity_loss" title="Link to this definition">¶</a></dt>
+<dd><p>Calculates the diversity loss to encourage latents to lead to diverse behaviors.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>batch_td</strong> (<em>TensorDict</em>) – Batch of data from the experience buffer and the actor.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Diversity loss.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Tensor</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="protomotions.agents.ase.agent.ASE.post_epoch_logging">
+<span class="sig-name descname"><span class="pre">post_epoch_logging</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">training_log_dict</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/protomotions/agents/ase/agent.html#ASE.post_epoch_logging"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#protomotions.agents.ase.agent.ASE.post_epoch_logging" title="Link to this definition">¶</a></dt>
+<dd><p>Performs post epoch logging, including Mutual Information reward logging.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>training_log_dict</strong> (<em>Dict</em>) – Dictionary to update with logging information.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
 </section>
 
         </article>
@@ -395,8 +695,53 @@
         
       </footer>
     </div>
-    <aside class="toc-drawer no-toc">
+    <aside class="toc-drawer">
       
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">protomotions.agents.ase.agent module</a><ul>
+<li><a class="reference internal" href="#protomotions.agents.ase.agent.ASE"><code class="docutils literal notranslate"><span class="pre">ASE</span></code></a><ul>
+<li><a class="reference internal" href="#protomotions.agents.ase.agent.ASE.latents"><code class="docutils literal notranslate"><span class="pre">latents</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.ase.agent.ASE.latent_reset_steps"><code class="docutils literal notranslate"><span class="pre">latent_reset_steps</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.ase.agent.ASE.model"><code class="docutils literal notranslate"><span class="pre">model</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.ase.agent.ASE.discriminator"><code class="docutils literal notranslate"><span class="pre">discriminator</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.ase.agent.ASE.config"><code class="docutils literal notranslate"><span class="pre">config</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.ase.agent.ASE.__init__"><code class="docutils literal notranslate"><span class="pre">__init__()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.ase.agent.ASE.setup"><code class="docutils literal notranslate"><span class="pre">setup()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.ase.agent.ASE.load_parameters"><code class="docutils literal notranslate"><span class="pre">load_parameters()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.ase.agent.ASE.get_state_dict"><code class="docutils literal notranslate"><span class="pre">get_state_dict()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.ase.agent.ASE.update_latents"><code class="docutils literal notranslate"><span class="pre">update_latents()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.ase.agent.ASE.reset_latents"><code class="docutils literal notranslate"><span class="pre">reset_latents()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.ase.agent.ASE.store_latents"><code class="docutils literal notranslate"><span class="pre">store_latents()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.ase.agent.ASE.sample_latents"><code class="docutils literal notranslate"><span class="pre">sample_latents()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.ase.agent.ASE.mi_enc_forward"><code class="docutils literal notranslate"><span class="pre">mi_enc_forward()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.ase.agent.ASE.register_algorithm_experience_buffer_keys"><code class="docutils literal notranslate"><span class="pre">register_algorithm_experience_buffer_keys()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.ase.agent.ASE.add_agent_info_to_obs"><code class="docutils literal notranslate"><span class="pre">add_agent_info_to_obs()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.ase.agent.ASE.get_combined_experience_buffer_rewards"><code class="docutils literal notranslate"><span class="pre">get_combined_experience_buffer_rewards()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.ase.agent.ASE.get_expert_disc_obs"><code class="docutils literal notranslate"><span class="pre">get_expert_disc_obs()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.ase.agent.ASE.produce_negative_expert_obs"><code class="docutils literal notranslate"><span class="pre">produce_negative_expert_obs()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.ase.agent.ASE.discriminator_step"><code class="docutils literal notranslate"><span class="pre">discriminator_step()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.ase.agent.ASE.compute_uniformity_loss"><code class="docutils literal notranslate"><span class="pre">compute_uniformity_loss()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.ase.agent.ASE.calculate_extra_actor_loss"><code class="docutils literal notranslate"><span class="pre">calculate_extra_actor_loss()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.ase.agent.ASE.diversity_loss"><code class="docutils literal notranslate"><span class="pre">diversity_loss()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.ase.agent.ASE.post_epoch_logging"><code class="docutils literal notranslate"><span class="pre">post_epoch_logging()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
       
       
     </aside>

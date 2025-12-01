@@ -211,6 +211,7 @@
 <p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../user_guide/configuration.html">Configuration System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/experiments.html">Experiments</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user_guide/developer_tips.html">Developer Tips</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Key Concepts</span></p>
@@ -244,8 +245,6 @@
 </ul>
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="protomotions.agents.callbacks.html">protomotions.agents.callbacks package</a><input aria-label="Toggle navigation of protomotions.agents.callbacks package" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.callbacks.one_logger.html">protomotions.agents.callbacks.one_logger module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.callbacks.slurm_autoresume_adlr.html">protomotions.agents.callbacks.slurm_autoresume_adlr module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="protomotions.agents.callbacks.slurm_autoresume_srun.html">protomotions.agents.callbacks.slurm_autoresume_srun module</a></li>
 </ul>
 </li>
@@ -329,12 +328,8 @@
           <span>Back to top</span>
         </a>
         <div class="content-icon-container">
-          <div class="view-this-page">
-  <a class="muted-link" href="../_sources/api_reference/protomotions.agents.evaluators.base_evaluator.rst.txt" title="View this page">
-    <svg><use href="#svg-eye"></use></svg>
-    <span class="visually-hidden">View this page</span>
-  </a>
-</div>
+          
+
 <div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
               <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
@@ -448,7 +443,7 @@ feedback for checkpoint selection (best model saving).</p>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="protomotions.agents.evaluators.base_evaluator.BaseEvaluator.device">
-<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">device</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">&lt;Mock</span> <span class="pre">object</span> <span class="pre">at</span> <span class="pre">0x78723ea82810&gt;[]</span></em><a class="headerlink" href="#protomotions.agents.evaluators.base_evaluator.BaseEvaluator.device" title="Link to this definition">¶</a></dt>
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">device</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">&lt;Mock</span> <span class="pre">object</span> <span class="pre">at</span> <span class="pre">0x701e704e5450&gt;[]</span></em><a class="headerlink" href="#protomotions.agents.evaluators.base_evaluator.BaseEvaluator.device" title="Link to this definition">¶</a></dt>
 <dd><p>Device for computations (from fabric).</p>
 </dd></dl>
 
@@ -594,20 +589,20 @@ Prepare the evaluation context.</p>
             <ul>
 <li><a class="reference internal" href="#">protomotions.agents.evaluators.base_evaluator module</a><ul>
 <li><a class="reference internal" href="#protomotions.agents.evaluators.base_evaluator.SmoothnessMetricPlugin"><code class="docutils literal notranslate"><span class="pre">SmoothnessMetricPlugin</span></code></a><ul>
-<li><a class="reference internal" href="#protomotions.agents.evaluators.base_evaluator.SmoothnessMetricPlugin.__init__"><code class="docutils literal notranslate"><span class="pre">SmoothnessMetricPlugin.__init__()</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.evaluators.base_evaluator.SmoothnessMetricPlugin.compute"><code class="docutils literal notranslate"><span class="pre">SmoothnessMetricPlugin.compute()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.evaluators.base_evaluator.SmoothnessMetricPlugin.__init__"><code class="docutils literal notranslate"><span class="pre">__init__()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.evaluators.base_evaluator.SmoothnessMetricPlugin.compute"><code class="docutils literal notranslate"><span class="pre">compute()</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#protomotions.agents.evaluators.base_evaluator.BaseEvaluator"><code class="docutils literal notranslate"><span class="pre">BaseEvaluator</span></code></a><ul>
-<li><a class="reference internal" href="#protomotions.agents.evaluators.base_evaluator.BaseEvaluator.__init__"><code class="docutils literal notranslate"><span class="pre">BaseEvaluator.__init__()</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.evaluators.base_evaluator.BaseEvaluator.device"><code class="docutils literal notranslate"><span class="pre">BaseEvaluator.device</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.evaluators.base_evaluator.BaseEvaluator.env"><code class="docutils literal notranslate"><span class="pre">BaseEvaluator.env</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.evaluators.base_evaluator.BaseEvaluator.root_dir"><code class="docutils literal notranslate"><span class="pre">BaseEvaluator.root_dir</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.evaluators.base_evaluator.BaseEvaluator.initialize_eval"><code class="docutils literal notranslate"><span class="pre">BaseEvaluator.initialize_eval()</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.evaluators.base_evaluator.BaseEvaluator.run_evaluation"><code class="docutils literal notranslate"><span class="pre">BaseEvaluator.run_evaluation()</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.evaluators.base_evaluator.BaseEvaluator.process_eval_results"><code class="docutils literal notranslate"><span class="pre">BaseEvaluator.process_eval_results()</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.evaluators.base_evaluator.BaseEvaluator.cleanup_after_evaluation"><code class="docutils literal notranslate"><span class="pre">BaseEvaluator.cleanup_after_evaluation()</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.evaluators.base_evaluator.BaseEvaluator.simple_test_policy"><code class="docutils literal notranslate"><span class="pre">BaseEvaluator.simple_test_policy()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.evaluators.base_evaluator.BaseEvaluator.__init__"><code class="docutils literal notranslate"><span class="pre">__init__()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.evaluators.base_evaluator.BaseEvaluator.device"><code class="docutils literal notranslate"><span class="pre">device</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.evaluators.base_evaluator.BaseEvaluator.env"><code class="docutils literal notranslate"><span class="pre">env</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.evaluators.base_evaluator.BaseEvaluator.root_dir"><code class="docutils literal notranslate"><span class="pre">root_dir</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.evaluators.base_evaluator.BaseEvaluator.initialize_eval"><code class="docutils literal notranslate"><span class="pre">initialize_eval()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.evaluators.base_evaluator.BaseEvaluator.run_evaluation"><code class="docutils literal notranslate"><span class="pre">run_evaluation()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.evaluators.base_evaluator.BaseEvaluator.process_eval_results"><code class="docutils literal notranslate"><span class="pre">process_eval_results()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.evaluators.base_evaluator.BaseEvaluator.cleanup_after_evaluation"><code class="docutils literal notranslate"><span class="pre">cleanup_after_evaluation()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.evaluators.base_evaluator.BaseEvaluator.simple_test_policy"><code class="docutils literal notranslate"><span class="pre">simple_test_policy()</span></code></a></li>
 </ul>
 </li>
 </ul>

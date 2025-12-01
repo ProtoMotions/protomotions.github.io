@@ -211,6 +211,7 @@
 <p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../user_guide/configuration.html">Configuration System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/experiments.html">Experiments</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user_guide/developer_tips.html">Developer Tips</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Key Concepts</span></p>
@@ -244,8 +245,6 @@
 </ul>
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="protomotions.agents.callbacks.html">protomotions.agents.callbacks package</a><input aria-label="Toggle navigation of protomotions.agents.callbacks package" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.callbacks.one_logger.html">protomotions.agents.callbacks.one_logger module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.callbacks.slurm_autoresume_adlr.html">protomotions.agents.callbacks.slurm_autoresume_adlr module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="protomotions.agents.callbacks.slurm_autoresume_srun.html">protomotions.agents.callbacks.slurm_autoresume_srun module</a></li>
 </ul>
 </li>
@@ -329,12 +328,8 @@
           <span>Back to top</span>
         </a>
         <div class="content-icon-container">
-          <div class="view-this-page">
-  <a class="muted-link" href="../_sources/api_reference/protomotions.agents.utils.metering.rst.txt" title="View this page">
-    <svg><use href="#svg-eye"></use></svg>
-    <span class="visually-hidden">View this page</span>
-  </a>
-</div>
+          
+
 <div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
               <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
@@ -644,39 +639,39 @@ Use ‘cpu’ to save GPU memory by moving tensors to CPU.</p></li>
             <ul>
 <li><a class="reference internal" href="#">protomotions.agents.utils.metering module</a><ul>
 <li><a class="reference internal" href="#protomotions.agents.utils.metering.Timer"><code class="docutils literal notranslate"><span class="pre">Timer</span></code></a><ul>
-<li><a class="reference internal" href="#protomotions.agents.utils.metering.Timer.time_total"><code class="docutils literal notranslate"><span class="pre">Timer.time_total</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.utils.metering.Timer.num_ons"><code class="docutils literal notranslate"><span class="pre">Timer.num_ons</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.utils.metering.Timer.__init__"><code class="docutils literal notranslate"><span class="pre">Timer.__init__()</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.utils.metering.Timer.on"><code class="docutils literal notranslate"><span class="pre">Timer.on()</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.utils.metering.Timer.off"><code class="docutils literal notranslate"><span class="pre">Timer.off()</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.utils.metering.Timer.report"><code class="docutils literal notranslate"><span class="pre">Timer.report()</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.utils.metering.Timer.clear"><code class="docutils literal notranslate"><span class="pre">Timer.clear()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.utils.metering.Timer.time_total"><code class="docutils literal notranslate"><span class="pre">time_total</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.utils.metering.Timer.num_ons"><code class="docutils literal notranslate"><span class="pre">num_ons</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.utils.metering.Timer.__init__"><code class="docutils literal notranslate"><span class="pre">__init__()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.utils.metering.Timer.on"><code class="docutils literal notranslate"><span class="pre">on()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.utils.metering.Timer.off"><code class="docutils literal notranslate"><span class="pre">off()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.utils.metering.Timer.report"><code class="docutils literal notranslate"><span class="pre">report()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.utils.metering.Timer.clear"><code class="docutils literal notranslate"><span class="pre">clear()</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#protomotions.agents.utils.metering.TimeReport"><code class="docutils literal notranslate"><span class="pre">TimeReport</span></code></a><ul>
-<li><a class="reference internal" href="#protomotions.agents.utils.metering.TimeReport.__init__"><code class="docutils literal notranslate"><span class="pre">TimeReport.__init__()</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.utils.metering.TimeReport.add_timer"><code class="docutils literal notranslate"><span class="pre">TimeReport.add_timer()</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.utils.metering.TimeReport.start_timer"><code class="docutils literal notranslate"><span class="pre">TimeReport.start_timer()</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.utils.metering.TimeReport.end_timer"><code class="docutils literal notranslate"><span class="pre">TimeReport.end_timer()</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.utils.metering.TimeReport.report"><code class="docutils literal notranslate"><span class="pre">TimeReport.report()</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.utils.metering.TimeReport.clear_timer"><code class="docutils literal notranslate"><span class="pre">TimeReport.clear_timer()</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.utils.metering.TimeReport.pop_timer"><code class="docutils literal notranslate"><span class="pre">TimeReport.pop_timer()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.utils.metering.TimeReport.__init__"><code class="docutils literal notranslate"><span class="pre">__init__()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.utils.metering.TimeReport.add_timer"><code class="docutils literal notranslate"><span class="pre">add_timer()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.utils.metering.TimeReport.start_timer"><code class="docutils literal notranslate"><span class="pre">start_timer()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.utils.metering.TimeReport.end_timer"><code class="docutils literal notranslate"><span class="pre">end_timer()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.utils.metering.TimeReport.report"><code class="docutils literal notranslate"><span class="pre">report()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.utils.metering.TimeReport.clear_timer"><code class="docutils literal notranslate"><span class="pre">clear_timer()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.utils.metering.TimeReport.pop_timer"><code class="docutils literal notranslate"><span class="pre">pop_timer()</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#protomotions.agents.utils.metering.TensorAverageMeter"><code class="docutils literal notranslate"><span class="pre">TensorAverageMeter</span></code></a><ul>
-<li><a class="reference internal" href="#protomotions.agents.utils.metering.TensorAverageMeter.__init__"><code class="docutils literal notranslate"><span class="pre">TensorAverageMeter.__init__()</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.utils.metering.TensorAverageMeter.add"><code class="docutils literal notranslate"><span class="pre">TensorAverageMeter.add()</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.utils.metering.TensorAverageMeter.mean"><code class="docutils literal notranslate"><span class="pre">TensorAverageMeter.mean()</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.utils.metering.TensorAverageMeter.clear"><code class="docutils literal notranslate"><span class="pre">TensorAverageMeter.clear()</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.utils.metering.TensorAverageMeter.mean_and_clear"><code class="docutils literal notranslate"><span class="pre">TensorAverageMeter.mean_and_clear()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.utils.metering.TensorAverageMeter.__init__"><code class="docutils literal notranslate"><span class="pre">__init__()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.utils.metering.TensorAverageMeter.add"><code class="docutils literal notranslate"><span class="pre">add()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.utils.metering.TensorAverageMeter.mean"><code class="docutils literal notranslate"><span class="pre">mean()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.utils.metering.TensorAverageMeter.clear"><code class="docutils literal notranslate"><span class="pre">clear()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.utils.metering.TensorAverageMeter.mean_and_clear"><code class="docutils literal notranslate"><span class="pre">mean_and_clear()</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#protomotions.agents.utils.metering.TensorAverageMeterDict"><code class="docutils literal notranslate"><span class="pre">TensorAverageMeterDict</span></code></a><ul>
-<li><a class="reference internal" href="#protomotions.agents.utils.metering.TensorAverageMeterDict.__init__"><code class="docutils literal notranslate"><span class="pre">TensorAverageMeterDict.__init__()</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.utils.metering.TensorAverageMeterDict.add"><code class="docutils literal notranslate"><span class="pre">TensorAverageMeterDict.add()</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.utils.metering.TensorAverageMeterDict.mean"><code class="docutils literal notranslate"><span class="pre">TensorAverageMeterDict.mean()</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.utils.metering.TensorAverageMeterDict.clear"><code class="docutils literal notranslate"><span class="pre">TensorAverageMeterDict.clear()</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.utils.metering.TensorAverageMeterDict.mean_and_clear"><code class="docutils literal notranslate"><span class="pre">TensorAverageMeterDict.mean_and_clear()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.utils.metering.TensorAverageMeterDict.__init__"><code class="docutils literal notranslate"><span class="pre">__init__()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.utils.metering.TensorAverageMeterDict.add"><code class="docutils literal notranslate"><span class="pre">add()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.utils.metering.TensorAverageMeterDict.mean"><code class="docutils literal notranslate"><span class="pre">mean()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.utils.metering.TensorAverageMeterDict.clear"><code class="docutils literal notranslate"><span class="pre">clear()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.utils.metering.TensorAverageMeterDict.mean_and_clear"><code class="docutils literal notranslate"><span class="pre">mean_and_clear()</span></code></a></li>
 </ul>
 </li>
 </ul>

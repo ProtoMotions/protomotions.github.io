@@ -211,6 +211,7 @@
 <p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../user_guide/configuration.html">Configuration System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/experiments.html">Experiments</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user_guide/developer_tips.html">Developer Tips</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Key Concepts</span></p>
@@ -244,8 +245,6 @@
 </ul>
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="protomotions.agents.callbacks.html">protomotions.agents.callbacks package</a><input aria-label="Toggle navigation of protomotions.agents.callbacks package" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.callbacks.one_logger.html">protomotions.agents.callbacks.one_logger module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.callbacks.slurm_autoresume_adlr.html">protomotions.agents.callbacks.slurm_autoresume_adlr module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="protomotions.agents.callbacks.slurm_autoresume_srun.html">protomotions.agents.callbacks.slurm_autoresume_srun module</a></li>
 </ul>
 </li>
@@ -329,12 +328,8 @@
           <span>Back to top</span>
         </a>
         <div class="content-icon-container">
-          <div class="view-this-page">
-  <a class="muted-link" href="../_sources/api_reference/protomotions.robot_configs.rst.txt" title="View this page">
-    <svg><use href="#svg-eye"></use></svg>
-    <span class="visually-hidden">View this page</span>
-  </a>
-</div>
+          
+
 <div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
               <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
@@ -682,69 +677,69 @@ without manually calling __post_init__.</p>
 <li><a class="reference internal" href="#">protomotions.robot_configs module</a><ul>
 <li><a class="reference internal" href="#base-configuration">Base Configuration</a><ul>
 <li><a class="reference internal" href="#protomotions.robot_configs.base.RobotConfig"><code class="docutils literal notranslate"><span class="pre">RobotConfig</span></code></a><ul>
-<li><a class="reference internal" href="#protomotions.robot_configs.base.RobotConfig.asset"><code class="docutils literal notranslate"><span class="pre">RobotConfig.asset</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.robot_configs.base.RobotConfig.common_naming_to_robot_body_names"><code class="docutils literal notranslate"><span class="pre">RobotConfig.common_naming_to_robot_body_names</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.robot_configs.base.RobotConfig.default_root_height"><code class="docutils literal notranslate"><span class="pre">RobotConfig.default_root_height</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.robot_configs.base.RobotConfig.default_dof_pos"><code class="docutils literal notranslate"><span class="pre">RobotConfig.default_dof_pos</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.robot_configs.base.RobotConfig.contact_bodies"><code class="docutils literal notranslate"><span class="pre">RobotConfig.contact_bodies</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.robot_configs.base.RobotConfig.trackable_bodies_subset"><code class="docutils literal notranslate"><span class="pre">RobotConfig.trackable_bodies_subset</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.robot_configs.base.RobotConfig.non_termination_contact_bodies"><code class="docutils literal notranslate"><span class="pre">RobotConfig.non_termination_contact_bodies</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.robot_configs.base.RobotConfig.init_state"><code class="docutils literal notranslate"><span class="pre">RobotConfig.init_state</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.robot_configs.base.RobotConfig.mimic_small_marker_bodies"><code class="docutils literal notranslate"><span class="pre">RobotConfig.mimic_small_marker_bodies</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.robot_configs.base.RobotConfig.contact_pairs_multiplier"><code class="docutils literal notranslate"><span class="pre">RobotConfig.contact_pairs_multiplier</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.robot_configs.base.RobotConfig.control"><code class="docutils literal notranslate"><span class="pre">RobotConfig.control</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.robot_configs.base.RobotConfig.kinematic_info"><code class="docutils literal notranslate"><span class="pre">RobotConfig.kinematic_info</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.robot_configs.base.RobotConfig.number_of_actions"><code class="docutils literal notranslate"><span class="pre">RobotConfig.number_of_actions</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.robot_configs.base.RobotConfig.simulation_params"><code class="docutils literal notranslate"><span class="pre">RobotConfig.simulation_params</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.robot_configs.base.RobotConfig.__post_init__"><code class="docutils literal notranslate"><span class="pre">RobotConfig.__post_init__()</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.robot_configs.base.RobotConfig.update_fields"><code class="docutils literal notranslate"><span class="pre">RobotConfig.update_fields()</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.robot_configs.base.RobotConfig.__init__"><code class="docutils literal notranslate"><span class="pre">RobotConfig.__init__()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.robot_configs.base.RobotConfig.asset"><code class="docutils literal notranslate"><span class="pre">asset</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.robot_configs.base.RobotConfig.common_naming_to_robot_body_names"><code class="docutils literal notranslate"><span class="pre">common_naming_to_robot_body_names</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.robot_configs.base.RobotConfig.default_root_height"><code class="docutils literal notranslate"><span class="pre">default_root_height</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.robot_configs.base.RobotConfig.default_dof_pos"><code class="docutils literal notranslate"><span class="pre">default_dof_pos</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.robot_configs.base.RobotConfig.contact_bodies"><code class="docutils literal notranslate"><span class="pre">contact_bodies</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.robot_configs.base.RobotConfig.trackable_bodies_subset"><code class="docutils literal notranslate"><span class="pre">trackable_bodies_subset</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.robot_configs.base.RobotConfig.non_termination_contact_bodies"><code class="docutils literal notranslate"><span class="pre">non_termination_contact_bodies</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.robot_configs.base.RobotConfig.init_state"><code class="docutils literal notranslate"><span class="pre">init_state</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.robot_configs.base.RobotConfig.mimic_small_marker_bodies"><code class="docutils literal notranslate"><span class="pre">mimic_small_marker_bodies</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.robot_configs.base.RobotConfig.contact_pairs_multiplier"><code class="docutils literal notranslate"><span class="pre">contact_pairs_multiplier</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.robot_configs.base.RobotConfig.control"><code class="docutils literal notranslate"><span class="pre">control</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.robot_configs.base.RobotConfig.kinematic_info"><code class="docutils literal notranslate"><span class="pre">kinematic_info</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.robot_configs.base.RobotConfig.number_of_actions"><code class="docutils literal notranslate"><span class="pre">number_of_actions</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.robot_configs.base.RobotConfig.simulation_params"><code class="docutils literal notranslate"><span class="pre">simulation_params</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.robot_configs.base.RobotConfig.__post_init__"><code class="docutils literal notranslate"><span class="pre">__post_init__()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.robot_configs.base.RobotConfig.update_fields"><code class="docutils literal notranslate"><span class="pre">update_fields()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.robot_configs.base.RobotConfig.__init__"><code class="docutils literal notranslate"><span class="pre">__init__()</span></code></a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li><a class="reference internal" href="#smpl-humanoid">SMPL Humanoid</a><ul>
 <li><a class="reference internal" href="#protomotions.robot_configs.smpl.SmplRobotConfig"><code class="docutils literal notranslate"><span class="pre">SmplRobotConfig</span></code></a><ul>
-<li><a class="reference internal" href="#protomotions.robot_configs.smpl.SmplRobotConfig.default_root_height"><code class="docutils literal notranslate"><span class="pre">SmplRobotConfig.default_root_height</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.robot_configs.smpl.SmplRobotConfig.simulation_params"><code class="docutils literal notranslate"><span class="pre">SmplRobotConfig.simulation_params</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.robot_configs.smpl.SmplRobotConfig.__init__"><code class="docutils literal notranslate"><span class="pre">SmplRobotConfig.__init__()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.robot_configs.smpl.SmplRobotConfig.default_root_height"><code class="docutils literal notranslate"><span class="pre">default_root_height</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.robot_configs.smpl.SmplRobotConfig.simulation_params"><code class="docutils literal notranslate"><span class="pre">simulation_params</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.robot_configs.smpl.SmplRobotConfig.__init__"><code class="docutils literal notranslate"><span class="pre">__init__()</span></code></a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li><a class="reference internal" href="#smpl-x-humanoid">SMPL-X Humanoid</a><ul>
 <li><a class="reference internal" href="#protomotions.robot_configs.smplx.SMPLXRobotConfig"><code class="docutils literal notranslate"><span class="pre">SMPLXRobotConfig</span></code></a><ul>
-<li><a class="reference internal" href="#protomotions.robot_configs.smplx.SMPLXRobotConfig.default_root_height"><code class="docutils literal notranslate"><span class="pre">SMPLXRobotConfig.default_root_height</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.robot_configs.smplx.SMPLXRobotConfig.contact_pairs_multiplier"><code class="docutils literal notranslate"><span class="pre">SMPLXRobotConfig.contact_pairs_multiplier</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.robot_configs.smplx.SMPLXRobotConfig.simulation_params"><code class="docutils literal notranslate"><span class="pre">SMPLXRobotConfig.simulation_params</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.robot_configs.smplx.SMPLXRobotConfig.__init__"><code class="docutils literal notranslate"><span class="pre">SMPLXRobotConfig.__init__()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.robot_configs.smplx.SMPLXRobotConfig.default_root_height"><code class="docutils literal notranslate"><span class="pre">default_root_height</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.robot_configs.smplx.SMPLXRobotConfig.contact_pairs_multiplier"><code class="docutils literal notranslate"><span class="pre">contact_pairs_multiplier</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.robot_configs.smplx.SMPLXRobotConfig.simulation_params"><code class="docutils literal notranslate"><span class="pre">simulation_params</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.robot_configs.smplx.SMPLXRobotConfig.__init__"><code class="docutils literal notranslate"><span class="pre">__init__()</span></code></a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li><a class="reference internal" href="#unitree-h1-version-2">Unitree H1 (Version 2)</a><ul>
 <li><a class="reference internal" href="#protomotions.robot_configs.h1_2.H1_2RobotConfig"><code class="docutils literal notranslate"><span class="pre">H1_2RobotConfig</span></code></a><ul>
-<li><a class="reference internal" href="#protomotions.robot_configs.h1_2.H1_2RobotConfig.default_root_height"><code class="docutils literal notranslate"><span class="pre">H1_2RobotConfig.default_root_height</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.robot_configs.h1_2.H1_2RobotConfig.simulation_params"><code class="docutils literal notranslate"><span class="pre">H1_2RobotConfig.simulation_params</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.robot_configs.h1_2.H1_2RobotConfig.__init__"><code class="docutils literal notranslate"><span class="pre">H1_2RobotConfig.__init__()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.robot_configs.h1_2.H1_2RobotConfig.default_root_height"><code class="docutils literal notranslate"><span class="pre">default_root_height</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.robot_configs.h1_2.H1_2RobotConfig.simulation_params"><code class="docutils literal notranslate"><span class="pre">simulation_params</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.robot_configs.h1_2.H1_2RobotConfig.__init__"><code class="docutils literal notranslate"><span class="pre">__init__()</span></code></a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li><a class="reference internal" href="#unitree-g1">Unitree G1</a><ul>
 <li><a class="reference internal" href="#protomotions.robot_configs.g1.G1RobotConfig"><code class="docutils literal notranslate"><span class="pre">G1RobotConfig</span></code></a><ul>
-<li><a class="reference internal" href="#protomotions.robot_configs.g1.G1RobotConfig.default_root_height"><code class="docutils literal notranslate"><span class="pre">G1RobotConfig.default_root_height</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.robot_configs.g1.G1RobotConfig.simulation_params"><code class="docutils literal notranslate"><span class="pre">G1RobotConfig.simulation_params</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.robot_configs.g1.G1RobotConfig.__init__"><code class="docutils literal notranslate"><span class="pre">G1RobotConfig.__init__()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.robot_configs.g1.G1RobotConfig.default_root_height"><code class="docutils literal notranslate"><span class="pre">default_root_height</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.robot_configs.g1.G1RobotConfig.simulation_params"><code class="docutils literal notranslate"><span class="pre">simulation_params</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.robot_configs.g1.G1RobotConfig.__init__"><code class="docutils literal notranslate"><span class="pre">__init__()</span></code></a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li><a class="reference internal" href="#amp-humanoid">AMP Humanoid</a><ul>
 <li><a class="reference internal" href="#protomotions.robot_configs.amp.AMPRobotConfig"><code class="docutils literal notranslate"><span class="pre">AMPRobotConfig</span></code></a><ul>
-<li><a class="reference internal" href="#protomotions.robot_configs.amp.AMPRobotConfig.default_root_height"><code class="docutils literal notranslate"><span class="pre">AMPRobotConfig.default_root_height</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.robot_configs.amp.AMPRobotConfig.simulation_params"><code class="docutils literal notranslate"><span class="pre">AMPRobotConfig.simulation_params</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.robot_configs.amp.AMPRobotConfig.__init__"><code class="docutils literal notranslate"><span class="pre">AMPRobotConfig.__init__()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.robot_configs.amp.AMPRobotConfig.default_root_height"><code class="docutils literal notranslate"><span class="pre">default_root_height</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.robot_configs.amp.AMPRobotConfig.simulation_params"><code class="docutils literal notranslate"><span class="pre">simulation_params</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.robot_configs.amp.AMPRobotConfig.__init__"><code class="docutils literal notranslate"><span class="pre">__init__()</span></code></a></li>
 </ul>
 </li>
 </ul>

@@ -211,6 +211,7 @@
 <p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../user_guide/configuration.html">Configuration System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/experiments.html">Experiments</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user_guide/developer_tips.html">Developer Tips</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Key Concepts</span></p>
@@ -244,8 +245,6 @@
 </ul>
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="protomotions.agents.callbacks.html">protomotions.agents.callbacks package</a><input aria-label="Toggle navigation of protomotions.agents.callbacks package" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.callbacks.one_logger.html">protomotions.agents.callbacks.one_logger module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.callbacks.slurm_autoresume_adlr.html">protomotions.agents.callbacks.slurm_autoresume_adlr module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="protomotions.agents.callbacks.slurm_autoresume_srun.html">protomotions.agents.callbacks.slurm_autoresume_srun module</a></li>
 </ul>
 </li>
@@ -329,12 +328,8 @@
           <span>Back to top</span>
         </a>
         <div class="content-icon-container">
-          <div class="view-this-page">
-  <a class="muted-link" href="../_sources/api_reference/protomotions.agents.base_agent.agent.rst.txt" title="View this page">
-    <svg><use href="#svg-eye"></use></svg>
-    <span class="visually-hidden">View this page</span>
-  </a>
-</div>
+          
+
 <div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
               <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
@@ -761,36 +756,36 @@ after the current epoch completes.</p>
             <ul>
 <li><a class="reference internal" href="#">protomotions.agents.base_agent.agent module</a><ul>
 <li><a class="reference internal" href="#protomotions.agents.base_agent.agent.BaseAgent"><code class="docutils literal notranslate"><span class="pre">BaseAgent</span></code></a><ul>
-<li><a class="reference internal" href="#protomotions.agents.base_agent.agent.BaseAgent.model"><code class="docutils literal notranslate"><span class="pre">BaseAgent.model</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.base_agent.agent.BaseAgent.optimizer"><code class="docutils literal notranslate"><span class="pre">BaseAgent.optimizer</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.base_agent.agent.BaseAgent.experience_buffer"><code class="docutils literal notranslate"><span class="pre">BaseAgent.experience_buffer</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.base_agent.agent.BaseAgent.evaluator"><code class="docutils literal notranslate"><span class="pre">BaseAgent.evaluator</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.base_agent.agent.BaseAgent.__init__"><code class="docutils literal notranslate"><span class="pre">BaseAgent.__init__()</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.base_agent.agent.BaseAgent.should_stop"><code class="docutils literal notranslate"><span class="pre">BaseAgent.should_stop</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.base_agent.agent.BaseAgent.setup"><code class="docutils literal notranslate"><span class="pre">BaseAgent.setup()</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.base_agent.agent.BaseAgent.create_model"><code class="docutils literal notranslate"><span class="pre">BaseAgent.create_model()</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.base_agent.agent.BaseAgent.create_optimizers"><code class="docutils literal notranslate"><span class="pre">BaseAgent.create_optimizers()</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.base_agent.agent.BaseAgent.load"><code class="docutils literal notranslate"><span class="pre">BaseAgent.load()</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.base_agent.agent.BaseAgent.load_parameters"><code class="docutils literal notranslate"><span class="pre">BaseAgent.load_parameters()</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.base_agent.agent.BaseAgent.get_state_dict"><code class="docutils literal notranslate"><span class="pre">BaseAgent.get_state_dict()</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.base_agent.agent.BaseAgent.save"><code class="docutils literal notranslate"><span class="pre">BaseAgent.save()</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.base_agent.agent.BaseAgent.register_algorithm_experience_buffer_keys"><code class="docutils literal notranslate"><span class="pre">BaseAgent.register_algorithm_experience_buffer_keys()</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.base_agent.agent.BaseAgent.collect_rollout_step"><code class="docutils literal notranslate"><span class="pre">BaseAgent.collect_rollout_step()</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.base_agent.agent.BaseAgent.fit"><code class="docutils literal notranslate"><span class="pre">BaseAgent.fit()</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.base_agent.agent.BaseAgent.add_agent_info_to_obs"><code class="docutils literal notranslate"><span class="pre">BaseAgent.add_agent_info_to_obs()</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.base_agent.agent.BaseAgent.obs_dict_to_tensordict"><code class="docutils literal notranslate"><span class="pre">BaseAgent.obs_dict_to_tensordict()</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.base_agent.agent.BaseAgent.post_env_step_modifications"><code class="docutils literal notranslate"><span class="pre">BaseAgent.post_env_step_modifications()</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.base_agent.agent.BaseAgent.check_obs_for_nans"><code class="docutils literal notranslate"><span class="pre">BaseAgent.check_obs_for_nans()</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.base_agent.agent.BaseAgent.record_rollout_step"><code class="docutils literal notranslate"><span class="pre">BaseAgent.record_rollout_step()</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.base_agent.agent.BaseAgent.get_combined_experience_buffer_rewards"><code class="docutils literal notranslate"><span class="pre">BaseAgent.get_combined_experience_buffer_rewards()</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.base_agent.agent.BaseAgent.optimize_model"><code class="docutils literal notranslate"><span class="pre">BaseAgent.optimize_model()</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.base_agent.agent.BaseAgent.perform_optimization_step"><code class="docutils literal notranslate"><span class="pre">BaseAgent.perform_optimization_step()</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.base_agent.agent.BaseAgent.post_epoch_logging"><code class="docutils literal notranslate"><span class="pre">BaseAgent.post_epoch_logging()</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.base_agent.agent.BaseAgent.eval"><code class="docutils literal notranslate"><span class="pre">BaseAgent.eval()</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.base_agent.agent.BaseAgent.train"><code class="docutils literal notranslate"><span class="pre">BaseAgent.train()</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.base_agent.agent.BaseAgent.max_num_batches"><code class="docutils literal notranslate"><span class="pre">BaseAgent.max_num_batches()</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.base_agent.agent.BaseAgent.get_step_count_increment"><code class="docutils literal notranslate"><span class="pre">BaseAgent.get_step_count_increment()</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.base_agent.agent.BaseAgent.terminate_early"><code class="docutils literal notranslate"><span class="pre">BaseAgent.terminate_early()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.base_agent.agent.BaseAgent.model"><code class="docutils literal notranslate"><span class="pre">model</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.base_agent.agent.BaseAgent.optimizer"><code class="docutils literal notranslate"><span class="pre">optimizer</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.base_agent.agent.BaseAgent.experience_buffer"><code class="docutils literal notranslate"><span class="pre">experience_buffer</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.base_agent.agent.BaseAgent.evaluator"><code class="docutils literal notranslate"><span class="pre">evaluator</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.base_agent.agent.BaseAgent.__init__"><code class="docutils literal notranslate"><span class="pre">__init__()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.base_agent.agent.BaseAgent.should_stop"><code class="docutils literal notranslate"><span class="pre">should_stop</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.base_agent.agent.BaseAgent.setup"><code class="docutils literal notranslate"><span class="pre">setup()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.base_agent.agent.BaseAgent.create_model"><code class="docutils literal notranslate"><span class="pre">create_model()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.base_agent.agent.BaseAgent.create_optimizers"><code class="docutils literal notranslate"><span class="pre">create_optimizers()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.base_agent.agent.BaseAgent.load"><code class="docutils literal notranslate"><span class="pre">load()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.base_agent.agent.BaseAgent.load_parameters"><code class="docutils literal notranslate"><span class="pre">load_parameters()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.base_agent.agent.BaseAgent.get_state_dict"><code class="docutils literal notranslate"><span class="pre">get_state_dict()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.base_agent.agent.BaseAgent.save"><code class="docutils literal notranslate"><span class="pre">save()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.base_agent.agent.BaseAgent.register_algorithm_experience_buffer_keys"><code class="docutils literal notranslate"><span class="pre">register_algorithm_experience_buffer_keys()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.base_agent.agent.BaseAgent.collect_rollout_step"><code class="docutils literal notranslate"><span class="pre">collect_rollout_step()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.base_agent.agent.BaseAgent.fit"><code class="docutils literal notranslate"><span class="pre">fit()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.base_agent.agent.BaseAgent.add_agent_info_to_obs"><code class="docutils literal notranslate"><span class="pre">add_agent_info_to_obs()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.base_agent.agent.BaseAgent.obs_dict_to_tensordict"><code class="docutils literal notranslate"><span class="pre">obs_dict_to_tensordict()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.base_agent.agent.BaseAgent.post_env_step_modifications"><code class="docutils literal notranslate"><span class="pre">post_env_step_modifications()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.base_agent.agent.BaseAgent.check_obs_for_nans"><code class="docutils literal notranslate"><span class="pre">check_obs_for_nans()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.base_agent.agent.BaseAgent.record_rollout_step"><code class="docutils literal notranslate"><span class="pre">record_rollout_step()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.base_agent.agent.BaseAgent.get_combined_experience_buffer_rewards"><code class="docutils literal notranslate"><span class="pre">get_combined_experience_buffer_rewards()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.base_agent.agent.BaseAgent.optimize_model"><code class="docutils literal notranslate"><span class="pre">optimize_model()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.base_agent.agent.BaseAgent.perform_optimization_step"><code class="docutils literal notranslate"><span class="pre">perform_optimization_step()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.base_agent.agent.BaseAgent.post_epoch_logging"><code class="docutils literal notranslate"><span class="pre">post_epoch_logging()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.base_agent.agent.BaseAgent.eval"><code class="docutils literal notranslate"><span class="pre">eval()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.base_agent.agent.BaseAgent.train"><code class="docutils literal notranslate"><span class="pre">train()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.base_agent.agent.BaseAgent.max_num_batches"><code class="docutils literal notranslate"><span class="pre">max_num_batches()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.base_agent.agent.BaseAgent.get_step_count_increment"><code class="docutils literal notranslate"><span class="pre">get_step_count_increment()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.base_agent.agent.BaseAgent.terminate_early"><code class="docutils literal notranslate"><span class="pre">terminate_early()</span></code></a></li>
 </ul>
 </li>
 </ul>

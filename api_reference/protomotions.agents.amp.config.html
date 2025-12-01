@@ -211,6 +211,7 @@
 <p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../user_guide/configuration.html">Configuration System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/experiments.html">Experiments</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user_guide/developer_tips.html">Developer Tips</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Key Concepts</span></p>
@@ -244,8 +245,6 @@
 </ul>
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="protomotions.agents.callbacks.html">protomotions.agents.callbacks package</a><input aria-label="Toggle navigation of protomotions.agents.callbacks package" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.callbacks.one_logger.html">protomotions.agents.callbacks.one_logger module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.callbacks.slurm_autoresume_adlr.html">protomotions.agents.callbacks.slurm_autoresume_adlr module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="protomotions.agents.callbacks.slurm_autoresume_srun.html">protomotions.agents.callbacks.slurm_autoresume_srun module</a></li>
 </ul>
 </li>
@@ -329,12 +328,8 @@
           <span>Back to top</span>
         </a>
         <div class="content-icon-container">
-          <div class="view-this-page">
-  <a class="muted-link" href="../_sources/api_reference/protomotions.agents.amp.config.rst.txt" title="View this page">
-    <svg><use href="#svg-eye"></use></svg>
-    <span class="visually-hidden">View this page</span>
-  </a>
-</div>
+          
+
 <div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
               <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
@@ -553,35 +548,35 @@
             <ul>
 <li><a class="reference internal" href="#">protomotions.agents.amp.config module</a><ul>
 <li><a class="reference internal" href="#protomotions.agents.amp.config.AMPParametersConfig"><code class="docutils literal notranslate"><span class="pre">AMPParametersConfig</span></code></a><ul>
-<li><a class="reference internal" href="#protomotions.agents.amp.config.AMPParametersConfig.conditional_discriminator"><code class="docutils literal notranslate"><span class="pre">AMPParametersConfig.conditional_discriminator</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.amp.config.AMPParametersConfig.discriminator_reward_w"><code class="docutils literal notranslate"><span class="pre">AMPParametersConfig.discriminator_reward_w</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.amp.config.AMPParametersConfig.discriminator_weight_decay"><code class="docutils literal notranslate"><span class="pre">AMPParametersConfig.discriminator_weight_decay</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.amp.config.AMPParametersConfig.discriminator_logit_weight_decay"><code class="docutils literal notranslate"><span class="pre">AMPParametersConfig.discriminator_logit_weight_decay</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.amp.config.AMPParametersConfig.discriminator_batch_size"><code class="docutils literal notranslate"><span class="pre">AMPParametersConfig.discriminator_batch_size</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.amp.config.AMPParametersConfig.discriminator_grad_penalty"><code class="docutils literal notranslate"><span class="pre">AMPParametersConfig.discriminator_grad_penalty</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.amp.config.AMPParametersConfig.discriminator_optimization_ratio"><code class="docutils literal notranslate"><span class="pre">AMPParametersConfig.discriminator_optimization_ratio</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.amp.config.AMPParametersConfig.discriminator_replay_keep_prob"><code class="docutils literal notranslate"><span class="pre">AMPParametersConfig.discriminator_replay_keep_prob</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.amp.config.AMPParametersConfig.discriminator_replay_size"><code class="docutils literal notranslate"><span class="pre">AMPParametersConfig.discriminator_replay_size</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.amp.config.AMPParametersConfig.discriminator_reward_threshold"><code class="docutils literal notranslate"><span class="pre">AMPParametersConfig.discriminator_reward_threshold</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.amp.config.AMPParametersConfig.discriminator_max_cumulative_bad_transitions"><code class="docutils literal notranslate"><span class="pre">AMPParametersConfig.discriminator_max_cumulative_bad_transitions</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.amp.config.AMPParametersConfig.__init__"><code class="docutils literal notranslate"><span class="pre">AMPParametersConfig.__init__()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.amp.config.AMPParametersConfig.conditional_discriminator"><code class="docutils literal notranslate"><span class="pre">conditional_discriminator</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.amp.config.AMPParametersConfig.discriminator_reward_w"><code class="docutils literal notranslate"><span class="pre">discriminator_reward_w</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.amp.config.AMPParametersConfig.discriminator_weight_decay"><code class="docutils literal notranslate"><span class="pre">discriminator_weight_decay</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.amp.config.AMPParametersConfig.discriminator_logit_weight_decay"><code class="docutils literal notranslate"><span class="pre">discriminator_logit_weight_decay</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.amp.config.AMPParametersConfig.discriminator_batch_size"><code class="docutils literal notranslate"><span class="pre">discriminator_batch_size</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.amp.config.AMPParametersConfig.discriminator_grad_penalty"><code class="docutils literal notranslate"><span class="pre">discriminator_grad_penalty</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.amp.config.AMPParametersConfig.discriminator_optimization_ratio"><code class="docutils literal notranslate"><span class="pre">discriminator_optimization_ratio</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.amp.config.AMPParametersConfig.discriminator_replay_keep_prob"><code class="docutils literal notranslate"><span class="pre">discriminator_replay_keep_prob</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.amp.config.AMPParametersConfig.discriminator_replay_size"><code class="docutils literal notranslate"><span class="pre">discriminator_replay_size</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.amp.config.AMPParametersConfig.discriminator_reward_threshold"><code class="docutils literal notranslate"><span class="pre">discriminator_reward_threshold</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.amp.config.AMPParametersConfig.discriminator_max_cumulative_bad_transitions"><code class="docutils literal notranslate"><span class="pre">discriminator_max_cumulative_bad_transitions</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.amp.config.AMPParametersConfig.__init__"><code class="docutils literal notranslate"><span class="pre">__init__()</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#protomotions.agents.amp.config.DiscriminatorConfig"><code class="docutils literal notranslate"><span class="pre">DiscriminatorConfig</span></code></a><ul>
-<li><a class="reference internal" href="#protomotions.agents.amp.config.DiscriminatorConfig.out_keys"><code class="docutils literal notranslate"><span class="pre">DiscriminatorConfig.out_keys</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.amp.config.DiscriminatorConfig.__init__"><code class="docutils literal notranslate"><span class="pre">DiscriminatorConfig.__init__()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.amp.config.DiscriminatorConfig.out_keys"><code class="docutils literal notranslate"><span class="pre">out_keys</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.amp.config.DiscriminatorConfig.__init__"><code class="docutils literal notranslate"><span class="pre">__init__()</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#protomotions.agents.amp.config.AMPModelConfig"><code class="docutils literal notranslate"><span class="pre">AMPModelConfig</span></code></a><ul>
-<li><a class="reference internal" href="#protomotions.agents.amp.config.AMPModelConfig.discriminator"><code class="docutils literal notranslate"><span class="pre">AMPModelConfig.discriminator</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.amp.config.AMPModelConfig.discriminator_optimizer"><code class="docutils literal notranslate"><span class="pre">AMPModelConfig.discriminator_optimizer</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.amp.config.AMPModelConfig.__init__"><code class="docutils literal notranslate"><span class="pre">AMPModelConfig.__init__()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.amp.config.AMPModelConfig.discriminator"><code class="docutils literal notranslate"><span class="pre">discriminator</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.amp.config.AMPModelConfig.discriminator_optimizer"><code class="docutils literal notranslate"><span class="pre">discriminator_optimizer</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.amp.config.AMPModelConfig.__init__"><code class="docutils literal notranslate"><span class="pre">__init__()</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#protomotions.agents.amp.config.AMPAgentConfig"><code class="docutils literal notranslate"><span class="pre">AMPAgentConfig</span></code></a><ul>
-<li><a class="reference internal" href="#protomotions.agents.amp.config.AMPAgentConfig.model"><code class="docutils literal notranslate"><span class="pre">AMPAgentConfig.model</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.amp.config.AMPAgentConfig.amp_parameters"><code class="docutils literal notranslate"><span class="pre">AMPAgentConfig.amp_parameters</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.amp.config.AMPAgentConfig.__init__"><code class="docutils literal notranslate"><span class="pre">AMPAgentConfig.__init__()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.amp.config.AMPAgentConfig.model"><code class="docutils literal notranslate"><span class="pre">model</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.amp.config.AMPAgentConfig.amp_parameters"><code class="docutils literal notranslate"><span class="pre">amp_parameters</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.amp.config.AMPAgentConfig.__init__"><code class="docutils literal notranslate"><span class="pre">__init__()</span></code></a></li>
 </ul>
 </li>
 </ul>

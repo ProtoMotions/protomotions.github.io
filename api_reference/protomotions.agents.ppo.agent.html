@@ -211,6 +211,7 @@
 <p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../user_guide/configuration.html">Configuration System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/experiments.html">Experiments</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user_guide/developer_tips.html">Developer Tips</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Key Concepts</span></p>
@@ -244,8 +245,6 @@
 </ul>
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="protomotions.agents.callbacks.html">protomotions.agents.callbacks package</a><input aria-label="Toggle navigation of protomotions.agents.callbacks package" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.callbacks.one_logger.html">protomotions.agents.callbacks.one_logger module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.callbacks.slurm_autoresume_adlr.html">protomotions.agents.callbacks.slurm_autoresume_adlr module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="protomotions.agents.callbacks.slurm_autoresume_srun.html">protomotions.agents.callbacks.slurm_autoresume_srun module</a></li>
 </ul>
 </li>
@@ -329,12 +328,8 @@
           <span>Back to top</span>
         </a>
         <div class="content-icon-container">
-          <div class="view-this-page">
-  <a class="muted-link" href="../_sources/api_reference/protomotions.agents.ppo.agent.rst.txt" title="View this page">
-    <svg><use href="#svg-eye"></use></svg>
-    <span class="visually-hidden">View this page</span>
-  </a>
-</div>
+          
+
 <div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
               <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
@@ -650,23 +645,23 @@ auxiliary losses). Default implementation returns zero loss.</p>
             <ul>
 <li><a class="reference internal" href="#">protomotions.agents.ppo.agent module</a><ul>
 <li><a class="reference internal" href="#protomotions.agents.ppo.agent.PPO"><code class="docutils literal notranslate"><span class="pre">PPO</span></code></a><ul>
-<li><a class="reference internal" href="#protomotions.agents.ppo.agent.PPO.tau"><code class="docutils literal notranslate"><span class="pre">PPO.tau</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.ppo.agent.PPO.e_clip"><code class="docutils literal notranslate"><span class="pre">PPO.e_clip</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.ppo.agent.PPO.actor"><code class="docutils literal notranslate"><span class="pre">PPO.actor</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.ppo.agent.PPO.critic"><code class="docutils literal notranslate"><span class="pre">PPO.critic</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.ppo.agent.PPO.config"><code class="docutils literal notranslate"><span class="pre">PPO.config</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.ppo.agent.PPO.__init__"><code class="docutils literal notranslate"><span class="pre">PPO.__init__()</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.ppo.agent.PPO.create_model"><code class="docutils literal notranslate"><span class="pre">PPO.create_model()</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.ppo.agent.PPO.create_optimizers"><code class="docutils literal notranslate"><span class="pre">PPO.create_optimizers()</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.ppo.agent.PPO.load_parameters"><code class="docutils literal notranslate"><span class="pre">PPO.load_parameters()</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.ppo.agent.PPO.get_state_dict"><code class="docutils literal notranslate"><span class="pre">PPO.get_state_dict()</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.ppo.agent.PPO.register_algorithm_experience_buffer_keys"><code class="docutils literal notranslate"><span class="pre">PPO.register_algorithm_experience_buffer_keys()</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.ppo.agent.PPO.record_rollout_step"><code class="docutils literal notranslate"><span class="pre">PPO.record_rollout_step()</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.ppo.agent.PPO.perform_optimization_step"><code class="docutils literal notranslate"><span class="pre">PPO.perform_optimization_step()</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.ppo.agent.PPO.actor_step"><code class="docutils literal notranslate"><span class="pre">PPO.actor_step()</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.ppo.agent.PPO.calculate_extra_actor_loss"><code class="docutils literal notranslate"><span class="pre">PPO.calculate_extra_actor_loss()</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.ppo.agent.PPO.critic_step"><code class="docutils literal notranslate"><span class="pre">PPO.critic_step()</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.ppo.agent.PPO.optimize_model"><code class="docutils literal notranslate"><span class="pre">PPO.optimize_model()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.ppo.agent.PPO.tau"><code class="docutils literal notranslate"><span class="pre">tau</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.ppo.agent.PPO.e_clip"><code class="docutils literal notranslate"><span class="pre">e_clip</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.ppo.agent.PPO.actor"><code class="docutils literal notranslate"><span class="pre">actor</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.ppo.agent.PPO.critic"><code class="docutils literal notranslate"><span class="pre">critic</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.ppo.agent.PPO.config"><code class="docutils literal notranslate"><span class="pre">config</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.ppo.agent.PPO.__init__"><code class="docutils literal notranslate"><span class="pre">__init__()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.ppo.agent.PPO.create_model"><code class="docutils literal notranslate"><span class="pre">create_model()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.ppo.agent.PPO.create_optimizers"><code class="docutils literal notranslate"><span class="pre">create_optimizers()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.ppo.agent.PPO.load_parameters"><code class="docutils literal notranslate"><span class="pre">load_parameters()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.ppo.agent.PPO.get_state_dict"><code class="docutils literal notranslate"><span class="pre">get_state_dict()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.ppo.agent.PPO.register_algorithm_experience_buffer_keys"><code class="docutils literal notranslate"><span class="pre">register_algorithm_experience_buffer_keys()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.ppo.agent.PPO.record_rollout_step"><code class="docutils literal notranslate"><span class="pre">record_rollout_step()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.ppo.agent.PPO.perform_optimization_step"><code class="docutils literal notranslate"><span class="pre">perform_optimization_step()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.ppo.agent.PPO.actor_step"><code class="docutils literal notranslate"><span class="pre">actor_step()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.ppo.agent.PPO.calculate_extra_actor_loss"><code class="docutils literal notranslate"><span class="pre">calculate_extra_actor_loss()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.ppo.agent.PPO.critic_step"><code class="docutils literal notranslate"><span class="pre">critic_step()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.ppo.agent.PPO.optimize_model"><code class="docutils literal notranslate"><span class="pre">optimize_model()</span></code></a></li>
 </ul>
 </li>
 </ul>

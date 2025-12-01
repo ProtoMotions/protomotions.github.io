@@ -211,6 +211,7 @@
 <p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../user_guide/configuration.html">Configuration System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/experiments.html">Experiments</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user_guide/developer_tips.html">Developer Tips</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Key Concepts</span></p>
@@ -244,8 +245,6 @@
 </ul>
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="protomotions.agents.callbacks.html">protomotions.agents.callbacks package</a><input aria-label="Toggle navigation of protomotions.agents.callbacks package" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.callbacks.one_logger.html">protomotions.agents.callbacks.one_logger module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="protomotions.agents.callbacks.slurm_autoresume_adlr.html">protomotions.agents.callbacks.slurm_autoresume_adlr module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="protomotions.agents.callbacks.slurm_autoresume_srun.html">protomotions.agents.callbacks.slurm_autoresume_srun module</a></li>
 </ul>
 </li>
@@ -329,12 +328,8 @@
           <span>Back to top</span>
         </a>
         <div class="content-icon-container">
-          <div class="view-this-page">
-  <a class="muted-link" href="../_sources/api_reference/protomotions.agents.amp.agent.rst.txt" title="View this page">
-    <svg><use href="#svg-eye"></use></svg>
-    <span class="visually-hidden">View this page</span>
-  </a>
-</div>
+          
+
 <div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
               <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
@@ -621,24 +616,24 @@ after the current epoch completes.</p>
             <ul>
 <li><a class="reference internal" href="#">protomotions.agents.amp.agent module</a><ul>
 <li><a class="reference internal" href="#protomotions.agents.amp.agent.AMP"><code class="docutils literal notranslate"><span class="pre">AMP</span></code></a><ul>
-<li><a class="reference internal" href="#protomotions.agents.amp.agent.AMP.amp_replay_buffer"><code class="docutils literal notranslate"><span class="pre">AMP.amp_replay_buffer</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.amp.agent.AMP.discriminator"><code class="docutils literal notranslate"><span class="pre">AMP.discriminator</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.amp.agent.AMP.config"><code class="docutils literal notranslate"><span class="pre">AMP.config</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.amp.agent.AMP.__init__"><code class="docutils literal notranslate"><span class="pre">AMP.__init__()</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.amp.agent.AMP.create_optimizers"><code class="docutils literal notranslate"><span class="pre">AMP.create_optimizers()</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.amp.agent.AMP.load_parameters"><code class="docutils literal notranslate"><span class="pre">AMP.load_parameters()</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.amp.agent.AMP.get_state_dict"><code class="docutils literal notranslate"><span class="pre">AMP.get_state_dict()</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.amp.agent.AMP.register_algorithm_experience_buffer_keys"><code class="docutils literal notranslate"><span class="pre">AMP.register_algorithm_experience_buffer_keys()</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.amp.agent.AMP.update_disc_replay_buffer"><code class="docutils literal notranslate"><span class="pre">AMP.update_disc_replay_buffer()</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.amp.agent.AMP.get_expert_disc_obs"><code class="docutils literal notranslate"><span class="pre">AMP.get_expert_disc_obs()</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.amp.agent.AMP.post_env_step_modifications"><code class="docutils literal notranslate"><span class="pre">AMP.post_env_step_modifications()</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.amp.agent.AMP.get_combined_experience_buffer_rewards"><code class="docutils literal notranslate"><span class="pre">AMP.get_combined_experience_buffer_rewards()</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.amp.agent.AMP.perform_optimization_step"><code class="docutils literal notranslate"><span class="pre">AMP.perform_optimization_step()</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.amp.agent.AMP.discriminator_step"><code class="docutils literal notranslate"><span class="pre">AMP.discriminator_step()</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.amp.agent.AMP.compute_pos_acc"><code class="docutils literal notranslate"><span class="pre">AMP.compute_pos_acc()</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.amp.agent.AMP.compute_neg_acc"><code class="docutils literal notranslate"><span class="pre">AMP.compute_neg_acc()</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.amp.agent.AMP.terminate_early"><code class="docutils literal notranslate"><span class="pre">AMP.terminate_early()</span></code></a></li>
-<li><a class="reference internal" href="#protomotions.agents.amp.agent.AMP.post_epoch_logging"><code class="docutils literal notranslate"><span class="pre">AMP.post_epoch_logging()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.amp.agent.AMP.amp_replay_buffer"><code class="docutils literal notranslate"><span class="pre">amp_replay_buffer</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.amp.agent.AMP.discriminator"><code class="docutils literal notranslate"><span class="pre">discriminator</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.amp.agent.AMP.config"><code class="docutils literal notranslate"><span class="pre">config</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.amp.agent.AMP.__init__"><code class="docutils literal notranslate"><span class="pre">__init__()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.amp.agent.AMP.create_optimizers"><code class="docutils literal notranslate"><span class="pre">create_optimizers()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.amp.agent.AMP.load_parameters"><code class="docutils literal notranslate"><span class="pre">load_parameters()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.amp.agent.AMP.get_state_dict"><code class="docutils literal notranslate"><span class="pre">get_state_dict()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.amp.agent.AMP.register_algorithm_experience_buffer_keys"><code class="docutils literal notranslate"><span class="pre">register_algorithm_experience_buffer_keys()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.amp.agent.AMP.update_disc_replay_buffer"><code class="docutils literal notranslate"><span class="pre">update_disc_replay_buffer()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.amp.agent.AMP.get_expert_disc_obs"><code class="docutils literal notranslate"><span class="pre">get_expert_disc_obs()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.amp.agent.AMP.post_env_step_modifications"><code class="docutils literal notranslate"><span class="pre">post_env_step_modifications()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.amp.agent.AMP.get_combined_experience_buffer_rewards"><code class="docutils literal notranslate"><span class="pre">get_combined_experience_buffer_rewards()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.amp.agent.AMP.perform_optimization_step"><code class="docutils literal notranslate"><span class="pre">perform_optimization_step()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.amp.agent.AMP.discriminator_step"><code class="docutils literal notranslate"><span class="pre">discriminator_step()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.amp.agent.AMP.compute_pos_acc"><code class="docutils literal notranslate"><span class="pre">compute_pos_acc()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.amp.agent.AMP.compute_neg_acc"><code class="docutils literal notranslate"><span class="pre">compute_neg_acc()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.amp.agent.AMP.terminate_early"><code class="docutils literal notranslate"><span class="pre">terminate_early()</span></code></a></li>
+<li><a class="reference internal" href="#protomotions.agents.amp.agent.AMP.post_epoch_logging"><code class="docutils literal notranslate"><span class="pre">post_epoch_logging()</span></code></a></li>
 </ul>
 </li>
 </ul>
