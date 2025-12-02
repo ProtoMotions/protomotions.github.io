@@ -10,7 +10,8 @@ We provide pre-trained checkpoints for various robots and tasks. Download them a
 
 **Available Pre-trained Models:**
 
-The first five models below are **General Motion Trackers** - DeepMimic-style policies trained on the entire AMASS dataset, capable of tracking a wide variety of human motions.
+The first four models below are **General Motion Trackers** - DeepMimic-style policies trained on the entire AMASS dataset, capable of tracking a wide variety of human motions.
+All trained with 4 A100 GPUs for around 24h.
 
 .. list-table::
    :header-rows: 1
@@ -21,16 +22,16 @@ The first five models below are **General Motion Trackers** - DeepMimic-style po
      - Checkpoint Path
    * - SMPL AMASS (flat)
      - General motion tracker: SMPL humanoid on flat terrain
-     - ``[PLACEHOLDER: download link]``
+     - ``data/pretrained_models/motion_tracker/smpl/last.ckpt``
    * - SMPL AMASS (terrain)
      - General motion tracker: SMPL humanoid on complex terrain
-     - ``[PLACEHOLDER: download link]``
+     - ``data/pretrained_models/motion_tracker/smpl-terrains/last.ckpt``
    * - G1 AMASS
      - General motion tracker: Unitree G1 on retargeted AMASS
-     - ``[PLACEHOLDER: download link]``
+     - ``data/pretrained_models/motion_tracker/g1-amass/last.ckpt``
    * - H1_2 AMASS
      - General motion tracker: Unitree H1 (v2) on retargeted AMASS
-     - ``[PLACEHOLDER: download link]``
+     - ``data/pretrained_models/motion_tracker/h1_2-amass/last.ckpt``
    * - Vaulting
      - DeepMimic policy for a vaulting motion
      - ``[PLACEHOLDER: download link]``
@@ -41,26 +42,44 @@ The first five models below are **General Motion Trackers** - DeepMimic-style po
      - MaskedMimic policy for G1
      - ``[PLACEHOLDER: download link]``
 
+**Example Motion Data:**
+
+We provide small example motion files for testing with robot models:
+
+* ``data/motions/g1_random_subset_tiny.pt`` - Small subset of retargeted AMASS for G1
+* ``data/motions/h1_2_random_subset_tiny.pt`` - Small subset of retargeted AMASS for H1_2
+
+For SMPL motion data, see :doc:`amass_preparation` to generate your own MotionLib from AMASS.
+There is a simple script subset_motion_lib.py to subset the motion lib into a smaller size,
+if your local GPU memory is not enough to load the entire motion lib of AMASS.
+
 **Run Inference:**
 
 .. code-block:: bash
 
-   # Run SMPL on AMASS motions
+   # Run G1 on retargeted AMASS subset
    python protomotions/inference_agent.py \
-       --checkpoint results/smpl_amass_flat/last.ckpt \
-       --motion-file path/to/packaged-motion-lib.pt \
+       --checkpoint data/pretrained_models/motion_tracker/g1-amass/last.ckpt \
+       --motion-file data/motions/g1_random_subset_tiny.pt \
        --simulator isaacgym
 
-   # Run G1 on retargeted AMASS
+   # Run H1_2 on retargeted AMASS subset
    python protomotions/inference_agent.py \
-       --checkpoint results/g1_amass/last.ckpt \
-       --motion-file path/to/packaged-motion-lib.pt \
+       --checkpoint data/pretrained_models/motion_tracker/h1_2-amass/last.ckpt \
+       --motion-file data/motions/h1_2_random_subset_tiny.pt \
+       --simulator isaacgym
+
+   # Run SMPL (requires AMASS MotionLib, see amass_preparation)
+   python protomotions/inference_agent.py \
+       --checkpoint data/pretrained_models/motion_tracker/smpl/last.ckpt \
+       --motion-file path/to/your/amass_motionlib.pt \
        --simulator isaacgym
 
    # Test sim2sim transfer - run IsaacGym-trained policy in Newton
+   # We have not yet tuned Newton's parameters, so some artifects are there.
    python protomotions/inference_agent.py \
-       --checkpoint results/g1_amass/last.ckpt \
-       --motion-file path/to/packaged-motion-lib.pt \
+       --checkpoint data/pretrained_models/motion_tracker/g1-amass/last.ckpt \
+       --motion-file data/motions/g1_random_subset_tiny.pt \
        --simulator newton
 
 Train Your First Agent
@@ -152,6 +171,13 @@ Results are saved to:
 
    For config changes, use a new experiment name. When training on cloud/cluster, you can also copy the source code to a new directory and train there with any experiment name.
 
+.. warning::
+
+   **Do NOT modify resolved_configs.yaml files.** They are for human readability 
+   only—the source of truth is the ``.pt`` file. For config changes, use 
+   ``--overrides`` (small changes) or ``--create-config-only`` and copy the new 
+   ``.pt`` to your checkpoint directory (large changes). See :doc:`/user_guide/configuration`.
+
 Training Configuration
 ----------------------
 
@@ -227,9 +253,16 @@ Evaluate a trained agent:
 
 .. code-block:: bash
 
+   # Evaluate a pretrained model
+   python protomotions/inference_agent.py \
+       --checkpoint data/pretrained_models/motion_tracker/g1-amass/last.ckpt \
+       --motion-file data/motions/g1_random_subset_tiny.pt \
+       --simulator isaacgym
+
+   # Or evaluate your own trained model
    python protomotions/inference_agent.py \
        --checkpoint results/my_experiment/last.ckpt \
-       --motion-file path/to/packaged-motion-lib.pt \
+       --motion-file data/motions/g1_random_subset_tiny.pt \
        --simulator isaacgym
 
 Keyboard Controls

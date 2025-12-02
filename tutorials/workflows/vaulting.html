@@ -372,20 +372,20 @@ outputs, or run through the workflow to verify each step produces matching resul
 <li><p><code class="docutils literal notranslate"><span class="pre">proto/</span></code> - Step 1 output (proto format motion)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">proto.pt</span></code> - Step 1 output (packaged MotionLib)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">keypoints-for-retarget/</span></code> - Step 1 output (keypoints for retargeting)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">rigv1-obstacle.pt</span></code> - Step 2 output (bones scene)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">rigv1-obstacle.pt</span></code> - Step 2 output (rigv1 scene)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">pyroki-retargeted/</span></code> - Step 5a output (retargeted motion)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">proto-g1/</span></code> - Step 5b output (G1 proto format)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">proto-g1.pt</span></code> - Step 5c output (G1 MotionLib)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">g1-obstacle.pt</span></code> - Step 5d output (G1 scene)</p></li>
 </ul>
-<p>Pre-trained models for both bones and G1 will be available in the pre-trained
+<p>Pre-trained models for both rigv1 and G1 will be available in the pre-trained
 models collection (not yet uploaded).</p>
 </div>
 </section>
 <section id="step-1-motion-preparation">
 <h2>Step 1: Motion Preparation<a class="headerlink" href="#step-1-motion-preparation" title="Link to this heading">¶</a></h2>
 <p>Convert source motion to ProtoMotions format:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>data/scripts/convert_bones_pkl_to_proto.py<span class="w"> </span><span class="se">\</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>data/scripts/convert_rigv1_pkl_to_proto.py<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>examples/data/rigv1-vaulting/<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>examples/data/rigv1-vaulting/proto<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--input-fps<span class="w"> </span><span class="m">30</span><span class="w"> </span>--output-fps<span class="w"> </span><span class="m">30</span><span class="w"> </span><span class="se">\</span>
@@ -446,7 +446,7 @@ scene assignments.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>examples/env_kinematic_playback.py<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--experiment-path<span class="o">=</span>examples/experiments/mimic/mlp.py<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--motion-file<span class="o">=</span>examples/data/rigv1-vaulting/proto.pt<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--robot-name<span class="o">=</span>bones<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--robot-name<span class="o">=</span>rigv1<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--simulator<span class="o">=</span>isaacgym<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--num-envs<span class="o">=</span><span class="m">5</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--scenes-file<span class="o">=</span>examples/data/rigv1-vaulting/rigv1-obstacle.pt
@@ -461,12 +461,12 @@ scene assignments.</p>
 </section>
 <section id="step-4-train-on-original-character">
 <h2>Step 4: Train on Original Character<a class="headerlink" href="#step-4-train-on-original-character" title="Link to this heading">¶</a></h2>
-<p>Train the original character (rigv1/bones):</p>
+<p>Train the original character (rigv1):</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>protomotions/train_agent.py<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--robot-name<span class="w"> </span>bones<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--robot-name<span class="w"> </span>rigv1<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--simulator<span class="w"> </span>isaacgym<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--experiment-path<span class="w"> </span>examples/experiments/mimic/mlp.py<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--experiment-name<span class="w"> </span>bones_rigv1_vaulting<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--experiment-name<span class="w"> </span>rigv1_vaulting<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--motion-file<span class="w"> </span>examples/data/rigv1-vaulting/proto.pt<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--scenes-file<span class="w"> </span>examples/data/rigv1-vaulting/rigv1-obstacle.pt<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--num-envs<span class="w"> </span><span class="m">4096</span><span class="w"> </span><span class="se">\</span>
@@ -475,8 +475,8 @@ scene assignments.</p>
 </div>
 <p>Note: For vaulting, you may want to disable contact matching rewards since
 hand-obstacle contacts are part of the task:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>--overrides<span class="w"> </span><span class="s2">&quot;env.mimic_reward_config.reward_components.contact_match_rew.weight=0.0&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">            </span><span class="s2">&quot;env.mimic_reward_config.reward_components.contact_force_change_rew.weight=0.0&quot;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>--overrides<span class="w"> </span><span class="s2">&quot;env.reward_config.contact_match_rew.weight=0.0&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">            </span><span class="s2">&quot;env.reward_config.contact_force_change_rew.weight=0.0&quot;</span>
 </pre></div>
 </div>
 </section>

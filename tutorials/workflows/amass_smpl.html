@@ -458,8 +458,8 @@ dashboards. Spend some time exploring the UI to get the most out of experiment t
 <section id="disable-contact-rewards">
 <h3>Disable Contact Rewards<a class="headerlink" href="#disable-contact-rewards" title="Link to this heading">¶</a></h3>
 <p>For purely motion imitation (DeepMimic) rewards:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>--overrides<span class="w"> </span><span class="s2">&quot;env.mimic_reward_config.reward_components.contact_match_rew.weight=0.0&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">            </span><span class="s2">&quot;env.mimic_reward_config.reward_components.contact_force_change_rew.weight=0.0&quot;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>--overrides<span class="w"> </span><span class="s2">&quot;env.reward_config.contact_match_rew.weight=0.0&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">            </span><span class="s2">&quot;env.reward_config.contact_force_change_rew.weight=0.0&quot;</span>
 </pre></div>
 </div>
 </section>

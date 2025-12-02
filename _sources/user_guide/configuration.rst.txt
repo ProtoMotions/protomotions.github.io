@@ -147,7 +147,7 @@ Override nested config values with ``--overrides``:
    --overrides "agent.num_mini_epochs=4" "env.max_episode_length=500"
 
    # Override reward weights
-   --overrides "env.mimic_reward_config.reward_components.contact_match_rew.weight=0.0"
+   --overrides "env.reward_config.contact_match_rew.weight=0.0"
 
    # Disable domain randomization (NOTE: "True" not "true")
    --overrides "robot.asset.self_collisions=True"
@@ -168,6 +168,17 @@ All configurations are saved for reproducibility:
 
 **resolved_configs.pt** is the primary source of truth. It uses pickle to handle
 complex types (Union, nested dataclasses, torch.Tensor) that YAML cannot represent.
+
+.. warning::
+
+   **Do NOT modify resolved_configs.yaml files.** They are generated for human 
+   readability only—the actual source of truth is the ``.pt`` file.
+
+   To modify configurations:
+
+   * **Small changes:** Use ``--overrides`` on the command line
+   * **Large changes:** Use ``--create-config-only`` to generate new configs, 
+     then copy the newly generated ``.pt`` file to your checkpoint directory
 
 Resume Behavior
 ~~~~~~~~~~~~~~~

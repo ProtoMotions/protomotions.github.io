@@ -350,7 +350,8 @@
 <h2>Run Pre-trained Models<a class="headerlink" href="#run-pre-trained-models" title="Link to this heading">¶</a></h2>
 <p>We provide pre-trained checkpoints for various robots and tasks. Download them and run inference to see the results.</p>
 <p><strong>Available Pre-trained Models:</strong></p>
-<p>The first five models below are <strong>General Motion Trackers</strong> - DeepMimic-style policies trained on the entire AMASS dataset, capable of tracking a wide variety of human motions.</p>
+<p>The first four models below are <strong>General Motion Trackers</strong> - DeepMimic-style policies trained on the entire AMASS dataset, capable of tracking a wide variety of human motions.
+All trained with 4 A100 GPUs for around 24h.</p>
 <div class="table-wrapper colwidths-given docutils container">
 <table class="docutils align-default">
 <colgroup>
@@ -367,19 +368,19 @@
 <tbody>
 <tr class="row-even"><td><p>SMPL AMASS (flat)</p></td>
 <td><p>General motion tracker: SMPL humanoid on flat terrain</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">[PLACEHOLDER:</span> <span class="pre">download</span> <span class="pre">link]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">data/pretrained_models/motion_tracker/smpl/last.ckpt</span></code></p></td>
 </tr>
 <tr class="row-odd"><td><p>SMPL AMASS (terrain)</p></td>
 <td><p>General motion tracker: SMPL humanoid on complex terrain</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">[PLACEHOLDER:</span> <span class="pre">download</span> <span class="pre">link]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">data/pretrained_models/motion_tracker/smpl-terrains/last.ckpt</span></code></p></td>
 </tr>
 <tr class="row-even"><td><p>G1 AMASS</p></td>
 <td><p>General motion tracker: Unitree G1 on retargeted AMASS</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">[PLACEHOLDER:</span> <span class="pre">download</span> <span class="pre">link]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">data/pretrained_models/motion_tracker/g1-amass/last.ckpt</span></code></p></td>
 </tr>
 <tr class="row-odd"><td><p>H1_2 AMASS</p></td>
 <td><p>General motion tracker: Unitree H1 (v2) on retargeted AMASS</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">[PLACEHOLDER:</span> <span class="pre">download</span> <span class="pre">link]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">data/pretrained_models/motion_tracker/h1_2-amass/last.ckpt</span></code></p></td>
 </tr>
 <tr class="row-even"><td><p>Vaulting</p></td>
 <td><p>DeepMimic policy for a vaulting motion</p></td>
@@ -396,23 +397,39 @@
 </tbody>
 </table>
 </div>
+<p><strong>Example Motion Data:</strong></p>
+<p>We provide small example motion files for testing with robot models:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">data/motions/g1_random_subset_tiny.pt</span></code> - Small subset of retargeted AMASS for G1</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">data/motions/h1_2_random_subset_tiny.pt</span></code> - Small subset of retargeted AMASS for H1_2</p></li>
+</ul>
+<p>For SMPL motion data, see <a class="reference internal" href="amass_preparation.html"><span class="doc">AMASS Data Preparation</span></a> to generate your own MotionLib from AMASS.
+There is a simple script subset_motion_lib.py to subset the motion lib into a smaller size,
+if your local GPU memory is not enough to load the entire motion lib of AMASS.</p>
 <p><strong>Run Inference:</strong></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Run SMPL on AMASS motions</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Run G1 on retargeted AMASS subset</span>
 python<span class="w"> </span>protomotions/inference_agent.py<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--checkpoint<span class="w"> </span>results/smpl_amass_flat/last.ckpt<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--motion-file<span class="w"> </span>path/to/packaged-motion-lib.pt<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--checkpoint<span class="w"> </span>data/pretrained_models/motion_tracker/g1-amass/last.ckpt<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--motion-file<span class="w"> </span>data/motions/g1_random_subset_tiny.pt<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--simulator<span class="w"> </span>isaacgym
 
-<span class="c1"># Run G1 on retargeted AMASS</span>
+<span class="c1"># Run H1_2 on retargeted AMASS subset</span>
 python<span class="w"> </span>protomotions/inference_agent.py<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--checkpoint<span class="w"> </span>results/g1_amass/last.ckpt<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--motion-file<span class="w"> </span>path/to/packaged-motion-lib.pt<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--checkpoint<span class="w"> </span>data/pretrained_models/motion_tracker/h1_2-amass/last.ckpt<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--motion-file<span class="w"> </span>data/motions/h1_2_random_subset_tiny.pt<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--simulator<span class="w"> </span>isaacgym
+
+<span class="c1"># Run SMPL (requires AMASS MotionLib, see amass_preparation)</span>
+python<span class="w"> </span>protomotions/inference_agent.py<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--checkpoint<span class="w"> </span>data/pretrained_models/motion_tracker/smpl/last.ckpt<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--motion-file<span class="w"> </span>path/to/your/amass_motionlib.pt<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--simulator<span class="w"> </span>isaacgym
 
 <span class="c1"># Test sim2sim transfer - run IsaacGym-trained policy in Newton</span>
+<span class="c1"># We have not yet tuned Newton&#39;s parameters, so some artifects are there.</span>
 python<span class="w"> </span>protomotions/inference_agent.py<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--checkpoint<span class="w"> </span>results/g1_amass/last.ckpt<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--motion-file<span class="w"> </span>path/to/packaged-motion-lib.pt<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--checkpoint<span class="w"> </span>data/pretrained_models/motion_tracker/g1-amass/last.ckpt<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--motion-file<span class="w"> </span>data/motions/g1_random_subset_tiny.pt<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--simulator<span class="w"> </span>newton
 </pre></div>
 </div>
@@ -510,6 +527,13 @@ existing experiment name, training automatically resumes from the last checkpoin
 <p>Resume (if experiment name is the same) uses exact saved configs - CLI overrides are ignored during resume. This design helps automatic resume with many-gpu runs on clusters.</p>
 <p>For config changes, use a new experiment name. When training on cloud/cluster, you can also copy the source code to a new directory and train there with any experiment name.</p>
 </div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p><strong>Do NOT modify resolved_configs.yaml files.</strong> They are for human readability
+only—the source of truth is the <code class="docutils literal notranslate"><span class="pre">.pt</span></code> file. For config changes, use
+<code class="docutils literal notranslate"><span class="pre">--overrides</span></code> (small changes) or <code class="docutils literal notranslate"><span class="pre">--create-config-only</span></code> and copy the new
+<code class="docutils literal notranslate"><span class="pre">.pt</span></code> to your checkpoint directory (large changes). See <a class="reference internal" href="../user_guide/configuration.html"><span class="doc">Configuration System</span></a>.</p>
+</div>
 </section>
 <section id="training-configuration">
 <h2>Training Configuration<a class="headerlink" href="#training-configuration" title="Link to this heading">¶</a></h2>
@@ -569,9 +593,16 @@ dashboards. Spend some time exploring the UI to get the most out of experiment t
 <section id="evaluation">
 <h2>Evaluation<a class="headerlink" href="#evaluation" title="Link to this heading">¶</a></h2>
 <p>Evaluate a trained agent:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>protomotions/inference_agent.py<span class="w"> </span><span class="se">\</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Evaluate a pretrained model</span>
+python<span class="w"> </span>protomotions/inference_agent.py<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--checkpoint<span class="w"> </span>data/pretrained_models/motion_tracker/g1-amass/last.ckpt<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--motion-file<span class="w"> </span>data/motions/g1_random_subset_tiny.pt<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--simulator<span class="w"> </span>isaacgym
+
+<span class="c1"># Or evaluate your own trained model</span>
+python<span class="w"> </span>protomotions/inference_agent.py<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--checkpoint<span class="w"> </span>results/my_experiment/last.ckpt<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--motion-file<span class="w"> </span>path/to/packaged-motion-lib.pt<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--motion-file<span class="w"> </span>data/motions/g1_random_subset_tiny.pt<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--simulator<span class="w"> </span>isaacgym
 </pre></div>
 </div>

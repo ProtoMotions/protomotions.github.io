@@ -481,7 +481,7 @@ training configuration through a set of functions:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>--overrides<span class="w"> </span><span class="s2">&quot;agent.num_mini_epochs=4&quot;</span><span class="w"> </span><span class="s2">&quot;env.max_episode_length=500&quot;</span>
 
 <span class="c1"># Override reward weights</span>
---overrides<span class="w"> </span><span class="s2">&quot;env.mimic_reward_config.reward_components.contact_match_rew.weight=0.0&quot;</span>
+--overrides<span class="w"> </span><span class="s2">&quot;env.reward_config.contact_match_rew.weight=0.0&quot;</span>
 
 <span class="c1"># Disable domain randomization (NOTE: &quot;True&quot; not &quot;true&quot;)</span>
 --overrides<span class="w"> </span><span class="s2">&quot;robot.asset.self_collisions=True&quot;</span>
@@ -502,6 +502,17 @@ training configuration through a set of functions:</p>
 </div>
 <p><strong>resolved_configs.pt</strong> is the primary source of truth. It uses pickle to handle
 complex types (Union, nested dataclasses, torch.Tensor) that YAML cannot represent.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p><strong>Do NOT modify resolved_configs.yaml files.</strong> They are generated for human
+readability only—the actual source of truth is the <code class="docutils literal notranslate"><span class="pre">.pt</span></code> file.</p>
+<p>To modify configurations:</p>
+<ul class="simple">
+<li><p><strong>Small changes:</strong> Use <code class="docutils literal notranslate"><span class="pre">--overrides</span></code> on the command line</p></li>
+<li><p><strong>Large changes:</strong> Use <code class="docutils literal notranslate"><span class="pre">--create-config-only</span></code> to generate new configs,
+then copy the newly generated <code class="docutils literal notranslate"><span class="pre">.pt</span></code> file to your checkpoint directory</p></li>
+</ul>
+</div>
 <section id="resume-behavior">
 <h3>Resume Behavior<a class="headerlink" href="#resume-behavior" title="Link to this heading">¶</a></h3>
 <div class="admonition warning">

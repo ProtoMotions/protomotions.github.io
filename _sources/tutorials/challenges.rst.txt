@@ -78,7 +78,7 @@ motion, forcing the character to navigate through a narrow passage.
 Challenge 3: Add T1 Robot Support
 ---------------------------------
 
-**Goal:** Add Unitree T1 humanoid robot following the custom robot guide.
+**Goal:** Add Booster T1 humanoid robot following the custom robot guide.
 
 **Difficulty:** Medium-Hard
 
@@ -90,7 +90,7 @@ Challenge 3: Add T1 Robot Support
 
 **Hints:**
 
-1. Follow the custom robot guide
+1. Follow the custom robot guide and retargeting guide
 
 Challenge 4: Crouching Reward for Steering
 ------------------------------------------

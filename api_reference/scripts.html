@@ -372,8 +372,8 @@ and checkpoint management. Supports Hydra-based configuration composition.</p>
 <p>All configurations are saved to <code class="docutils literal notranslate"><span class="pre">results/&lt;experiment_name&gt;/</span></code>:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">config.yaml</span></code> - CLI arguments</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">resolved_configs.pt</span></code> - Full config objects (pickled)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">resolved_configs.yaml</span></code> - Human-readable configs</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">resolved_configs.pt</span></code> - Full config objects (pickled, <strong>source of truth</strong>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">resolved_configs.yaml</span></code> - Human-readable configs (<strong>do not modify</strong>)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">experiment_config.py</span></code> - Copy of experiment file</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">last.ckpt</span></code> - Model checkpoint</p></li>
 </ul>

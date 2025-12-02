@@ -15,6 +15,10 @@ digital humans and humanoid robots. Our mission is to provide a fast prototyping
 simulated humanoid learning tasks and environments, bridging efforts across physics-based animation, 
 digital humans, and humanoid robotics.
 
+.. note::
+
+   This project will download and install additional third-party open source software projects. Review the license terms of these open source projects before use.
+
 Key Features
 ------------
 

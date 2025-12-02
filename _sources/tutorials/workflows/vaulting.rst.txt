@@ -32,13 +32,13 @@ The vaulting example shows a character vaulting over obstacles. This requires:
    * ``proto/`` - Step 1 output (proto format motion)
    * ``proto.pt`` - Step 1 output (packaged MotionLib)
    * ``keypoints-for-retarget/`` - Step 1 output (keypoints for retargeting)
-   * ``rigv1-obstacle.pt`` - Step 2 output (bones scene)
+   * ``rigv1-obstacle.pt`` - Step 2 output (rigv1 scene)
    * ``pyroki-retargeted/`` - Step 5a output (retargeted motion)
    * ``proto-g1/`` - Step 5b output (G1 proto format)
    * ``proto-g1.pt`` - Step 5c output (G1 MotionLib)
    * ``g1-obstacle.pt`` - Step 5d output (G1 scene)
    
-   Pre-trained models for both bones and G1 will be available in the pre-trained
+   Pre-trained models for both rigv1 and G1 will be available in the pre-trained
    models collection (not yet uploaded).
 
 Step 1: Motion Preparation
@@ -48,7 +48,7 @@ Convert source motion to ProtoMotions format:
 
 .. code-block:: bash
 
-   python data/scripts/convert_bones_pkl_to_proto.py \
+   python data/scripts/convert_rigv1_pkl_to_proto.py \
        examples/data/rigv1-vaulting/ \
        examples/data/rigv1-vaulting/proto \
        --input-fps 30 --output-fps 30 \
@@ -120,7 +120,7 @@ Before training, verify motion and scene alignment:
    python examples/env_kinematic_playback.py \
        --experiment-path=examples/experiments/mimic/mlp.py \
        --motion-file=examples/data/rigv1-vaulting/proto.pt \
-       --robot-name=bones \
+       --robot-name=rigv1 \
        --simulator=isaacgym \
        --num-envs=5 \
        --scenes-file=examples/data/rigv1-vaulting/rigv1-obstacle.pt
@@ -134,15 +134,15 @@ This plays the motion kinematically with the scene objects rendered. Check that:
 Step 4: Train on Original Character
 -----------------------------------
 
-Train the original character (rigv1/bones):
+Train the original character (rigv1):
 
 .. code-block:: bash
 
    python protomotions/train_agent.py \
-       --robot-name bones \
+       --robot-name rigv1 \
        --simulator isaacgym \
        --experiment-path examples/experiments/mimic/mlp.py \
-       --experiment-name bones_rigv1_vaulting \
+       --experiment-name rigv1_vaulting \
        --motion-file examples/data/rigv1-vaulting/proto.pt \
        --scenes-file examples/data/rigv1-vaulting/rigv1-obstacle.pt \
        --num-envs 4096 \
@@ -153,8 +153,8 @@ hand-obstacle contacts are part of the task:
 
 .. code-block:: bash
 
-   --overrides "env.mimic_reward_config.reward_components.contact_match_rew.weight=0.0" \
-               "env.mimic_reward_config.reward_components.contact_force_change_rew.weight=0.0"
+   --overrides "env.reward_config.contact_match_rew.weight=0.0" \
+               "env.reward_config.contact_force_change_rew.weight=0.0"
 
 Step 5: Retarget to Robot (G1)
 ------------------------------

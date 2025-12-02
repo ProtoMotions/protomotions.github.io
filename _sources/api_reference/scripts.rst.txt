@@ -35,8 +35,8 @@ and checkpoint management. Supports Hydra-based configuration composition.
 All configurations are saved to ``results/<experiment_name>/``:
 
 * ``config.yaml`` - CLI arguments
-* ``resolved_configs.pt`` - Full config objects (pickled)
-* ``resolved_configs.yaml`` - Human-readable configs
+* ``resolved_configs.pt`` - Full config objects (pickled, **source of truth**)
+* ``resolved_configs.yaml`` - Human-readable configs (**do not modify**)
 * ``experiment_config.py`` - Copy of experiment file
 * ``last.ckpt`` - Model checkpoint
 

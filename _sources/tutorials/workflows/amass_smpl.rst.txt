@@ -128,8 +128,8 @@ For purely motion imitation (DeepMimic) rewards:
 
 .. code-block:: bash
 
-   --overrides "env.mimic_reward_config.reward_components.contact_match_rew.weight=0.0" \
-               "env.mimic_reward_config.reward_components.contact_force_change_rew.weight=0.0"
+   --overrides "env.reward_config.contact_match_rew.weight=0.0" \
+               "env.reward_config.contact_force_change_rew.weight=0.0"
 
 Visualizing Motions
 -------------------
